@@ -57,6 +57,7 @@
     <style>
         .red {
             color: red;
+            /*background-color: aliceblue;*/
         }
     </style>
 </head>
@@ -322,7 +323,6 @@
                     </div>
                     <div class="featured__item__text">
                         <h6><a href="ProductInfor?id_product=<%= p.getId() %>"><%=p.getProduct_name()%></a></h6>
-                        <%--                        <h5><%=p.getPrice()%></h5>--%>
                         <h5><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</h5>
                     </div>
                 </div>
