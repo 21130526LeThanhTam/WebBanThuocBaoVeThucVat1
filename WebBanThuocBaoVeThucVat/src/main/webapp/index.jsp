@@ -57,6 +57,7 @@
     <style>
         .red {
             color: red;
+            /*background-color: aliceblue;*/
         }
     </style>
 </head>
