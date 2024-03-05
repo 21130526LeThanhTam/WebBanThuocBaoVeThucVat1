@@ -427,7 +427,11 @@
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="latest-product__text">
+<<<<<<< HEAD
                     <h4>Sản phẩm bán chạy.</h4>
+=======
+                    <h4>Sản phẩm bán chạy</h4>
+>>>>>>> origin/21130526-LeThanhTam
                     <div class="latest-product__slider owl-carousel">
                         <div class="latest-prdouct__slider__item">
                             <% for(Products p : productNew1) {%>

@@ -36,7 +36,6 @@ public class HomePageController extends HttpServlet {
         request.setAttribute("productsNew2", productsNew2);
         request.setAttribute("findDiscountPro1", findDiscountPro1);
         request.setAttribute("findDiscountPro2", findDiscountPro2);
-
         String url = "index.jsp";
         request.getRequestDispatcher(url).forward(request, response);
     }
