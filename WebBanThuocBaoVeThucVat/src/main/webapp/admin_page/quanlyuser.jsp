@@ -294,7 +294,7 @@
                                 <th>Mã</th>
                                 <th>Tên</th>
                                 <th>Email</th>
-                                <th>Mật khẩu</th>
+                                <th>Số điện thoại</th>
                                 <th>Vai trò</th>
                                 <th>Chỉnh</th>
                             </tr>
@@ -309,7 +309,7 @@
                                 </th>
                                 <th><%=a.getEmail()%>
                                 </th>
-                                <th><%=a.getPassword()%>
+                                <th><%=a.getPhone()%>
                                 </th>
                                 <th><%=a.roleString()%>
                                 </th>
@@ -317,9 +317,6 @@
                                     <a href="./editUser?userID=<%=a.getId()%>&tag=<%=tag%>&role=<%=roleInt2%>"
                                        class="edit">
                                         <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-                                    </a>
-                                    <a href="#deleteEmployeeModal<%=a.getId()%>" class="delete" data-toggle="modal">
-                                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
                                     </a>
                                 </th>
                             </tr>
