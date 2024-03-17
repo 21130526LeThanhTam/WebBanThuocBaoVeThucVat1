@@ -57,7 +57,7 @@
                     <input name="rePass" type="password" placeholder="Nhập lại mật khẩu" class="password">
                 </div>
                 <div class="field button-field">
-                    <button>Đăng ký</button>
+                    <button type="submit">Đăng ký</button>
                 </div>
             </form>
             <div class="form-link">
@@ -67,7 +67,9 @@
     </div>
 </section>
 <!-- JavaScript -->
-<script src="login-register/js/signup_signin.js"></script>
+<script src="login-register/js/signup_signin.js">
+    function
+</script>
 
 </body>
 </html>

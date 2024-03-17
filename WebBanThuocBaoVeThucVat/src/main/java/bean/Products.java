@@ -150,7 +150,7 @@ public class Products implements Serializable {
     }
     public static void main(String[] args) {
         Products a=new Products(4000000);
-        System.out.println(a.formatPrice());
+//        System.out.println(a.formatPrice());
 
     }
 

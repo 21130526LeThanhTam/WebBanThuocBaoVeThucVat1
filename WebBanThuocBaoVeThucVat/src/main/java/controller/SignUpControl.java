@@ -32,7 +32,7 @@ public class SignUpControl extends HttpServlet {
         String phone = req.getParameter("phone");
         String pass = req.getParameter("pass");
         String re_pass = req.getParameter("rePass");
-        String hashpass = DigestUtils.md5DigestAsHex(pass.getBytes());
+        String hashpass = DigestUtils.md5DigestAsHex(pass.getBytes());//mã hoá mật khẩu
 
         HttpSession session = req.getSession();
 

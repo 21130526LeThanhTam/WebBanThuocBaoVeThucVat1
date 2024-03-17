@@ -28,7 +28,6 @@ public class LoginControl extends HttpServlet {
         String pass = req.getParameter("password");
 
         String newPword = DigestUtils.md5DigestAsHex(pass.getBytes());
-        System.out.println(newPword);
 
         User user = new User();
 

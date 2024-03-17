@@ -99,14 +99,20 @@
 
                     <div class="product__details__price"><%= proID.formatPrice() %>₫</div>
                     <p><%= proID.getDes() %></p>
-                    <div class="product__details__quantity">
-                        <div class="quantity">
-                            <div class="pro-qty">
-                                <input type="text" value="1">
+
+
+                        <div class="product__details__quantity">
+                            <div class="quantity">
+                                <div class="pro-qty">
+                                    <input type="text" name="quantity" id="quantityInput" value="1">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <a href="ShoppingCartCL?action=post&id=<%=proID.getId()%>" class="primary-btn">THÊM VÀO GIỎ HÀNG</a>
+
+                        <a href="ShoppingCartCL?action=post&id=<%=proID.getId()%>&type=0" id="addToCartBtn" class="primary-btn"><i class="fa-solid fa-cart-plus"></i>THÊM VÀO GIỎ HÀNG</a>
+                        <a href="javascript:void(0);" id="buyNowBtn" class="primary-btn">MUA NGAY</a>
+
+
 
                     <ul>
                         <!-- <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li> -->
@@ -407,6 +413,33 @@
 <script src="assets/js/mixitup.min.js"></script>
 <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/main.js"></script>
+
+
+<script>
+    document.getElementById('buyNowBtn').addEventListener('click', function() {
+        // Lấy giá trị đã nhập từ input
+        var quantity = document.getElementById('quantityInput').value;
+
+        // Tạo URL mới với giá trị đã nhập từ input
+        var url = "ShoppingCartCL?action=post&id=<%=proID.getId()%>&type=1&quantity=" + encodeURIComponent(quantity);
+
+        // Chuyển hướng đến URL mới
+        window.location.href = url;
+    });
+</script>
+
+<%--<script>--%>
+<%--    document.getElementById('addToCartBtn').addEventListener('click', function() {--%>
+<%--        // Lấy giá trị đã nhập từ input--%>
+<%--        var quantity = document.getElementById('quantityInput').value;--%>
+
+<%--        // Tạo URL mới với giá trị đã nhập từ input--%>
+<%--        var url = "ShoppingCartCL?action=post&id=<%=proID.getId()%>&quantity=" + encodeURIComponent(quantity);--%>
+
+<%--        // Chuyển hướng đến URL mới--%>
+<%--        window.location.href = url;--%>
+<%--    });--%>
+<%--</script>--%>
 
 
 </body>

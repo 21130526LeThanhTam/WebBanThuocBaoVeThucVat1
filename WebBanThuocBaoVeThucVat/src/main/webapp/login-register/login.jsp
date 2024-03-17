@@ -47,6 +47,9 @@
                 <div class="form-link">
                     <a href="PasswordForgot" class="forgot-pass">Quên mật khẩu?</a>
                 </div>
+                <div class="text-center mt-3"><button type="button" class="btn btn-danger btn-block">
+                    <i class="fab fa-google mr-2"></i> Login with Google
+                </button></div>
                 <div class="field button-field">
                     <button>Đăng nhập</button>
                 </div>
@@ -57,7 +60,17 @@
         </div>
     </div>
 </section>
-<script src="login-register/js/signup_signin.js"></script>
+<script src="login-register/js/signup_signin.js">
+    function validatePassword() {
+        var passwordInput = document.getElementById("password");
+        var password = passwordInput.value;
+        if (password.length < 6) {
+            alert("Password must be at least 6 characters long.");
+            return false; // Prevent form submission
+        }
+        return true; // Allow form submission
+    }
+</script>
 
 </body>
 </html>

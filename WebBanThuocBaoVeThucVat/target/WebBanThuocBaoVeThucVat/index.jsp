@@ -76,7 +76,7 @@
     <div class="humberger__menu__cart">
         <ul>
 
-            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3fwefewfwefwfewfewfew</span></a></li>
         </ul>
         <!-- <div class="header__cart__price">Số dư tài khoản: <span>200.000₫</span></div> -->
     </div>
@@ -187,14 +187,7 @@
                     <ul>
                         <li><a href="HomePageController">Trang chủ</a></li>
                         <li><a href="ProductController">Cửa hàng</a></li>
-                        <li><a href="#">Quản lý</a>
-                            <ul class="header__menu__dropdown">
-                                <li><a href="thong-tin-don-hang.jsp">Thông tin đơn hàng</a></li>
-                                <li><a href="gio-hang.jsp">Giỏ hàng</a></li>
-                                <li><a href="thanh-toan.jsp">Thanh toán</a></li>
-                                <li><a href="blog-details.jsp">Các bài viết</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="blog-details.jsp">Các bài viết</a></li>
                         <li><a href="lien-he.jsp">Liên hệ</a></li>
                     </ul>
                 </nav>
@@ -244,7 +237,7 @@
                         </form>
                     </div>
                     <div class="hero__search__phone">
-                        <div class="hero__search__phone__icon">
+                        <div class="hero__search__phone__icon d-flex align-items-center justify-content-center">
                             <i class="fa fa-phone"></i>
                         </div>
                         <div class="hero__search__phone__text">
@@ -539,11 +532,11 @@
                         <input type="text" placeholder="Nhập địa chỉ email">
                         <button type="submit" class="site-btn">ĐĂNG KÝ</button>
                     </form>
-                    <div class="footer__widget__social">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                    <div class="footer__widget__social d-flex">
+                        <a class="d-flex align-items-center justify-content-center" href="#"><i class="fa fa-facebook"></i></a>
+                        <a class="d-flex align-items-center justify-content-center" href="#"><i class="fa fa-instagram"></i></a>
+                        <a class="d-flex align-items-center justify-content-center" href="#"><i class="fa fa-twitter"></i></a>
+                        <a class="d-flex align-items-center justify-content-center" href="#"><i class="fa fa-pinterest"></i></a>
                     </div>
                 </div>
             </div>
