@@ -712,6 +712,9 @@ ol {
 }
 
 .hero__search__phone__icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	font-size: 18px;
 	color: #7fad39;
 	height: 50px;
@@ -722,6 +725,7 @@ ol {
 	border-radius: 50%;
 	float: left;
 	margin-right: 20px;
+
 }
 
 .hero__search__phone__text {

@@ -98,15 +98,7 @@
         <ul>
             <li><a href="HomePageController">Trang chủ</a></li>
             <li class="active"><a href="ProductController">Cửa hàng</a></li>
-            <li><a href="#">Quản lý</a>
-                <ul class="header__menu__dropdown">
-                    <li><a href="thong-tin-don-hang.jsp">Thông tin đơn hàng</a></li>
-                    <li><a href="gio-hang.jsp">Giỏ hàng</a></li>
-                    <li><a href="thanh-toan.jsp">Thanh toán</a></li>
-                    <li><a href="blog-details.jsp">Các bài viết</a></li>
-                </ul>
-            </li>
-            <li><a href="blog.jsp">Blog</a></li>
+            <li><a href="blog-details.jsp">Các bài viết</a></li>
             <li><a href="lien-he.jsp">Liên hệ</a></li>
         </ul>
     </nav>
