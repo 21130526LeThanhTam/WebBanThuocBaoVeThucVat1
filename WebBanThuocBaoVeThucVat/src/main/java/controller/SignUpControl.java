@@ -25,6 +25,9 @@ public class SignUpControl extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String regrexEmail = "^[A-Z0-9_a-z]+@[A-Z0-9\\.a-z]+\\.[A-Za-z]{2,6}$";
+        String regrexPassword = "[a-zA-Z0-9_!@#$%^&*]+";
+        //============================================
         String email = req.getParameter("email");
         String username = req.getParameter("username");
         String surname = req.getParameter("surname");
@@ -74,7 +77,7 @@ public class SignUpControl extends HttpServlet {
                     session.setAttribute("errorNumber", error);
                     resp.sendRedirect("signup");
                 }
-                }else{
+                } else{
                     req.getRequestDispatcher("register.jsp").forward(req,resp);
                 }
             }

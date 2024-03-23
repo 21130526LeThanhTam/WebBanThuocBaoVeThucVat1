@@ -116,8 +116,10 @@ public class ProductDAO implements IProductDAO {
     }
 
 
+
     public static void main(String[] args) {
         ProductDAO dao = new ProductDAO();
-        dao.findByPriceMin("").forEach(System.out::println);
+//        System.out.println(dao.numOfPro());
+//        dao.findByPriceMin("").forEach(System.out::println);
     }
 }

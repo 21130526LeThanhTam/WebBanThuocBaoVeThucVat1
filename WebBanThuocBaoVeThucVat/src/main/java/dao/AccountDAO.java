@@ -63,7 +63,6 @@ public class AccountDAO {
     }
 
     public String signUp(String email,String pass,String username,String surname,String lastname,String phone,String hash){
-
         String sql = "insert into users(username, password, phone, email, surname, lastname, hash, role, active) values (?,?,?,?,?,?,?,0,0)";
         Connection conn = DBContext.getConnection();
         try {

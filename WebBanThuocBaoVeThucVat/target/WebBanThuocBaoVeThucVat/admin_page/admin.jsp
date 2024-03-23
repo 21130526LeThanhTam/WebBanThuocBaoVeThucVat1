@@ -22,7 +22,7 @@
 </head>
 <body>
 <% int numUser = (request.getAttribute("numUser") != null) ? (int) request.getAttribute("numUser") : 0; %>
-<% int numPro= request.getAttribute("numPro") !=null ?(int) request.getAttribute("numPro"):0;%>
+<% int numPro= (request.getAttribute("numPro") !=null) ?(int) request.getAttribute("numPro"):0;%>
 <div class="wrapper">
     <div class="body-overlay"></div>
     <!-------sidebar--design------------>
@@ -205,16 +205,13 @@
                                                 Settings
                                             </a></li>
                                             <li><a href="#">
-                                                <%User auth = (User) session.getAttribute("uslogin");%>
+                                                <%User auth = (User) session.getAttribute("admin");%>
                                                 <% if(auth != null){ %>
                                                 <a class="#" href="logout"><span class="material-icons">logout</span>Đăng xuất</a>
                                                 <% } %>
                                             </a></li>
-
                                         </ul>
                                     </li>
-
-
                                 </ul>
                             </nav>
                         </div>

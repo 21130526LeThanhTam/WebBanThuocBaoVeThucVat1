@@ -3,6 +3,7 @@ package dao;
 import bean.Product;
 import bean.Products;
 import db.JDBIConnector;
+import org.jdbi.v3.core.Jdbi;
 
 import java.util.List;
 import java.util.Optional;
@@ -141,6 +142,16 @@ public class ProductsDao implements IProductsDao{
                         .execute()
         );
     }
+    // lấy ra danh sách toàn bộ sp.
+    public static List<Products> numOfPro() {
+        Jdbi jdbi = JDBIConnector.getJdbi();
+        List<Products> findNewPro2 = jdbi.withHandle(handle -> {
+            String sql = "SELECT id, product_name, picture, price, id_category, quantity, status,specifications, des, create_at, activeDiscount FROM product" ;
+            return handle.createQuery(sql).mapToBean(Products.class).stream().collect(Collectors.toList());
+        });
+        return findNewPro2;
+    }
+
 
     public static void main(String[] args) {
         ProductsDao.insertProduct("zxc", "img/product/product-2.jpg", 123, 1, 123,1,"432", "123123");
