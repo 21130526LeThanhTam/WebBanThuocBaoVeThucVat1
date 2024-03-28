@@ -3,7 +3,7 @@
 <%@ page import="bean.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%--
-
+// đây là trang homePageControlLer
   Created by IntelliJ IDEA.
   User: Windows 10
   Date: 16-12-2023
@@ -55,14 +55,7 @@
 
     <%--    <link rel="stylesheet" href="css/Log_Regis.css">--%>
     <%--    <script src="js/log_reg.js" defer></script>--%>
-    <style>
-        .red {
-            color: red;
-        }
-        .fix-icon{
-            margin-top:12px;
-        }
-    </style>
+
 </head>
 <body>
 <!-- Page Preloder -->
@@ -266,7 +259,7 @@
     </div>
 </section>
 <!-- Hero Section End -->
-
+<%--cần edit lại chỗ này--%>
 <!-- Categories Section Begin -->
 <section class="categories">
     <div class="container">
