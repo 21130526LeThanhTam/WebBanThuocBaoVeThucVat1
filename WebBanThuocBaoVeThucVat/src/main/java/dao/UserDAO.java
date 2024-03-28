@@ -12,6 +12,27 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class UserDAO {
+    private static UserDAO instance;
+
+    public UserDAO() {
+    }
+
+    public static UserDAO getInstance() {
+        if (instance == null) {
+            instance = new UserDAO();
+        }
+
+        return instance;
+    }
+
+    public int GetId() throws SQLException {
+        List<User> users = JDBIConnector.me().getJdbi().withHandle((handle) -> {
+            return handle.createQuery("SELECT * FROM users WHERE id = (SELECT MAX(id) FROM users)")
+                    .mapToBean(User.class)
+                    .collect(Collectors.toList());
+        });
+        return users.get(0).getId();
+    }
 
     public String userChangeInfo(String surname, String lastname, String username, String phone,String email){
         Connection conn = DBContext.getConnection();
@@ -113,7 +134,7 @@ public class UserDAO {
     }
 
 //// kiểm tra người dùng tồn tại.nếu người dùng ko tồn tại false và ngc lại
-    public static boolean isUserExists(String email) {
+    public boolean isUserExists(String email) {
         User a= UserDAO.getUserByEmail(email);
         return a !=null;
     }

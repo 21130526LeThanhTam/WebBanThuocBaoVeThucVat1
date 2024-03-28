@@ -111,7 +111,7 @@
                             <div class="product__item__pic set-bg" data-setbg="<%=a.getPicture()%>">
                                 <ul class="product__item__pic__hover">
                                     <li><a href="ProductInfor?id_product=<%= a.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="ShoppingCartCL?action=post&id=<%=a.getId()%>"><i class="fa fa-shopping-cart"></i></a></li>
+                                    <li><a onclick="addToCart()" href="ShoppingCartCL?action=post&id=<%=a.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
@@ -200,6 +200,11 @@
 <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/main.js"></script>
 <script>
+
+    function addToCart(){
+        alert("Thêm sản phẩm vào giỏ hàng thành công")
+    }
+
     // Lắng nghe sự kiện thay đổi của thẻ select
     document.getElementById('selectOrder').addEventListener('change', function() {
         // Lấy giá trị được chọn

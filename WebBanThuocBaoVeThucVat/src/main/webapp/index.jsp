@@ -303,7 +303,7 @@
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getPicture()%>">
                         <ul class="featured__item__pic__hover">
                             <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li><a onclick="addToCart()" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
@@ -319,7 +319,7 @@
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getPicture()%>">
                         <ul class="featured__item__pic__hover">
                             <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li><a onclick="addToCart()" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
@@ -336,7 +336,7 @@
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getPicture()%>">
                         <ul class="featured__item__pic__hover">
                             <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li><a onclick="addToCart()" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
@@ -547,7 +547,9 @@
 <script src="assets/js/mixitup.min.js"></script>
 <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/main.js"></script>
-
+<script>function addToCart(){
+    alert("Thêm sản phẩm vào giỏ hàng thành công")
+}</script>
 </body>
 
 </html>

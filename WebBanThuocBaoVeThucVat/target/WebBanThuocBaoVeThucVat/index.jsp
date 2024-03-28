@@ -98,15 +98,7 @@
         <ul>
             <li><a href="HomePageController">Trang chủ</a></li>
             <li class="active"><a href="ProductController">Cửa hàng</a></li>
-            <li><a href="#">Quản lý</a>
-                <ul class="header__menu__dropdown">
-                    <li><a href="thong-tin-don-hang.jsp">Thông tin đơn hàng</a></li>
-                    <li><a href="gio-hang.jsp">Giỏ hàng</a></li>
-                    <li><a href="thanh-toan.jsp">Thanh toán</a></li>
-                    <li><a href="blog-details.jsp">Các bài viết</a></li>
-                </ul>
-            </li>
-            <li><a href="blog.jsp">Blog</a></li>
+            <li><a href="blog-details.jsp">Các bài viết</a></li>
             <li><a href="lien-he.jsp">Liên hệ</a></li>
         </ul>
     </nav>
@@ -311,7 +303,7 @@
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getPicture()%>">
                         <ul class="featured__item__pic__hover">
                             <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li><a onclick="addToCart()" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
@@ -327,7 +319,7 @@
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getPicture()%>">
                         <ul class="featured__item__pic__hover">
                             <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li><a onclick="addToCart()" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
@@ -344,7 +336,7 @@
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getPicture()%>">
                         <ul class="featured__item__pic__hover">
                             <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li><a onclick="addToCart()" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
@@ -555,7 +547,9 @@
 <script src="assets/js/mixitup.min.js"></script>
 <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/main.js"></script>
-
+<script>function addToCart(){
+    alert("Thêm sản phẩm vào giỏ hàng thành công")
+}</script>
 </body>
 
 </html>

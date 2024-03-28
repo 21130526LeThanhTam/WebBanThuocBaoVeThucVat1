@@ -100,7 +100,7 @@
                         %>
                         <tr>
                             <td class="shoping__cart__item">
-                                <img class="product-image" src="assets/<%=cartItem.getProduct().getPicture()%>" alt="Vegetable's Package">
+                                <img class="product-image" src="<%=cartItem.getProduct().getPicture()%>" alt="Vegetable's Package">
                                 <h5><%=cartItem.getProduct().getProduct_name()%></h5>
                             </td>
                             <td class="shoping__cart__price">
@@ -108,7 +108,7 @@
                             </td>
                             <td class="shoping__cart__quantity">
                                 <form action="ShoppingCartCL" method="get">
-                                    <input type="number" name="quantity" value="<%=cartItem.getQuantity()%>">
+                                    <input class="w-25" type="number" name="quantity" value="<%=cartItem.getQuantity()%>">
                                     <input type ="hidden" name ="action" value="put">
                                     <input type ="hidden" name="id" value="<%=cartItem.getProduct().getId()%>">
                                     <button hidden="hidden" id="button1" type="submit" class="primary-btn cart-btn cart-btn-right">

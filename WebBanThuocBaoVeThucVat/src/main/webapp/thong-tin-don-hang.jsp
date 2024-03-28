@@ -109,7 +109,7 @@
                             </div>
                         </div>
 
-                        <a href="ShoppingCartCL?action=post&id=<%=proID.getId()%>&type=0" id="addToCartBtn" class="primary-btn"><i class="fa-solid fa-cart-plus"></i>THÊM VÀO GIỎ HÀNG</a>
+                        <a onclick="addToCart()" href="ShoppingCartCL?action=post&id=<%=proID.getId()%>&type=0" id="addToCartBtn" class="primary-btn"><i class="fa-solid fa-cart-plus"></i>THÊM VÀO GIỎ HÀNG</a>
                         <a href="javascript:void(0);" id="buyNowBtn" class="primary-btn">MUA NGAY</a>
 
 
@@ -416,6 +416,9 @@
 
 
 <script>
+    function addToCart(){
+        alert("Thêm sản phẩm vào giỏ hàng thành công")
+    }
     document.getElementById('buyNowBtn').addEventListener('click', function() {
         // Lấy giá trị đã nhập từ input
         var quantity = document.getElementById('quantityInput').value;
