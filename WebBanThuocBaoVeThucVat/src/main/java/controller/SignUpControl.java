@@ -1,6 +1,7 @@
 package controller;
 
 import Service.SendingEmail;
+
 import bean.User;
 import dao.AccountDAO;
 import org.apache.commons.codec.cli.Digest;
@@ -32,51 +33,63 @@ public class SignUpControl extends HttpServlet {
         String phone = req.getParameter("phone");
         String pass = req.getParameter("pass");
         String re_pass = req.getParameter("rePass");
+        //mã hóa mật khẩu sang md5
         String hashpass = DigestUtils.md5DigestAsHex(pass.getBytes());
 
         HttpSession session = req.getSession();
-
+        //Tạo mã xác nhận ngẫu nhiên bằng cách sử dụng md5 và số ngẫu nhiên để tạo ra đường link đăng kí cho mỗi người
         String myHash ;
         Random random = new Random();
         random.nextInt(999999);
         myHash = DigestUtils.md5DigestAsHex((""+random).getBytes());
-
+    // khởi tạo trước một đối tượng user
         User user = new User();
-//        user.setHash(myHash);
-//        user.setEmail(email);
-//        user.setLastname(lastname);
-//        user.setSurname(surname);
-//        user.setUsername(username);
-//        user.setPhone(phone);
-//        user.setPassword(hashpass);
+    // kiểm tra user có tồn tại trước đó hay không
+    AccountDAO acc = new AccountDAO();
+    user = acc.checkAccountExist(email);
+    String error;
+    //nếu user khác null thì đăng kí
+        // không thì sẽ chuyền về là tài khoản đã đăng kí
+        if(user == null){
+            //Tên tài khoản và dài hơn 3 kí tự và kí tự đầu tiên phải là chữ cái
+            if(username.length() <= 3 || !(Character.isLetter(username.charAt(0)))){
+                error = "Tên tài khoản phải trên 3 kí tự và * Kí tự đầu tiên phải là chữ cái";
 
-        if(!pass.equals(re_pass)){
-            req.getRequestDispatcher("signup").forward(req,resp);
-        }else{
-            AccountDAO acc = new AccountDAO();
-            user = acc.checkAccountExist(email);
-            if(user == null){
-                if(phone.length() == 10){
-                    String str = acc.signUp( email, hashpass, username, surname, lastname, phone, myHash);
+                session.setAttribute("errorNumber", error);
+                resp.sendRedirect("signup");
+            }
+            // số điện thoại phải là 10 chữ số
+            else if(phone.length() != 10) {
+                error = "Số điện thoại phải là 10 chữ số";
+
+                session.setAttribute("errorNumber", error);
+                resp.sendRedirect("signup");
+            }
+            else if (!pass.equals(re_pass)) {
+                error = "Mật khẩu không trùng khớp";
+
+                session.setAttribute("errorNumber", error);
+                resp.sendRedirect("signup");
+            }
+            else{
+
+                String str = acc.signUp(email, hashpass, username, surname, lastname, phone, myHash);
                     if(str.equals("success")){
                         SendingEmail se = new SendingEmail(email, myHash);
                         se.sendMail();
-                        String error = "Kích hoạt email để đăng nhập";
+                        error = "Kích hoạt email để đăng nhập";
                         session.setAttribute("errorRegis", error);
                         resp.sendRedirect("login");
-                    }else{
-                        String error = "Đăng ký thất bại ";
-                        session.setAttribute("errorRegis", error);
-                        resp.sendRedirect("signup");
-                        }
-                    }else{
-                    String error = "Tối thiểu 10 số ";
-                    session.setAttribute("errorNumber", error);
-                    resp.sendRedirect("signup");
-                }
-                }else{
-                    req.getRequestDispatcher("register.jsp").forward(req,resp);
-                }
+                    }
+
             }
         }
+        else{
+            error = "Email này đã được đăng kí, vui lòng sử dụng email khác";
+            session.setAttribute("errorNumber", error);
+            resp.sendRedirect("signup");
+
+        }
     }
+}
+

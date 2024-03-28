@@ -36,15 +36,15 @@ public class AccountDAO {
         return null;
     }
 
-
     public User checkAccountExist(String email){
-        String sql = "select id, username, password, phone, email, surname, lastname, role, hash, active from users where email = ?";
+        //Nếu email và số điện thoại trùng nhau thì nó sẽ trả về 1 account trong cơ sở dữ liệu
+        String sql = "select id, username, password, phone, email, surname, lastname, role, hash, active from users where email = ?" ;
         Connection conn = DBContext.getConnection();
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, email);
-            ResultSet rs = ps.executeQuery();
 
+            ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 return new User(rs.getInt(1),
                         rs.getString(2),
@@ -86,11 +86,13 @@ public class AccountDAO {
         }
         return null;
     }
-
+    //phương thức lấy ra tất cả  tài khoản chưa được active và update cho nó là active
     public String activeAccount(String email, String hash){
+        //tạo connection
         Connection con = DBContext.getConnection();
 
         try {
+            // tạo câu lệnh truy vấn lấy ra tài khoản chưa được active
             PreparedStatement ps = con.prepareStatement("select email, hash, active from users where email = ? and hash = ? and active = 0");
             ps.setString(1, email);
             ps.setString(2, hash);
@@ -119,8 +121,8 @@ public class AccountDAO {
             // Trong câu lệnh SQL UPDATE, chúng ta cần set password = ? và email = ?
             ps.setString(1, newPassword); // Chỗ này sử dụng newPassword thay vì email
             ps.setString(2, email); // Chỗ này sử dụng email thay vì newPassword
-            int i = ps.executeUpdate();
-            if (i > 0) {
+            int rows = ps.executeUpdate();
+            if (rows > 0) {
                 return "Success";
             }
         } catch (SQLException e) {

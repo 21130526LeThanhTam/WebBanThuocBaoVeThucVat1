@@ -22,48 +22,51 @@ public class SendingEmail {
 
         return null;
     }
-
+    // đây là phương thức gửi email chứa liên kết xác nhận khi người dùng yêu cầu muốn đặt lại mật khẩu
     public String sendFPassByEmail(){
+        // tài khoản mk của email của mình
         String email = "dphuc2363@gmail.com";
         String pword = "tdnm xnue zhfr rmae";
+        // sử dụng properties để cấu hình các thuộc tính của máy chủ email
         Properties properties = new Properties();
-
+        // cấu hình smtp, port, quyền tác giả, giao thức bảo mật mã hóa dữ liệu gửi đi
         properties.put("mail.smtp.host", "smtp.gmail.com"); //SMTP Host
         properties.put("mail.smtp.port", "587"); //TLS Port
         properties.put("mail.smtp.auth", "true"); //enable authentication
         properties.put("mail.smtp.starttls.enable", "true"); //enable
         properties.put("mail.smtp.timeout", "5000");
-
+        //tạo phiên gửi email, truyền vào properties đã cấu hình và  tạo mới một authenticator để xác thực tài khoản email của mình
         Session session = Session.getDefaultInstance(properties, new Authenticator(){
             protected PasswordAuthentication getPasswordAuthentication(){
                 return new PasswordAuthentication(email, pword);
             }
         });
-
+        // tạo và cấu hình tin nhắn email
+        // sử dụng MimeMessage để tạo tin nhắn email và cái này nó sẽ nhận một session
         MimeMessage message = new MimeMessage(session);
         try {
+            // setfrom là người gửi
             message.setFrom(new InternetAddress(email));
+            //addrecipient là người nhận email
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(userEmail));
-            message.setSubject("StudyViral.in Email Verification Link");
-            message.setText("Verification Link ...");
-            String verificationLink = "Your Verification Link :: http://localhost:8081/WebBanThuocBaoVeThucVat/ForgotPassword?action=createPass&key1=" + userEmail;
+            //Đặt chủ đề cho email
+            message.setSubject("Password verification email");
+            //settext là đặt nội dung cho email
+            String verificationLink = "Your Verification Link :: http://localhost:8080/WebBanThuocBaoVeThucVat/ForgotPassword?action=createPass&key1=" + userEmail;
             message.setText(verificationLink);
+            // sử dụng transport để gửi tin nhắn đã được tạo ra
             Transport.send(message);
             return "success";
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
     }
-
+    // đây là phương thức email dạng văn bản bình thường
     public String sendTextEmail(String messageContentContact, String userName){
+        //bắt đầu tạo ra cấu hình email
         String email = "dphuc2363@gmail.com";
         String pword = "tdnm xnue zhfr rmae";
-        Properties properties = new Properties();
 
-        properties.put("mail.smtp.host", "smtp.gmail.com"); //SMTP Host
-        properties.put("mail.smtp.port", "587"); //TLS Port
-        properties.put("mail.smtp.auth", "true"); //enable authentication
-        properties.put("mail.smtp.starttls.enable", "true"); //enable
 
         String host = "smtp.gmail.com";
         Properties props = new Properties();
@@ -82,7 +85,7 @@ public class SendingEmail {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(email));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
-            message.setText("Tên người dùng: " + userName + "\nEmail: " + userEmail + "\n\nNội dung:\n" + messageContentContact);
+            message.setSubject("Tên người dùng: " + userName + "\nEmail: " + userEmail);
             message.setText(messageContentContact);
 
             Transport.send(message);
@@ -92,6 +95,7 @@ public class SendingEmail {
         }
     }
 
+    //Phương thức gửi mail cho người dùng để họ xác nhận khi đăng nhập
     public void sendMail(){
         String email = "dphuc2363@gmail.com";
         String pword = "tdnm xnue zhfr rmae";
@@ -112,9 +116,8 @@ public class SendingEmail {
         try {
             message.setFrom(new InternetAddress(email));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(userEmail));
-            message.setSubject("StudyViral.in Email Verification Link");
-            message.setText("Verification Link ...");
-            String verificationLink = "Your Verification Link :: http://localhost:8081/WebBanThuocBaoVeThucVat/ActiveAccount?key1=" + userEmail + "&key2=" + myHash;
+            message.setSubject("Account registration verification email");
+            String verificationLink = "Your Verification Link : http://localhost:8080/WebBanThuocBaoVeThucVat/ActiveAccount?key1=" + userEmail + "&key2=" + myHash;
             message.setText(verificationLink);
             Transport.send(message);
         } catch (MessagingException e) {
