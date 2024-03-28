@@ -19,12 +19,12 @@ public class Service {
     public Service() {
     }
 
-    public static String getToken(String code) throws ClientProtocolException, IOException {
-        String response = Request.Post(DBProperties.GOOGLE_LINK_GET_TOKEN).bodyForm(Form.form().add("client_id", DBProperties.GOOGLE_CLIENT_ID).add("client_secret", DBProperties.GOOGLE_CLIENT_SECRET).add("redirect_uri", DBProperties.GOOGLE_REDIRECT_URI).add("code", code).add("grant_type", DBProperties.GOOGLE_GRANT_TYPE).build()).execute().returnContent().asString();
-        JsonObject jobj = (JsonObject) (new Gson()).fromJson(response, JsonObject.class);
-        String accessToken = jobj.get("access_token").toString().replaceAll("\"", "");
-        return accessToken;
-    }
+//    public static String getToken(String code) throws ClientProtocolException, IOException {
+//        String response = Request.Post(DBProperties.GOOGLE_LINK_GET_TOKEN).bodyForm(Form.form().add("client_id", DBProperties.GOOGLE_CLIENT_ID).add("client_secret", DBProperties.GOOGLE_CLIENT_SECRET).add("redirect_uri", DBProperties.GOOGLE_REDIRECT_URI).add("code", code).add("grant_type", DBProperties.GOOGLE_GRANT_TYPE).build()).execute().returnContent().asString();
+//        JsonObject jobj = (JsonObject) (new Gson()).fromJson(response, JsonObject.class);
+//        String accessToken = jobj.get("access_token").toString().replaceAll("\"", "");
+//        return accessToken;
+//    }
 
 //    public static User getUserInfo(String accessToken) throws ClientProtocolException, IOException, SQLException {
 //        String link = DBProperties.GOOGLE_LINK_GET_USER_INFO + accessToken;
