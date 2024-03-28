@@ -252,12 +252,24 @@
 <!-- Categories Section Begin -->
 <section class="categories">
     <div class="container">
+        <div class="section-title text-center">
+            <h2>Các sản phẩm nổi bật</h2>
+        </div>
         <div class="row">
             <div class="categories__slider owl-carousel">
                 <% for(Products p : products){%>
-                <div class="col-lg-3">
-                    <div class="categories__item set-bg" data-setbg="<%=p.getPicture()%>">
-                        <h5><a href="ProductInfor?id_product=<%= p.getId() %>"><%=p.getProduct_name()%></a></h5>
+                <div class="col-lg-3 col-md-4 col-sm-6 mix a">
+                    <div class="featured__item">
+                        <div class="featured__item__pic set-bg" data-setbg="<%=p.getPicture()%>">
+                            <ul class="featured__item__pic__hover">
+                                <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
+                                <li><a class="d-flex align-items-center justify-content-center" onclick="addToCart()" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="featured__item__text">
+                            <h6><a href="ProductInfor?id_product=<%= p.getId() %>"><%=p.getProduct_name()%></a></h6>
+                            <h5><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</h5>
+                        </div>
                     </div>
                 </div>
                 <% } %>
@@ -268,12 +280,12 @@
 <!-- Categories Section End -->
 
 <!-- Featured Section Begin -->
-<section class="featured spad">
+<section class="pb-5">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
-                    <h2>Các sản phẩm nổi bật</h2>
+                    <h2>Các sản phẩm theo loại</h2>
                 </div>
                 <div class="featured__controls">
                     <ul>
@@ -302,8 +314,8 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getPicture()%>">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                            <li><a onclick="addToCart()" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
+                            <li><a class="d-flex align-items-center justify-content-center" onclick="addToCart()" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
@@ -318,8 +330,8 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getPicture()%>">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                            <li><a onclick="addToCart()" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
+                            <li><a class="d-flex align-items-center justify-content-center" onclick="addToCart()" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
@@ -335,8 +347,8 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getPicture()%>">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                            <li><a onclick="addToCart()" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
+                            <li><a class="d-flex align-items-center justify-content-center" onclick="addToCart()" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
