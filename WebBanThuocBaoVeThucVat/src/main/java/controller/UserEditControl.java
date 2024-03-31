@@ -18,6 +18,7 @@ public class UserEditControl extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         String action = req.getParameter("action");
         if(action != null && action.equals("uEdit")){
             req.getRequestDispatcher("user-profile.jsp").forward(req,resp);
@@ -26,6 +27,7 @@ public class UserEditControl extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         String surname = req.getParameter("surname");
         String lastname = req.getParameter("lastname");
         String username = req.getParameter("username");

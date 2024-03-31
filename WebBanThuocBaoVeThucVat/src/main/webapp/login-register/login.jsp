@@ -50,6 +50,11 @@
                 <div class="field button-field">
                     <button>Đăng nhập</button>
                 </div>
+                <div class="social-icons">
+                    <a href="">
+                        <img src="assets/img/formIcon/google.jpg" alt="Google">
+                    </a>
+                </div>
             </form>
             <div class="form-link">
                 <span>Chưa có tài khoản? <a href="signup" class="<%-- link signup-link --%>">Đăng ký</a></span>

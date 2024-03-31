@@ -20,11 +20,13 @@ public class SignUpControl extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         req.getRequestDispatcher("login-register/register.jsp").forward(req,resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         String regrexEmail = "^[A-Z0-9_a-z]+@[A-Z0-9\\.a-z]+\\.[A-Za-z]{2,6}$";
         String regrexPassword = "[a-zA-Z0-9_!@#$%^&*]+";
         //============================================
@@ -66,7 +68,7 @@ public class SignUpControl extends HttpServlet {
                         se.sendMail();
                         String error = "Kích hoạt email để đăng nhập";
                         session.setAttribute("errorRegis", error);
-                        resp.sendRedirect("login");
+                        resp.sendRedirect("./verify.jsp");
                     }else{
                         String error = "Đăng ký thất bại ";
                         session.setAttribute("errorRegis", error);

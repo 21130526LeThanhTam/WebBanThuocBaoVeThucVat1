@@ -62,13 +62,13 @@ public class CategoryDAO {
 
 
     public static void main(String[] args) {
-//        CategoryDAO dao = new CategoryDAO();
+        CategoryDAO dao = new CategoryDAO();
 //        List<Category> list = dao.getList();
 //        for(Category i : list){
 //            System.out.println(i.toString());
 //        }
 //        System.out.println(CategoryDAO.listCategory("ô",0));
-        CategoryDAO.updateCategory("Phân bón",3);
+        System.out.println(dao.getList());
     }
 
 }
