@@ -16,6 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href='login-register/css/login.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Boxicons CSS -->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -47,9 +48,13 @@
                 <div class="form-link">
                     <a href="PasswordForgot" class="forgot-pass">Quên mật khẩu?</a>
                 </div>
-                <div class="text-center mt-3"><button type="button" class="btn btn-danger btn-block">
-                    <i class="fab fa-google mr-2"></i> Login with Google
-                </button></div>
+                <div class="text-center mt-3">
+                    <a href="https://accounts.google.com/o/oauth2/auth?scope=profile%20email&redirect_uri=http://localhost:8080/WebBanThuocBaoVeThucVat/loginByGoogle&response_type=code&client_id=719957005530-78658l2dnhsf6nautbf8oj28f2i0dret.apps.googleusercontent.com&prompt=select_account">
+                        <button type="button" class="btn btn-danger btn-block">
+                            <i class="fab fa-google mr-2"></i> Login with Google
+                        </button>
+                    </a>
+                 </div>
                 <div class="field button-field">
                     <button>Đăng nhập</button>
                 </div>

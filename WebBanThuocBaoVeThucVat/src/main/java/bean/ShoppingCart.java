@@ -5,9 +5,9 @@ import java.util.List;
 
 public class ShoppingCart {
     public int quantity;
-    public Product product;
+    public Products product;
 
-    public ShoppingCart(int quantity, Product product) {
+    public ShoppingCart(int quantity, Products product) {
         this.quantity = quantity;
         this.product = product;
     }

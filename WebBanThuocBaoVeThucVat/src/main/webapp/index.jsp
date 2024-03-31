@@ -122,7 +122,7 @@
 <header class="header">
     <div class="header__top">
         <div class="container">
-            <div class="row">
+            <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="header__top__left">
                         <ul>
@@ -168,7 +168,7 @@
         </div>
     </div>
     <div class="container">
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-lg-3">
                 <div class="header__logo">
                     <a href="HomePageController"><img src="assets/img/logo.png" alt=""></a>
@@ -205,7 +205,7 @@
 <!-- Hero Section Begin -->
 <section class="hero">
     <div class="container">
-        <div class="row">
+        <div class="row align-items-start">
             <div class="col-lg-3">
                 <div class="hero__categories">
                     <div class="hero__categories__all">
