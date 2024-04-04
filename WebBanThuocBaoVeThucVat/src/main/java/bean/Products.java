@@ -7,14 +7,14 @@ import java.text.DecimalFormat;
 
 public class Products implements Serializable {
     private int id;
-    private String product_name;
-    private String picture;
-    private int price;
     private int id_category;
-    private int quantity;
-    private int status;
-    private String specifications;
+    private int id_discount;
+    private String product_name;
+    private String image;
+    private int price;
     private String des;
+    private int status;
+
     //SELECT id , product_name ,picture, price, id_category, quanitity, status, specifications,pro_desc FROM product
 
 
@@ -22,84 +22,75 @@ public class Products implements Serializable {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getId_category() {
+        return id_category;
+    }
+
+    public int getId_discount() {
+        return id_discount;
     }
 
     public String getProduct_name() {
         return product_name;
     }
 
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
-    }
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public String getImage() {
+        return image;
     }
 
     public int getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public int getId_category() {
-        return id_category;
-    }
-
-    public void setId_category(int id_category) {
-        this.id_category = id_category;
-    }
-
-    public int getquantity() {
-        return quantity;
-    }
-
-    public void setquantity(int quantity) {
-        this.quantity = quantity;
+    public String getDes() {
+        return des;
     }
 
     public int getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getSpecifications() {
-        return specifications;
+    public void setId_category(int id_category) {
+        this.id_category = id_category;
     }
 
-    public void setSpecifications(String specifications) {
-        this.specifications = specifications;
+    public void setId_discount(int id_discount) {
+        this.id_discount = id_discount;
     }
 
-    public String getDes() {
-        return des;
+    public void setProduct_name(String product_name) {
+        this.product_name = product_name;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public void setDes(String des) {
         this.des = des;
     }
 
-    public Products(int id, String product_name, String picture, int price, int id_category, int quantity, int status, String specifications, String des) {
-        this.id = id;
-        this.product_name = product_name;
-        this.picture = picture;
-        this.price = price;
-        this.id_category = id_category;
-        this.quantity = quantity;
+    public void setStatus(int status) {
         this.status = status;
-        this.specifications = specifications;
+    }
+
+    public Products(int id, int id_category, int id_discount, String product_name, String image, int price, String des, int status) {
+        this.id = id;
+        this.id_category = id_category;
+        this.id_discount = id_discount;
+        this.product_name = product_name;
+        this.image = image;
+        this.price = price;
         this.des = des;
+        this.status = status;
     }
 
     public Products() {
@@ -121,14 +112,13 @@ public class Products implements Serializable {
     public String toString() {
         return "Products{" +
                 "id=" + id +
-                ", product_name='" + product_name + '\'' +
-                ", picture='" + picture + '\'' +
-                ", price=" + price +
                 ", id_category=" + id_category +
-                ", quantity=" + quantity +
+                ", id_discount=" + id_discount +
+                ", product_name='" + product_name + '\'' +
+                ", image='" + image + '\'' +
+                ", price=" + price +
+                ", des='" + des + '\'' +
                 ", status=" + status +
-                ", specifications='" + specifications + '\'' +
-                ", pro_desc='" + des + '\'' +
                 '}';
     }
 

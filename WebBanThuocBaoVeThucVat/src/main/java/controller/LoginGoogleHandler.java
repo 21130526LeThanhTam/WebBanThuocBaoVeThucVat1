@@ -71,6 +71,7 @@ public class LoginGoogleHandler extends HttpServlet {
             session.setAttribute("user", user);
             resp.sendRedirect("./HomePageController");
         }
+        System.out.println(user);
 
     }
 

@@ -31,15 +31,15 @@ public class ProductsService {
         return ProductsDao.productList(search);
     }
     public List<Products>getTenPro(int index,String search){return ProductsDao.getTenPro(index,search);}
-    public void insertProduct(String name, String picture, int price, int category, int quantity, int status, String specifications, String desc){
-        ProductsDao.insertProduct(name, picture, price, category, quantity, status, specifications, desc);
+    public void insertProduct(String name, String image, int price, int category, int status, String desc){
+        ProductsDao.insertProduct(name, image, price, category, status, desc);
     }
     public void deleteProduct(int proID){
         ProductsDao.deleteProduct(proID);
     }
     public Products getProductById(int proID){return ProductsDao.getProductById(proID);}
-    public void editProduct(String name,String picture,int price,int idCategory,int quantity,int status,String specifications,String proDesc,int id){
-        ProductsDao.editProduct(name, picture, price, idCategory, quantity, status, specifications, proDesc, id);
+    public void editProduct(String name,String image,int price,int idCategory,int status,String proDesc,int id){
+        ProductsDao.editProduct(name, image, price, idCategory, status, proDesc, id);
     }
     public static void main(String[] args) {
         System.out.println(ProductsService.getInstance().getProductById(1));

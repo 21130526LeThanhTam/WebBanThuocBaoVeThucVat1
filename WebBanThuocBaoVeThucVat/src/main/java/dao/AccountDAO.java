@@ -41,7 +41,7 @@ public class AccountDAO {
     }
 
     public static User login(String email, String pass){
-        String sql = "select id, username, password, phone, email, surname, lastname, role, hash, active from users where email = ? and password = ? and active = 1";
+        String sql = "select id, role,username, password, phone, email, surname, lastname, hash, active from users where email = ? and password = ? and active = 1";
         Connection conn = DBContext.getConnection();
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -68,7 +68,7 @@ public class AccountDAO {
 
 
     public User checkAccountExist(String email){
-        String sql = "select id, username, password, phone, email, surname, lastname, role, hash, active from users where email = ?";
+        String sql = "select id, role,username, password, phone, email, surname, lastname, hash, active from users where email = ?";
         Connection conn = DBContext.getConnection();
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -97,7 +97,7 @@ public class AccountDAO {
         long currentTimeMillis = System.currentTimeMillis();
         Timestamp avc = new Timestamp(currentTimeMillis);
         JDBIConnector.getJdbi().withHandle((handle) -> {
-return handle.createUpdate("insert into users(id, username, password, phone, email, surname, lastname, role, hash, active, picture, create_at) " +
+return handle.createUpdate("insert into users(id,role, username, password, phone, email, surname, lastname, hash, active, picture, create_at) " +
                 "values (?, ?, ?, ?, ?, ?, ?, 0, ?, ?, ?, ?)")
                     .bind(0, this.GetId() + 1)
                     .bind(1, username)
