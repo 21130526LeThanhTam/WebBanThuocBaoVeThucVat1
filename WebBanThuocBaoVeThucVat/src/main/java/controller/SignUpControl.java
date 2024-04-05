@@ -61,7 +61,7 @@ public class SignUpControl extends HttpServlet {
             AccountDAO acc = new AccountDAO();
             user = acc.checkAccountExist(email);
             if(user == null) {
-                if(phone.length() == 10) {
+                if(acc.validate(pass)) {
                     String str = null;
                     try {
                         str = acc.signUp(email, hashpass, username, surname, lastname, phone, myHash, 0,    (String)null, Util.formatTimestamp(currentTimestamp));
@@ -80,7 +80,7 @@ public class SignUpControl extends HttpServlet {
                         resp.sendRedirect("signup");
                     }
                 } else {
-                    String error = "Tối thiểu 10 số ";
+                    String error = "Mật khẩu phải bao gồm ít nhất 1 chữ hoa, 1 chữ thường, 1 chữ số, 1 kí tự đặc biệt và ít nhất 8 kí tự";
                     session.setAttribute("errorNumber", error);
                     resp.sendRedirect("signup");
                 }

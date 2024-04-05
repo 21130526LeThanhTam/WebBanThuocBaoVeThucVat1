@@ -61,6 +61,7 @@ public class ProductDAO implements IProductDAO {
         List<Products> findNewPro1 = jdbi.withHandle(handle -> {
             String sql = "SELECT id, product_name, image, price, id_category, status, des, create_at FROM products\n" +
                     "where status = 1\n" +
+                    "order by status desc\n" +
                     "LIMIT 3;";
             return handle.createQuery(sql).mapToBean(Products.class).stream().collect(Collectors.toList());
         });
@@ -73,6 +74,7 @@ public class ProductDAO implements IProductDAO {
         List<Products> findNewPro2 = jdbi.withHandle(handle -> {
             String sql = "SELECT id, product_name, image, price, id_category, status, des, create_at FROM products\n" +
                     "where status = 1\n" +
+                    "order by status desc\n" +
                     "LIMIT 3 OFFSET 3;";
             return handle.createQuery(sql).mapToBean(Products.class).stream().collect(Collectors.toList());
         });

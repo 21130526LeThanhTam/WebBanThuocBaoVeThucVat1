@@ -3,7 +3,8 @@ package bean;
 public class User {
 
     private int id, role,active;
-    private String username, password, phone, email, surname, lastname, hash;
+
+    private String username, password, phone, email, surname, lastname, hash ;       //
 
     public User(){}
     public User(int id, String username, String password, String phone, String email, String surname, String lastname, int role, String hash) {

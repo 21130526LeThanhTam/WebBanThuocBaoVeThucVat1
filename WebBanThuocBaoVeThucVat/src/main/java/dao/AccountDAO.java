@@ -18,7 +18,10 @@ public class AccountDAO {
     public AccountDAO() {
         super();
     }
-
+    public static boolean validate(String pwd) {
+        String regrexPassword = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+{}|:\"<>?\\\\/\\[\\]\\-=`~])(?=.{8,})\\S+$\n";
+        return pwd.matches(regrexPassword);
+    }
     public static AccountDAO getInstance() {
         if (instance == null) {
             instance = new AccountDAO();

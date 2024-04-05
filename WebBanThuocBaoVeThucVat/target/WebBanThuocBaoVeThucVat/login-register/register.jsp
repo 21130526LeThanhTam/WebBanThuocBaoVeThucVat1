@@ -68,7 +68,7 @@
 </section>
 <!-- JavaScript -->
 <script src="login-register/js/signup_signin.js">
-    function
+
 </script>
 
 </body>
