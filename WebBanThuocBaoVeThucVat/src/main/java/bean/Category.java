@@ -2,7 +2,7 @@ package bean;
 
 public class Category {
     private int id;
-    private String categoryName;
+    private String nameCategory;
 
     public int getId() {
         return id;
@@ -12,27 +12,27 @@ public class Category {
         this.id = id;
     }
 
-    public String getCategoryName() {
-        return categoryName;
+    public String getNameCategory() {
+        return nameCategory;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public void setNameCategory(String nameCategory) {
+        this.nameCategory = nameCategory;
     }
 
     public Category() {
     }
 
-    public Category(int id, String categoryName) {
+    public Category(int id, String nameCategory) {
         this.id = id;
-        this.categoryName = categoryName;
+        this.nameCategory = nameCategory;
     }
 
     @Override
     public String toString() {
         return "Category{" +
                 "id=" + id +
-                ", categoryName='" + categoryName + '\'' +
+                ", nameCategory='" + nameCategory + '\'' +
                 '}';
     }
 }

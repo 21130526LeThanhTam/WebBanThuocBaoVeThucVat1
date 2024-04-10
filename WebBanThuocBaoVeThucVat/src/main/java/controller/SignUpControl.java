@@ -2,6 +2,7 @@ package controller;
 
 import Service.SendingEmail;
 import bean.User;
+import bean.Util;
 import dao.AccountDAO;
 import org.apache.commons.codec.cli.Digest;
 import org.springframework.util.DigestUtils;
@@ -13,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.Random;
 
 @WebServlet(urlPatterns = {"/signup"})
@@ -31,6 +34,8 @@ public class SignUpControl extends HttpServlet {
         String lastname = req.getParameter("lastname");
         String phone = req.getParameter("phone");
         String pass = req.getParameter("pass");
+        Timestamp currentTimestamp = Util.getCurrentTimestamp();
+
         String re_pass = req.getParameter("rePass");
         String hashpass = DigestUtils.md5DigestAsHex(pass.getBytes());
 
@@ -55,28 +60,33 @@ public class SignUpControl extends HttpServlet {
         }else{
             AccountDAO acc = new AccountDAO();
             user = acc.checkAccountExist(email);
-            if(user == null){
-                if(phone.length() == 10){
-                    String str = acc.signUp( email, hashpass, username, surname, lastname, phone, myHash);
-                    if(str.equals("success")){
+            if(user == null) {
+                if(acc.validate(pass)) {
+                    String str = null;
+                    try {
+                        str = acc.signUp(email, hashpass, username, surname, lastname, phone, myHash, 0,    (String)null, Util.formatTimestamp(currentTimestamp));
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                    if(str.equals("success")) {
                         SendingEmail se = new SendingEmail(email, myHash);
                         se.sendMail();
                         String error = "Kích hoạt email để đăng nhập";
                         session.setAttribute("errorRegis", error);
                         resp.sendRedirect("login");
-                    }else{
+                    } else {
                         String error = "Đăng ký thất bại ";
                         session.setAttribute("errorRegis", error);
                         resp.sendRedirect("signup");
-                        }
-                    }else{
-                    String error = "Tối thiểu 10 số ";
+                    }
+                } else {
+                    String error = "Mật khẩu phải bao gồm ít nhất 1 chữ hoa, 1 chữ thường, 1 chữ số, 1 kí tự đặc biệt và ít nhất 8 kí tự";
                     session.setAttribute("errorNumber", error);
                     resp.sendRedirect("signup");
                 }
-                }else{
-                    req.getRequestDispatcher("register.jsp").forward(req,resp);
-                }
+            } else {
+                req.getRequestDispatcher("register.jsp").forward(req,resp);
             }
         }
     }
+}

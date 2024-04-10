@@ -8,7 +8,6 @@ public class Product implements Serializable {
     private double price;
     private String des;
     private String thumb;
-
     public Product(int id, String name, double price, String des, String thumb) {
         this.id = id;
         this.name = name;

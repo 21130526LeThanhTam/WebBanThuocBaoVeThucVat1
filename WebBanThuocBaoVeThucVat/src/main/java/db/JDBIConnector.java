@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class JDBIConnector {
+    private static final JDBIConnector instance = new JDBIConnector();
     public static Jdbi jdbi;
 
     public static Jdbi getJdbi() {
@@ -18,17 +19,28 @@ public class JDBIConnector {
         return jdbi;
     }
 
+    public static JDBIConnector me() {
+        return instance;
+    }
+
+    public static Jdbi get() throws SQLException {
+        if (jdbi == null) {
+            connect();
+        }
+        return jdbi;
+    }
+
     public static void connect() {
         MysqlDataSource dataSource = new MysqlDataSource();
-
         dataSource.setURL("jdbc:mysql://" + DBProperties.host + ":" + DBProperties.port + "/" + DBProperties.dbName);
         dataSource.setUser(DBProperties.username);
         dataSource.setPassword(DBProperties.password);
         try {
-            dataSource.setAutoReconnect(true);
             dataSource.setUseCompression(true);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+            dataSource.setAutoReconnect(true);
+        } catch (SQLException var2) {
+            var2.printStackTrace();
+            throw new RuntimeException(var2);
         }
         jdbi = Jdbi.create(dataSource);
     }

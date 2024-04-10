@@ -35,6 +35,7 @@ public class ShoppingCartCL extends HttpServlet {
         ShoppingCart shoppingCart;
         HttpSession session = request.getSession();
         shoppingCart = (ShoppingCart) session.getAttribute("cart");
+        User auth = (User) session.getAttribute("user");
         String action = request.getParameter("action");
         switch (action) {
             case "get":
@@ -47,19 +48,36 @@ public class ShoppingCartCL extends HttpServlet {
                 Put(request, response);
                 break;
             case "post":
-                int id = Integer.parseInt(request.getParameter("id"));
-                Products product = productService.findById(id);
-                CartItem cartItem = new CartItem(product, 1);
-                shoppingCart.add(cartItem);
-                session.setAttribute("cart", shoppingCart);
+                if(auth!=null){
+                    int id = Integer.parseInt(request.getParameter("id"));
+                    int type = Integer.parseInt(request.getParameter("type"));
+                    Products product = productService.findById(id);
+                    if(type==0){
+                        CartItem cartItem = new CartItem(product, 1);
+                        shoppingCart.add(cartItem);
+                        session.setAttribute("cart", shoppingCart);
+                    }
+                    if(type==1){
+                        int quantity = Integer.parseInt(request.getParameter("quantity"));
+                        CartItem cartItem = new CartItem(product, quantity);
+                        shoppingCart.add(cartItem);
+                        session.setAttribute("cart", shoppingCart);
+                    }
 
-                // Kiểm tra nếu đang ở trang ProductController thì chuyển hướng đến trang ProductController,
-                // nếu đang ở trang HomePageController thì chuyển hướng đến trang HomePageController.
-                String referer = request.getHeader("referer");
-                if (referer != null && referer.contains("HomePageController")) {
-                    response.sendRedirect("HomePageController");
-                } else {
-                    response.sendRedirect("ProductController");
+                    if(type==1){
+                        response.sendRedirect("gio-hang.jsp");
+                    }else{
+                        // Kiểm tra nếu đang ở trang ProductController thì chuyển hướng đến trang ProductController,
+                        // nếu đang ở trang HomePageController thì chuyển hướng đến trang HomePageController.
+                        String referer = request.getHeader("referer");
+                        if (referer != null && referer.contains("HomePageController")) {
+                            response.sendRedirect("HomePageController");
+                        } else {
+                            response.sendRedirect("ProductController");
+                        }
+                    }
+                }else{
+                    response.sendRedirect("login");
                 }
                 break;
             default:

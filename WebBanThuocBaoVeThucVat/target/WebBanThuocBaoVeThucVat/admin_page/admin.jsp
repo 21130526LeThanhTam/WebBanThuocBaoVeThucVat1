@@ -28,7 +28,7 @@
     <!-------sidebar--design------------>
     <div id="sidebar">
         <div class="sidebar-header">
-            <img src="./assets/img/logo.png" class="img-fluid"/>
+            <a href="/WebBanThuocBaoVeThucVat/HomePageController"> <img src="./assets/img/logo.png" class="img-fluid"/></a>
         </div>
 
         <ul class="list-unstyled component m-0">

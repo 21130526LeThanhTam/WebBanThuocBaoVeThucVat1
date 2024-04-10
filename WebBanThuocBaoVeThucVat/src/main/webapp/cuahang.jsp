@@ -71,7 +71,7 @@
                         <ul>
                             <li><a href="StoreProductHome">Tất cả sản phẩm</a></li>
                             <% for(Category cate : cb.getListCategory()) {%>
-                            <li><a href="ProductController?id_category=<%=cate.getId()%>"><%= cate.getCategoryName() %></a></li>
+                            <li><a href="ProductController?id_category=<%=cate.getId()%>"><%= cate.getNameCategory() %></a></li>
                             <% } %>
                         </ul>
                     </div>
@@ -108,10 +108,10 @@
                     <%for(Products a : products){%>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div id="" class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="<%=a.getPicture()%>">
+                            <div class="product__item__pic set-bg" data-setbg="<%=a.getImage()%>">
                                 <ul class="product__item__pic__hover">
                                     <li><a href="ProductInfor?id_product=<%= a.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="ShoppingCartCL?action=post&id=<%=a.getId()%>"><i class="fa fa-shopping-cart"></i></a></li>
+                                    <li><a  href="ShoppingCartCL?action=post&id=<%=a.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
@@ -200,6 +200,7 @@
 <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/main.js"></script>
 <script>
+
     // Lắng nghe sự kiện thay đổi của thẻ select
     document.getElementById('selectOrder').addEventListener('change', function() {
         // Lấy giá trị được chọn
