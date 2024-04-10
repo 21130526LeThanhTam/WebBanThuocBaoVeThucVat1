@@ -92,7 +92,7 @@
                             <input type="text" name = "xa">
                         </div>
                         <div class="checkout__input">
-                            <p>Địa chỉ<span>*</span></p>
+                            <p>Địa chỉ cụ thể<span>*</span></p>
                             <input type="text" name ="noiO" placeholder="Số nhà" class="checkout__input__add">
                         </div>
                         <div class="row">

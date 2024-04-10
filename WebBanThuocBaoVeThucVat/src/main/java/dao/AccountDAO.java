@@ -37,7 +37,7 @@ public class AccountDAO {
     }
 
     public User checkAccountExist(String email){
-        //Nếu email và số điện thoại trùng nhau thì nó sẽ trả về 1 account trong cơ sở dữ liệu
+        //Nếu email trùng nhau thì nó sẽ trả về một cái gì đó trong csdl
         String sql = "select id, username, password, phone, email, surname, lastname, role, hash, active from users where email = ?" ;
         Connection conn = DBContext.getConnection();
         try {
