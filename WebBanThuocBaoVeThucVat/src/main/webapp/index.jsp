@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%--
 // đây là trang homePageControlLer
+
   Created by IntelliJ IDEA.
   User: Windows 10
   Date: 16-12-2023
@@ -242,6 +243,7 @@
                     <div class="hero__search__phone">
                         <div class="hero__search__phone__icon">
                             <i class="fa fa-phone" style="margin-top:15px"></i>
+
                         </div>
                         <div class="hero__search__phone__text">
                             <h5>+84 123456789</h5>
@@ -313,8 +315,10 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getPicture()%>">
                         <ul class="featured__item__pic__hover">
+
                             <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet fix-icon"></i></a></li>
                             <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart fix-icon"></i></a></li>
+
                         </ul>
                     </div>
                     <div class="featured__item__text">
@@ -330,8 +334,10 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getPicture()%>">
                         <ul class="featured__item__pic__hover">
+
                             <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet fix-icon"></i></a></li>
                             <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart fix-icon"></i></a></li>
+
                         </ul>
                     </div>
                     <div class="featured__item__text">
@@ -349,6 +355,7 @@
                         <ul class="featured__item__pic__hover">
                             <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet fix-icon"></i></a></li>
                             <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart fix-icon"></i></a></li>
+
                         </ul>
                     </div>
                     <div class="featured__item__text">
@@ -537,10 +544,12 @@
                         <button type="submit" class="site-btn">ĐĂNG KÝ</button>
                     </form>
                     <div class="footer__widget__social">
+
                         <a href="#"><i class="fa fa-facebook fix-icon"></i></a>
                         <a href="#"><i class="fa fa-instagram fix-icon"></i></a>
                         <a href="#"><i class="fa fa-twitter fix-icon"></i></a>
                         <a href="#"><i class="fa fa-pinterest fix-icon"></i></a>
+
                     </div>
                 </div>
             </div>

@@ -4,11 +4,15 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+<<<<<<< HEAD
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>WebBanThuocBaoVeThucVat/src/main/java/controller/HomePageController.java</welcome-file>
 
   </welcome-file-list>
+=======
+
+>>>>>>> origin
 <!--  <filter>-->
 <!--    <filter-name>servletFilter</filter-name>-->
 <!--    <filter-class>filter.AuthenticationFilter</filter-class>-->

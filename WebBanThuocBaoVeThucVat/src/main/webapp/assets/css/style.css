@@ -773,8 +773,10 @@ ol {
 .categories__item {
 	height: 270px;
 	position: relative;
+
 	box-shadow: 1px 2px 12px 1px #6a6a6a;
 /*	cái này không hiểu sao nó chưa chạy những cái mới*/
+
 }
 
 .categories__item h5 {
@@ -3794,6 +3796,7 @@ form .input-field label {
 	}
 }
 
+
 /*fix index*/
 .red {
 	color: red;
@@ -3801,3 +3804,4 @@ form .input-field label {
 .fix-icon{
 	margin-top:12px;
 }
+

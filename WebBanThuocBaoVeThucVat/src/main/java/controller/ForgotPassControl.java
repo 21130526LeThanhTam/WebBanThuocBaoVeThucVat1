@@ -24,8 +24,10 @@ public class ForgotPassControl extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
         HttpSession session = req.getSession();
+
         AccountDAO dao = new AccountDAO();
         //kiểm tra account đó nó có tồn tại hay không rồi mới đổi mk được
+
         User user = dao.checkAccountExist(email);
         if(user == null){
             String error = "Nhập sai email hoặc email không tồn tại ";

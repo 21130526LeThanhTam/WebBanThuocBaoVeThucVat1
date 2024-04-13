@@ -22,6 +22,7 @@ public class SendingEmail {
 
         return null;
     }
+
     // đây là phương thức gửi email chứa liên kết xác nhận khi người dùng yêu cầu muốn đặt lại mật khẩu
     public String sendFPassByEmail(){
         // tài khoản mk của email của mình
@@ -35,12 +36,15 @@ public class SendingEmail {
         properties.put("mail.smtp.auth", "true"); //enable authentication
         properties.put("mail.smtp.starttls.enable", "true"); //enable
         properties.put("mail.smtp.timeout", "5000");
+
         //tạo phiên gửi email, truyền vào properties đã cấu hình và  tạo mới một authenticator để xác thực tài khoản email của mình
+
         Session session = Session.getDefaultInstance(properties, new Authenticator(){
             protected PasswordAuthentication getPasswordAuthentication(){
                 return new PasswordAuthentication(email, pword);
             }
         });
+
         // tạo và cấu hình tin nhắn email
         // sử dụng MimeMessage để tạo tin nhắn email và cái này nó sẽ nhận một session
         MimeMessage message = new MimeMessage(session);
@@ -61,13 +65,12 @@ public class SendingEmail {
             throw new RuntimeException(e);
         }
     }
+
     // đây là phương thức email dạng văn bản bình thường
     public String sendTextEmail(String messageContentContact, String userName){
         //bắt đầu tạo ra cấu hình email
         String email = "dphuc2363@gmail.com";
         String pword = "tdnm xnue zhfr rmae";
-
-
         String host = "smtp.gmail.com";
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
@@ -85,7 +88,9 @@ public class SendingEmail {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(email));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
+
             message.setSubject("Tên người dùng: " + userName + "\nEmail: " + userEmail);
+
             message.setText(messageContentContact);
 
             Transport.send(message);
@@ -95,7 +100,9 @@ public class SendingEmail {
         }
     }
 
+
     //Phương thức gửi mail cho người dùng để họ xác nhận khi đăng nhập
+
     public void sendMail(){
         String email = "dphuc2363@gmail.com";
         String pword = "tdnm xnue zhfr rmae";
@@ -118,6 +125,7 @@ public class SendingEmail {
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(userEmail));
             message.setSubject("Account registration verification email");
             String verificationLink = "Your Verification Link : http://localhost:8080/WebBanThuocBaoVeThucVat/ActiveAccount?key1=" + userEmail + "&key2=" + myHash;
+
             message.setText(verificationLink);
             Transport.send(message);
         } catch (MessagingException e) {

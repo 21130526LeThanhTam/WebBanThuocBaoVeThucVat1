@@ -36,6 +36,7 @@ public class AccountDAO {
         return null;
     }
 
+
     public User checkAccountExist(String email){
         //Nếu email trùng nhau thì nó sẽ trả về một cái gì đó trong csdl
         String sql = "select id, username, password, phone, email, surname, lastname, role, hash, active from users where email = ?" ;
@@ -44,7 +45,9 @@ public class AccountDAO {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, email);
 
+
             ResultSet rs = ps.executeQuery();
+
             while(rs.next()){
                 return new User(rs.getInt(1),
                         rs.getString(2),
@@ -93,6 +96,7 @@ public class AccountDAO {
 
         try {
             // tạo câu lệnh truy vấn lấy ra tài khoản chưa được active
+
             PreparedStatement ps = con.prepareStatement("select email, hash, active from users where email = ? and hash = ? and active = 0");
             ps.setString(1, email);
             ps.setString(2, hash);
@@ -121,8 +125,10 @@ public class AccountDAO {
             // Trong câu lệnh SQL UPDATE, chúng ta cần set password = ? và email = ?
             ps.setString(1, newPassword); // Chỗ này sử dụng newPassword thay vì email
             ps.setString(2, email); // Chỗ này sử dụng email thay vì newPassword
+
             int rows = ps.executeUpdate();
             if (rows > 0) {
+
                 return "Success";
             }
         } catch (SQLException e) {

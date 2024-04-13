@@ -1,7 +1,6 @@
 package controller;
 
 import Service.SendingEmail;
-
 import bean.User;
 import dao.AccountDAO;
 import org.apache.commons.codec.cli.Digest;
@@ -33,15 +32,18 @@ public class SignUpControl extends HttpServlet {
         String phone = req.getParameter("phone");
         String pass = req.getParameter("pass");
         String re_pass = req.getParameter("rePass");
+
         //mã hóa mật khẩu sang md5
         String hashpass = DigestUtils.md5DigestAsHex(pass.getBytes());
 
         HttpSession session = req.getSession();
         //Tạo mã xác nhận ngẫu nhiên bằng cách sử dụng md5 và số ngẫu nhiên để tạo ra đường link đăng kí cho mỗi người
+
         String myHash ;
         Random random = new Random();
         random.nextInt(999999);
         myHash = DigestUtils.md5DigestAsHex((""+random).getBytes());
+
     // khởi tạo trước một đối tượng user
         User user = new User();
     // kiểm tra user có tồn tại trước đó hay không
@@ -92,4 +94,5 @@ public class SignUpControl extends HttpServlet {
         }
     }
 }
+
 

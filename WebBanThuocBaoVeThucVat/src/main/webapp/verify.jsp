@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>Title</title>
+
     <style>
         body{
             text-align: center;
@@ -36,5 +37,6 @@
 <body>
     <h1>THANKS FOR YOUR JOIN</h1>
     <button class="backLogin"><a href="login" style="text-decoration: none">Login</a></button>
+
 </body>
 </html>
