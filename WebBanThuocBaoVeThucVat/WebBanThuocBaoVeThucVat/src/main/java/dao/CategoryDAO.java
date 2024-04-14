@@ -15,10 +15,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CategoryDAO {
-    public List<Category> getList(){
+    public static List<Category> getList(){
         Jdbi jdbi = JDBIConnector.getJdbi();
         List<Category> cateList = jdbi.withHandle(handle -> {
-            String sql = "SELECT id, category_name FROM category_product"; // Modify the SQL query
+            String sql = "SELECT id, name_category FROM categories";
             return handle.createQuery(sql).mapToBean(Category.class).list();
         });
         return cateList;
@@ -26,9 +26,9 @@ public class CategoryDAO {
     // đây là danh sách category có thể tìm theo tên và chia số trang.
     public static List<Category> listCategory(String name,int index){
         List<Category> listCate = JDBIConnector.getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT id, category_name\n" +
-                                "FROM category_product\n" +
-                                "WHERE category_name LIKE ?" +
+                handle.createQuery("SELECT id, name_category\\n\" +\n" +
+                                "\"FROM categories\\n\" +\n" +
+                                "\"WHERE name_category LIKE ?" +
                                 "ORDER BY id LIMIT 5 OFFSET ?")
                         .bind(0, "%"+name+"%")
                         .bind(1, index)

@@ -1,11 +1,30 @@
 package bean;
 
+import java.util.Date;
+
 public class User {
 
     private int id, role,active;
-    private String username, password, phone, email, surname, lastname, hash;
+    private String username, password, phone, email, surname, lastname,hash,picture;
+    private Date createAt,updateAt;
 
-    public User(){}
+    public User() {
+    }
+    //id, role,user_name, password, phone, email, sur_name, last_name, hash, active.
+
+    public User(int id, int role,  String username, String password, String phone, String email, String surname, String lastname, String hash,int active) {
+        this.id = id;
+        this.role = role;
+        this.active = active;
+        this.username = username;
+        this.password = password;
+        this.phone = phone;
+        this.email = email;
+        this.surname = surname;
+        this.lastname = lastname;
+        this.hash = hash;
+    }
+
     public User(int id, String username, String password, String phone, String email, String surname, String lastname, int role, String hash) {
         this.id = id;
         this.role = role;
@@ -35,7 +54,6 @@ public class User {
         this.lastname = lastname;
     }
 
-
     public int getId() {
         return id;
     }
@@ -50,6 +68,14 @@ public class User {
 
     public void setRole(int role) {
         this.role = role;
+    }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
     }
 
     public String getUsername() {
@@ -108,28 +134,30 @@ public class User {
         this.hash = hash;
     }
 
-    public int getActive() {
-        return active;
+    public Date getCreateAt() {
+        return createAt;
     }
 
-    public void setActive(int active) {
-        this.active = active;
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", role=" + role +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                ", surname='" + surname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", hash='" + hash + '\'' +
-                '}';
+    public Date getUpdateAt() {
+        return updateAt;
     }
+
+    public void setUpdateAt(Date updateAt) {
+        this.updateAt = updateAt;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
     // Phương thức dưới để xác định vai trò của người theo role
     public String roleString(){
         if(this.role ==0){
@@ -145,6 +173,25 @@ public class User {
         }else{
             return "Khóa tài khoản";
         }
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", role=" + role +
+                ", active=" + active +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", surname='" + surname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", hash='" + hash + '\'' +
+                ", picture='" + picture + '\'' +
+                ", createAt=" + createAt +
+                ", updateAt=" + updateAt +
+                '}';
     }
 }
 

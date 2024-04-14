@@ -67,7 +67,7 @@ public class EditProduct extends HttpServlet {
             imagePath = "dataImages/" + fileName;
         } else {
             // Người dùng không chọn ảnh, sử dụng đường dẫn ảnh cũ
-            imagePath = oldPro.getPicture();
+            imagePath = oldPro.getImage();
         }
 
         // Giá sản phẩm
@@ -84,9 +84,7 @@ public class EditProduct extends HttpServlet {
 
         String specifications = HtmlUtils.removeHtmlTags(req.getParameter("specifications"));
         String proDesc = HtmlUtils.removeHtmlTags(req.getParameter("proDesc"));
-        if (specifications == null || specifications.isEmpty()) {
-            specifications = oldPro.getSpecifications();
-        }
+
         if (proDesc == null || proDesc.isEmpty()) {
             proDesc = oldPro.getDes();
         }
@@ -105,7 +103,7 @@ public class EditProduct extends HttpServlet {
         // public void editProduct(String name,String picture,int price,int idCategory,int quantity,int status,String specifications,String proDesc,int id){
         //        ProductsDao.editProduct(name, picture, price, idCategory, quantity, status, specifications, proDesc, id);
         //    }
-        ProductsService.getInstance().editProduct(productName,imagePath,priceInt,idCategoryInt,num,activeInt,specifications,proDesc,proIDOld);
+        ProductsService.getInstance().editProduct(productName,imagePath,priceInt,idCategoryInt,activeInt,proDesc,proIDOld);
         resp.sendRedirect("./maProduct");
 
     }

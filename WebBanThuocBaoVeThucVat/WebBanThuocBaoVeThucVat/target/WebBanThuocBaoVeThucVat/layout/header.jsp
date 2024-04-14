@@ -190,7 +190,7 @@
                     <ul>
                         <li><a href="StoreProductHome">Tất cả sản phẩm</a></li>
                         <% for(Category cate : cb.getListCategory()) {%>
-                        <li><a href="ProductController?id_category=<%=cate.getId()%>"><%= cate.getCategoryName() %></a></li>
+                        <li><a href="ProductController?id_category=<%=cate.getId()%>"><%= cate.getNameCategory() %></a></li>
                         <% } %>
                     </ul>
                 </div>

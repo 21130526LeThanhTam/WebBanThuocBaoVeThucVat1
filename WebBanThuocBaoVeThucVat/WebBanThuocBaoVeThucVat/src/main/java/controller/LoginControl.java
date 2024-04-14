@@ -3,9 +3,7 @@ package controller;
 import bean.User;
 import dao.AccountDAO;
 import org.springframework.util.DigestUtils;
-import utils.SessionUtil;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

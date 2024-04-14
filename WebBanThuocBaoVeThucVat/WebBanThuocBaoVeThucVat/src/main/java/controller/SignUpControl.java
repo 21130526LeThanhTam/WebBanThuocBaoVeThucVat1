@@ -3,7 +3,6 @@ package controller;
 import Service.SendingEmail;
 import bean.User;
 import dao.AccountDAO;
-import org.apache.commons.codec.cli.Digest;
 import org.springframework.util.DigestUtils;
 
 import javax.servlet.ServletException;

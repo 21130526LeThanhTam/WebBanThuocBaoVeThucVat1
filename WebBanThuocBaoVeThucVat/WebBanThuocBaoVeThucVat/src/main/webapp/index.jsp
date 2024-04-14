@@ -228,8 +228,9 @@
                     </div>
                     <ul>
                         <li><a href="StoreProductHome">Tất cả sản phẩm</a></li>
-                        <% for(Category cate : cb.getListCategory()) {%>
-                        <li><a href="ProductController?id_category=<%=cate.getId()%>"><%= cate.getCategoryName() %></a></li>
+                        <% for(Category cate :
+                                cb.getListCategory()) {%>
+                        <li><a href="ProductController?id_category=<%=cate.getId()%>"><%= cate.getNameCategory() %></a></li>
                         <% } %>
                     </ul>
                 </div>
@@ -270,7 +271,7 @@
             <div class="categories__slider owl-carousel">
                 <% for(Products p : products){%>
                 <div class="col-lg-3">
-                    <div class="categories__item set-bg" data-setbg="<%=p.getPicture()%>">
+                    <div class="categories__item set-bg" data-setbg="<%=p.getImage()%>">
                         <h5><a href="ProductInfor?id_product=<%= p.getId() %>"><%=p.getProduct_name()%></a></h5>
                     </div>
                 </div>
@@ -314,7 +315,7 @@
             <% if(p.getId_category() == 1) {%>
             <div class="col-lg-3 col-md-4 col-sm-6 mix a">
                 <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="<%=p.getPicture()%>">
+                    <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
                         <ul class="featured__item__pic__hover">
                             <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
                             <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart"></i></a></li>
@@ -331,7 +332,7 @@
             <% if(p.getId_category() == 2) {%>
             <div class="col-lg-3 col-md-4 col-sm-6 mix b">
                 <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="<%=p.getPicture()%>">
+                    <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
                         <ul class="featured__item__pic__hover">
                             <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
                             <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart"></i></a></li>
@@ -348,7 +349,7 @@
             <% if(p.getId_category() == 3) {%>
             <div class="col-lg-3 col-md-4 col-sm-6 mix c">
                 <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="<%=p.getPicture()%>">
+                    <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
                         <ul class="featured__item__pic__hover">
                             <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
                             <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart"></i></a></li>
@@ -400,7 +401,7 @@
                             <% for(Products p : productNew1) {%>
                             <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">
                                 <div class="latest-product__item__pic">
-                                    <img src="<%=p.getPicture()%>" alt="">
+                                    <img src="<%=p.getImage()%>" alt="">
                                 </div>
                                 <div class="latest-product__item__text">
                                     <h6><%=p.getProduct_name()%></h6>
@@ -413,7 +414,7 @@
                             <% for(Products p : productNew2) { %>
                             <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">
                                 <div class="latest-product__item__pic">
-                                    <img src="<%=p.getPicture()%>" alt="">
+                                    <img src="<%=p.getImage()%>" alt="">
                                 </div>
                                 <div class="latest-product__item__text">
                                     <h6><%=p.getProduct_name()%></h6>
@@ -427,17 +428,17 @@
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="latest-product__text">
-<<<<<<< HEAD
+
                     <h4>Sản phẩm bán chạy.</h4>
-=======
+
                     <h4>Sản phẩm bán chạy</h4>
->>>>>>> origin/21130526-LeThanhTam
+
                     <div class="latest-product__slider owl-carousel">
                         <div class="latest-prdouct__slider__item">
                             <% for(Products p : productNew1) {%>
                             <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">
                                 <div class="latest-product__item__pic">
-                                    <img src="<%=p.getPicture()%>" alt="">
+                                    <img src="<%=p.getImage()%>" alt="">
                                 </div>
                                 <div class="latest-product__item__text">
                                     <h6><%=p.getProduct_name()%></h6>
@@ -450,7 +451,7 @@
                             <% for(Products p : productNew2) {%>
                             <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">
                                 <div class="latest-product__item__pic">
-                                    <img src="<%=p.getPicture()%>" alt="">
+                                    <img src="<%=p.getImage()%>" alt="">
                                 </div>
                                 <div class="latest-product__item__text">
                                     <h6><%=p.getProduct_name()%></h6>
@@ -470,7 +471,7 @@
                             <% for(Products p : findDiscountPro1) {%>
                             <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">
                                 <div class="latest-product__item__pic">
-                                    <img src="<%=p.getPicture()%>" alt="">
+                                    <img src="<%=p.getImage()%>" alt="">
                                 </div>
                                 <div class="latest-product__item__text">
                                     <h6><%=p.getProduct_name()%></h6>
@@ -483,7 +484,7 @@
                             <% for(Products p : findDiscountPro2) {%>
                             <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">
                                 <div class="latest-product__item__pic">
-                                    <img src="<%=p.getPicture()%>" alt="">
+                                    <img src="<%=p.getImage()%>" alt="">
                                 </div>
                                 <div class="latest-product__item__text">
                                     <h6><%=p.getProduct_name()%></h6>
