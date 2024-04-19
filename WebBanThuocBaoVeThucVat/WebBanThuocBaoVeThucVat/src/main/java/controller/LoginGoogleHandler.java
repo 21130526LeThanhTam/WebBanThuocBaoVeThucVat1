@@ -49,22 +49,20 @@ public class LoginGoogleHandler extends HttpServlet {
             user= getUserInfo(accessToken);
             userCheck= AccountDAO.getInstance().checExistUser(user.getEmail());
             if(userCheck ==null){
-                String str = AccountDAO.getInstance().signUp( user.getEmail(), null, user.getUsername(),user.getSurname() ,user.getLastname() ,user.getPhone(), myHash);
+                String str = AccountDAO.getInstance().signUp2( user.getEmail(), null, user.getUsername(),user.getSurname() ,user.getLastname() ,user.getPhone(), myHash);
                 if(str.equals("success")){
-                    SendingEmail se = new SendingEmail(user.getEmail(), myHash);
-                    se.sendMail();
-                    resp.sendRedirect("./verify.jsp");
+                    session.setAttribute("user", user);
+                    resp.sendRedirect("./HomePageController");
                 }
             }else{
-
+                session.setAttribute("user", user);
+                resp.sendRedirect("./HomePageController");
             }
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-        session.setAttribute("user", user);
-        resp.sendRedirect("./HomePageController");
 
 
 
@@ -88,7 +86,6 @@ public class LoginGoogleHandler extends HttpServlet {
         String link = DBProperties.GOOGLE_LINK_GET_USER_INFO + accessToken;
         String response = Request.Get(link).execute().returnContent().asString();
         JsonObject jsonObject = JsonParser.parseString(response).getAsJsonObject();
-
         jsonObject.addProperty("id", AccountDAO.getInstance().GetId());
         JsonElement value = jsonObject.get("given_name");
         JsonElement value2 = jsonObject.get("name");

@@ -116,6 +116,27 @@ public class AccountDAO {
         }
         return null;
     }
+    public String signUp2(String email,String pass,String username,String surname,String lastname,String phone,String hash){
+        String sql = "insert into users(user_name, password, phone, email, sur_name, last_name, hash, role, active) values (?,?,?,?,?,?,?,0,1)";
+        Connection conn = DBContext.getConnection();
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.setString(2, pass);
+            ps.setString(3, phone);
+            ps.setString(4, email);
+            ps.setString(5, surname);
+            ps.setString(6, lastname);
+            ps.setString(7, hash);
+            int i = ps.executeUpdate();
+            if(i != 0){
+                return "success";
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
 
 //    public String loginGoogle(String email,String username,String surname,String lastname,String hash,String picture){
 //        String sql = "insert into users(user_name, password, phone, email, sur_name, last_name, hash, role, active) values (?,?,?,?,?,?,?,0,0)";
