@@ -122,6 +122,7 @@ public class ProductsDao implements IProductsDao{
                         .mapToBean(Products.class).stream().findFirst());
         return products.isEmpty() ? null : products.get();
     }
+
     //UPDATE product SET product_name="dfsd",image="fdsfs",price=5090,id_category=1,quantity=78,status=0,specifications="dfdsf",des="dfsdf" WHERE id=46
     public static void editProduct(String name,String image,int price,int idCategory,int status,String proDesc,int id){
         JDBIConnector.getJdbi().useHandle(handle ->

@@ -1,9 +1,9 @@
 package bean;
 
 public class Level {
-    private String info;
-    private String warning;
-    private String danger;
+    private final String info;
+    private final String warning;
+    private final String danger;
 
     public Level(String info, String warning, String danger) {
         this.info = info;

@@ -4,8 +4,8 @@ import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 
 public class CustomAuthenticator extends Authenticator {
-    private String username;
-    private String password;
+    private final String username;
+    private final String password;
 
     public CustomAuthenticator(String username, String password) {
         this.username = username;

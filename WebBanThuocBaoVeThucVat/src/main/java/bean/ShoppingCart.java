@@ -4,47 +4,41 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCart {
-    public int quantity;
-    public Products product;
-
-    public ShoppingCart(int quantity, Products product) {
-        this.quantity = quantity;
-        this.product = product;
-    }
-    public void incrementQuantity(){
-        this.quantity++;
-    }
     private List<CartItem> cartItemList;
 
     public ShoppingCart(){
         this.cartItemList = new ArrayList<>();
     }
-    public void add(CartItem cartItem){
-        for(CartItem i: cartItemList){
-            if(i.getProduct().getId()==cartItem.getProduct().getId()){
-                i.addQuantity(1);
-                return;
-            }
-        }
-        this.cartItemList.add(cartItem);
-    }
-    public void remove(int id){
-        for(CartItem c : cartItemList){
-            if(c.getProduct().getId()==id){
-                cartItemList.remove(c);
-                return;
-            }
-        }
 
+    public void add(CartItem cartItem) {
+        for(CartItem i: cartItemList){
+            if (cartItem.getProduct().getId() == i.getProduct().getId()) {
+                i.setQuantity(i.getQuantity() + 1);
+                return;
+            }
+        }
+        cartItemList.add(cartItem);
     }
-    public void update(int id, int quantity){
-        for(CartItem c : cartItemList){
-            if(c.getProduct().getId()==id){
-                c.setQuantity(quantity);
+
+    public void remove(int id) {
+        for(CartItem i : cartItemList){
+            if (id == i.getProduct().getId()) {
+                cartItemList.remove(i);
                 return;
             }
         }
     }
+
+    public void update(Products p, int quantity) {
+        for(CartItem i : cartItemList){
+            if (p.getId() == i.getProduct().getId()) {
+                i.setQuantity(quantity);
+                return;
+            }
+        }
+        cartItemList.add(new CartItem(p, quantity));
+    }
+
     public int getSize(){
         int re=0;
         for(CartItem c:cartItemList){
@@ -54,6 +48,18 @@ public class ShoppingCart {
     }
     public List<CartItem> getCartItemList(){
         return this.cartItemList;
+    }
+
+//    public double getTotalPrice() {
+//        double re=0;
+//        for(CartItem c: cartItemList){
+//            re+=c.getTotalPrice();
+//        }
+//        return re;
+//    }
+
+    public String getHello() {
+        return null;
     }
 
     public double getTotalPrice() {

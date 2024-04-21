@@ -1,7 +1,7 @@
 package controller;
 
 import Service.IProductService;
-import Service.OrderService;
+import Service.OrdersService;
 import Service.ProductService;
 import bean.*;
 
@@ -19,15 +19,17 @@ public class ShoppingCartCL extends HttpServlet {
     IProductService productService = new ProductService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         ShoppingCart shoppingCart;
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(true);
         shoppingCart = (ShoppingCart) session.getAttribute("cart");
         if(shoppingCart==null){
             shoppingCart = new ShoppingCart();
         }
         session.setAttribute("cart", shoppingCart);
-
         doPost(request, response);
+
     }
 
     @Override
@@ -89,13 +91,14 @@ public class ShoppingCartCL extends HttpServlet {
 
     protected void Put(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ShoppingCart shoppingCart;
-        HttpSession session = req.getSession();
+        HttpSession session = req.getSession(true);
         shoppingCart = (ShoppingCart) session.getAttribute("cart");
         int id = Integer.parseInt(req.getParameter("id"));
+        Products p = productService.findById(id);
         int quantity = Integer.parseInt(req.getParameter("quantity"));
         String e = "";
         if(quantity>0){
-            shoppingCart.update(id, quantity);
+            shoppingCart.update(p, quantity);
         }
         else{
             e="Số lượng phải lớn hơn 0";

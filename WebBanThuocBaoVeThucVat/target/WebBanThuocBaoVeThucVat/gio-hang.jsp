@@ -163,7 +163,13 @@
                         <li>Tạm tính <span><%=shoppingCart.getTotalPrice()%></span></li>
                         <li>Tổng <span><%=shoppingCart.getTotalPrice()%></span></li>
                     </ul>
-                    <a href="thanh-toan.jsp" class="primary-btn">TIẾN HÀNH THANH TOÁN</a>
+                    <!--<a href="thanh-toan.jsp" class="primary-btn">TIẾN HÀNH THANH TOÁN</a>-->
+                    <form method="GET" action="ThanhToanCL">
+                        <input id="hidden" type="hidden" name="action" value="checkout">
+                        <button class="btn btn-success" type="submit">
+                            Tien hanh thanh toan
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -1,33 +1,26 @@
 package dao;
 
+import Service.ProductsService;
 import bean.User;
 import db.DBContext;
 import db.JDBIConnector;
-import org.springframework.util.DigestUtils;
 
-import java.sql.*;
-import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
-import java.util.stream.Collectors;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Optional;
 
 public class AccountDAO {
-    private static AccountDAO instance;
-
     public AccountDAO() {
-        super();
     }
-    public static boolean validate(String pwd) {
-        String regrexPassword = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+{}|:\"<>?\\\\/\\[\\]\\-=`~])(?=.{8,})\\S+$\n";
-        return pwd.matches(regrexPassword);
-    }
-    public static AccountDAO getInstance() {
-        if (instance == null) {
-            instance = new AccountDAO();
-        }
+
+    private static AccountDAO instance;
+    public static AccountDAO getInstance(){
+        if(instance ==null ) instance = new AccountDAO();
         return instance;
     }
+    //Phương thức lấy ra id cao nhất.
     public int GetId() throws SQLException {
         String sql = "SELECT * FROM users WHERE id = (SELECT MAX(id) FROM users)";
         Connection conn = DBContext.getConnection();
@@ -42,7 +35,7 @@ public class AccountDAO {
         }
         return -1;
     }
-
+    //int id, String username, String password, String phone, String email, String surname, String lastname, int role, String hash) {
     public static User login(String email, String pass){
         String sql = "select id, role,username, password, phone, email, surname, lastname, hash, active from users where email = ? and password = ? and active = 1";
         Connection conn = DBContext.getConnection();
@@ -71,13 +64,12 @@ public class AccountDAO {
 
 
     public User checkAccountExist(String email){
-        String sql = "select id, role,username, password, phone, email, surname, lastname, hash, active from users where email = ?";
+        String sql = "select id, role,user_name, password, phone, email, sur_name, last_name, hash, active from users where email = ?";
         Connection conn = DBContext.getConnection();
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
-
             while(rs.next()){
                 return new User(rs.getInt(1),
                         rs.getString(2),
@@ -94,29 +86,80 @@ public class AccountDAO {
         }
         return null;
     }
-
-    public String signUp(String email, String pass, String username, String surname,
-                         String lastname, String phone, String hash, int active, String picture, Timestamp date) throws SQLException {
-        long currentTimeMillis = System.currentTimeMillis();
-        Timestamp avc = new Timestamp(currentTimeMillis);
-        JDBIConnector.getJdbi().withHandle((handle) -> {
-return handle.createUpdate("insert into users(id,role, username, password, phone, email, surname, lastname, hash, active, picture, create_at) " +
-                "values (?, ?, ?, ?, ?, ?, ?, 0, ?, ?, ?, ?)")
-                    .bind(0, this.GetId() + 1)
-                    .bind(1, username)
-                    .bind(2, pass)
-                    .bind(3, phone)
-                    .bind(4, email)
-                    .bind(5, surname)
-                    .bind(6, lastname)
-                    .bind(7, hash)
-                    .bind(8, active)
-                    .bind(9, picture)
-                    .bind(10, date)
-                    .execute();
-        });
-        return "success";
+    // kiểm tra ng dùng.
+    public User checExistUser(String email){
+        Optional<User> user = JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery("select id, role,user_name, password, phone, email, sur_name, last_name, hash, active from users where email = ?")
+                        .bind(0, email)
+                        .mapToBean(User.class).stream().findFirst());
+        return user.isEmpty() ? null : user.get();
     }
+
+    public String signUp(String email,String pass,String username,String surname,String lastname,String phone,String hash){
+        String sql = "insert into users(user_name, password, phone, email, sur_name, last_name, hash, role, active) values (?,?,?,?,?,?,?,0,0)";
+        Connection conn = DBContext.getConnection();
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.setString(2, pass);
+            ps.setString(3, phone);
+            ps.setString(4, email);
+            ps.setString(5, surname);
+            ps.setString(6, lastname);
+            ps.setString(7, hash);
+            int i = ps.executeUpdate();
+            if(i != 0){
+                return "success";
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+    public String signUp2(String email,String pass,String username,String surname,String lastname,String phone,String hash){
+        String sql = "insert into users(user_name, password, phone, email, sur_name, last_name, hash, role, active) values (?,?,?,?,?,?,?,0,1)";
+        Connection conn = DBContext.getConnection();
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.setString(2, pass);
+            ps.setString(3, phone);
+            ps.setString(4, email);
+            ps.setString(5, surname);
+            ps.setString(6, lastname);
+            ps.setString(7, hash);
+            int i = ps.executeUpdate();
+            if(i != 0){
+                return "success";
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
+//    public String loginGoogle(String email,String username,String surname,String lastname,String hash,String picture){
+//        String sql = "insert into users(user_name, password, phone, email, sur_name, last_name, hash, role, active) values (?,?,?,?,?,?,?,0,0)";
+//        Connection conn = DBContext.getConnection();
+//        try {
+//            PreparedStatement ps = conn.prepareStatement(sql);
+//            ps.setString(1, username);
+//            ps.setString(2, pass);
+//            ps.setString(3, phone);
+//            ps.setString(4, email);
+//            ps.setString(5, surname);
+//            ps.setString(6, lastname);
+//            ps.setString(7, hash);
+//            int i = ps.executeUpdate();
+//            if(i != 0){
+//                return "success";
+//            }
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//        return null;
+//    }
+
 
     public String activeAccount(String email, String hash){
         Connection con = DBContext.getConnection();
@@ -167,5 +210,9 @@ return handle.createUpdate("insert into users(id,role, username, password, phone
             }
         }
         return null;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(AccountDAO.getInstance().checExistUser("abc@gmail.com"));
     }
 }

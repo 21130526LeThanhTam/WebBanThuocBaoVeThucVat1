@@ -1,13 +1,9 @@
 package Service;
 
 import bean.CartItem;
-import bean.Order;
-import bean.OrderDetail;
-import bean.Product;
 import db.DBContext;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 

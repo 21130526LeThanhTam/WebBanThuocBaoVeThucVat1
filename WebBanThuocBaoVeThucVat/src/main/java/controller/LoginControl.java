@@ -40,7 +40,7 @@ public class LoginControl extends HttpServlet {
             session.setAttribute("errorlogin", error);
             resp.sendRedirect("login");
         }else if((email != null || !email.isEmpty()) && (pass != null || !pass.isEmpty())) {
-            user = acc.login(email, newPword);
+            user = AccountDAO.login(email, newPword);
             if (user == null) {
                 String error = "Tài khoản hoặc mật khẩu không đúng,vui lòng kiểm tra lại.";
                 session.setAttribute("errorlogin", error);

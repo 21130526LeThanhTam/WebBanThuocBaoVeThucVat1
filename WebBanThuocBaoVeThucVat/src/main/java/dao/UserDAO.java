@@ -26,7 +26,7 @@ public class UserDAO {
     }
 
     public int GetId() throws SQLException {
-        List<User> users = JDBIConnector.me().getJdbi().withHandle((handle) -> {
+        List<User> users = JDBIConnector.getJdbi().withHandle((handle) -> {
             return handle.createQuery("SELECT * FROM users WHERE id = (SELECT MAX(id) FROM users)")
                     .mapToBean(User.class)
                     .collect(Collectors.toList());
@@ -91,7 +91,7 @@ public class UserDAO {
 //    //3. lấy ra all user. đã check
     public static List<User> dsUsers(){
         List<User> users = JDBIConnector.getJdbi().withHandle(handle ->
-                handle.createQuery("select id,username,password,phone,email,surname,lastname,role,hash,active from users").mapToBean(User.class).collect(Collectors.<User>toList()));
+                handle.createQuery("select id,username,password,phone,email,surname,lastname,role,hash,active from users").mapToBean(User.class).collect(Collectors.toList()));
         return users;
     }
 //    //xóa ng dùng theo email.đã check

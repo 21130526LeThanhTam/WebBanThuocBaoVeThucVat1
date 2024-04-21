@@ -1,8 +1,14 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <%@ page import="bean.Product" %>
 <%@ page import="bean.ShoppingCart" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.Map" %>
+<%@ page import="bean.CartItem" %>
+<%@ page import="controller.ShoppingCartCL" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -34,11 +40,16 @@
 </head>
 
 <body>
+<%
+    ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
+    List<CartItem> cartItems = shoppingCart.getCartItemList();
+%>
 
 <jsp:include page="layout/header.jsp"/>
 
 <!-- Breadcrumb Section Begin -->
 <section class="breadcrumb-section set-bg" data-setbg="assets/img/breadcrumb.jpg">
+
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -57,6 +68,7 @@
 
 <!-- Checkout Section Begin -->
 <section class="checkout spad">
+
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -66,7 +78,7 @@
         </div>
         <div class="checkout__form">
             <h4>Thông tin thanh toán</h4>
-            <form action="ThanhToanCL" method="get">
+            <form action="ThanhToanCL" method="post">
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
                         <div class="row">
@@ -79,7 +91,7 @@
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Họ<span>*</span></p>
-                                    <input type="text" name = "lastname">
+                                    <input type="text" name = "lastname" value="<%=request.getAttribute("lastname")%>">
                                 </div>
                             </div>
                         </div>
@@ -109,14 +121,29 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="checkout__order">
                             <h4>Đơn hàng của bạn</h4>
-                            <div class="checkout__order__products">Sản phẩm <span>Giá</span></div>
+                            <div class="checkout__order__products">Tên Sản phẩm<span>Tổng giá</span></div>
                             <ul>
-                                <li>Thuốc trừ sâu <span>70.000₫</span></li>
-                                <li>Thuốc kích thích tăng trưởng <span>110.000₫</span></li>
-                                <li>Thuốc trừ sâu <span>70.000₫</span></li>
+                                <%
+                                        if(cartItems!=null){
+                                            for (CartItem i :  cartItems) {
+                                %>
+                                    <li>
+                                        <%=i.getProduct().getProduct_name()%>
+                                        <span>
+                                            <%=i.getTotalPrice()%>
+                                        </span>
+                                    </li>
+                                <%
+                                       }
+                                   } else {
+                                %>
+                                    <li>lỗi là rõ<span>lỗi mà đk</span></li>
+                                <%
+                                    }
+                                %>
                             </ul>
                             <!-- <div class="checkout__order__subtotal">Thuế <span>0₫</span></div> -->
-                            <div class="checkout__order__total">Tổng tiền <span>250.000₫</span></div>
+                            <div class="checkout__order__total">Tổng tiền: <%=shoppingCart.getTotalPrice()%></div>
                             <div class="checkout__input__checkbox">
                                 <label for="acc-or">
                                     Tạo tài khoản mới?
@@ -139,6 +166,7 @@
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
+                            <input id="hidden" type="hidden" name="action" value="order">
                             <button type="submit" class="site-btn">Đặt hàng</button>
                         </div>
                     </div>

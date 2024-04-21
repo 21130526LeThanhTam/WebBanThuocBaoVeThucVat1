@@ -151,7 +151,7 @@
                     <a href="gio-hang.jsp">
                         <ul>
                             <span class="cart-word" style="font-weight: bold;">Giỏ hàng</span>
-                            <li><i class="fa-solid fa-cart-shopping"></i> <span><%=shoppingCart.getSize()%></span></li>
+                            <li><i class="fa-solid fa-cart-shopping"></i> <span><%=shoppingCart.getCartItemList().size()%></span></li>
                         </ul>
                     </a>
                 </div>

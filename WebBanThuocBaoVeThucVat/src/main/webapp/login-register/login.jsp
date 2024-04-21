@@ -49,7 +49,7 @@
                     <a href="PasswordForgot" class="forgot-pass">Quên mật khẩu?</a>
                 </div>
                 <div class="text-center mt-3">
-                    <a href="https://accounts.google.com/o/oauth2/auth?scope=profile%20email&redirect_uri=http://localhost:8080/WebBanThuocBaoVeThucVat/loginByGoogle&response_type=code&client_id=719957005530-78658l2dnhsf6nautbf8oj28f2i0dret.apps.googleusercontent.com&prompt=select_account">
+                    <a href="https://accounts.google.com/o/oauth2/auth?scope=profile%20email&redirect_uri=http://localhost:8081/WebBanThuocBaoVeThucVat/loginByGoogle&response_type=code&client_id=383862284423-7n769c739crto335iam2jg9hk2hqiiu0.apps.googleusercontent.com&prompt=select_account">
                         <button type="button" class="btn btn-danger btn-block">
                             <i class="fab fa-google mr-2"></i> Login with Google
                         </button>

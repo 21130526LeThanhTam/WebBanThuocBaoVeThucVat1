@@ -44,14 +44,10 @@ public class UserEditControl extends HttpServlet {
         String phoneSession = userSession.getPhone();
 
         boolean passwordChanged = false;
-        boolean dataChanged = false;
-
-        if ((surname != null && !surname.isEmpty()) ||
+        boolean dataChanged = (surname != null && !surname.isEmpty()) ||
                 (lastname != null && !lastname.isEmpty()) ||
                 (username != null && !username.isEmpty()) ||
-                (phone != null && !phone.isEmpty())) {
-            dataChanged = true;
-        }
+                (phone != null && !phone.isEmpty());
 
         if (surname == null || surname.isEmpty()) {
             surname = surnameSession;

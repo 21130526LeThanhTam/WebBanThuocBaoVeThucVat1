@@ -7,7 +7,7 @@ showPopupBtn.addEventListener("click",() =>{
     document.body.classList.toggle("show-popup")
 });
 
-hidePopupBtn.addEventListener("click", () => showPopupBtn.click())
+// hidePopupBtn.addEventListener("click", () => showPopupBtn.click())
 
 loginSignupLink.forEach(link => {
     link.addEventListener("click", (e) => {

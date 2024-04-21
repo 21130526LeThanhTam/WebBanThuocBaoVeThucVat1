@@ -4,6 +4,7 @@ import Service.IProductService;
 import Service.ProductService;
 import bean.CartItem;
 import bean.Product;
+import bean.Products;
 import bean.ShoppingCart;
 
 import javax.servlet.*;
@@ -52,10 +53,11 @@ public class ThongTinDonHangCL extends HttpServlet {
         HttpSession session = req.getSession();
         shoppingCart = (ShoppingCart) session.getAttribute("cart");
         int id = Integer.parseInt(req.getParameter("id"));
+        Products p = productService.findById(id);
         int quantity = Integer.parseInt(req.getParameter("quantity"));
         String e = "";
         if (quantity > 0) {
-            shoppingCart.update(id, quantity);
+            shoppingCart.update(p, quantity);
         } else {
             e = "Số lượng phải lớn hơn 0";
         }
