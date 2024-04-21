@@ -36,12 +36,12 @@ public class ThanhToanCL extends HttpServlet {
 //        System.out.println(shoppingCart.getTotalPrice());
         if (user != null) {
             request.setAttribute("firstname", user.getSurname());
-            request.setAttribute("lastname", user.getUsername());
+            request.setAttribute("username", user.getUsername());
             request.setAttribute("phone", user.getPhone());
 
         } else {
             request.setAttribute("firstname", "");
-            request.setAttribute("lastname", "");
+            request.setAttribute("username", "");
             request.setAttribute("phone", "");
         }
         if (action != null && action.equals("checkout")) {
@@ -58,23 +58,22 @@ public class ThanhToanCL extends HttpServlet {
         ShoppingCart c = (ShoppingCart) session.getAttribute("cart");
         String action = request.getParameter("action");
         if(action!=null && action.equals("order")) {
-
+            String firstName = request.getParameter("firstname");
+            String username = request.getParameter("username");
+            String city = request.getParameter("city");
+            String district = request.getParameter("district");
+            String homeNumber = request.getParameter("homeNumber");
+            String phone = request.getParameter("phone");
+            User user = (User) session.getAttribute("user");
+            String address = homeNumber + ", " + district + ", " + city;
+            List<CartItem> products = c.getCartItemList();
+            this.orderService.insertOrder(new Orders(user.getId(), (float)c.getTotalPrice(),
+                    0, address, phone, 1, products));
+            double total = c.getTotalPrice();
+            session.setAttribute("total", total);
+            session.removeAttribute("cart");
+            response.sendRedirect("HomePageController");
         }
-        String firstName = request.getParameter("firstname");
-        String lastName = request.getParameter("lastname");
-        String city = request.getParameter("city");
-        String xa = request.getParameter("xa");
-        String noiO = request.getParameter("noiO");
-        String phone = request.getParameter("phone");
-        User user = (User) session.getAttribute("user");
-        String address = noiO + ", " + xa + ", " + city;
-        List<CartItem> products = c.getCartItemList();
-        System.out.println(products.size());
-        this.orderService.insertOrder(new Orders(user.getId(), (float)c.getTotalPrice(),
-                0, address, phone, 1, products));
-        double total = c.getTotalPrice();
-        session.setAttribute("total", total);
-        session.removeAttribute("cart");
-        response.sendRedirect("HomePageController");
+
     }
 }

@@ -19,7 +19,6 @@ public class OrdersService implements IOrdersService {
 	@Override
 	public void insertOrder(Orders o) {
 		Integer orderId = this.ordersDAO.insertOrder(o);
-		System.out.println(orderId);
 		List<CartItem> list = o.getLp();
 		for (CartItem p : list) {
 			this.ordersDAO.insertOrdersDetail(orderId, p.getProduct().getId(), p.getQuantity());

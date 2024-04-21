@@ -81,6 +81,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
+                <% if(!cartItems.isEmpty()) {%>
                 <div class="shoping__cart__table">
                     <table>
                         <thead>
@@ -93,8 +94,8 @@
                         </tr>
                         </thead>
                         <tbody>
+
                         <%
-                            int count = 0;
                             for(CartItem cartItem : cartItems){
 
                         %>
@@ -132,6 +133,9 @@
                         </tbody>
                     </table>
                 </div>
+                <%}else{%>
+                <p class="text-center text-xl-center">Bạn chưa thêm sản phẩm nào vào giỏ hàng</p>
+                <% }%>
             </div>
         </div>
         <div class="row">
@@ -164,12 +168,14 @@
                         <li>Tổng <span><%=shoppingCart.getTotalPrice()%></span></li>
                     </ul>
                     <!--<a href="thanh-toan.jsp" class="primary-btn">TIẾN HÀNH THANH TOÁN</a>-->
+                    <%if(!cartItems.isEmpty()){%>
                     <form method="GET" action="ThanhToanCL">
                         <input id="hidden" type="hidden" name="action" value="checkout">
                         <button class="btn btn-success" type="submit">
-                            Tien hanh thanh toan
+                            Tiến hành thanh toán
                         </button>
                     </form>
+                    <%}%>
                 </div>
             </div>
         </div>

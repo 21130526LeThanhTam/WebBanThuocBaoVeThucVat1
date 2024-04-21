@@ -80,55 +80,57 @@
             <h4>Thông tin thanh toán</h4>
             <form action="ThanhToanCL" method="post">
                 <div class="row">
-                    <div class="col-lg-8 col-md-6">
+                    <div class="col-lg-6 col-md-6">
                         <div class="row">
-                            <div class="col-lg-6">
+<%--                            <div class="col-lg-6">--%>
+<%--                                <div class="checkout__input">--%>
+<%--                                    <p>Tên<span>*</span></p>--%>
+<%--                                    <input type="text" name = "firstname" value="<%=request.getAttribute("firstname")%>">--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+                            <div class="col-lg-12">
                                 <div class="checkout__input">
-                                    <p>Tên<span>*</span></p>
-                                    <input type="text" name = "firstname">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="checkout__input">
-                                    <p>Họ<span>*</span></p>
-                                    <input type="text" name = "lastname" value="<%=request.getAttribute("lastname")%>">
+                                    <p>Họ Tên<span>*</span></p>
+                                    <input type="text" name = "username" required value="<%=request.getAttribute("username")%>">
                                 </div>
                             </div>
                         </div>
                         <div class="checkout__input">
                             <p>Tỉnh / Thành phố<span>*</span></p>
-                            <input type="text" name = "city">
+                            <input required type="text" name = "city">
                         </div>
                         <div class="checkout__input">
                             <p>Phường, xã<span>*</span></p>
-                            <input type="text" name = "xa">
+                            <input type="text" required name = "district">
                         </div>
                         <div class="checkout__input">
                             <p>Địa chỉ<span>*</span></p>
-                            <input type="text" name ="noiO" placeholder="Số nhà" class="checkout__input__add">
+                            <input type="text" name ="homeNumber" required placeholder="Số nhà" class="checkout__input__add">
                         </div>
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <div class="checkout__input">
                                     <p>Số điện thoại<span>*</span></p>
-                                    <input type="text" name = "phone">
+                                    <input type="text" required name = "phone" value="<%=request.getAttribute("phone")%>">
                                 </div>
                             </div>
                         </div>
                         <div class="checkout__input__checkbox">
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-6 col-md-6">
                         <div class="checkout__order">
                             <h4>Đơn hàng của bạn</h4>
-                            <div class="checkout__order__products">Tên Sản phẩm<span>Tổng giá</span></div>
+                            <div class="checkout__order__products d-flex align-items-center justify-content-between"><span>Ảnh</span><span>Tên sản phẩm</span><span>Số lượng</span><span>Tổng tiền</span></div>
                             <ul>
                                 <%
                                         if(cartItems!=null){
                                             for (CartItem i :  cartItems) {
                                 %>
-                                    <li>
-                                        <%=i.getProduct().getProduct_name()%>
+                                    <li class="d-flex align-items-center justify-content-between my-4">
+                                        <img src="<%=i.getProduct().getImage()%>" alt="" width="40" height="40"/>
+                                       <span class="w-25 text-truncate d-block"> <%=i.getProduct().getProduct_name()%></span>
+                                       <span> <%=i.getQuantity()%></span>
                                         <span>
                                             <%=i.getTotalPrice()%>
                                         </span>
@@ -137,35 +139,35 @@
                                        }
                                    } else {
                                 %>
-                                    <li>lỗi là rõ<span>lỗi mà đk</span></li>
+                                    <li>Trống</li>
                                 <%
                                     }
                                 %>
                             </ul>
                             <!-- <div class="checkout__order__subtotal">Thuế <span>0₫</span></div> -->
-                            <div class="checkout__order__total">Tổng tiền: <%=shoppingCart.getTotalPrice()%></div>
-                            <div class="checkout__input__checkbox">
-                                <label for="acc-or">
-                                    Tạo tài khoản mới?
-                                    <input type="checkbox" id="acc-or">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
+                            <div class="checkout__order__total">Tổng cộng: <%=shoppingCart.getTotalPrice()%></div>
+<%--                            <div class="checkout__input__checkbox">--%>
+<%--                                <label for="acc-or">--%>
+<%--                                    Tạo tài khoản mới?--%>
+<%--                                    <input type="checkbox" id="acc-or">--%>
+<%--                                    <span class="checkmark"></span>--%>
+<%--                                </label>--%>
+<%--                            </div>--%>
 
-                            <div class="checkout__input__checkbox">
-                                <label for="payment">
-                                    Chấp nhận thanh toán
-                                    <input type="checkbox" id="payment">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="checkout__input__checkbox">
-                                <label for="paypal">
-                                    Paypal
-                                    <input type="checkbox" id="paypal">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
+<%--                            <div class="checkout__input__checkbox">--%>
+<%--                                <label for="payment">--%>
+<%--                                    Chấp nhận thanh toán--%>
+<%--                                    <input type="checkbox" id="payment">--%>
+<%--                                    <span class="checkmark"></span>--%>
+<%--                                </label>--%>
+<%--                            </div>--%>
+<%--                            <div class="checkout__input__checkbox">--%>
+<%--                                <label for="paypal">--%>
+<%--                                    Paypal--%>
+<%--                                    <input type="checkbox" id="paypal">--%>
+<%--                                    <span class="checkmark"></span>--%>
+<%--                                </label>--%>
+<%--                            </div>--%>
                             <input id="hidden" type="hidden" name="action" value="order">
                             <button type="submit" class="site-btn">Đặt hàng</button>
                         </div>

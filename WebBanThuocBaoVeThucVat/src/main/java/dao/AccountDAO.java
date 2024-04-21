@@ -37,7 +37,7 @@ public class AccountDAO {
     }
     //int id, String username, String password, String phone, String email, String surname, String lastname, int role, String hash) {
     public static User login(String email, String pass){
-        String sql = "select id, role,username, password, phone, email, surname, lastname, hash, active from users where email = ? and password = ? and active = 1";
+        String sql = "select id, role,user_name, password, phone, email, sur_name, last_name, hash, active from users where email = ? and password = ? and active = 1";
         Connection conn = DBContext.getConnection();
         try {
             PreparedStatement ps = conn.prepareStatement(sql);

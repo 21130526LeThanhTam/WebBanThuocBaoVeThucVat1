@@ -161,6 +161,7 @@
             <i class="fa fa-bars"></i>
         </div>
     </div>
+    <a href="history.jsp">Lịch sử mua hàng</a>
 </header>
 <!-- Header Section End -->
 
