@@ -108,7 +108,7 @@
                             <input type="text" name ="homeNumber" required placeholder="Số nhà" class="checkout__input__add">
                         </div>
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <div class="checkout__input">
                                     <p>Số điện thoại<span>*</span></p>
                                     <input type="text" required name = "phone" value="<%=request.getAttribute("phone")%>">

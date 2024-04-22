@@ -6,7 +6,7 @@
 <%@ page import="bean.Product" %>
 <%@ page import="bo.CategoryBO" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -89,6 +89,7 @@
                         <ul>
                             <li><i class="fa fa-envelope"></i> vuonpho@gmail.com</li>
                             <li>Miễn phí giao hàng cho đơn đặt hàng trị giá trên 500.000đ</li>
+
                         </ul>
                     </div>
                 </div>

@@ -47,6 +47,9 @@ public class ShoppingCartCL extends HttpServlet {
                 Delete(request, response);
                 break;
             case "put":
+//                for (CartItem item : shoppingCart.getCartItemList()) {
+//                    Put(item.getProduct().getId(), request, response);
+//                }
                 Put(request, response);
                 break;
             case "post":
@@ -95,13 +98,16 @@ public class ShoppingCartCL extends HttpServlet {
         shoppingCart = (ShoppingCart) session.getAttribute("cart");
         int id = Integer.parseInt(req.getParameter("id"));
         Products p = productService.findById(id);
-        int quantity = Integer.parseInt(req.getParameter("quantity"));
+        String i = req.getParameter("quantity" + id);
+        System.out.println(i);
+        System.out.println("quantity" + id);
+        int quantity = Integer.parseInt(i);
         String e = "";
+
         if(quantity>0){
             shoppingCart.update(p, quantity);
-        }
-        else{
-            e="Số lượng phải lớn hơn 0";
+        } else if(quantity == 0){
+            shoppingCart.remove(id);
         }
         req.setAttribute("error", e);
         session.setAttribute("cart", shoppingCart);

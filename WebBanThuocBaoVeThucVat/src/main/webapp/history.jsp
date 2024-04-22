@@ -35,19 +35,58 @@
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
     <link rel="stylesheet" href="assets/css/Log_Regis.css">
     <script src="js/log_reg.js" defer></script>
-    <%
-        CategoryBO cb = new CategoryBO();
-        ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
-        if(shoppingCart==null){
-            shoppingCart = new ShoppingCart();
-        }
-    %>
 
 </head>
 <body>
 <jsp:include page="layout/header.jsp"/>
 <main>
+    <div class="container mt-5">
+        <h2 class="mb-4">Lịch sử mua hàng</h2>
+        <div class="row">
+            <div class="col-md-3">
+                <h4>Ảnh</h4>
+            </div>
+            <div class="col-md-3">
+                <h4>Tên sản phẩm</h4>
+            </div>
+            <div class="col-md-3">
+                <h4>Giá</h4>
+            </div>
+            <div class="col-md-3">
+                <h4>Số lượng</h4>
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="col-md-3">
+                <img src="https://via.placeholder.com/100" alt="Product" class="product-img">
+            </div>
+            <div class="col-md-3">
+                <p>Tên sản phẩm 1</p>
+            </div>
+            <div class="col-md-3">
+                <p>$10.00</p>
+            </div>
+            <div class="col-md-3">
+                <p>2</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <img src="https://via.placeholder.com/100" alt="Product" class="product-img">
+            </div>
+            <div class="col-md-3">
+                <p>Tên sản phẩm 2</p>
+            </div>
+            <div class="col-md-3">
+                <p>$15.00</p>
+            </div>
+            <div class="col-md-3">
+                <p>1</p>
+            </div>
+        </div>
+    </div>
 </main>
 </body>
 </html>
