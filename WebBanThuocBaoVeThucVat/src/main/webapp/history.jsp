@@ -8,6 +8,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="bo.CategoryBO" %>
 <%@ page import="bean.*" %>
+<%@ page import="dao.OrdersDAO" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -42,50 +43,53 @@
 <main>
     <div class="container mt-5">
         <h2 class="mb-4">Lịch sử mua hàng</h2>
-        <div class="row">
-            <div class="col-md-3">
+
+        <div class="row mb-3">
+            <div class="col-md-2">
                 <h4>Ảnh</h4>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <h4>Tên sản phẩm</h4>
             </div>
-            <div class="col-md-3">
-                <h4>Giá</h4>
-            </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <h4>Số lượng</h4>
             </div>
+            <div class="col-md-2">
+                <h4>Tổng giá</h4>
+            </div>
+            <div class="col-md-2">
+                <h4>Mã đơn hàng</h4>
+            </div>
         </div>
+        <%
+            List<OrderDetail> details = (List<OrderDetail>) session.getAttribute("details");
+            if(!details.isEmpty()) {
+                for(OrderDetail detail : details) {
+                    OrdersDAO dao = new OrdersDAO();
+                    Products p = dao.findImageBy(detail.getProduct_id());
+                    Orders o = dao.findBy(detail.getOrder_id());
+        %>
+        <div class="row mb-3">
+            <div class="col-md-2">
+                <img src="<%=request.getServletContext().getContextPath()%>/<%=p.getImage()%>" width="100" height="100" alt="">
+            </div>
+            <div class="col-md-4">
+                <p><%=p.getProduct_name()%></p>
+            </div>
+            <div class="col-md-2">
+                <p><%=detail.getQuantity()%></p>
+            </div>
+            <div class="col-md-2">
+                <p><%=o.getTotalPrice()%>
+                </p>
+            </div>
+            <div class="col-md-2">
+                <p><%=detail.getOrder_id()%></p>
+            </div>
 
-        <div class="row">
-            <div class="col-md-3">
-                <img src="https://via.placeholder.com/100" alt="Product" class="product-img">
-            </div>
-            <div class="col-md-3">
-                <p>Tên sản phẩm 1</p>
-            </div>
-            <div class="col-md-3">
-                <p>$10.00</p>
-            </div>
-            <div class="col-md-3">
-                <p>2</p>
-            </div>
         </div>
+        <%}}%>
 
-        <div class="row">
-            <div class="col-md-3">
-                <img src="https://via.placeholder.com/100" alt="Product" class="product-img">
-            </div>
-            <div class="col-md-3">
-                <p>Tên sản phẩm 2</p>
-            </div>
-            <div class="col-md-3">
-                <p>$15.00</p>
-            </div>
-            <div class="col-md-3">
-                <p>1</p>
-            </div>
-        </div>
     </div>
 </main>
 </body>

@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class Orders {
+    private int id;
     private int idUser;
     private float totalPrice;
     private float shippingFee;
@@ -25,6 +26,10 @@ public class Orders {
         this.lp = lp;
     }
 
+    public Orders() {
+
+    }
+
     public List<CartItem> getLp() {
         return lp;
     }
@@ -33,7 +38,13 @@ public class Orders {
         this.lp = lp;
     }
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id){
+        this.id = id;
+    }
 
     public int getIdUser() {
         return idUser;

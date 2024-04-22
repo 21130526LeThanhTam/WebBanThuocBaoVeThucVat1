@@ -131,8 +131,8 @@
         </div>
     </div>
     <div class="container">
-        <div class="row">
-            <div class="col-lg-3">
+        <div class="row d-flex align-items-center">
+            <div class="col-lg-2">
                 <div class="header__logo">
                     <a href="HomePageController"><img src="assets/img/logo.png" alt=""></a>
                 </div>
@@ -147,7 +147,8 @@
                     </ul>
                 </nav>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-2"> <a href="OrderHistoryCL" class="btn btn-primary d-block">Lịch sử mua hàng</a></div>
+            <div class="col-lg-2">
                 <div class="header__cart">
                     <a href="gio-hang.jsp">
                         <ul>
@@ -162,7 +163,7 @@
             <i class="fa fa-bars"></i>
         </div>
     </div>
-    <a href="history.jsp">Lịch sử mua hàng</a>
+
 </header>
 <!-- Header Section End -->
 

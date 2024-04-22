@@ -99,8 +99,6 @@ public class ShoppingCartCL extends HttpServlet {
         int id = Integer.parseInt(req.getParameter("id"));
         Products p = productService.findById(id);
         String i = req.getParameter("quantity" + id);
-        System.out.println(i);
-        System.out.println("quantity" + id);
         int quantity = Integer.parseInt(i);
         String e = "";
 

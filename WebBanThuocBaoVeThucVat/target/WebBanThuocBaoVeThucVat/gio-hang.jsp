@@ -118,7 +118,7 @@
                                     <input type ="hidden" name ="action" value="put">
                                     <input type ="hidden" name="id" value="<%=cartItem.getProduct().getId()%>">
                                     <button type="submit" class="btn button btn-primary">
-                                       cap nhat
+                                       Cập nhật
                                     </button>
                                 </form>
                             </td>
@@ -159,14 +159,16 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="shoping__checkout">
+                <form action="ThanhToanCL" method="get" class="shoping__checkout">
                     <h5>Tổng số lượng hàng</h5>
                     <ul>
                         <li>Tạm tính <span><%=shoppingCart.getTotalPrice()%></span></li>
                         <li>Tổng <span><%=shoppingCart.getTotalPrice()%></span></li>
                     </ul>
-                    <a href="thanh-toan.jsp" class="primary-btn">TIẾN HÀNH THANH TOÁN</a>
-                </div>
+                    <input type="hidden" name="action" value="checkout">
+<%--                    <a href="thanh-toan.jsp" class="primary-btn">TIẾN HÀNH THANH TOÁN</a>--%>
+                    <button class="btn btn-success" type="submit">   TIẾN HÀNH THANH TOÁN </button>
+                </form>
             </div>
         </div>
     </div>
