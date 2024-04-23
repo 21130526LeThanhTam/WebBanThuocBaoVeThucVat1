@@ -2,6 +2,7 @@ package controller;
 
 import Service.SendingEmail;
 import bean.User;
+import bean.Util;
 import dao.AccountDAO;
 import org.apache.commons.codec.cli.Digest;
 import org.springframework.util.DigestUtils;
@@ -13,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.Random;
 
 @WebServlet(urlPatterns = {"/signup"})
@@ -31,6 +34,8 @@ public class SignUpControl extends HttpServlet {
         String lastname = req.getParameter("lastname");
         String phone = req.getParameter("phone");
         String pass = req.getParameter("pass");
+        Timestamp currentTimestamp = Util.getCurrentTimestamp();
+
         String re_pass = req.getParameter("rePass");
 
         //mã hóa mật khẩu sang md5
@@ -57,6 +62,7 @@ public class SignUpControl extends HttpServlet {
             if(username.length() <= 3 || !(Character.isLetter(username.charAt(0)))){
                 error = "Tên tài khoản phải trên 3 kí tự và * Kí tự đầu tiên phải là chữ cái";
 
+
                 session.setAttribute("errorNumber", error);
                 resp.sendRedirect("signup");
             }
@@ -82,7 +88,9 @@ public class SignUpControl extends HttpServlet {
                         error = "Kích hoạt email để đăng nhập";
                         session.setAttribute("errorRegis", error);
                         resp.sendRedirect("login");
+
                     }
+
 
             }
         }
@@ -93,6 +101,8 @@ public class SignUpControl extends HttpServlet {
 
         }
     }
+
 }
+
 
 

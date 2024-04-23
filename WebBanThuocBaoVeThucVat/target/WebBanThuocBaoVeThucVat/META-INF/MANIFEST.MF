@@ -1,10 +1,15 @@
 Manifest-Version: 1.0
 Created-By: IntelliJ IDEA
 <<<<<<< HEAD
+<<<<<<< HEAD
 Built-By: uyent
 Build-Jdk: Amazon Corretto version 18.0.2
 =======
 Built-By: Admin1
 Build-Jdk: Oracle OpenJDK version 18.0.2
 >>>>>>> origin
+=======
+Built-By: 84828
+Build-Jdk: Oracle OpenJDK version 21.0.2
+>>>>>>> 78303600548e00a06eb3ae84d692e4b535088c53
 

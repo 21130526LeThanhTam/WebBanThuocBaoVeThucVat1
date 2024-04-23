@@ -55,6 +55,7 @@
 
         ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
         CategoryBO cb = new CategoryBO();
+        System.out.println("linh"+cb);
         if(shoppingCart==null){
             shoppingCart = new ShoppingCart();
         }
@@ -68,6 +69,7 @@
     <style>
         .red {
             color: red;
+            /*background-color: aliceblue;*/
         }
     </style>
 >>>>>>> origin
@@ -87,7 +89,7 @@
     <div class="humberger__menu__cart">
         <ul>
 
-            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3fwefewfwefwfewfewfew</span></a></li>
         </ul>
         <!-- <div class="header__cart__price">Số dư tài khoản: <span>200.000₫</span></div> -->
     </div>
@@ -109,15 +111,7 @@
         <ul>
             <li><a href="HomePageController">Trang chủ</a></li>
             <li class="active"><a href="ProductController">Cửa hàng</a></li>
-            <li><a href="#">Quản lý</a>
-                <ul class="header__menu__dropdown">
-                    <li><a href="thong-tin-don-hang.jsp">Thông tin đơn hàng</a></li>
-                    <li><a href="gio-hang.jsp">Giỏ hàng</a></li>
-                    <li><a href="thanh-toan.jsp">Thanh toán</a></li>
-                    <li><a href="blog-details.jsp">Các bài viết</a></li>
-                </ul>
-            </li>
-            <li><a href="blog.jsp">Blog</a></li>
+            <li><a href="blog-details.jsp">Các bài viết</a></li>
             <li><a href="lien-he.jsp">Liên hệ</a></li>
         </ul>
     </nav>
@@ -141,7 +135,7 @@
 <header class="header">
     <div class="header__top">
         <div class="container">
-            <div class="row">
+            <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="header__top__left">
                         <ul>
@@ -187,7 +181,7 @@
         </div>
     </div>
     <div class="container">
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-lg-3">
                 <div class="header__logo">
                     <a href="HomePageController"><img src="assets/img/logo.png" alt=""></a>
@@ -198,14 +192,7 @@
                     <ul>
                         <li><a href="HomePageController">Trang chủ</a></li>
                         <li><a href="ProductController">Cửa hàng</a></li>
-                        <li><a href="#">Quản lý</a>
-                            <ul class="header__menu__dropdown">
-                                <li><a href="thong-tin-don-hang.jsp">Thông tin đơn hàng</a></li>
-                                <li><a href="gio-hang.jsp">Giỏ hàng</a></li>
-                                <li><a href="thanh-toan.jsp">Thanh toán</a></li>
-                                <li><a href="blog-details.jsp">Các bài viết</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="blog-details.jsp">Các bài viết</a></li>
                         <li><a href="lien-he.jsp">Liên hệ</a></li>
                     </ul>
                 </nav>
@@ -231,7 +218,7 @@
 <!-- Hero Section Begin -->
 <section class="hero">
     <div class="container">
-        <div class="row">
+        <div class="row align-items-start">
             <div class="col-lg-3">
                 <div class="hero__categories">
                     <div class="hero__categories__all">
@@ -240,8 +227,9 @@
                     </div>
                     <ul>
                         <li><a href="StoreProductHome">Tất cả sản phẩm</a></li>
-                        <% for(Category cate : cb.getListCategory()) {%>
-                        <li><a href="ProductController?id_category=<%=cate.getId()%>"><%= cate.getCategoryName() %></a></li>
+                        <% for(Category cate :
+                                cb.getListCategory()) {%>
+                        <li><a href="ProductController?id_category=<%=cate.getId()%>"><%= cate.getNameCategory() %></a></li>
                         <% } %>
                     </ul>
                 </div>
@@ -255,10 +243,14 @@
                         </form>
                     </div>
                     <div class="hero__search__phone">
+<<<<<<< HEAD
                         <div class="hero__search__phone__icon">
 <<<<<<< HEAD
                             <i class="fa fa-phone" style="margin-top:15px"></i>
 =======
+=======
+                        <div class="hero__search__phone__icon d-flex align-items-center justify-content-center">
+>>>>>>> 78303600548e00a06eb3ae84d692e4b535088c53
                             <i class="fa fa-phone"></i>
 >>>>>>> origin
                         </div>
@@ -286,12 +278,24 @@
 <!-- Categories Section Begin -->
 <section class="categories">
     <div class="container">
+        <div class="section-title text-center">
+            <h2>Các sản phẩm nổi bật</h2>
+        </div>
         <div class="row">
             <div class="categories__slider owl-carousel">
                 <% for(Products p : products){%>
-                <div class="col-lg-3">
-                    <div class="categories__item set-bg" data-setbg="<%=p.getPicture()%>">
-                        <h5><a href="ProductInfor?id_product=<%= p.getId() %>"><%=p.getProduct_name()%></a></h5>
+                <div class="col-lg-3 col-md-4 col-sm-6 mix a">
+                    <div class="featured__item">
+                        <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
+                            <ul class="featured__item__pic__hover">
+                                <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
+                                <li><a class="d-flex align-items-center justify-content-center"  href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="featured__item__text">
+                            <h6><a href="ProductInfor?id_product=<%= p.getId() %>"><%=p.getProduct_name()%></a></h6>
+                            <h5><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</h5>
+                        </div>
                     </div>
                 </div>
                 <% } %>
@@ -302,12 +306,12 @@
 <!-- Categories Section End -->
 
 <!-- Featured Section Begin -->
-<section class="featured spad">
+<section class="pb-5">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
-                    <h2>Các sản phẩm nổi bật</h2>
+                    <h2>Các sản phẩm theo loại</h2>
                 </div>
                 <div class="featured__controls">
                     <ul>
@@ -334,8 +338,9 @@
             <% if(p.getId_category() == 1) {%>
             <div class="col-lg-3 col-md-4 col-sm-6 mix a">
                 <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="<%=p.getPicture()%>">
+                    <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
                         <ul class="featured__item__pic__hover">
+<<<<<<< HEAD
 <<<<<<< HEAD
                             <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet fix-icon"></i></a></li>
                             <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart fix-icon"></i></a></li>
@@ -343,11 +348,15 @@
                             <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
                             <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart"></i></a></li>
 >>>>>>> origin
+=======
+                            <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
+                            <li><a class="d-flex align-items-center justify-content-center"
+                                   href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
+>>>>>>> 78303600548e00a06eb3ae84d692e4b535088c53
                         </ul>
                     </div>
                     <div class="featured__item__text">
                         <h6><a href="ProductInfor?id_product=<%= p.getId() %>"><%=p.getProduct_name()%></a></h6>
-                        <%--                        <h5><%=p.getPrice()%></h5>--%>
                         <h5><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</h5>
                     </div>
                 </div>
@@ -356,8 +365,9 @@
             <% if(p.getId_category() == 2) {%>
             <div class="col-lg-3 col-md-4 col-sm-6 mix b">
                 <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="<%=p.getPicture()%>">
+                    <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
                         <ul class="featured__item__pic__hover">
+<<<<<<< HEAD
 <<<<<<< HEAD
                             <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet fix-icon"></i></a></li>
                             <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart fix-icon"></i></a></li>
@@ -365,6 +375,10 @@
                             <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
                             <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart"></i></a></li>
 >>>>>>> origin
+=======
+                            <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
+                            <li><a class="d-flex align-items-center justify-content-center" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
+>>>>>>> 78303600548e00a06eb3ae84d692e4b535088c53
                         </ul>
                     </div>
                     <div class="featured__item__text">
@@ -378,8 +392,9 @@
             <% if(p.getId_category() == 3) {%>
             <div class="col-lg-3 col-md-4 col-sm-6 mix c">
                 <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="<%=p.getPicture()%>">
+                    <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
                         <ul class="featured__item__pic__hover">
+<<<<<<< HEAD
 <<<<<<< HEAD
                             <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet fix-icon"></i></a></li>
                             <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart fix-icon"></i></a></li>
@@ -387,6 +402,10 @@
                             <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
                             <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart"></i></a></li>
 >>>>>>> origin
+=======
+                            <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
+                            <li><a class="d-flex align-items-center justify-content-center" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
+>>>>>>> 78303600548e00a06eb3ae84d692e4b535088c53
                         </ul>
                     </div>
                     <div class="featured__item__text">
@@ -435,7 +454,7 @@
                             <% for(Products p : productNew1) {%>
                             <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">
                                 <div class="latest-product__item__pic">
-                                    <img src="<%=p.getPicture()%>" alt="">
+                                    <img src="<%=p.getImage()%>" alt="">
                                 </div>
                                 <div class="latest-product__item__text">
                                     <h6><%=p.getProduct_name()%></h6>
@@ -448,7 +467,7 @@
                             <% for(Products p : productNew2) { %>
                             <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">
                                 <div class="latest-product__item__pic">
-                                    <img src="<%=p.getPicture()%>" alt="">
+                                    <img src="<%=p.getImage()%>" alt="">
                                 </div>
                                 <div class="latest-product__item__text">
                                     <h6><%=p.getProduct_name()%></h6>
@@ -468,7 +487,7 @@
                             <% for(Products p : productNew1) {%>
                             <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">
                                 <div class="latest-product__item__pic">
-                                    <img src="<%=p.getPicture()%>" alt="">
+                                    <img src="<%=p.getImage()%>" alt="">
                                 </div>
                                 <div class="latest-product__item__text">
                                     <h6><%=p.getProduct_name()%></h6>
@@ -481,7 +500,7 @@
                             <% for(Products p : productNew2) {%>
                             <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">
                                 <div class="latest-product__item__pic">
-                                    <img src="<%=p.getPicture()%>" alt="">
+                                    <img src="<%=p.getImage()%>" alt="">
                                 </div>
                                 <div class="latest-product__item__text">
                                     <h6><%=p.getProduct_name()%></h6>
@@ -501,7 +520,7 @@
                             <% for(Products p : findDiscountPro1) {%>
                             <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">
                                 <div class="latest-product__item__pic">
-                                    <img src="<%=p.getPicture()%>" alt="">
+                                    <img src="<%=p.getImage()%>" alt="">
                                 </div>
                                 <div class="latest-product__item__text">
                                     <h6><%=p.getProduct_name()%></h6>
@@ -514,7 +533,7 @@
                             <% for(Products p : findDiscountPro2) {%>
                             <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">
                                 <div class="latest-product__item__pic">
-                                    <img src="<%=p.getPicture()%>" alt="">
+                                    <img src="<%=p.getImage()%>" alt="">
                                 </div>
                                 <div class="latest-product__item__text">
                                     <h6><%=p.getProduct_name()%></h6>
@@ -574,6 +593,7 @@
                         <input type="text" placeholder="Nhập địa chỉ email">
                         <button type="submit" class="site-btn">ĐĂNG KÝ</button>
                     </form>
+<<<<<<< HEAD
                     <div class="footer__widget__social">
 <<<<<<< HEAD
                         <a href="#"><i class="fa fa-facebook fix-icon"></i></a>
@@ -586,6 +606,13 @@
                         <a href="#"><i class="fa fa-twitter"></i></a>
                         <a href="#"><i class="fa fa-pinterest"></i></a>
 >>>>>>> origin
+=======
+                    <div class="footer__widget__social d-flex">
+                        <a class="d-flex align-items-center justify-content-center" href="#"><i class="fa fa-facebook"></i></a>
+                        <a class="d-flex align-items-center justify-content-center" href="#"><i class="fa fa-instagram"></i></a>
+                        <a class="d-flex align-items-center justify-content-center" href="#"><i class="fa fa-twitter"></i></a>
+                        <a class="d-flex align-items-center justify-content-center" href="#"><i class="fa fa-pinterest"></i></a>
+>>>>>>> 78303600548e00a06eb3ae84d692e4b535088c53
                     </div>
                 </div>
             </div>
@@ -604,7 +631,6 @@
 <script src="assets/js/mixitup.min.js"></script>
 <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/main.js"></script>
-
 </body>
 
 </html>

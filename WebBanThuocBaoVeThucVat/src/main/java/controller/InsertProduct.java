@@ -93,7 +93,7 @@ public class InsertProduct extends HttpServlet {
         }
         String imagePath="dataImages/"+fileName;
         //insertProduct(String name, String picture, int price, int category, int quantity, int status, String specifications, String desc)
-        ProductsService.getInstance().insertProduct(productName,imagePath,priceInt,intCategoryId,num,activeInt,specifications,proDesc);
+        ProductsService.getInstance().insertProduct(productName,imagePath,priceInt,intCategoryId,activeInt,proDesc);
         resp.sendRedirect("./maProduct?proID="+finalPage);
     }
 }
