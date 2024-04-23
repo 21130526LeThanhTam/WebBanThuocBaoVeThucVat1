@@ -3,11 +3,8 @@
 <%@ page import="bean.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%--
-<<<<<<< HEAD
 // đây là trang homePageControlLer
-=======
 
->>>>>>> origin
   Created by IntelliJ IDEA.
   User: Windows 10
   Date: 16-12-2023
@@ -15,10 +12,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<<<<<<< HEAD
 
-=======
->>>>>>> origin
 <html>
 <head>
     <meta charset="UTF-8">
@@ -63,16 +57,8 @@
 
     <%--    <link rel="stylesheet" href="css/Log_Regis.css">--%>
     <%--    <script src="js/log_reg.js" defer></script>--%>
-<<<<<<< HEAD
 
-=======
-    <style>
-        .red {
-            color: red;
-            /*background-color: aliceblue;*/
-        }
-    </style>
->>>>>>> origin
+
 </head>
 <body>
 <!-- Page Preloder -->
@@ -243,16 +229,9 @@
                         </form>
                     </div>
                     <div class="hero__search__phone">
-<<<<<<< HEAD
-                        <div class="hero__search__phone__icon">
-<<<<<<< HEAD
-                            <i class="fa fa-phone" style="margin-top:15px"></i>
-=======
-=======
+
                         <div class="hero__search__phone__icon d-flex align-items-center justify-content-center">
->>>>>>> 78303600548e00a06eb3ae84d692e4b535088c53
-                            <i class="fa fa-phone"></i>
->>>>>>> origin
+                            <i class="fa fa-phone" style="margin-top:15px"></i>
                         </div>
                         <div class="hero__search__phone__text">
                             <h5>+84 123456789</h5>
@@ -270,11 +249,7 @@
     </div>
 </section>
 <!-- Hero Section End -->
-<<<<<<< HEAD
 <%--cần edit lại chỗ này--%>
-=======
-
->>>>>>> origin
 <!-- Categories Section Begin -->
 <section class="categories">
     <div class="container">
@@ -340,19 +315,9 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
                         <ul class="featured__item__pic__hover">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                            <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet fix-icon"></i></a></li>
-                            <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart fix-icon"></i></a></li>
-=======
-                            <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart"></i></a></li>
->>>>>>> origin
-=======
-                            <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
+                            <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet fix-icon"></i></a></li>
                             <li><a class="d-flex align-items-center justify-content-center"
-                                   href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
->>>>>>> 78303600548e00a06eb3ae84d692e4b535088c53
+                                   href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart fix-icon"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
@@ -367,18 +332,9 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
                         <ul class="featured__item__pic__hover">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                            <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet fix-icon"></i></a></li>
-                            <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart fix-icon"></i></a></li>
-=======
-                            <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart"></i></a></li>
->>>>>>> origin
-=======
-                            <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                            <li><a class="d-flex align-items-center justify-content-center" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
->>>>>>> 78303600548e00a06eb3ae84d692e4b535088c53
+
+                            <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet fix-icon"></i></a></li>
+                            <li><a class="d-flex align-items-center justify-content-center" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart fix-icon"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
@@ -394,18 +350,9 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
                         <ul class="featured__item__pic__hover">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                            <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet fix-icon"></i></a></li>
-                            <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart fix-icon"></i></a></li>
-=======
-                            <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="ShoppingCartCL?action=post&id=<%=p.getId()%>"><i class="fa fa-shopping-cart"></i></a></li>
->>>>>>> origin
-=======
-                            <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                            <li><a class="d-flex align-items-center justify-content-center" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
->>>>>>> 78303600548e00a06eb3ae84d692e4b535088c53
+                            <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet fix-icon"></i></a></li>
+                            <li><a class="d-flex align-items-center justify-content-center" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart fix-icon"></i></a></li>
+
                         </ul>
                     </div>
                     <div class="featured__item__text">
@@ -593,26 +540,13 @@
                         <input type="text" placeholder="Nhập địa chỉ email">
                         <button type="submit" class="site-btn">ĐĂNG KÝ</button>
                     </form>
-<<<<<<< HEAD
-                    <div class="footer__widget__social">
-<<<<<<< HEAD
-                        <a href="#"><i class="fa fa-facebook fix-icon"></i></a>
-                        <a href="#"><i class="fa fa-instagram fix-icon"></i></a>
-                        <a href="#"><i class="fa fa-twitter fix-icon"></i></a>
-                        <a href="#"><i class="fa fa-pinterest fix-icon"></i></a>
-=======
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-pinterest"></i></a>
->>>>>>> origin
-=======
+
                     <div class="footer__widget__social d-flex">
-                        <a class="d-flex align-items-center justify-content-center" href="#"><i class="fa fa-facebook"></i></a>
-                        <a class="d-flex align-items-center justify-content-center" href="#"><i class="fa fa-instagram"></i></a>
-                        <a class="d-flex align-items-center justify-content-center" href="#"><i class="fa fa-twitter"></i></a>
-                        <a class="d-flex align-items-center justify-content-center" href="#"><i class="fa fa-pinterest"></i></a>
->>>>>>> 78303600548e00a06eb3ae84d692e4b535088c53
+                        <a class="d-flex align-items-center justify-content-center fix-icon" href="#"><i class="fa fa-facebook"></i></a>
+                        <a class="d-flex align-items-center justify-content-center fix-icon" href="#"><i class="fa fa-instagram"></i></a>
+                        <a class="d-flex align-items-center justify-content-center fix-icon" href="#"><i class="fa fa-twitter"></i></a>
+                        <a class="d-flex align-items-center justify-content-center fix-icon" href="#"><i class="fa fa-pinterest"></i></a>
+
                     </div>
                 </div>
             </div>
