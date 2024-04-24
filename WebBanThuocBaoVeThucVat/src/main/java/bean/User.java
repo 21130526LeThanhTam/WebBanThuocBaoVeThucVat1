@@ -2,40 +2,32 @@ package bean;
 
 public class User {
 
-    private int id, role,active;
+    private int id;
+    private int role;
+    private String userName;
+    private String password;
+    private String phone;
+    private String email;
+    private String surName;
+    private String lastName;
+    private String hash;
+    private int active;
 
-    private String username, password, phone, email, surname, lastname, hash ;       //
+    public User() {
+    }
 
-    public User(){}
-    public User(int id, String username, String password, String phone, String email, String surname, String lastname, int role, String hash) {
+    public User(int id, int role, String userName, String password, String phone, String email, String surName, String lastName, String hash, int active) {
         this.id = id;
         this.role = role;
-        this.username = username;
+        this.userName = userName;
         this.password = password;
         this.phone = phone;
         this.email = email;
-        this.surname = surname;
-        this.lastname = lastname;
-    }
-
-    public User(int id, String username, String password, String phone, String surname, String lastname) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.phone = phone;
-        this.surname = surname;
-        this.lastname = lastname;
-    }
-
-    public User(int id, int active, String username, String phone, String surname, String lastname) {
-        this.id = id;
+        this.surName = surName;
+        this.lastName = lastName;
+        this.hash = hash;
         this.active = active;
-        this.username = username;
-        this.phone = phone;
-        this.surname = surname;
-        this.lastname = lastname;
     }
-
 
     public int getId() {
         return id;
@@ -53,12 +45,12 @@ public class User {
         this.role = role;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -85,20 +77,20 @@ public class User {
         this.email = email;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getSurName() {
+        return surName;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setSurName(String surName) {
+        this.surName = surName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getHash() {
@@ -117,20 +109,6 @@ public class User {
         this.active = active;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", role=" + role +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                ", surname='" + surname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", hash='" + hash + '\'' +
-                '}';
-    }
     // Phương thức dưới để xác định vai trò của người theo role
     public String roleString(){
         if(this.role ==0){

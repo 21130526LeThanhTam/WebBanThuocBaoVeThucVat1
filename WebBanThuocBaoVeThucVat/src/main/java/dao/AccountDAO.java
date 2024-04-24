@@ -37,7 +37,7 @@ public class AccountDAO {
     }
     //int id, String username, String password, String phone, String email, String surname, String lastname, int role, String hash) {
     public static User login(String email, String pass){
-        String sql = "select id, role,user_name, password, phone, email, sur_name, last_name, hash, active from users where email = ? and password = ? and active = 1";
+        String sql = "SELECT id, role, user_name, password, phone, email, sur_name, last_name, hash, active FROM users WHERE email = ? AND password = ? AND active = 1";
         Connection conn = DBContext.getConnection();
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -45,22 +45,25 @@ public class AccountDAO {
             ps.setString(2, pass);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                return new User(rs.getInt(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getString(4),
-                        rs.getString(5),
-                        rs.getString(6),
-                        rs.getString(7),
-                        rs.getInt(8),
-                        rs.getString(9));
-
+                return new User(
+                        rs.getInt("id"),
+                        rs.getInt("role"),
+                        rs.getString("user_name"),
+                        rs.getString("password"),
+                        rs.getString("phone"),
+                        rs.getString("email"),
+                        rs.getString("sur_name"),
+                        rs.getString("last_name"),
+                        rs.getString("hash"),
+                        rs.getInt("active")
+                );
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return null;
     }
+
 
 
     public User checkAccountExist(String email){
@@ -71,15 +74,18 @@ public class AccountDAO {
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                return new User(rs.getInt(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getString(4),
-                        rs.getString(5),
-                        rs.getString(6),
-                        rs.getString(7),
-                        rs.getInt(8),
-                        rs.getString(9));
+                return new User(
+                        rs.getInt("id"),
+                        rs.getInt("role"),
+                        rs.getString("user_name"),
+                        rs.getString("password"),
+                        rs.getString("phone"),
+                        rs.getString("email"),
+                        rs.getString("sur_name"),
+                        rs.getString("last_name"),
+                        rs.getString("hash"),
+                        rs.getInt("active")
+                );
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

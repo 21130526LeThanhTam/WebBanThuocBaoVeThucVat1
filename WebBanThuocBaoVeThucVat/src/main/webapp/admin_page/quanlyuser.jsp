@@ -305,7 +305,7 @@
                                 <th><a href=""><span class="material-icons">person</span></a></th>
                                 <th><%=a.getId()%>
                                 </th>
-                                <th><%=a.getUsername()%>
+                                <th><%=a.getUserName()%>
                                 </th>
                                 <th><%=a.getEmail()%>
                                 </th>
@@ -334,7 +334,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <p>Bạn có chắc muốn xóa <%=a.getUsername()%> ra khỏi danh sách ?</p>
+                                            <p>Bạn có chắc muốn xóa <%=a.getUserName()%> ra khỏi danh sách ?</p>
                                             <p class="text-warning"><small>Bấm "hủy" để dừng lại</small></p>
                                         </div>
                                         <div class="modal-footer">

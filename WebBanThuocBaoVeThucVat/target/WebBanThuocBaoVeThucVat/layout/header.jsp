@@ -86,10 +86,9 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="header__top__left">
-                        <ul>
-                            <li><i class="fa fa-envelope"></i> vuonpho@gmail.com</li>
-                            <li>Miễn phí giao hàng cho đơn đặt hàng trị giá trên 500.000đ</li>
-
+                        <ul class="d-flex align-items-center">
+                            <li class="d-flex align-items-center"><i class="fa fa-envelope"></i> vuonpho@gmail.com</li>
+                            <li class="d-flex align-items-center">Miễn phí giao hàng cho đơn đặt hàng trị giá trên 500.000đ</li>
                         </ul>
                     </div>
                 </div>
@@ -117,7 +116,7 @@
                                 <div class="header__top__right__social">
                                     <a class="#" href="logout"><i class="fa fa-user"></i> Đăng xuất </a>
                                 </div>
-                                <a class="#" href="user-profile.jsp"> Xin chào <%= auth.getUsername() %></a>
+                                <a class="#" href="user-profile.jsp"> Xin chào <%= auth.getUserName() %></a>
                             </div>
                             <% }else { %>
                             <div class="openBtn">

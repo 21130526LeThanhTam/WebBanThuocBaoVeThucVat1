@@ -36,7 +36,11 @@
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
     <link rel="stylesheet" href="assets/css/Log_Regis.css">
     <script src="js/log_reg.js" defer></script>
-
+    <style>
+        a{
+            text-decoration: none !important;
+        }
+    </style>
 </head>
 <body>
 <jsp:include page="layout/header.jsp"/>
