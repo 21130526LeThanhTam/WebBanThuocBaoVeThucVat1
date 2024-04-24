@@ -28,6 +28,7 @@ public class ThanhToanCL extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession(true);
         String action = request.getParameter("action");
         User user = (User) session.getAttribute("user");
@@ -54,6 +55,7 @@ public class ThanhToanCL extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession(true);
         ShoppingCart c = (ShoppingCart) session.getAttribute("cart");
         String action = request.getParameter("action");

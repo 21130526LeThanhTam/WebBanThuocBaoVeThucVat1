@@ -81,6 +81,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
+                <%if(!cartItems.isEmpty()){ %>
                 <div class="shoping__cart__table">
                     <table>
                         <thead>
@@ -134,6 +135,9 @@
                         </tbody>
                     </table>
                 </div>
+                <%}else{%>
+                <h2 class="text-xl-center">Bạn chưa thêm sản phẩm nào vào giỏ hàng</h2>
+                <% }%>
             </div>
         </div>
         <div class="row">
@@ -160,14 +164,16 @@
             </div>
             <div class="col-lg-6">
                 <form action="ThanhToanCL" method="get" class="shoping__checkout">
-                    <h5>Tổng số lượng hàng</h5>
+                    <h5>Số tiền cần thanh toán</h5>
                     <ul>
                         <li>Tạm tính <span><%=shoppingCart.getTotalPrice()%></span></li>
                         <li>Tổng <span><%=shoppingCart.getTotalPrice()%></span></li>
                     </ul>
                     <input type="hidden" name="action" value="checkout">
 <%--                    <a href="thanh-toan.jsp" class="primary-btn">TIẾN HÀNH THANH TOÁN</a>--%>
+                    <%if(!cartItems.isEmpty()){ %>
                     <button class="btn btn-success" type="submit">   TIẾN HÀNH THANH TOÁN </button>
+                    <%}%>
                 </form>
             </div>
         </div>

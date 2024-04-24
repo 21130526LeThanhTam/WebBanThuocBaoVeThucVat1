@@ -44,53 +44,55 @@
     <div class="container mt-5">
         <h2 class="mb-4">Lịch sử mua hàng</h2>
 
-        <div class="row mb-3">
-            <div class="col-md-2">
-                <h4>Ảnh</h4>
-            </div>
-            <div class="col-md-4">
-                <h4>Tên sản phẩm</h4>
-            </div>
-            <div class="col-md-2">
-                <h4>Số lượng</h4>
-            </div>
-            <div class="col-md-2">
-                <h4>Tổng giá</h4>
-            </div>
-            <div class="col-md-2">
-                <h4>Mã đơn hàng</h4>
-            </div>
-        </div>
-        <%
-            List<OrderDetail> details = (List<OrderDetail>) session.getAttribute("details");
-            if(!details.isEmpty()) {
-                for(OrderDetail detail : details) {
-                    OrdersDAO dao = new OrdersDAO();
-                    Products p = dao.findImageBy(detail.getProduct_id());
-                    Orders o = dao.findBy(detail.getOrder_id());
-        %>
-        <div class="row mb-3">
-            <div class="col-md-2">
-                <img src="<%=request.getServletContext().getContextPath()%>/<%=p.getImage()%>" width="100" height="100" alt="">
-            </div>
-            <div class="col-md-4">
-                <p><%=p.getProduct_name()%></p>
-            </div>
-            <div class="col-md-2">
-                <p><%=detail.getQuantity()%></p>
-            </div>
-            <div class="col-md-2">
-                <p><%=o.getTotalPrice()%>
-                </p>
-            </div>
-            <div class="col-md-2">
-                <p><%=detail.getOrder_id()%></p>
-            </div>
+        <table id="orderDetailsTable" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+            <tr>
+                <th>Ảnh</th>
+                <th>Tên sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Tổng giá</th>
+                <th>Mã đơn hàng</th>
+            </tr>
+            </thead>
+            <tbody>
+            <%
+                List<OrderDetail> details = (List<OrderDetail>) session.getAttribute("details");
+                if(!details.isEmpty()) {
+                    for(OrderDetail detail : details) {
+                        OrdersDAO dao = new OrdersDAO();
+                        Products p = dao.findImageBy(detail.getProduct_id());
+                        Orders o = dao.findBy(detail.getOrder_id());
+            %>
+            <tr>
+                <td><img src="<%=request.getServletContext().getContextPath()%>/<%=p.getImage()%>" width="100" height="100" alt=""></td>
+                <td><%=p.getProduct_name()%></td>
+                <td><%=detail.getQuantity()%></td>
+                <td><%=o.getTotalPrice()%></td>
+                <td><%=detail.getOrder_id()%></td>
+            </tr>
+            <%}} %>
+            </tbody>
+        </table>
 
-        </div>
-        <%}}%>
 
     </div>
 </main>
+<jsp:include page="layout/footer.jsp"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.0.5/datatables.min.css" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.0.5/datatables.min.js"></script>
+<script>
+    new DataTable('#orderDetailsTable', {
+    layout: {
+        bottomEnd: {
+            paging: {
+                boundaryNumbers: false
+            }
+        }
+    }
+});
+</script>
 </body>
 </html>

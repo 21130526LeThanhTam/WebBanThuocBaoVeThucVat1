@@ -45,7 +45,6 @@ public class OrderHistoryCL extends HttpServlet {
                 ordersId.add(o.getId());
             }
             List<OrderDetail> details = this.dao.getDetailsByOrder(ordersId);
-            System.out.println(details.size());
             session.setAttribute("details", details);
             request.getRequestDispatcher("history.jsp").forward(request, response);
         }
