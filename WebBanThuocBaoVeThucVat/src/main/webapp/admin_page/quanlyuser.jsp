@@ -51,7 +51,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-
+<style>
+   a{
+       text-decoration: none !important;
+   }
+</style>
 </head>
 <body>
 <div class="wrapper">
@@ -198,55 +202,6 @@
 
                     <jsp:include page="include/header_content.jsp"/>
 
-                    <%--                    <div class="col-10 col-md-6 col-lg-8 order-1 order-md-3">--%>
-                    <%--                        <div class="xp-profilebar text-right">--%>
-                    <%--                            <nav class="navbar p-0">--%>
-                    <%--                                <ul class="nav navbar-nav flex-row ml-auto">--%>
-                    <%--                                    <li class="dropdown nav-item active">--%>
-                    <%--                                        <a class="nav-link" href="#" data-toggle="dropdown">--%>
-                    <%--                                            <span class="material-icons">notifications</span>--%>
-                    <%--                                            <span class="notification">4</span>--%>
-                    <%--                                        </a>--%>
-                    <%--                                        <ul class="dropdown-menu">--%>
-                    <%--                                            <li><a href="#">You Have 4 New Messages</a></li>--%>
-                    <%--                                            <li><a href="#">You Have 4 New Messages</a></li>--%>
-                    <%--                                            <li><a href="#">You Have 4 New Messages</a></li>--%>
-                    <%--                                            <li><a href="#">You Have 4 New Messages</a></li>--%>
-                    <%--                                        </ul>--%>
-                    <%--                                    </li>--%>
-
-                    <%--                                    <li class="nav-item">--%>
-                    <%--                                        <a class="nav-link" href="#">--%>
-                    <%--                                            <span class="material-icons">question_answer</span>--%>
-                    <%--                                        </a>--%>
-                    <%--                                    </li>--%>
-
-                    <%--                                    <li class="dropdown nav-item">--%>
-                    <%--                                        <a class="nav-link" href="#" data-toggle="dropdown">--%>
-                    <%--                                            <span class="material-icons">person</span>--%>
-                    <%--                                        </a>--%>
-                    <%--                                        <ul class="dropdown-menu small-menu">--%>
-                    <%--                                            <li><a href="#">--%>
-                    <%--                                                <span class="material-icons">person_outline</span>--%>
-                    <%--                                                Profile--%>
-                    <%--                                            </a></li>--%>
-                    <%--                                            <li><a href="#">--%>
-                    <%--                                                <span class="material-icons">settings</span>--%>
-                    <%--                                                Settings--%>
-                    <%--                                            </a></li>--%>
-                    <%--                                            <li><a href="#">--%>
-                    <%--                                                <span class="material-icons">logout</span>--%>
-                    <%--                                                Logout--%>
-                    <%--                                            </a></li>--%>
-
-                    <%--                                        </ul>--%>
-                    <%--                                    </li>--%>
-
-
-                    <%--                                </ul>--%>
-                    <%--                            </nav>--%>
-                    <%--                        </div>--%>
-                    <%--                    </div>--%>
                 </div>
                 <div class="xp-breadcrumbbar text-center">
                     <h4 class="page-title">Quản lý <%= (roleInt2 == 1) ? "Nhân viên" : "Khách hàng" %>
@@ -260,7 +215,9 @@
             </div>
         </div>
         <!------top-navbar-end----------->
-
+        <%
+            String dialog = request.getAttribute("dialog")==null?"":request.getAttribute("dialog")+"";
+        %>
 
         <!------main-content-start----------->
 
@@ -279,18 +236,14 @@
                                         <i class="material-icons">&#xE147;</i>
                                         <span>Thêm người dùng</span>
                                     </a>
-                                    <%--                                    <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal">--%>
-                                    <%--                                        <i class="material-icons">&#xE15C;</i>--%>
-                                    <%--                                        <span>Xóa</span>--%>
-                                    <%--                                    </a>--%>
                                 </div>
                             </div>
                         </div>
 
-                        <table class="table table-striped table-hover">
+                        <table id="quanlyUserTable" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                             <tr>
-                                <th></th>
+
                                 <th>Mã</th>
                                 <th>Tên</th>
                                 <th>Email</th>
@@ -302,7 +255,7 @@
                             <tbody>
                             <% for (User a : dsUser) { %>
                             <tr>
-                                <th><a href=""><span class="material-icons">person</span></a></th>
+
                                 <th><%=a.getId()%>
                                 </th>
                                 <th><%=a.getUserName()%>
@@ -350,25 +303,6 @@
                             <%}%>
                             </tbody>
                         </table>
-                        <div class="clearfix">
-                            <div class="hint-text">showing <b>5</b> out of <b>25</b></div>
-                            <ul class="pagination">
-                                <li class="page-item disabled"><a href="#">Previous</a></li>
-                                <% for (int i = 1; i <= endPage; i++) {
-                                    String classValue = (tag == i) ? "page-item active" : "page-item";%>
-                                <li class="<%= classValue %>">
-                                    <a href="./maUser?roleID=<%=roleInt2%>&uid=<%=i%>" class="page-link"><%= i %>
-                                    </a>
-                                </li>
-                                <% } %>
-                                <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                            </ul>
-                        </div>
-                        <%--                                <li class="page-item "><a href="#" class="page-link">1</a></li>--%>
-                        <%--                                <li class="page-item "><a href="#" class="page-link">2</a></li>--%>
-                        <%--                                <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
-                        <%--                                <li class="page-item "><a href="#" class="page-link">4</a></li>--%>
-                        <%--                                <li class="page-item "><a href="#" class="page-link">5</a></li>--%>
                     </div>
                 </div>
 
@@ -383,16 +317,21 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form action="./insertUser" method="post" accept-charset="UTF-8">
+
+                            <form id="addUserForm" action="<%=request.getServletContext().getContextPath()%>/insertUser" method="post" accept-charset="UTF-8">
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label>Tên tài khoản</label>
-                                        <input type="text" name="username" class="form-control" required>
+                                        <label>
+                                            <input type="text" name="username" class="form-control" required>
+                                        </label>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col">
                                             <label>Họ</label>
-                                            <input type="text" name="lastname" class="form-control" required>
+                                            <label>
+                                                <input type="text" name="lastname" class="form-control" required>
+                                            </label>
                                         </div>
                                         <div class="col">
                                             <label>Tên(Nhập tên lót)</label>
@@ -428,66 +367,8 @@
                         </div>
                     </div>
                 </div>
-
-                <!----edit-modal end--------->
-
-
-                <!----edit-modal start--------->
-                <%--                <div class="modal fade" tabindex="-1" id="editEmployeeModal" role="dialog">--%>
-                <%--                    <div class="modal-dialog" role="document">--%>
-                <%--                        <div class="modal-content">--%>
-                <%--                            <div class="modal-header">--%>
-                <%--                                <h5 class="modal-title">Edit Employees</h5>--%>
-                <%--                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
-                <%--                                    <span aria-hidden="true">&times;</span>--%>
-                <%--                                </button>--%>
-                <%--                            </div>--%>
-                <%--                                <div class="modal-body">--%>
-                <%--                                    <div class="form-group">--%>
-                <%--                                        <label>Tên</label>--%>
-                <%--                                        <input type="text" name="name" class="form-control" required>--%>
-                <%--                                    </div>--%>
-                <%--                                    <div class="form-group">--%>
-                <%--                                        <label>Email</label>--%>
-                <%--                                        <input type="email" name="email" class="form-control" required>--%>
-                <%--                                    </div>--%>
-                <%--                                    <div class="form-group">--%>
-                <%--                                        <label>Mật khẩu</label>--%>
-                <%--                                        <input type="password" name="pass"  class="form-control" required>--%>
-                <%--                                    </div>--%>
-                <%--                                    <div class="form-group">--%>
-                <%--                                        <label>Vai trò</label>--%>
-                <%--                                        <select class="form-control" name="role" required>--%>
-                <%--                                            <option value="user" >User</option>--%>
-                <%--                                            <option value="admin">Admin</option>--%>
-                <%--                                        </select>--%>
-                <%--                                    </div>--%>
-                <%--                                </div>--%>
-                <%--                                <div class="modal-footer">--%>
-                <%--                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>--%>
-                <%--                                    <button type="button" class="btn btn-success" id="saveButton">Lưu</button>--%>
-                <%--                                </div>--%>
-                <%--                        </div>--%>
-                <%--                    </div>--%>
-                <%--                </div>--%>
-
-
-                <!----edit-modal end--------->
-
-
-                <!----delete-modal start--------->
-
-                <!----edit-modal end--------->
-
-
             </div>
         </div>
-
-        <!------main-content-end----------->
-
-
-        <!----footer-design------------->
-
         <footer class="footer">
             <div class="container-fluid">
                 <div class="footer-in">
@@ -501,18 +382,57 @@
 
 </div>
 
-
-<!-------complete html----------->
-
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<%--<script src="js/adminJS/jquery-3.3.1.slim.min.js"></script>--%>
 <script src="admin_page/js/adminJS/jquery-3.3.1.slim.min.js"></script>
 <script src="admin_page/js/adminJS/popper.min.js"></script>
 <script src="admin_page/js/adminJS/jquery-3.3.1.min.js"></script>
 <script src="admin_page/js/adminJS/bootstrap.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.0.5/datatables.min.css" rel="stylesheet">
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.0.5/datatables.min.js"></script>
+<script>
+    new DataTable('#quanlyUserTable', {
+        layout: {
+            bottomEnd: {
+                paging: {
+                    boundaryNumbers: false
+                }
+            }
+        }
+    });
+    $(document).ready(function(){
+        $('#addUserForm').submit(function(e){
+            e.preventDefault(); // Ngăn chặn việc gửi biểu mẫu một cách thông thường
+            $.ajax({
+                type: "POST",
+                url: $(this).attr('action'), // URL của biểu mẫu
+                data: $(this).serialize(), // Dữ liệu biểu mẫu được gửi đi
+                success: function(response){
+                    // Xử lý phản hồi từ máy chủ
+                    // Ví dụ: Hiển thị thông báo thành công, làm mới bảng người dùng, vv.
+                },
+                error: function(){
+                    // Xử lý lỗi nếu có
+                }
+            });
+        });
+    });
+    // function deleteUser(userId, tag, roleInt) {
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "./deleteUser", // URL để xóa người dùng
+    //         data: { userId: userId, tag: tag, roleInt: roleInt }, // Dữ liệu gửi đi (id của người dùng cần xóa)
+    //         success: function(response){
+    //             // Xử lý phản hồi từ máy chủ
+    //             // Ví dụ: Hiển thị thông báo thành công, làm mới bảng người dùng, vv.
+    //         },
+    //         error: function(){
+    //             // Xử lý lỗi nếu có
+    //         }
+    //     });
+    // }
+</script>
 
 <script type="text/javascript">
     $(document).ready(function () {

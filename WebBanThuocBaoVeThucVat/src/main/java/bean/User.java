@@ -125,5 +125,21 @@ public class User {
             return "Khóa tài khoản";
         }
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", role=" + role +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", surName='" + surName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", hash='" + hash + '\'' +
+                ", active=" + active +
+                '}';
+    }
 }
 
