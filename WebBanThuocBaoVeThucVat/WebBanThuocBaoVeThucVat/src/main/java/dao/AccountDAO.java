@@ -37,7 +37,7 @@ public class AccountDAO {
     }
     //int id, String username, String password, String phone, String email, String surname, String lastname, int role, String hash) {
     public static User login(String email, String pass){
-        String sql = "select id, role,username, password, phone, email, surname, lastname, hash, active from users where email = ? and password = ? and active = 1";
+        String sql = "SELECT id, role, user_name, password, phone, email, sur_name, last_name, hash, active FROM users WHERE email = ? AND password = ? AND active = 1";
         Connection conn = DBContext.getConnection();
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -45,16 +45,18 @@ public class AccountDAO {
             ps.setString(2, pass);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                return new User(rs.getInt(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getString(4),
-                        rs.getString(5),
-                        rs.getString(6),
-                        rs.getString(7),
-                        rs.getInt(8),
-                        rs.getString(9));
-
+                return new User(
+                        rs.getInt("id"),
+                        rs.getInt("role"),
+                        rs.getString("user_name"),
+                        rs.getString("password"),
+                        rs.getString("phone"),
+                        rs.getString("email"),
+                        rs.getString("sur_name"),
+                        rs.getString("last_name"),
+                        rs.getString("hash"),
+                        rs.getInt("active")
+                );
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -138,28 +140,6 @@ public class AccountDAO {
         return null;
     }
 
-//    public String loginGoogle(String email,String username,String surname,String lastname,String hash,String picture){
-//        String sql = "insert into users(user_name, password, phone, email, sur_name, last_name, hash, role, active) values (?,?,?,?,?,?,?,0,0)";
-//        Connection conn = DBContext.getConnection();
-//        try {
-//            PreparedStatement ps = conn.prepareStatement(sql);
-//            ps.setString(1, username);
-//            ps.setString(2, pass);
-//            ps.setString(3, phone);
-//            ps.setString(4, email);
-//            ps.setString(5, surname);
-//            ps.setString(6, lastname);
-//            ps.setString(7, hash);
-//            int i = ps.executeUpdate();
-//            if(i != 0){
-//                return "success";
-//            }
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//        return null;
-//    }
-
 
     public String activeAccount(String email, String hash){
         Connection con = DBContext.getConnection();
@@ -213,6 +193,6 @@ public class AccountDAO {
     }
 
     public static void main(String[] args) {
-        System.out.println(AccountDAO.getInstance().checExistUser("abc@gmail.com"));
+//        System.out.println(AccountDAO.login("abc@gmail.com","4297f44b13955235245b2497399d7a93"));
     }
 }

@@ -46,6 +46,7 @@
                     <li><a href="./maUser?roleID=0&uid=1">Quản lý khách hàng</a></li>
                     <li><a href="./maUser?roleID=1&uid=1">Quản lý nhân viên</a></li>
                     <li><a href="#">Chủ cửa hàng</a></li>
+                    <li><a href="./logAdmin">Lịch sử hoạt động</a></li>
                 </ul>
             </li>
 

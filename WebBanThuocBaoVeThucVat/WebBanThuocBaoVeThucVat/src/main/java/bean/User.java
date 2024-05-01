@@ -1,9 +1,10 @@
 package bean;
 
+import log.IModel;
+
 import java.util.Date;
 
-public class User {
-
+public class User implements IModel {
     private int id, role,active;
     private String username, password, phone, email, surname, lastname,hash,picture;
     private Date createAt,updateAt;
@@ -193,5 +194,24 @@ public class User {
                 ", updateAt=" + updateAt +
                 '}';
     }
+    @Override
+    public String getTable() {
+        return "User";
+    }
+
+    @Override
+    public String beforeData() {
+        return this.toString();
+    }
+
+    @Override
+    public String afterData() {
+        return this.toString();
+    }
+
+    public static void main(String[] args) {
+
+    }
+
 }
 

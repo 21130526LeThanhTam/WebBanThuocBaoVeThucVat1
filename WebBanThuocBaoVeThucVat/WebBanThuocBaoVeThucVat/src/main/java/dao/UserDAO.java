@@ -3,6 +3,7 @@ package dao;
 import bean.User;
 import db.DBContext;
 import db.JDBIConnector;
+import log.AbsDao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,8 +12,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class UserDAO {
-
+public class UserDAO extends AbsDao<User> {
     public String userChangeInfo(String surname, String lastname, String username, String phone,String email){
         Connection conn = DBContext.getConnection();
         String sql = "update users set surname=? , lastname=? , username=? , phone=? where email=?";
@@ -61,7 +61,7 @@ public class UserDAO {
   //2. lấy người dùng theo id. đã check
     public static User selectUser(int id){
         Optional<User> user = JDBIConnector.getJdbi().withHandle(handle ->
-                handle.createQuery("select id,username,password,phone,email,surname,lastname,role,hash,active from users where id = ?")
+                handle.createQuery("select id,user_name,password,phone,email,sur_name,last_name,role,hash,active from users where id = ?")
                         .bind(0, id)
                         .mapToBean(User.class).stream().findFirst());
         return user.isEmpty() ? null : user.get();
@@ -69,9 +69,9 @@ public class UserDAO {
 
 //    //3. lấy ra all user. đã check
     public static List<User> dsUsers(){
-        List<User> users = JDBIConnector.getJdbi().withHandle(handle ->
-                handle.createQuery("select id,username,password,phone,email,surname,lastname,role,hash,active from users").mapToBean(User.class).collect(Collectors.<User>toList()));
-        return users;
+        List<User> usersL = JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery("select id,user_name,password,phone,email,sur_name,last_name,role,hash,active from users").mapToBean(User.class).collect(Collectors.toList()));
+        return usersL;
     }
 //    //xóa ng dùng theo email.đã check
     public static void deleteUser(int id){// đã check
@@ -121,7 +121,7 @@ public class UserDAO {
    // lấy ra số lượng của của từng vai trò
     public static int numOfRole(int role,String search){
         Integer integer = JDBIConnector.getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT COUNT(*)  FROM users where role=? AND (lastname LIKE ? OR username LIKE ?)")
+                handle.createQuery("SELECT COUNT(*) FROM users where role=? AND (last_name LIKE ? OR user_name LIKE ?)")
                         .bind(0,role)
                         .bind(1, "%" + search + "%")
                         .bind(2, "%" + search + "%")
@@ -157,10 +157,10 @@ public class UserDAO {
     }
     public static List<User> listOfRoleWithSearch(int role, int index, String search) {
         List<User> users = JDBIConnector.getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT id, role, username, password, phone, email"+
-                                ",surname,lastname,hash\n" +
+                handle.createQuery("SELECT id, role, user_name, password, phone, email"+
+                                ",sur_name,last_name,hash\n" +
                                 "FROM users\n" +
-                                "WHERE role=? AND (lastname LIKE ? OR username LIKE ?)\n" +
+                                "WHERE role=? AND (last_name LIKE ? OR user_name LIKE ?)\n" +
                                 "ORDER BY id\n" +
                                 "LIMIT 5\n" +
                                 "OFFSET ? ")
@@ -172,17 +172,33 @@ public class UserDAO {
                         .collect(Collectors.toList()));
         return users;
     }
+    @Override
+    public int insert(User model) {
+        return super.insert(model);
+    }
 
+    @Override
+    public int update(User model) {
+        super.update(model);
+        return 1;
+    }
+
+    /**
+     *
+     * @param model
+     * @return
+     */
+
+    @Override
+    public int delete(User model) {
+        return super.delete(model);
+    }
 
     public static void main(String[] args) {
-//        for(User a: UserDAO.listOfRoleWithSearch(0,1,"")){
-//            System.out.println(a);
-//        }
-//        for(User a: UserDAO.listOfRole(0,1)){
-//            System.out.println(a);
-//        }
-//        UserDAO.updateUser("Trung Kiên","Nguyễn","TrKien","0932493567",1,8);
-//        System.out.println(UserDAO.numOfRole(0,"tu"));
-        UserDAO.insertUser("thDung@gmail.com","dfsdf","dfsd",1,"sdfs","dfg","0098238","",1);
+//        System.out.println(UserDAO.selectUser(2));
     }
+    //
+    // m run đi
+    // nếu m là ng tạo session link, ko sao ca
+    //nếu m truy cập qua session link, hãy tải jetbrains client
 }

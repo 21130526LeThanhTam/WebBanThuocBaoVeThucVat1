@@ -144,11 +144,11 @@ public class ProductsDao implements IProductsDao{
                         .execute()
         );
     }
-    // lấy ra danh sách toàn bộ sp.
+    // lấy ra danh sách toàn bộ sp.int id, int id_category, int id_discount, String product_name, String image, int price, String des, int status
     public static List<Products> numOfPro() {
         Jdbi jdbi = JDBIConnector.getJdbi();
         List<Products> findNewPro2 = jdbi.withHandle(handle -> {
-            String sql = "SELECT id, product_name, picture, price, id_category, quantity, status,specifications, des, create_at, activeDiscount FROM product" ;
+            String sql = "SELECT id, id_category, id_discount, product_name, image, price, des FROM products" ;
             return handle.createQuery(sql).mapToBean(Products.class).stream().collect(Collectors.toList());
         });
         return findNewPro2;
@@ -157,5 +157,6 @@ public class ProductsDao implements IProductsDao{
 
     public static void main(String[] args) {
 //        ProductsDao.insertProduct("zxc", "img/product/product-2.jpg", 123, 1, 123,1,"432", "123123");
+        System.out.println(ProductsDao.numOfPro());
     }
 }
