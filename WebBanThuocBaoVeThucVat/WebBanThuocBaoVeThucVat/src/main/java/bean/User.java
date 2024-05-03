@@ -11,6 +11,17 @@ public class User implements IModel {
 
     public User() {
     }
+
+    public User(int role, int active, String username, String password, String phone, String email, String surname, String lastname) {
+        this.role = role;
+        this.active = active;
+        this.username = username;
+        this.password = password;
+        this.phone = phone;
+        this.email = email;
+        this.surname = surname;
+        this.lastname = lastname;
+    }
     //id, role,user_name, password, phone, email, sur_name, last_name, hash, active.
 
     public User(int id, int role,  String username, String password, String phone, String email, String surname, String lastname, String hash,int active) {
@@ -194,6 +205,12 @@ public class User implements IModel {
                 ", updateAt=" + updateAt +
                 '}';
     }
+
+
+    public static void main(String[] args) {
+
+    }
+
     @Override
     public String getTable() {
         return "User";
@@ -208,10 +225,5 @@ public class User implements IModel {
     public String afterData() {
         return this.toString();
     }
-
-    public static void main(String[] args) {
-
-    }
-
 }
 

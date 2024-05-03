@@ -3,7 +3,7 @@ package dao;
 import bean.User;
 import db.DBContext;
 import db.JDBIConnector;
-import log.AbsDao;
+import log.AbstractDao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +12,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class UserDAO extends AbsDao<User> {
+public class UserDAO extends AbstractDao<User> {
+    private static UserDAO instance;
+    public static UserDAO getInstance(){
+        if(instance ==null) instance= new UserDAO();
+        return instance;
+    }
     public String userChangeInfo(String surname, String lastname, String username, String phone,String email){
         Connection conn = DBContext.getConnection();
         String sql = "update users set surname=? , lastname=? , username=? , phone=? where email=?";
@@ -99,9 +104,9 @@ public class UserDAO extends AbsDao<User> {
     //
 ////    UPDATE `users` SET `email`='dinhvu@gmail.com',`pass`='123dc',`name`='Dinh Vu',`role`=0 WHERE`id`=2;
     // thay đổi thông tin người dùng.
-    public static void updateUser(String surname,String lastname,String username,String phone,int active,int id) {
+        public static void updateUser(String surname,String lastname,String username,String phone,int active,int id) {
         JDBIConnector.getJdbi().useHandle(handle ->
-                handle.createUpdate("UPDATE users SET surname=?,lastname=?,username=?,phone=?,active=? WHERE id=?")
+                handle.createUpdate("UPDATE users SET sur_name=?,last_name=?,user_name=?,phone=?,active=? WHERE id=?")
                         .bind(0,surname)
                         .bind(1,lastname)
                         .bind(2,username)
@@ -172,33 +177,63 @@ public class UserDAO extends AbsDao<User> {
                         .collect(Collectors.toList()));
         return users;
     }
+
     @Override
-    public int insert(User model) {
-        return super.insert(model);
+    public boolean selectModel(int id) {
+        super.selectModel(id);
+
+        return true;
     }
 
     @Override
-    public int update(User model) {
-        super.update(model);
-        return 1;
+    public boolean insertModel(User model) {
+        Integer i =JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createUpdate("INSERT INTO users(role, user_name, phone,email, sur_name, last_name, active,password) VALUES (?,?,?,?,?,?,?,?)")
+                        .bind(0,model.getRole())
+                        .bind(1,model.getUsername())
+                        .bind(2,model.getPhone())
+                        .bind(3,model.getEmail())
+                        .bind(4,model.getSurname())
+                        .bind(5,model.getLastname())
+                        .bind(6,model.getActive())
+                        .bind(7,model.getPassword())
+                        .execute()
+        );
+        super.insertModel(model);
+        if(i==1){
+            return true;
+        }
+        return false;
     }
-
-    /**
-     *
-     * @param model
-     * @return
-     */
 
     @Override
-    public int delete(User model) {
-        return super.delete(model);
+    public boolean deleteModel(User model) {
+        super.deleteModel(model);
+        return true;
+    }
+    @Override
+    public boolean updateModel(User model) {
+        Integer i = JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createUpdate("UPDATE users SET sur_name=?,last_name=?,user_name=?,phone=?,active=? WHERE id=?")
+                        .bind(0,model.getSurname())
+                        .bind(1,model.getLastname())
+                        .bind(2,model.getUsername())
+                        .bind(3,model.getPhone())
+                        .bind(4,model.getActive())
+                        .bind(5,model.getId())
+                        .execute()
+        );
+
+        super.updateModel(model);
+        if(i==1) return true;
+        return false;
     }
 
+    //int id, int active, String username, String phone, String surname, String lastname
     public static void main(String[] args) {
-//        System.out.println(UserDAO.selectUser(2));
+        //int role, int active, String username, String password, String phone, String email, String surname, String lastname, String hash
+        User a= new User(2,1,"ll","324","32423","23423");
+        User b =new User(1,1,"ddd","sdfs","9084958","ad@gmail.com","dsfsd","dsf");
+        UserDAO.getInstance().insertModel(b);
     }
-    //
-    // m run đi
-    // nếu m là ng tạo session link, ko sao ca
-    //nếu m truy cập qua session link, hãy tải jetbrains client
 }

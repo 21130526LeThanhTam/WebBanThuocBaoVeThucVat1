@@ -29,7 +29,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 </head>
 <%User a = (User) request.getAttribute("user");
-    if (a==null) a=new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9), rs.getString(10));%>
+    if (a==null) a = new User();%>
 <body>
 <%--<% User user = (User) session.getAttribute("uslogin"); %>--%>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">

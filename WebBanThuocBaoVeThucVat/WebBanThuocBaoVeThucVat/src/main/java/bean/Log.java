@@ -1,8 +1,10 @@
 package bean;
 
+import log.IModel;
+
 import java.sql.Date;
 
-public class Log {
+public class Log implements IModel {
     private int id;
     private int ip;
     private String action;
@@ -98,5 +100,20 @@ public class Log {
 
     public void setUpdated_at(Date updated_at) {
         this.updated_at = updated_at;
+    }
+
+    @Override
+    public String getTable() {
+        return null;
+    }
+
+    @Override
+    public String beforeData() {
+        return null;
+    }
+
+    @Override
+    public String afterData() {
+        return null;
     }
 }
