@@ -10,40 +10,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4b7277f-3123-43a3-8334-fad619072ac6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/LogDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/log/AbstractDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/log/AbstractIModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/quanlyLog.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/userManager.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/Log.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/DeleteUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/DeleteUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/UserManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/UserManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/Admin/LogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/Admin/LogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/LogDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/LogDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/log/AbsDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/log/IDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/log/IDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/log/IModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/log/IModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/log/Logging.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/editUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/editUser.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/db/JDBIConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/db/JDBIConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/log/AbstractDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/log/AbstractDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/quanlyuser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/quanlyuser.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/test/java/dao/UserDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/test/java/dao/UserDAOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/layout/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/layout/header.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat.war" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bean/Log.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bean/Log.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bean/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bean/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/Admin/LogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/Admin/LogController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/LogDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/LogDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/UserDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/log/AbsDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/log/IDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/log/IDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/log/Logging.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/db/JDBIConnector.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/db/JDBIConnector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/log/AbstractDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/log/AbstractDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/admin_page/quanlyuser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/admin_page/quanlyuser.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/bean/Log.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/bean/Log.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/bean/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/bean/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/layout/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/layout/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/Admin/LogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/Admin/LogController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/LogDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/LogDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/UserDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/log/AbsDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/log/IDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/log/IDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/log/Logging.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/test-classes/dao/UserDAOTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/test-classes/dao/UserDAOTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/db/JDBIConnector.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/db/JDBIConnector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/log/AbstractDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/log/AbstractDao.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,10 +49,10 @@
         <option value="CSS File" />
         <option value="HTML File" />
         <option value="JUnit5 Test Class" />
-        <option value="Jsp File" />
         <option value="Interface" />
         <option value="JUnit3 Test Class" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -92,7 +85,7 @@
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;git-widget-placeholder&quot;: &quot;21130526-LeThanhTam&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/website/WebBanThuocBaoVeThucVat/WebBanThuocBaoVeThucVat&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Demo&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -115,6 +108,7 @@
       <recent name="C:\Users\Admin1\Documents\GitHub\WebBanThuocBaoVeThucVat\img\banner" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\website\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main\webapp" />
       <recent name="C:\Users\Admin1\Documents\GitHub\WebBanThuocBaoVeThucVat\css\admin" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -129,7 +123,20 @@
       <recent name="log" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.UserDAO">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.81">
+    <configuration name="LogDao" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dao.LogDao" />
+      <module name="WebBanThuocBaoVeThucVat" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UserDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="dao.UserDAO" />
       <module name="WebBanThuocBaoVeThucVat" />
@@ -186,22 +193,6 @@
       <option name="PACKAGE_NAME" value="dao" />
       <option name="MAIN_CLASS_NAME" value="dao.UserDAOTest" />
       <option name="METHOD_NAME" value="testUpdateModel" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserDaoTest.testInsert" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="WebBanThuocBaoVeThucVat" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="log.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="log" />
-      <option name="MAIN_CLASS_NAME" value="log.UserDaoTest" />
-      <option name="METHOD_NAME" value="testInsert" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -297,20 +288,20 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.LogDao" />
       <item itemvalue="Application.UserDAO" />
       <item itemvalue="JUnit.UserDAOTest.testSelectModel" />
       <item itemvalue="JUnit.UserDAOTest.testUpdateModel" />
       <item itemvalue="JUnit.UserDAOTest.testUpdate" />
-      <item itemvalue="JUnit.UserDaoTest.testInsert" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.81" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.UserDAO" />
+        <item itemvalue="Application.LogDao" />
         <item itemvalue="JUnit.UserDAOTest.testUpdateModel" />
         <item itemvalue="JUnit.UserDAOTest.testSelectModel" />
         <item itemvalue="JUnit.UserDAOTest.testUpdate" />
-        <item itemvalue="JUnit.UserDaoTest.testInsert" />
       </list>
     </recent_temporary>
   </component>
@@ -358,7 +349,26 @@
       <workItem from="1714553271972" duration="13724000" />
       <workItem from="1714638755994" duration="9895000" />
       <workItem from="1714665046031" duration="7843000" />
-      <workItem from="1714708640365" duration="13335000" />
+      <workItem from="1714708640365" duration="15454000" />
+      <workItem from="1714805641281" duration="6282000" />
+      <workItem from="1714813146372" duration="456000" />
+      <workItem from="1714814943503" duration="2104000" />
+      <workItem from="1714818103520" duration="68000" />
+      <workItem from="1714818225460" duration="9076000" />
+      <workItem from="1714830462339" duration="1418000" />
+      <workItem from="1714834257903" duration="439000" />
+      <workItem from="1714842318128" duration="45000" />
+      <workItem from="1714844688596" duration="138000" />
+      <workItem from="1714868296635" duration="379000" />
+      <workItem from="1714905880493" duration="848000" />
+      <workItem from="1714908211048" duration="2417000" />
+      <workItem from="1714915286549" duration="3105000" />
+      <workItem from="1715140296659" duration="103000" />
+      <workItem from="1715140593308" duration="120000" />
+      <workItem from="1715141190424" duration="369000" />
+      <workItem from="1715245257502" duration="4477000" />
+      <workItem from="1715444889361" duration="8000" />
+      <workItem from="1715444974137" duration="607000" />
     </task>
     <servers />
   </component>

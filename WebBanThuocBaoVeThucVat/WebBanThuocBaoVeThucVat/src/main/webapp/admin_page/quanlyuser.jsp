@@ -22,26 +22,11 @@
 <% int endPage = (int) request.getAttribute("endPage");%>
 <html>
 <head>
-    <!-- Required meta tags -->
-    <%--    <meta charset="utf-8">--%>
-    <%--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">--%>
-    <%--    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">--%>
-    <%--    <title>Quản lý người dùng</title>--%>
-    <%--    <!-- Bootstrap CSS -->--%>
-    <%--    <link rel="stylesheet" href="admin_page/css/bootstrap.min.admin.css">--%>
-    <%--    <link rel="stylesheet" href="admin_page/css/custom.css">--%>
-
-
-    <%--    <!--google fonts -->--%>
-    <%--    <link rel="preconnect" href="https://fonts.googleapis.com">--%>
-    <%--    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>--%>
-    <%--    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">--%>
-
-    <%--    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">--%>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <title>Quản lý người dùng</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/logo.png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="admin_page/css/bootstrap.min.admin.css">
     <link rel="stylesheet" href="admin_page/css/custom.css">
@@ -52,6 +37,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        a {
+            text-decoration: none;
+        }
+        /*.col-md-auto .dt-search {*/
+        /*    padding-right: 20px;*/
+        /*}*/
+        .col-md-auto .form-control {
+            background-color: whitesmoke;
+        }
+    </style>
 </head>
 <body>
 <div class="wrapper">
@@ -313,8 +309,7 @@
                                 <th><%=a.roleString()%>
                                 </th>
                                 <th>
-                                    <a href="./editUser?userID=<%=a.getId()%>&tag=<%=tag%>&role=<%=roleInt2%>"
-                                       class="edit">
+                                    <a href="#editEmployeeModal<%=a.getId()%>" class="edit" data-toggle="modal">
                                         <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
                                     </a>
                                     <a href="#deleteEmployeeModal<%=a.getId()%>" class="delete" data-toggle="modal">
@@ -346,29 +341,47 @@
                                     </div>
                                 </div>
                             </div>
+                            <!--Thêm người dùng-->
+                            <div class="modal fade" tabindex="-1" id="editEmployeeModal<%=a.getId()%>" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Edit Employees</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label>Tên</label>
+                                                <input type="text" name="name" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Email</label>
+                                                <input type="email" name="email" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Mật khẩu</label>
+                                                <input type="password" name="pass"  class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Vai trò</label>
+                                                <select class="form-control" name="role" required>
+                                                    <option value="user" >User</option>
+                                                    <option value="admin">Admin</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                            <button type="button" class="btn btn-success" id="saveButton">Lưu</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <%}%>
                             </tbody>
                         </table>
-<%--                        <div class="clearfix">--%>
-<%--                            <div class="hint-text">showing <b>5</b> out of <b>25</b></div>--%>
-<%--                            <ul class="pagination">--%>
-<%--                                <li class="page-item disabled"><a href="#">Previous</a></li>--%>
-<%--                                <% for (int i = 1; i <= endPage; i++) {--%>
-<%--                                    String classValue = (tag == i) ? "page-item active" : "page-item";%>--%>
-<%--                                <li class="<%= classValue %>">--%>
-<%--                                    <a href="./maUser?roleID=<%=roleInt2%>&uid=<%=i%>" class="page-link"><%= i %>--%>
-<%--                                    </a>--%>
-<%--                                </li>--%>
-<%--                                <% } %>--%>
-<%--                                <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
-<%--                            </ul>--%>
-<%--                        </div>--%>
-
-                        <%--                                <li class="page-item "><a href="#" class="page-link">1</a></li>--%>
-                        <%--                                <li class="page-item "><a href="#" class="page-link">2</a></li>--%>
-                        <%--                                <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
-                        <%--                                <li class="page-item "><a href="#" class="page-link">4</a></li>--%>
-                        <%--                                <li class="page-item "><a href="#" class="page-link">5</a></li>--%>
                     </div>
                 </div>
 
@@ -433,44 +446,43 @@
 
 
                 <!----edit-modal start--------->
-                <%--                <div class="modal fade" tabindex="-1" id="editEmployeeModal" role="dialog">--%>
-                <%--                    <div class="modal-dialog" role="document">--%>
-                <%--                        <div class="modal-content">--%>
-                <%--                            <div class="modal-header">--%>
-                <%--                                <h5 class="modal-title">Edit Employees</h5>--%>
-                <%--                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
-                <%--                                    <span aria-hidden="true">&times;</span>--%>
-                <%--                                </button>--%>
-                <%--                            </div>--%>
-                <%--                                <div class="modal-body">--%>
-                <%--                                    <div class="form-group">--%>
-                <%--                                        <label>Tên</label>--%>
-                <%--                                        <input type="text" name="name" class="form-control" required>--%>
-                <%--                                    </div>--%>
-                <%--                                    <div class="form-group">--%>
-                <%--                                        <label>Email</label>--%>
-                <%--                                        <input type="email" name="email" class="form-control" required>--%>
-                <%--                                    </div>--%>
-                <%--                                    <div class="form-group">--%>
-                <%--                                        <label>Mật khẩu</label>--%>
-                <%--                                        <input type="password" name="pass"  class="form-control" required>--%>
-                <%--                                    </div>--%>
-                <%--                                    <div class="form-group">--%>
-                <%--                                        <label>Vai trò</label>--%>
-                <%--                                        <select class="form-control" name="role" required>--%>
-                <%--                                            <option value="user" >User</option>--%>
-                <%--                                            <option value="admin">Admin</option>--%>
-                <%--                                        </select>--%>
-                <%--                                    </div>--%>
-                <%--                                </div>--%>
-                <%--                                <div class="modal-footer">--%>
-                <%--                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>--%>
-                <%--                                    <button type="button" class="btn btn-success" id="saveButton">Lưu</button>--%>
-                <%--                                </div>--%>
-                <%--                        </div>--%>
-                <%--                    </div>--%>
-                <%--                </div>--%>
-
+<%--                <div class="modal fade" tabindex="-1" id="editEmployeeModal" role="dialog">--%>
+<%--                    <div class="modal-dialog" role="document">--%>
+<%--                        <div class="modal-content">--%>
+<%--                            <div class="modal-header">--%>
+<%--                                <h5 class="modal-title">Edit Employees</h5>--%>
+<%--                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
+<%--                                    <span aria-hidden="true">&times;</span>--%>
+<%--                                </button>--%>
+<%--                            </div>--%>
+<%--                            <div class="modal-body">--%>
+<%--                                <div class="form-group">--%>
+<%--                                    <label>Tên</label>--%>
+<%--                                    <input type="text" name="name" class="form-control" required>--%>
+<%--                                </div>--%>
+<%--                                <div class="form-group">--%>
+<%--                                    <label>Email</label>--%>
+<%--                                    <input type="email" name="email" class="form-control" required>--%>
+<%--                                </div>--%>
+<%--                                <div class="form-group">--%>
+<%--                                    <label>Mật khẩu</label>--%>
+<%--                                    <input type="password" name="pass"  class="form-control" required>--%>
+<%--                                </div>--%>
+<%--                                <div class="form-group">--%>
+<%--                                    <label>Vai trò</label>--%>
+<%--                                    <select class="form-control" name="role" required>--%>
+<%--                                        <option value="user" >User</option>--%>
+<%--                                        <option value="admin">Admin</option>--%>
+<%--                                    </select>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="modal-footer">--%>
+<%--                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>--%>
+<%--                                <button type="button" class="btn btn-success" id="saveButton">Lưu</button>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
 
                 <!----edit-modal end--------->
 
@@ -562,14 +574,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.0.5/datatables.min.js"></script>
 <script>
-    new DataTable('#quanlyUserTable', {
-        layout: {
-            bottomEnd: {
-                paging: {
-                    boundaryNumbers: false
-                }
-            }
-        }
+    let table=new DataTable('#quanlyUserTable', {
+        order: [[3, 'desc']],
+
     });
 </script>
 

@@ -208,6 +208,7 @@ public class UserDAO extends AbstractDao<User> {
 
     @Override
     public boolean deleteModel(User model) {
+
         super.deleteModel(model);
         return true;
     }
@@ -233,7 +234,7 @@ public class UserDAO extends AbstractDao<User> {
     public static void main(String[] args) {
         //int role, int active, String username, String password, String phone, String email, String surname, String lastname, String hash
         User a= new User(2,1,"ll","324","32423","23423");
-        User b =new User(1,1,"ddd","sdfs","9084958","ad@gmail.com","dsfsd","dsf");
+        User b =new User(1,1,"Son","4297f44b13955235245b2497399d7a93","0123456789","Son@gmail.com","Son","dsf");
         UserDAO.getInstance().insertModel(b);
     }
 }

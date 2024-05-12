@@ -166,6 +166,12 @@
                             <span class="cart-word" style="font-weight: bold;">Giỏ hàng</span>
                             <li><i class="fa-solid fa-cart-shopping"></i> <span><%=shoppingCart.getSize()%></span></li>
                         </ul>
+                        <!--có thể xóa-->
+                        <ul>
+                            <span class="cart-word" style="font-weight: bold;">Giỏ hàng</span>
+                            <li><i class="fa-solid fa-cart-shopping"></i> <span>1</span></li>
+                        </ul>
+                        <!--có thể xóa-->
                     </a>
                 </div>
             </div>
