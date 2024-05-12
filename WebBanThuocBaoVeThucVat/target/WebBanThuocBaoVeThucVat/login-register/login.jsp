@@ -19,16 +19,43 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Boxicons CSS -->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#btnLogin').click(function () {
+                var email = $('#email').val();
+                var password = $('#password').val();
+                $.ajax({
+                    type: 'POST',
+                    data: {
+                        email: email,
+                        password: password
+                    },
+                    url:'login',
+                    success: function (result) {
+                        var data = JSON.parse(result);
+                        if (data.error) {
+                            $('#errorLogin').html(data.error);
+
+                        }
+                        else if (data.role===1)  window.location.href = "admin_dashboard";
+                        else if(data.role===0) window.location.href ="HomePageController";
+
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <body>
 <section class="container forms">
     <div class="form login">
         <div class="form-content">
             <header>Login</header>
-            <form action="login" method="post">
+            <form>
                 <% String error = (String) session.getAttribute("errorlogin"); %>
                 <% if(error != null){ %>
-                <p class="text-danger"><%= error %></p>
+
                 <% } %>
                 <% String passF = (String) session.getAttribute("passF"); %>
                 <% if(passF != null){ %>
@@ -39,10 +66,10 @@
                 <p class="text-success"><%= reg %></p>
                 <% } %>
                 <div class="field input-field">
-                    <input name="email" type="email" placeholder="Email" class="input">
+                    <input name="email" type="email" placeholder="Email" class="input" id="email">
                 </div>
                 <div class="field input-field">
-                    <input name="password" type="password" placeholder="Mật khẩu" class="password">
+                    <input name="password" type="password" placeholder="Mật khẩu" class="password" id="password">
                     <i class='bx bx-hide eye-icon'></i>
                 </div>
                 <div class="form-link">
@@ -54,9 +81,10 @@
                             <i class="fab fa-google mr-2"></i> Login with Google
                         </button>
                     </a>
-                 </div>
+                </div>
+                <span class="text-danger" id="errorLogin"></span><br>
                 <div class="field button-field">
-                    <button>Đăng nhập</button>
+                    <input type="button" value="Đăng nhập" id="btnLogin">
                 </div>
             </form>
             <div class="form-link">
@@ -65,17 +93,16 @@
         </div>
     </div>
 </section>
-<script src="login-register/js/signup_signin.js">
-    function validatePassword() {
-        var passwordInput = document.getElementById("password");
-        var password = passwordInput.value;
-        if (password.length < 6) {
-            alert("Password must be at least 6 characters long.");
-            return false; // Prevent form submission
-        }
-        return true; // Allow form submission
-    }
-</script>
-
+<%--<script src="../login-register/js/signup_signin.js">--%>
+<%--    function validatePassword() {--%>
+<%--        var passwordInput = document.getElementById("password");--%>
+<%--        var password = passwordInput.value;--%>
+<%--        if (password.length < 6) {--%>
+<%--            alert("Password must be at least 6 characters long.");--%>
+<%--            return false; // Prevent form submission--%>
+<%--        }--%>
+<%--        return true; // Allow form submission--%>
+<%--    }--%>
+<%--</script>--%>
 </body>
 </html>

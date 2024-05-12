@@ -312,7 +312,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Thêm thành viên</h5>
+                                <h5 class="modal-title">Thêm thành viênbnnnnnnnnnn</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -361,7 +361,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                                    <button type="submit" class="btn btn-success">Thêm</button>
+                                    <button type="submit" class="btn btn-success">Thêm aaa</button>
                                 </div>
                             </form>
                         </div>
@@ -418,20 +418,19 @@
             });
         });
     });
-    // function deleteUser(userId, tag, roleInt) {
-    //     $.ajax({
-    //         type: "POST",
-    //         url: "./deleteUser", // URL để xóa người dùng
-    //         data: { userId: userId, tag: tag, roleInt: roleInt }, // Dữ liệu gửi đi (id của người dùng cần xóa)
-    //         success: function(response){
-    //             // Xử lý phản hồi từ máy chủ
-    //             // Ví dụ: Hiển thị thông báo thành công, làm mới bảng người dùng, vv.
-    //         },
-    //         error: function(){
-    //             // Xử lý lỗi nếu có
-    //         }
-    //     });
-    // }
+    function deleteUser(userId, tag, roleInt) {
+        $.ajax({
+            type: "POST",
+            url: "./deleteUser", // URL để xóa người dùng
+            data: { userId: userId, tag: tag, roleInt: roleInt }, // Dữ liệu gửi đi (id của người dùng cần xóa)
+            success: function(response){
+                alert("Người dùng đã được xóa thành công!");
+            },
+            error: function(){
+                // Xử lý lỗi nếu có
+            }
+        });
+    }
 </script>
 
 <script type="text/javascript">

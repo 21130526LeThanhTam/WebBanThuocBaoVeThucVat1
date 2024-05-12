@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet(urlPatterns = {"/login"})
 public class LoginControl extends HttpServlet {
@@ -24,42 +25,42 @@ public class LoginControl extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/plain; charset=utf-8");
+        PrintWriter out = resp.getWriter();
         String email = req.getParameter("email");
         String pass = req.getParameter("password");
-
-        String newPword = DigestUtils.md5DigestAsHex(pass.getBytes());
-
-        User user = new User();
-
-        AccountDAO acc = new AccountDAO();
-
-        HttpSession session = req.getSession();
-
-        if((email == null || email.isEmpty()) || (pass == null || pass.isEmpty())){
-            String error = "Không để trống thông tin đăng nhập";
-            session.setAttribute("errorlogin", error);
-            resp.sendRedirect("login");
-        }else if((email != null || !email.isEmpty()) && (pass != null || !pass.isEmpty())) {
-            user = AccountDAO.login(email, newPword);
+        if (email == null || email.isEmpty() || pass == null || pass.isEmpty()){
+            out.println("{\"error\":\"Tài khoản hoặc mật khẩu không được để trống.\"}");
+////            resp.sendRedirect("login");
+        } else {
+            User user = AccountDAO.login(email, DigestUtils.md5DigestAsHex(pass.getBytes()));
             if (user == null) {
-                String error = "Tài khoản hoặc mật khẩu không đúng,vui lòng kiểm tra lại.";
-                session.setAttribute("errorlogin", error);
-                resp.sendRedirect("login");
+                out.println("{\"error\":\"Tài khoản hoặc mật khẩu không đúng, vui lòng kiểm tra lại.\"}");
+////                resp.sendRedirect("login");
             } else {
-//                session.setAttribute("uslogin", user);
-                session.removeAttribute("errorlogin");
-                // phân quyền để chuyển trang
+                HttpSession session = req.getSession();
                 if (user.getRole() == 0) {
-                session.setAttribute("user", user);
-//                    session.removeAttribute("passF");
-                    resp.sendRedirect("HomePageController");
+                    session.setAttribute("user", user);
+                    out.println("{\"role\":0}");
+                } else if (user.getRole() == 1) {
+                    session.setAttribute("admin", user);
+                    out.println("{\"role\":1}");
                 }
-                if (user.getRole() == 1) {
-                session.setAttribute("admin", user);
-                    resp.sendRedirect("admin_dashboard");
-                }
+
+////                session.setAttribute("uslogin", user);
+////                session.removeAttribute("errorlogin");
+//                // phân quyền để chuyển trang
+//                if (user.getRole() == 0) {
+//                    session.setAttribute("user", user);
+////                    session.removeAttribute("passF");
+//                    resp.sendRedirect("HomePageController");
+//                }
+//                if (user.getRole() == 1) {
+//                    session.setAttribute("admin", user);
+//                    resp.sendRedirect("admin_dashboard");
+//                }
             }
+            out.close();
         }
     }
-
 }
