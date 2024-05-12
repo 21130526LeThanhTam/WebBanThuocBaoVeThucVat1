@@ -17,6 +17,13 @@ import java.io.PrintWriter;
 
 @WebServlet(urlPatterns = {"/login"})
 public class LoginControl extends HttpServlet {
+    private static int count;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        count = 0;
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -35,8 +42,15 @@ public class LoginControl extends HttpServlet {
         } else {
             User user = AccountDAO.login(email, DigestUtils.md5DigestAsHex(pass.getBytes()));
             if (user == null) {
-                out.println("{\"error\":\"Tài khoản hoặc mật khẩu không đúng, vui lòng kiểm tra lại.\"}");
+                count++;
+                if(count==5) {
+/*                    User user1 = AccountDAO.lockUser(email);*/
+                    out.println("{\"error\":\"Tài khoản cua ban da bi khoa\"}");
+                }
+                else {
+                    out.println("{\"error\":\"Tài khoản hoặc mật khẩu không đúng, vui lòng kiểm tra lại.\"}");
 ////                resp.sendRedirect("login");
+                }
             } else {
                 HttpSession session = req.getSession();
                 if (user.getRole() == 0) {

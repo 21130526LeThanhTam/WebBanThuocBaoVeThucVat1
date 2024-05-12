@@ -22,27 +22,36 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#btnLogin').click(function () {
+            $('#btnLogin').click(function (event) {
+                event.preventDefault(); // Prevent the default form submission.
                 var email = $('#email').val();
                 var password = $('#password').val();
-                $.ajax({
-                    type: 'POST',
-                    data: {
-                        email: email,
-                        password: password
-                    },
-                    url:'login',
-                    success: function (result) {
-                        var data = JSON.parse(result);
-                        if (data.error) {
-                            $('#errorLogin').html(data.error);
+                var response = grecaptcha.getResponse();
 
+                if (response.length === 0) {
+                    $('#errorLogin').html("Please verify that you are not a robot.");
+                } else {
+                    $.ajax({
+                        type: 'POST',
+                        data: {
+                            email: email,
+                            password: password,
+                            'g-recaptcha-response': response
+                        },
+                        url: 'login',
+                        success: function (result) {
+                            var data = JSON.parse(result);
+                            if (data.error) {
+                                $('#errorLogin').html(data.error);
+                            }
+                            else if (data.role === 1) {
+                                window.location.href = "admin_dashboard";
+                            } else if (data.role === 0) {
+                                window.location.href = "HomePageController";
+                            }
                         }
-                        else if (data.role===1)  window.location.href = "admin_dashboard";
-                        else if(data.role===0) window.location.href ="HomePageController";
-
-                    }
-                });
+                    });
+                }
             });
         });
     </script>
@@ -52,7 +61,7 @@
     <div class="form login">
         <div class="form-content">
             <header>Login</header>
-            <form>
+            <form id="form">
                 <% String error = (String) session.getAttribute("errorlogin"); %>
                 <% if(error != null){ %>
 
@@ -82,27 +91,40 @@
                         </button>
                     </a>
                 </div>
-                <span class="text-danger" id="errorLogin"></span><br>
                 <div class="field button-field">
-                    <input type="button" value="Đăng nhập" id="btnLogin">
+                    <div class="g-recaptcha" data-sitekey="6LeWqNkpAAAAANkqcg0zDmNz90pyG4FOLP4QiDQv"></div>
+                    <span class="text-danger" id="errorLogin"></span><br>
+                    <input type="submit" value="Đăng nhập" id="btnLogin">
                 </div>
             </form>
+            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+            <script>
+                window.onload = function() {
+                    const form = document.getElementById("form");
+                    const error = document.getElementById("errorLogin");
+
+                    form.addEventListener("submit", function (event){
+                        event.preventDefault(); // Keep this to ensure the form does not submit traditionally.
+                        // Now the reCAPTCHA validation is handled in the AJAX call as above.
+                    });
+                }
+            </script>
             <div class="form-link">
                 <span>Chưa có tài khoản? <a href="signup" class="<%-- link signup-link --%>">Đăng ký</a></span>
             </div>
         </div>
     </div>
 </section>
-<%--<script src="../login-register/js/signup_signin.js">--%>
-<%--    function validatePassword() {--%>
-<%--        var passwordInput = document.getElementById("password");--%>
-<%--        var password = passwordInput.value;--%>
-<%--        if (password.length < 6) {--%>
-<%--            alert("Password must be at least 6 characters long.");--%>
-<%--            return false; // Prevent form submission--%>
-<%--        }--%>
-<%--        return true; // Allow form submission--%>
-<%--    }--%>
-<%--</script>--%>
+<script src="../login-register/js/signup_signin.js">
+    function validatePassword() {
+        var passwordInput = document.getElementById("password");
+        var password = passwordInput.value;
+        if (password.length < 6) {
+            alert("Password must be at least 6 characters long.");
+            return false; // Prevent form submission
+        }
+        return true; // Allow form submission
+    }
+</script>
 </body>
 </html>
