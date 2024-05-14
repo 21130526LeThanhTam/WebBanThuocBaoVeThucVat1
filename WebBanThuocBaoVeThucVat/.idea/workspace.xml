@@ -10,30 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4b7277f-3123-43a3-8334-fad619072ac6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2024_6_13_PM_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2024_6_13_PM__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2024_6_16_PM_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2024_6_16_PM_[Changes]1/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2024_6_16_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/LoginControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/LoginControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/AccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/AccountDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/LogDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/LogDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/log/AbstractDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/log/AbstractDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/log/IDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/log/IDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/test/java/dao/UserDAOTest.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat.war" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/LoginControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/LoginControl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/AccountDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/AccountDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/LogDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/LogDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/UserDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/log/AbstractDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/log/AbstractDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/log/IDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/log/IDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/LoginControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/LoginControl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/AccountDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/AccountDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/LogDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/LogDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/UserDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/log/AbstractDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/log/AbstractDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/log/IDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/log/IDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/test-classes/dao/UserDAOTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +38,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="21130514_VuTranThaiSon" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="LogFilters">
