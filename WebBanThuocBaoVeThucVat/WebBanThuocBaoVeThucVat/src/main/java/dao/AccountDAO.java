@@ -4,6 +4,7 @@ import Service.ProductsService;
 import bean.User;
 import db.DBContext;
 import db.JDBIConnector;
+import log.AbstractDao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
-public class AccountDAO {
+public class AccountDAO extends AbstractDao<User> {
     public AccountDAO() {
     }
 
@@ -36,33 +37,24 @@ public class AccountDAO {
         return -1;
     }
     //int id, String username, String password, String phone, String email, String surname, String lastname, int role, String hash) {
-    public static User login(String email, String pass){
+    public User login(String email, String pass, String ip, int level, String address,String action){
         String sql = "SELECT id, role, user_name, password, phone, email, sur_name, last_name, hash, active FROM users WHERE email = ? AND password = ? AND active = 1";
-        Connection conn = DBContext.getConnection();
-        try {
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, email);
-            ps.setString(2, pass);
-            ResultSet rs = ps.executeQuery();
-            while(rs.next()){
-                return new User(
-                        rs.getInt("id"),
-                        rs.getInt("role"),
-                        rs.getString("user_name"),
-                        rs.getString("password"),
-                        rs.getString("phone"),
-                        rs.getString("email"),
-                        rs.getString("sur_name"),
-                        rs.getString("last_name"),
-                        rs.getString("hash"),
-                        rs.getInt("active")
-                );
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return null;
+        User user = AccountDAO.getInstance().slectUserLogin(email,pass);
+        super.login(user, action, ip,level, address);
+        return user;
     }
+    public User slectUserLogin(String email, String pass){
+        String sql = "SELECT id, role, user_name, password, phone, email, sur_name, last_name, hash, active FROM users WHERE email = ? AND password = ? AND active = 1";
+        Optional<User> user = JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .bind(0, email)
+                        .bind(1, pass)
+                        .mapToBean(User.class)
+                        .stream()
+                        .findFirst());
+        return user.isEmpty() ? null : user.get();
+    }
+
 
 
     public User checkAccountExist(String email){
@@ -193,6 +185,6 @@ public class AccountDAO {
     }
 
     public static void main(String[] args) {
-//        System.out.println(AccountDAO.login("abc@gmail.com","4297f44b13955235245b2497399d7a93"));
+        AccountDAO.getInstance().login("abc@gmail.com","4297f44b13955235245b2497399d7a93","",4,"","Login");
     }
 }

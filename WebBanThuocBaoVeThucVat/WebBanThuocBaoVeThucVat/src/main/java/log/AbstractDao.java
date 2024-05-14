@@ -9,18 +9,24 @@ public abstract class AbstractDao<T extends IModel> implements IDao<T> {
         return false;
     }
     @Override
-    public boolean insertModel(T model) {
-        LogDao.getInstance().insertModel(model);
+    public boolean insertModel(T model,String ip, int level, String address) {
+        LogDao.getInstance().insertModel(model,ip,level,address);
         return true;
     }
     @Override
-    public boolean deleteModel(T model) {
-        LogDao.getInstance().deleteModel(model);
+    public boolean deleteModel(T model,String ip, int level, String address) {
+        LogDao.getInstance().deleteModel(model,ip,level,address);
         return true;
     }
     @Override
-    public boolean updateModel(T model) {
-        LogDao.getInstance().updateModel(model);
+    public boolean updateModel(T model,String ip, int level, String address) {
+        LogDao.getInstance().updateModel(model,ip,level,address);
+        return true;
+    }
+
+    @Override
+    public boolean login(T model, String action, String ip, int level, String address) {
+        LogDao.getInstance().login(model,action,ip,level,address);
         return true;
     }
 }

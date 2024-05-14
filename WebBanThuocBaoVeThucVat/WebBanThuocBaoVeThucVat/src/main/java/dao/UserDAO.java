@@ -186,7 +186,7 @@ public class UserDAO extends AbstractDao<User> {
     }
 
     @Override
-    public boolean insertModel(User model) {
+    public boolean insertModel(User model, String ip, int level, String address) {
         Integer i =JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createUpdate("INSERT INTO users(role, user_name, phone,email, sur_name, last_name, active,password) VALUES (?,?,?,?,?,?,?,?)")
                         .bind(0,model.getRole())
@@ -199,7 +199,7 @@ public class UserDAO extends AbstractDao<User> {
                         .bind(7,model.getPassword())
                         .execute()
         );
-        super.insertModel(model);
+        super.insertModel(model,ip,level,address);
         if(i==1){
             return true;
         }
@@ -207,13 +207,13 @@ public class UserDAO extends AbstractDao<User> {
     }
 
     @Override
-    public boolean deleteModel(User model) {
+    public boolean deleteModel(User model, String ip, int level, String address) {
 
-        super.deleteModel(model);
+        super.deleteModel(model,ip,level,address);
         return true;
     }
     @Override
-    public boolean updateModel(User model) {
+    public boolean updateModel(User model, String ip, int level, String address) {
         Integer i = JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createUpdate("UPDATE users SET sur_name=?,last_name=?,user_name=?,phone=?,active=? WHERE id=?")
                         .bind(0,model.getSurname())
@@ -225,7 +225,7 @@ public class UserDAO extends AbstractDao<User> {
                         .execute()
         );
 
-        super.updateModel(model);
+        super.updateModel(model,ip,level,address);
         if(i==1) return true;
         return false;
     }
@@ -235,6 +235,6 @@ public class UserDAO extends AbstractDao<User> {
         //int role, int active, String username, String password, String phone, String email, String surname, String lastname, String hash
         User a= new User(2,1,"ll","324","32423","23423");
         User b =new User(1,1,"Son","4297f44b13955235245b2497399d7a93","0123456789","Son@gmail.com","Son","dsf");
-        UserDAO.getInstance().insertModel(b);
+        UserDAO.getInstance().insertModel(b,"",1,"address");
     }
 }
