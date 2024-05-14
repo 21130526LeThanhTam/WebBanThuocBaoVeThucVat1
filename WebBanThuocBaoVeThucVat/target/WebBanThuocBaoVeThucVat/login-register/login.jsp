@@ -24,34 +24,45 @@
         $(document).ready(function() {
             $('#btnLogin').click(function (event) {
                 event.preventDefault(); // Prevent the default form submission.
+
                 var email = $('#email').val();
                 var password = $('#password').val();
-                var response = grecaptcha.getResponse();
 
-                if (response.length === 0) {
-                    $('#errorLogin').html("Please verify that you are not a robot.");
-                } else {
-                    $.ajax({
-                        type: 'POST',
-                        data: {
-                            email: email,
-                            password: password,
-                            'g-recaptcha-response': response
-                        },
-                        url: 'login',
-                        success: function (result) {
+                // Proceed with AJAX call first
+                $.ajax({
+                    type: 'POST',
+                    data: {
+                        email: email,
+                        password: password
+                    },
+                    url: 'login',
+                    success: function (result) {
+                        try {
                             var data = JSON.parse(result);
                             if (data.error) {
                                 $('#errorLogin').html(data.error);
+                            } else {
+                                // Check reCAPTCHA after successful user validation
+                                var response = grecaptcha.getResponse();
+                                if (response.length === 0) {
+                                    $('#errorLogin').html("Please verify that you are not a robot.");
+                                } else {
+                                    // Redirect based on user role if no error and reCAPTCHA is valid
+                                    if (data.role === 1) {
+                                        window.location.href = "admin_dashboard";
+                                    } else if (data.role === 0) {
+                                        window.location.href = "HomePageController";
+                                    }
+                                }
                             }
-                            else if (data.role === 1) {
-                                window.location.href = "admin_dashboard";
-                            } else if (data.role === 0) {
-                                window.location.href = "HomePageController";
-                            }
+                        } catch (e) {
+                            $('#errorLogin').html("Error processing your request. Please try again.");
                         }
-                    });
-                }
+                    },
+                    error: function() {
+                        $('#errorLogin').html("Failed to connect. Please check your network and try again.");
+                    }
+                });
             });
         });
     </script>

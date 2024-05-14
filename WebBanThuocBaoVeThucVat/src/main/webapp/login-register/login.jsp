@@ -23,24 +23,17 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#btnLogin').click(function (event) {
-                event.preventDefault();  // Prevent the default form submission.
+                event.preventDefault(); // Prevent the default form submission.
 
                 var email = $('#email').val();
                 var password = $('#password').val();
-                var response = grecaptcha.getResponse();
 
-                if (response.length === 0) {
-                    $('#errorLogin').html("Please verify that you are not a robot.");
-                    return;  // Stop further execution if reCAPTCHA is not validated.
-                }
-
-                // Proceed with AJAX call if reCAPTCHA is validated
+                // Proceed with AJAX call first
                 $.ajax({
                     type: 'POST',
                     data: {
                         email: email,
-                        password: password,
-                        'g-recaptcha-response': response
+                        password: password
                     },
                     url: 'login',
                     success: function (result) {
@@ -49,11 +42,17 @@
                             if (data.error) {
                                 $('#errorLogin').html(data.error);
                             } else {
-                                // Redirect based on user role if no error is present
-                                if (data.role === 1) {
-                                    window.location.href = "admin_dashboard";
-                                } else if (data.role === 0) {
-                                    window.location.href = "HomePageController";
+                                // Check reCAPTCHA after successful user validation
+                                var response = grecaptcha.getResponse();
+                                if (response.length === 0) {
+                                    $('#errorLogin').html("Please verify that you are not a robot.");
+                                } else {
+                                    // Redirect based on user role if no error and reCAPTCHA is valid
+                                    if (data.role === 1) {
+                                        window.location.href = "admin_dashboard";
+                                    } else if (data.role === 0) {
+                                        window.location.href = "HomePageController";
+                                    }
                                 }
                             }
                         } catch (e) {
@@ -67,7 +66,6 @@
             });
         });
     </script>
-
 </head>
 <body>
 <section class="container forms">
