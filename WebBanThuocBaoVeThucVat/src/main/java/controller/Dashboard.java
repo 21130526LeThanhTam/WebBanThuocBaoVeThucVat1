@@ -24,6 +24,7 @@ public class Dashboard extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<User>dsUser= UserService.getInstance().getDSUsers();
         List<Products>dsProduct = ProductsService.getInstance().numOfPro();
+//        System.out.println(dsProduct);
         int numOfGuest= dsUser.size();
         int numOfPro=dsProduct.size();
         req.setAttribute("numUser",numOfGuest);

@@ -96,11 +96,10 @@
                         <%
                             int count = 0;
                             for(CartItem cartItem : cartItems){
-
                         %>
                         <tr>
                             <td class="shoping__cart__item">
-                                <img class="product-image" src="assets/<%=cartItem.getProduct().getPicture()%>" alt="Vegetable's Package">
+                                <img class="product-image" src="assets/<%=cartItem.getProduct().getImage()%>" alt="Vegetable's Package">
                                 <h5><%=cartItem.getProduct().getProduct_name()%></h5>
                             </td>
                             <td class="shoping__cart__price">

@@ -71,7 +71,7 @@
 
                     <div class="product__details__pic__item">
                         <img class="product__details__pic__item--large"
-                             src="<%= proID.getPicture() %>" alt="">
+                             src="<%= proID.getImage() %>" alt="">
                     </div>
                     <div class="product__details__pic__slider owl-carousel">
                         <img data-imgbigurl="assets/img/product/details/product-details-2.jpg"

@@ -3,9 +3,7 @@ package controller;
 import bean.User;
 import dao.AccountDAO;
 import org.springframework.util.DigestUtils;
-import utils.SessionUtil;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +14,13 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/login"})
 public class LoginControl extends HttpServlet {
+    private int count;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        count =0;
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,12 +33,9 @@ public class LoginControl extends HttpServlet {
         String pass = req.getParameter("password");
 
         String newPword = DigestUtils.md5DigestAsHex(pass.getBytes());
-        System.out.println(newPword);
-
         User user = new User();
 
         AccountDAO acc = new AccountDAO();
-
         HttpSession session = req.getSession();
 
         if((email == null || email.isEmpty()) || (pass == null || pass.isEmpty())){
@@ -41,13 +43,13 @@ public class LoginControl extends HttpServlet {
             session.setAttribute("errorlogin", error);
             resp.sendRedirect("login");
         }else if((email != null || !email.isEmpty()) && (pass != null || !pass.isEmpty())) {
-            user = acc.login(email, newPword);
+            user = acc.login(email, newPword,"", count, "","Login");
             if (user == null) {
                 String error = "Tài khoản hoặc mật khẩu không đúng,vui lòng kiểm tra lại.";
                 session.setAttribute("errorlogin", error);
+                count++;
                 resp.sendRedirect("login");
             } else {
-//                session.setAttribute("uslogin", user);
                 session.removeAttribute("errorlogin");
                 // phân quyền để chuyển trang
                 if (user.getRole() == 0) {
