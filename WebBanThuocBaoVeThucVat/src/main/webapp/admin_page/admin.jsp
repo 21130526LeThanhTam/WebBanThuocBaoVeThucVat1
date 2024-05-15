@@ -22,7 +22,7 @@
 </head>
 <body>
 <% int numUser = (request.getAttribute("numUser") != null) ? (int) request.getAttribute("numUser") : 0; %>
-<% int numPro= request.getAttribute("numPro") !=null ?(int) request.getAttribute("numPro"):0;%>
+<% int numPro= (request.getAttribute("numPro") !=null) ?(int) request.getAttribute("numPro"):0;%>
 <div class="wrapper">
     <div class="body-overlay"></div>
     <!-------sidebar--design------------>
@@ -46,6 +46,7 @@
                     <li><a href="./maUser?roleID=0&uid=1">Quản lý khách hàng</a></li>
                     <li><a href="./maUser?roleID=1&uid=1">Quản lý nhân viên</a></li>
                     <li><a href="#">Chủ cửa hàng</a></li>
+                    <li><a href="./logAdmin">Lịch sử hoạt động</a></li>
                 </ul>
             </li>
 
@@ -205,16 +206,13 @@
                                                 Settings
                                             </a></li>
                                             <li><a href="#">
-                                                <%User auth = (User) session.getAttribute("uslogin");%>
+                                                <%User auth = (User) session.getAttribute("admin");%>
                                                 <% if(auth != null){ %>
                                                 <a class="#" href="logout"><span class="material-icons">logout</span>Đăng xuất</a>
                                                 <% } %>
                                             </a></li>
-
                                         </ul>
                                     </li>
-
-
                                 </ul>
                             </nav>
                         </div>

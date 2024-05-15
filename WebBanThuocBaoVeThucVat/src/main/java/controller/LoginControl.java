@@ -3,9 +3,7 @@ package controller;
 import bean.User;
 import dao.AccountDAO;
 import org.springframework.util.DigestUtils;
-import utils.SessionUtil;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,6 +20,7 @@ public class LoginControl extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
+
         count = 0;
     }
 
@@ -36,23 +35,29 @@ public class LoginControl extends HttpServlet {
         PrintWriter out = resp.getWriter();
         String email = req.getParameter("email");
         String pass = req.getParameter("password");
-        if (email == null || email.isEmpty() || pass == null || pass.isEmpty()){
-            out.println("{\"error\":\"Tài khoản hoặc mật khẩu không được để trống.\"}");
-////            resp.sendRedirect("login");
-        } else {
-            User user = AccountDAO.login(email, DigestUtils.md5DigestAsHex(pass.getBytes()));
+
+
+        String newPword = DigestUtils.md5DigestAsHex(pass.getBytes());
+        User user = new User();
+
+        AccountDAO acc = new AccountDAO();
+        HttpSession session = req.getSession();
+
+        if((email == null || email.isEmpty()) || (pass == null || pass.isEmpty())){
+            String error = "Không để trống thông tin đăng nhập";
+            session.setAttribute("errorlogin", error);
+            resp.sendRedirect("login");
+        }else if((email != null || !email.isEmpty()) && (pass != null || !pass.isEmpty())) {
+            user = acc.login(email, newPword,"", count, "","Login");
             if (user == null) {
+                String error = "Tài khoản hoặc mật khẩu không đúng,vui lòng kiểm tra lại.";
+                session.setAttribute("errorlogin", error);
                 count++;
-                if(count==5) {
-/*                    User user1 = AccountDAO.lockUser(email);*/
-                    out.println("{\"error\":\"Tài khoản cua ban da bi khoa\"}");
-                }
-                else {
-                    out.println("{\"error\":\"Tài khoản hoặc mật khẩu không đúng, vui lòng kiểm tra lại.\"}");
-////                resp.sendRedirect("login");
-                }
+                resp.sendRedirect("login");
             } else {
-                HttpSession session = req.getSession();
+                session.removeAttribute("errorlogin");
+                // phân quyền để chuyển trang
+
                 if (user.getRole() == 0) {
                     session.setAttribute("user", user);
                     out.println("{\"role\":0}");

@@ -3,7 +3,6 @@ package controller;
 import Service.SendingEmail;
 import bean.User;
 import dao.AccountDAO;
-import org.apache.commons.codec.cli.Digest;
 import org.springframework.util.DigestUtils;
 
 import javax.servlet.ServletException;
@@ -88,9 +87,11 @@ public class SignUpControl extends HttpServlet {
                         se.sendMail();
                         error = "Kích hoạt email để đăng nhập";
                         session.setAttribute("errorRegis", error);
+
                         resp.sendRedirect("login");
 
                     }
+
 
 
 

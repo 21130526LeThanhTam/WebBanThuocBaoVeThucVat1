@@ -259,6 +259,7 @@
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/ProductsDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/ProductsDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/UserDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/db/DBProperties.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/db/DBProperties.class" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -279,6 +280,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="21130091_DoanNhatLinh" />
@@ -337,6 +339,7 @@
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "spring.configuration.checksum": "160df4a56551aad3a8a3e031b462e798",
     "vue.rearranger.settings.migration": "true"
+
   }
 }]]></component>
   <component name="RecentsManager">
@@ -436,19 +439,25 @@
       </method>
     </configuration>
     <configuration default="true" type="JetRunConfigurationType">
+
       <module name="WebBanThuocBaoVeThucVat" />
+
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+
       <module name="WebBanThuocBaoVeThucVat" />
+
       <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+
     <configuration name="Tomcat 9.0.81" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.81" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="WebBanThuocBaoVeThucVat:war">
@@ -640,7 +649,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b4b7277f-3123-43a3-8334-fad619072ac6" name="Changes" comment="" />
+      <changelist id="af9a1f26-ac5f-413c-b84d-7e8478266e50" name="Changes" comment="" />
       <created>1700216902058</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />

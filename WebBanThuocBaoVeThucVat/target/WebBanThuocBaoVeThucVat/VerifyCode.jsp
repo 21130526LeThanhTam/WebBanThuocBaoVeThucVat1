@@ -24,6 +24,8 @@
     <div class="form login">
         <div class="form-content">
             <header>Login</header>
+        </div>
+    </div>
 
     <!-- Signup Form -->
     <div class="form signup">

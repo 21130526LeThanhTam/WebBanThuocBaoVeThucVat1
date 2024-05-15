@@ -68,6 +68,7 @@
             });
         });
     </script>
+
 </head>
 <body>
 <section class="container forms">
@@ -108,6 +109,11 @@
                     <div class="g-recaptcha" data-sitekey="6LeWqNkpAAAAANkqcg0zDmNz90pyG4FOLP4QiDQv"></div>
                     <span class="text-danger" id="errorLogin"></span><br>
                     <input type="submit" value="Đăng nhập" id="btnLogin">
+                </div>
+                <div class="social-icons">
+                    <a href="https://accounts.google.com/o/oauth2/auth?scope=profile%20email&redirect_uri=http://localhost:8081/WebBanThuocBaoVeThucVat/loginByGoogle&response_type=code&client_id=383862284423-7n769c739crto335iam2jg9hk2hqiiu0.apps.googleusercontent.com&prompt=select_account">
+                        <img src="assets/img/formIcon/google.jpg" alt="Google">
+                    </a>
                 </div>
             </form>
             <script src="https://www.google.com/recaptcha/api.js" async defer></script>

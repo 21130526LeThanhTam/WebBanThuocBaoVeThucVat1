@@ -22,26 +22,11 @@
 <% int endPage = (int) request.getAttribute("endPage");%>
 <html>
 <head>
-    <!-- Required meta tags -->
-    <%--    <meta charset="utf-8">--%>
-    <%--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">--%>
-    <%--    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">--%>
-    <%--    <title>Quản lý người dùng</title>--%>
-    <%--    <!-- Bootstrap CSS -->--%>
-    <%--    <link rel="stylesheet" href="admin_page/css/bootstrap.min.admin.css">--%>
-    <%--    <link rel="stylesheet" href="admin_page/css/custom.css">--%>
-
-
-    <%--    <!--google fonts -->--%>
-    <%--    <link rel="preconnect" href="https://fonts.googleapis.com">--%>
-    <%--    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>--%>
-    <%--    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">--%>
-
-    <%--    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">--%>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <title>Quản lý người dùng</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/logo.png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="admin_page/css/bootstrap.min.admin.css">
     <link rel="stylesheet" href="admin_page/css/custom.css">
@@ -51,11 +36,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+<<<<<<< HEAD
 <style>
    a{
        text-decoration: none !important;
    }
 </style>
+=======
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        a {
+            text-decoration: none;
+        }
+        /*.col-md-auto .dt-search {*/
+        /*    padding-right: 20px;*/
+        /*}*/
+        .col-md-auto .form-control {
+            background-color: whitesmoke;
+        }
+    </style>
+>>>>>>> 21130526-LeThanhTam
 </head>
 <body>
 <div class="wrapper">
@@ -240,35 +240,37 @@
                             </div>
                         </div>
 
-                        <table id="quanlyUserTable" class="table table-striped table-bordered" style="width:100%">
+                        <table id="quanlyUserTable" class="table table-striped table-hover">
                             <thead>
                             <tr>
+                                <th>STT</th>
 
                                 <th>Mã</th>
                                 <th>Tên</th>
                                 <th>Email</th>
-                                <th>Mật khẩu</th>
+                                <th>Số điện thoại</th>
                                 <th>Vai trò</th>
                                 <th>Chỉnh</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <% for (User a : dsUser) { %>
-                            <tr>
+
+                            <% for (User a : dsUser) {%>
+                            <tr id="row_user_<%=a.getId()%>">
+                                <th><a href=""><span class="material-icons">person</span></a></th>
 
                                 <th><%=a.getId()%>
                                 </th>
-                                <th><%=a.getUserName()%>
+                                <th><%=a.getUsername()%>
                                 </th>
                                 <th><%=a.getEmail()%>
                                 </th>
-                                <th><%=a.getPassword()%>
+                                <th><%=a.getPhone()%>
                                 </th>
                                 <th><%=a.roleString()%>
                                 </th>
                                 <th>
-                                    <a href="./editUser?userID=<%=a.getId()%>&tag=<%=tag%>&role=<%=roleInt2%>"
-                                       class="edit">
+                                    <a href="#editEmployeeModal<%=a.getId()%>" class="edit" data-toggle="modal">
                                         <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
                                     </a>
                                     <a href="#deleteEmployeeModal<%=a.getId()%>" class="delete" data-toggle="modal">
@@ -287,15 +289,53 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <p>Bạn có chắc muốn xóa <%=a.getUserName()%> ra khỏi danh sách ?</p>
+                                            <p>Bạn có chắc muốn xóa <%=a.getUsername()%> ra khỏi danh sách ?</p>
                                             <p class="text-warning"><small>Bấm "hủy" để dừng lại</small></p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy
                                             </button>
                                             <button type="button" class="btn btn-success"
-                                                    onclick="deleteUser(<%=a.getId()%>,<%=tag%>,<%=roleInt2%>)">Xóa
+                                                    onclick="deleteUser(<%=a.getId()%>)">Xóa
                                             </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Thêm người dùng-->
+                            <div class="modal fade" tabindex="-1" id="editEmployeeModal<%=a.getId()%>" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Edit Employees</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label>Tên</label>
+                                                <input type="text" name="name" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Email</label>
+                                                <input type="email" name="email" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Mật khẩu</label>
+                                                <input type="password" name="pass"  class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Vai trò</label>
+                                                <select class="form-control" name="role" required>
+                                                    <option value="user" >User</option>
+                                                    <option value="admin">Admin</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                            <button type="button" class="btn btn-success" id="saveButton">Lưu</button>
                                         </div>
                                     </div>
                                 </div>
@@ -367,6 +407,60 @@
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
+=======
+
+                <!----edit-modal end--------->
+
+
+                <!----edit-modal start--------->
+<%--                <div class="modal fade" tabindex="-1" id="editEmployeeModal" role="dialog">--%>
+<%--                    <div class="modal-dialog" role="document">--%>
+<%--                        <div class="modal-content">--%>
+<%--                            <div class="modal-header">--%>
+<%--                                <h5 class="modal-title">Edit Employees</h5>--%>
+<%--                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
+<%--                                    <span aria-hidden="true">&times;</span>--%>
+<%--                                </button>--%>
+<%--                            </div>--%>
+<%--                            <div class="modal-body">--%>
+<%--                                <div class="form-group">--%>
+<%--                                    <label>Tên</label>--%>
+<%--                                    <input type="text" name="name" class="form-control" required>--%>
+<%--                                </div>--%>
+<%--                                <div class="form-group">--%>
+<%--                                    <label>Email</label>--%>
+<%--                                    <input type="email" name="email" class="form-control" required>--%>
+<%--                                </div>--%>
+<%--                                <div class="form-group">--%>
+<%--                                    <label>Mật khẩu</label>--%>
+<%--                                    <input type="password" name="pass"  class="form-control" required>--%>
+<%--                                </div>--%>
+<%--                                <div class="form-group">--%>
+<%--                                    <label>Vai trò</label>--%>
+<%--                                    <select class="form-control" name="role" required>--%>
+<%--                                        <option value="user" >User</option>--%>
+<%--                                        <option value="admin">Admin</option>--%>
+<%--                                    </select>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="modal-footer">--%>
+<%--                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>--%>
+<%--                                <button type="button" class="btn btn-success" id="saveButton">Lưu</button>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+
+                <!----edit-modal end--------->
+
+
+                <!----delete-modal start--------->
+
+                <!----edit-modal end--------->
+
+
+>>>>>>> 21130526-LeThanhTam
             </div>
         </div>
         <footer class="footer">
@@ -443,39 +537,23 @@
         $('.xp-menubar,.body-overlay').on('click', function () {
             $("#sidebar,.body-overlay").toggleClass('show-nav');
         });
-
     });
 </script>
 
 <script>
-    function deleteUser(userID, page, role) {
-        // Tạo một biểu mẫu và thêm input ẩn để chứa thông tin người dùng
-        var form = document.createElement("form");
-        form.setAttribute("method", "post");
-        form.setAttribute("action", "./deleteUser"); // Sửa chính tả ở đây
-
-        var inputUserID = document.createElement("input");
-        inputUserID.setAttribute("type", "hidden");
-        inputUserID.setAttribute("name", "userID");
-        inputUserID.setAttribute("value", userID);
-
-        var inputPage = document.createElement("input");
-        inputPage.setAttribute("type", "hidden");
-        inputPage.setAttribute("name", "page");
-        inputPage.setAttribute("value", page);
-
-        var inputRole = document.createElement("input");
-        inputRole.setAttribute("type", "hidden");
-        inputRole.setAttribute("name", "role");
-        inputRole.setAttribute("value", role); // Sửa chính tả ở đây
-
-        form.appendChild(inputUserID);
-        form.appendChild(inputPage);
-        form.appendChild(inputRole); // Sửa chính tả ở đây
-        document.body.appendChild(form);
-
-        // Gửi yêu cầu POST
-        form.submit();
+    function deleteUser(userID) {
+        $.ajax({
+            url: "/WebBanThuocBaoVeThucVat/deleteUser",
+            type: "POST",
+            data: { 'userID': userID },
+            success: function(data) {
+                alert('Cuộc gọi AJAX thành công!');
+                $("#row_user_" + userID).remove();
+            },
+            error: function(xhr, error) {
+                alert('Lỗi xảy ra!');
+            }
+        });
     }
 </script>
 
@@ -489,6 +567,17 @@
 
         // Toggle icon based on the password visibility
         togglePassword.innerHTML = type === 'password' ? '<i class="fa fa-eye" aria-hidden="true"></i>' : '<i class="fa fa-eye-slash" aria-hidden="true"></i>';
+    });
+</script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.0.5/datatables.min.css" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.0.5/datatables.min.js"></script>
+<script>
+    let table=new DataTable('#quanlyUserTable', {
+        order: [[3, 'desc']],
+
     });
 </script>
 

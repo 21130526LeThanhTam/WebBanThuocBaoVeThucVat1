@@ -27,10 +27,7 @@ public class DeleteUser extends HttpServlet {
                 return;  // Kết thúc phương thức nếu có lỗi
             }
         }
-        System.out.println(userIDInt);
-        String page = req.getParameter("page");
-        String role=req.getParameter("role");
         UserService.getInstance().deleteUser(userIDInt);
-        resp.sendRedirect("./maUser?roleID=" +role +"&uid="+page);
+        resp.sendRedirect("./maUser");
     }
 }

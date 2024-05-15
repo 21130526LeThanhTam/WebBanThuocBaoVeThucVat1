@@ -61,7 +61,7 @@ public class UserEdit extends HttpServlet {
             lastname=oldUser.getLastName();
         }
         if(username== ""){
-            username=oldUser.getUserName();
+            username=oldUser.getUsername();
         }
         if(phone== ""){
             phone=oldUser.getPhone();

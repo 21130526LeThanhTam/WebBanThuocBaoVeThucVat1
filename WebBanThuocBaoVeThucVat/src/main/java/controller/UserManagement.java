@@ -71,6 +71,7 @@ public class UserManagement extends HttpServlet {
         List<User> dsUser = UserService.getInstance().listOfRoleWithSearch(roleInt,uidInt,search);
 //        List<User> dsUser = UserService.getInstance().listOfRole(roleInt, uidInt);
         req.setAttribute("dsUser", dsUser);
+//        System.out.println(roleInt);
 
         // Chuyển hướng đến trang quanlyuser.jsp (dù có lỗi hay không)
         req.getRequestDispatcher("admin_page/quanlyuser.jsp").forward(req, resp);

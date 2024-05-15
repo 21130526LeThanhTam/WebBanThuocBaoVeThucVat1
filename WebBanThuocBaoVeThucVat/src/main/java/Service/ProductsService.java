@@ -41,9 +41,12 @@ public class ProductsService {
     public void editProduct(String name,String image,int price,int idCategory,int status,String proDesc,int id){
         ProductsDao.editProduct(name, image, price, idCategory, status, proDesc, id);
     }
+    public List<Products> numOfPro(){return ProductsDao.numOfPro();}
     public static void main(String[] args) {
-        System.out.println(ProductsService.getInstance().getProductById(1));
+        System.out.println(ProductsService.getInstance().numOfPro());
+//        System.out.println(ProductsService.getInstance().getProductById(1));
     }
+
 
 
 }

@@ -1,12 +1,15 @@
 package dao;
 
 import bean.Product;
+import bean.Product;
 import bean.Products;
 
 import java.util.List;
 
 public interface IProductDAO {
     List<Products> findAll1();
+//    List<Products> findAll2();
+
     List<Product> findAll2();
 
     List<Products> findNewPro1();

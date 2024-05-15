@@ -92,6 +92,7 @@
       <artifactId>spring-aop</artifactId>
       <version>6.1.1</version>
     </dependency>
+    <!--thư viện google-->
     <dependency>
       <groupId>commons-logging</groupId>
       <artifactId>commons-logging</artifactId>

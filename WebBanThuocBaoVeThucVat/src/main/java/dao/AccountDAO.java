@@ -5,13 +5,18 @@ import bean.User;
 import db.DBContext;
 import db.JDBIConnector;
 
+import log.AbstractDao;
+
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
-public class AccountDAO {
+
+public class AccountDAO extends AbstractDao<User> {
+
     public AccountDAO() {
     }
 
@@ -23,12 +28,16 @@ public class AccountDAO {
     //Phương thức lấy ra id cao nhất.
     public int GetId() throws SQLException {
         String sql = "SELECT * FROM users WHERE id = (SELECT MAX(id) FROM users)";
+
+
         Connection conn = DBContext.getConnection();
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
+
             if(rs.next()) {
                 return rs.getInt("id");
+
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -36,35 +45,24 @@ public class AccountDAO {
         return -1;
     }
     //int id, String username, String password, String phone, String email, String surname, String lastname, int role, String hash) {
-    public static User login(String email, String pass){
-
+    public User login(String email, String pass, String ip, int level, String address,String action){
         String sql = "SELECT id, role, user_name, password, phone, email, sur_name, last_name, hash, active FROM users WHERE email = ? AND password = ? AND active = 1";
-
-        Connection conn = DBContext.getConnection();
-        try {
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, email);
-            ps.setString(2, pass);
-            ResultSet rs = ps.executeQuery();
-            while(rs.next()){
-                return new User(
-                        rs.getInt("id"),
-                        rs.getInt("role"),
-                        rs.getString("user_name"),
-                        rs.getString("password"),
-                        rs.getString("phone"),
-                        rs.getString("email"),
-                        rs.getString("sur_name"),
-                        rs.getString("last_name"),
-                        rs.getString("hash"),
-                        rs.getInt("active")
-                );
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return null;
+        User user = AccountDAO.getInstance().slectUserLogin(email,pass);
+        super.login(user, action, ip,level, address);
+        return user;
     }
+    public User slectUserLogin(String email, String pass){
+        String sql = "SELECT id, role, user_name, password, phone, email, sur_name, last_name, hash, active FROM users WHERE email = ? AND password = ? AND active = 1";
+        Optional<User> user = JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .bind(0, email)
+                        .bind(1, pass)
+                        .mapToBean(User.class)
+                        .stream()
+                        .findFirst());
+        return user.isEmpty() ? null : user.get();
+    }
+
 
 
 
@@ -147,55 +145,6 @@ public class AccountDAO {
     }
 
 
-//    public String loginGoogle(String email,String username,String surname,String lastname,String hash,String picture){
-//        String sql = "insert into users(user_name, password, phone, email, sur_name, last_name, hash, role, active) values (?,?,?,?,?,?,?,0,0)";
-//        Connection conn = DBContext.getConnection();
-//        try {
-//            PreparedStatement ps = conn.prepareStatement(sql);
-//            ps.setString(1, username);
-//            ps.setString(2, pass);
-//            ps.setString(3, phone);
-//            ps.setString(4, email);
-//            ps.setString(5, surname);
-//            ps.setString(6, lastname);
-//            ps.setString(7, hash);
-//            int i = ps.executeUpdate();
-//            if(i != 0){
-//                return "success";
-//            }
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//        return null;
-//    }
-
-
-
-
-
-
-//    public String loginGoogle(String email,String username,String surname,String lastname,String hash,String picture){
-//        String sql = "insert into users(user_name, password, phone, email, sur_name, last_name, hash, role, active) values (?,?,?,?,?,?,?,0,0)";
-//        Connection conn = DBContext.getConnection();
-//        try {
-//            PreparedStatement ps = conn.prepareStatement(sql);
-//            ps.setString(1, username);
-//            ps.setString(2, pass);
-//            ps.setString(3, phone);
-//            ps.setString(4, email);
-//            ps.setString(5, surname);
-//            ps.setString(6, lastname);
-//            ps.setString(7, hash);
-//            int i = ps.executeUpdate();
-//            if(i != 0){
-//                return "success";
-//            }
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//        return null;
-//    }
-
 
     public String activeAccount(String email, String hash){
         Connection con = DBContext.getConnection();
@@ -249,6 +198,8 @@ public class AccountDAO {
     }
 
     public static void main(String[] args) {
-        System.out.println(AccountDAO.getInstance().checExistUser("abc@gmail.com"));
+
+        AccountDAO.getInstance().login("abc@gmail.com","4297f44b13955235245b2497399d7a93","",4,"","Login");
     }
 }
+

@@ -3,7 +3,6 @@
 <%@ page import="bean.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%--
-// đây là trang homePageControlLer
 
   Created by IntelliJ IDEA.
   User: Windows 10
@@ -12,7 +11,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <html>
 <head>
     <meta charset="UTF-8">
@@ -57,8 +55,12 @@
 
     <%--    <link rel="stylesheet" href="css/Log_Regis.css">--%>
     <%--    <script src="js/log_reg.js" defer></script>--%>
-
-
+    <style>
+        .red {
+            color: red;
+            /*background-color: aliceblue;*/
+        }
+    </style>
 </head>
 <body>
 <!-- Page Preloder -->
@@ -69,56 +71,8 @@
 <jsp:include page="layout/header.jsp"/>
 
 <!-- Hero Section Begin -->
-
-<section class="hero">
-    <div class="container">
-        <div class="row align-items-start">
-            <div class="col-lg-3">
-                <div class="hero__categories">
-                    <div class="hero__categories__all">
-                        <i class="fa fa-bars"></i>
-                        <span>Danh mục sản phẩm</span>
-                    </div>
-                    <ul>
-                        <li><a href="StoreProductHome">Tất cả sản phẩm</a></li>
-                        <% for(Category cate :
-                                cb.getListCategory()) {%>
-                        <li><a href="ProductController?id_category=<%=cate.getId()%>"><%= cate.getNameCategory() %></a></li>
-                        <% } %>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-9">
-                <div class="hero__search">
-                    <div class="hero__search__form">
-                        <form action="ProductController" method="post">
-                            <input type="text" name="search" placeholder="Bạn cần tìm thứ gì?">
-                            <button type="submit" class="site-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-                        </form>
-                    </div>
-                    <div class="hero__search__phone">
-
-                        <div class="hero__search__phone__icon d-flex align-items-center justify-content-center">
-                            <i class="fa fa-phone" style="margin-top:15px"></i>
-                        </div>
-                        <div class="hero__search__phone__text">
-                            <h5>+84 123456789</h5>
-                            <span>Hỗ trợ 24/7</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero__item set-bg" data-setbg="assets/img/hero/banner.jpg">
-                    <div class="hero__text">
-                        <a href="ProductController" class="primary-btn">Mua ngay</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- Hero Section End -->
-<%--cần edit lại chỗ này--%>
+
 <!-- Categories Section Begin -->
 <section class="categories">
     <div class="container">
@@ -184,9 +138,9 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
                         <ul class="featured__item__pic__hover">
-                            <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet fix-icon"></i></a></li>
+                            <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
                             <li><a class="d-flex align-items-center justify-content-center"
-                                   href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart fix-icon"></i></a></li>
+                                   href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
@@ -201,9 +155,8 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
                         <ul class="featured__item__pic__hover">
-
-                            <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet fix-icon"></i></a></li>
-                            <li><a class="d-flex align-items-center justify-content-center" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart fix-icon"></i></a></li>
+                            <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
+                            <li><a class="d-flex align-items-center justify-content-center" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
@@ -219,9 +172,8 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
                         <ul class="featured__item__pic__hover">
-                            <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet fix-icon"></i></a></li>
-                            <li><a class="d-flex align-items-center justify-content-center" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart fix-icon"></i></a></li>
-
+                            <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
+                            <li><a class="d-flex align-items-center justify-content-center" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
@@ -409,13 +361,11 @@
                         <input type="text" placeholder="Nhập địa chỉ email">
                         <button type="submit" class="site-btn">ĐĂNG KÝ</button>
                     </form>
-
                     <div class="footer__widget__social d-flex">
-                        <a class="d-flex align-items-center justify-content-center fix-icon" href="#"><i class="fa fa-facebook"></i></a>
-                        <a class="d-flex align-items-center justify-content-center fix-icon" href="#"><i class="fa fa-instagram"></i></a>
-                        <a class="d-flex align-items-center justify-content-center fix-icon" href="#"><i class="fa fa-twitter"></i></a>
-                        <a class="d-flex align-items-center justify-content-center fix-icon" href="#"><i class="fa fa-pinterest"></i></a>
-
+                        <a class="d-flex align-items-center justify-content-center" href="#"><i class="fa fa-facebook"></i></a>
+                        <a class="d-flex align-items-center justify-content-center" href="#"><i class="fa fa-instagram"></i></a>
+                        <a class="d-flex align-items-center justify-content-center" href="#"><i class="fa fa-twitter"></i></a>
+                        <a class="d-flex align-items-center justify-content-center" href="#"><i class="fa fa-pinterest"></i></a>
                     </div>
                 </div>
             </div>
