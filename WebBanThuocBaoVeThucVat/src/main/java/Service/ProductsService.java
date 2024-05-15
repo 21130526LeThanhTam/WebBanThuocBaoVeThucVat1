@@ -12,7 +12,7 @@ public class ProductsService {
         if(instance ==null ) instance = new ProductsService();
         return instance;
     }
-    private IProductsDao productDAO = new ProductsDao();
+    private final IProductsDao productDAO = new ProductsDao();
     public List<Products> findAll1(String name){
         return productDAO.findAll1(name);
     }

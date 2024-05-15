@@ -11,6 +11,6 @@ public class CategoryBO {
     CategoryDAO cd = new CategoryDAO();
 
     public List<Category> getListCategory() {
-        return cd.getList();
+        return CategoryDAO.getList();
     }
 }

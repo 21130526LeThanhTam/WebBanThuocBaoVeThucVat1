@@ -49,7 +49,7 @@ public class LoginGoogleHandler extends HttpServlet {
             user= getUserInfo(accessToken);
             userCheck= AccountDAO.getInstance().checExistUser(user.getEmail());
             if(userCheck ==null){
-                String str = AccountDAO.getInstance().signUp2( user.getEmail(), null, user.getUsername(),user.getSurname() ,user.getLastname() ,user.getPhone(), myHash);
+                String str = AccountDAO.getInstance().signUp2( user.getEmail(), null, user.getUserName(),user.getSurName() ,user.getLastName() ,user.getPhone(), myHash);
                 if(str.equals("success")){
                     session.setAttribute("user", user);
                     resp.sendRedirect("./HomePageController");

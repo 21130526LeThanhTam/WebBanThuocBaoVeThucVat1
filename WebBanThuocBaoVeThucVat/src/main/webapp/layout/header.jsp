@@ -6,7 +6,7 @@
 <%@ page import="bean.Product" %>
 <%@ page import="bo.CategoryBO" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -86,9 +86,9 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="header__top__left">
-                        <ul>
-                            <li><i class="fa fa-envelope"></i> vuonpho@gmail.com</li>
-                            <li>Miễn phí giao hàng cho đơn đặt hàng trị giá trên 500.000đ</li>
+                        <ul class="d-flex align-items-center">
+                            <li class="d-flex align-items-center"><i class="fa fa-envelope"></i> vuonpho@gmail.com</li>
+                            <li class="d-flex align-items-center">Miễn phí giao hàng cho đơn đặt hàng trị giá trên 500.000đ</li>
                         </ul>
                     </div>
                 </div>
@@ -116,7 +116,7 @@
                                 <div class="header__top__right__social">
                                     <a class="#" href="logout"><i class="fa fa-user"></i> Đăng xuất </a>
                                 </div>
-                                <a class="#" href="user-profile.jsp"> Xin chào <%= auth.getUsername() %></a>
+                                <a class="#" href="user-profile.jsp"> Xin chào <%= auth.getUserName() %></a>
                             </div>
                             <% }else { %>
                             <div class="openBtn">
@@ -130,8 +130,8 @@
         </div>
     </div>
     <div class="container">
-        <div class="row">
-            <div class="col-lg-3">
+        <div class="row d-flex align-items-center">
+            <div class="col-lg-2">
                 <div class="header__logo">
                     <a href="HomePageController"><img src="assets/img/logo.png" alt=""></a>
                 </div>
@@ -146,12 +146,13 @@
                     </ul>
                 </nav>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-2"> <a href="OrderHistoryCL" class="btn btn-primary d-block">Lịch sử mua hàng</a></div>
+            <div class="col-lg-2">
                 <div class="header__cart">
                     <a href="gio-hang.jsp">
                         <ul>
                             <span class="cart-word" style="font-weight: bold;">Giỏ hàng</span>
-                            <li><i class="fa-solid fa-cart-shopping"></i> <span><%=shoppingCart.getSize()%></span></li>
+                            <li><i class="fa-solid fa-cart-shopping"></i> <span><%=shoppingCart.getCartItemList().size()%></span></li>
                         </ul>
                     </a>
                 </div>
@@ -161,6 +162,7 @@
             <i class="fa fa-bars"></i>
         </div>
     </div>
+
 </header>
 <!-- Header Section End -->
 

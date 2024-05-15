@@ -81,6 +81,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
+                <%if(!cartItems.isEmpty()){ %>
                 <div class="shoping__cart__table">
                     <table>
                         <thead>
@@ -106,19 +107,21 @@
                             <td class="shoping__cart__price">
                                 <%=cartItem.getProduct().getPrice()%>
                             </td>
-                            <td class="shoping__cart__quantity">
-                                <form action="ShoppingCartCL" method="get">
-                                    <input class="w-25" type="number" name="quantity" value="<%=cartItem.getQuantity()%>">
-                                    <input type ="hidden" name ="action" value="put">
-                                    <input type ="hidden" name="id" value="<%=cartItem.getProduct().getId()%>">
-                                    <button hidden="hidden" id="button1" type="submit" class="primary-btn cart-btn cart-btn-right">
-                                        <span class="icon_loading"></span>
-                                        Cập nhật giỏ hàng
-                                    </button>
-                                </form>
-                            </td>
                             <td class="shoping__cart__total">
                                 <%=numberFormat.format(cartItem.getTotalPrice())%>
+                            </td>
+                            <td class="shoping__cart__quantity">
+                                <form action="ShoppingCartCL" method="post">
+                                    <input class="w-25" type="number" min="0"
+                                           name="quantity<%=cartItem.getProduct().getId()%>"
+                                           value="<%=cartItem.getQuantity()%>">
+
+                                    <input type ="hidden" name ="action" value="put">
+                                    <input type ="hidden" name="id" value="<%=cartItem.getProduct().getId()%>">
+                                    <button type="submit" class="btn button btn-primary">
+                                       Cập nhật
+                                    </button>
+                                </form>
                             </td>
                             <td class="shoping__cart__item__close">
                                 <form action="ShoppingCartCL" method="get">
@@ -132,17 +135,20 @@
                         </tbody>
                     </table>
                 </div>
+                <%}else{%>
+                <h2 class="text-xl-center">Bạn chưa thêm sản phẩm nào vào giỏ hàng</h2>
+                <% }%>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
                 <div class="shoping__cart__btns">
                     <a href="ProductController" class="primary-btn cart-btn">TIẾP TỤC MUA SẮM</a>
-<%--                    <p class="text-danger"><%=e%></p>--%>
-                    <button id="button2" type="submit" class="primary-btn cart-btn cart-btn-right">
-                        <span class="icon_loading"></span>
-                        Cập nhật giỏ hàng
-                    </button>
+                    <%--                    <p class="text-danger"><%=e%></p>--%>
+<%--                    <button id="button2" type="submit" class="primary-btn cart-btn cart-btn-right">--%>
+<%--                        <span class="icon_loading"></span>--%>
+<%--                        Cập nhật giỏ hàng--%>
+<%--                    </button>--%>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -157,14 +163,18 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="shoping__checkout">
-                    <h5>Tổng số lượng hàng</h5>
+                <form action="ThanhToanCL" method="get" class="shoping__checkout">
+                    <h5>Số tiền cần thanh toán</h5>
                     <ul>
                         <li>Tạm tính <span><%=shoppingCart.getTotalPrice()%></span></li>
                         <li>Tổng <span><%=shoppingCart.getTotalPrice()%></span></li>
                     </ul>
-                    <a href="thanh-toan.jsp" class="primary-btn">TIẾN HÀNH THANH TOÁN</a>
-                </div>
+                    <input type="hidden" name="action" value="checkout">
+<%--                    <a href="thanh-toan.jsp" class="primary-btn">TIẾN HÀNH THANH TOÁN</a>--%>
+                    <%if(!cartItems.isEmpty()){ %>
+                    <button class="btn btn-success" type="submit">   TIẾN HÀNH THANH TOÁN </button>
+                    <%}%>
+                </form>
             </div>
         </div>
     </div>
@@ -241,12 +251,12 @@
 <script src="assets/js/jquery-ui.min.js"></script>
 <script src="assets/js/jquery.slicknav.js"></script>
 <script src="assets/js/mixitup.min.js"><d/script>
-<script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/main.js"></script>
 <script>
     document.getElementById("button2").addEventListener("click", function() {
         // Simulate a click on the first hidden button ("button1") for each item
-        var hiddenButtons = document.querySelectorAll("[id^='button1']");
+        const hiddenButtons = document.querySelectorAll(".button");
         hiddenButtons.forEach(function(button) {
             button.click();
         });

@@ -55,13 +55,13 @@ public class UserEdit extends HttpServlet {
         String phone = req.getParameter("phone");
         String active = req.getParameter("active");
         if(surname==""){
-            surname=oldUser.getSurname();
+            surname=oldUser.getSurName();
         }
         if(lastname== ""){
-            lastname=oldUser.getLastname();
+            lastname=oldUser.getLastName();
         }
         if(username== ""){
-            username=oldUser.getUsername();
+            username=oldUser.getUserName();
         }
         if(phone== ""){
             phone=oldUser.getPhone();

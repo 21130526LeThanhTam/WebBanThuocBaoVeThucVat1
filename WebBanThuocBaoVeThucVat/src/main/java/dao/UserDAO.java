@@ -26,7 +26,7 @@ public class UserDAO {
     }
 
     public int GetId() throws SQLException {
-        List<User> users = JDBIConnector.me().getJdbi().withHandle((handle) -> {
+        List<User> users = JDBIConnector.getJdbi().withHandle((handle) -> {
             return handle.createQuery("SELECT * FROM users WHERE id = (SELECT MAX(id) FROM users)")
                     .mapToBean(User.class)
                     .collect(Collectors.toList());
@@ -36,7 +36,7 @@ public class UserDAO {
 
     public String userChangeInfo(String surname, String lastname, String username, String phone,String email){
         Connection conn = DBContext.getConnection();
-        String sql = "update users set surname=? , lastname=? , username=? , phone=? where email=?";
+        String sql = "update users set sur_name=? , last_name=? , user_name=? , phone=? where email=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, surname);
@@ -73,7 +73,7 @@ public class UserDAO {
     //1. lấy người dùng theo email. đã check
     public static User getUserByEmail(String email){
         Optional<User> user = JDBIConnector.getJdbi().withHandle((handle ->
-                handle.createQuery("select id,username,password,phone,email,surname,lastname,role,hash,active from users where email = ?")
+                handle.createQuery("select id,user_name,password,phone,email,sur_name,last_name,role,hash,active from users where email = ?")
                         .bind(0,email)
                         .mapToBean(User.class).stream().findFirst()
         ));
@@ -82,7 +82,7 @@ public class UserDAO {
   //2. lấy người dùng theo id. đã check
     public static User selectUser(int id){
         Optional<User> user = JDBIConnector.getJdbi().withHandle(handle ->
-                handle.createQuery("select id,username,password,phone,email,surname,lastname,role,hash,active from users where id = ?")
+                handle.createQuery("select id,user_name,password,phone,email,sur_name,last_name,role,hash,active from users where id = ?")
                         .bind(0, id)
                         .mapToBean(User.class).stream().findFirst());
         return user.isEmpty() ? null : user.get();
@@ -91,7 +91,7 @@ public class UserDAO {
 //    //3. lấy ra all user. đã check
     public static List<User> dsUsers(){
         List<User> users = JDBIConnector.getJdbi().withHandle(handle ->
-                handle.createQuery("select id,username,password,phone,email,surname,lastname,role,hash,active from users").mapToBean(User.class).collect(Collectors.<User>toList()));
+                handle.createQuery("select id,user_name,password,phone,email,sur_name,last_name,role,hash,active from users").mapToBean(User.class).collect(Collectors.toList()));
         return users;
     }
 //    //xóa ng dùng theo email.đã check
@@ -104,7 +104,7 @@ public class UserDAO {
 //    // thêm người dùng.đẫ check
     public static void insertUser(String email, String pass, String username, int role, String surname, String lastname, String phone, String hash, int active) {
         JDBIConnector.getJdbi().useHandle(handle ->
-                handle.createUpdate("INSERT INTO users(email, password, username, role, surname, lastname, phone, hash, active) VALUES (?,?,?,?,?,?,?,?,?)")
+                handle.createUpdate("INSERT INTO users(email, password, user_name, role, sur_name, last_name, phone, hash, active) VALUES (?,?,?,?,?,?,?,?,?)")
                         .bind(0, email)
                         .bind(1, pass)
                         .bind(2, username)
@@ -122,7 +122,7 @@ public class UserDAO {
     // thay đổi thông tin người dùng.
     public static void updateUser(String surname,String lastname,String username,String phone,int active,int id) {
         JDBIConnector.getJdbi().useHandle(handle ->
-                handle.createUpdate("UPDATE users SET surname=?,lastname=?,username=?,phone=?,active=? WHERE id=?")
+                handle.createUpdate("UPDATE users SET sur_name=?,last_name=?,user_name=?,phone=?,active=? WHERE id=?")
                         .bind(0,surname)
                         .bind(1,lastname)
                         .bind(2,username)
@@ -142,7 +142,7 @@ public class UserDAO {
    // lấy ra số lượng của của từng vai trò
     public static int numOfRole(int role,String search){
         Integer integer = JDBIConnector.getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT COUNT(*)  FROM users where role=? AND (lastname LIKE ? OR username LIKE ?)")
+                handle.createQuery("SELECT COUNT(*)  FROM users where role=? AND (last_name LIKE ? OR user_name LIKE ?)")
                         .bind(0,role)
                         .bind(1, "%" + search + "%")
                         .bind(2, "%" + search + "%")
@@ -153,7 +153,7 @@ public class UserDAO {
 //    // Lấy ra 10 người .
     public static List<User>selectTen(int index){
         List<User> users = JDBIConnector.getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT id,username,password,phone,email,surname,lastname,role,hash,active FROM users\n" +
+                handle.createQuery("SELECT id,user_name,password,phone,email,sur_name,last_name,role,hash,active FROM users\n" +
                                 "ORDER BY id\n" +
                                 "LIMIT 5 OFFSET ?")
                         .bind(0,(index - 1) * 5)
@@ -164,8 +164,8 @@ public class UserDAO {
     // lấy ra 5 người theo role.
     public static List<User>listOfRole(int role,int index){
         List<User> users = JDBIConnector.getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT id,role,username,password,phone,email" +
-                                ",surname,lastname,hash\n" +
+                handle.createQuery("SELECT id,role,user_name,password,phone,email" +
+                                ",sur_name,last_name,hash\n" +
                                 "FROM users\n" +
                                 "WHERE role = ?\n" +
                                 "ORDER BY id\n" +
@@ -178,10 +178,10 @@ public class UserDAO {
     }
     public static List<User> listOfRoleWithSearch(int role, int index, String search) {
         List<User> users = JDBIConnector.getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT id, role, username, password, phone, email"+
-                                ",surname,lastname,hash\n" +
+                handle.createQuery("SELECT id, role, user_name, password, phone, email"+
+                                ",sur_name,last_name,hash\n" +
                                 "FROM users\n" +
-                                "WHERE role=? AND (lastname LIKE ? OR username LIKE ?)\n" +
+                                "WHERE role=? AND (last_name LIKE ? OR user_name LIKE ?)\n" +
                                 "ORDER BY id\n" +
                                 "LIMIT 5\n" +
                                 "OFFSET ? ")
@@ -204,6 +204,5 @@ public class UserDAO {
 //        }
 //        UserDAO.updateUser("Trung Kiên","Nguyễn","TrKien","0932493567",1,8);
 //        System.out.println(UserDAO.numOfRole(0,"tu"));
-        UserDAO.insertUser("thDung@gmail.com","dfsdf","dfsd",1,"sdfs","dfg","0098238","",1);
     }
 }

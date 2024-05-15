@@ -4,54 +4,33 @@ import java.util.Date;
 
 public class User {
 
-    private int id, role,active;
-    private String username, password, phone, email, surname, lastname,hash,picture;
-    private Date createAt,updateAt;
+
+    private int id;
+    private int role;
+    private String userName;
+    private String password;
+    private String phone;
+    private String email;
+    private String surName;
+    private String lastName;
+    private String hash;
+    private int active;
 
     public User() {
     }
-    //id, role,user_name, password, phone, email, sur_name, last_name, hash, active.
 
-    public User(int id, int role,  String username, String password, String phone, String email, String surname, String lastname, String hash,int active) {
+    public User(int id, int role, String userName, String password, String phone, String email, String surName, String lastName, String hash, int active) {
+
         this.id = id;
         this.role = role;
-        this.active = active;
-        this.username = username;
+        this.userName = userName;
         this.password = password;
         this.phone = phone;
         this.email = email;
-        this.surname = surname;
-        this.lastname = lastname;
+        this.surName = surName;
+        this.lastName = lastName;
         this.hash = hash;
-    }
-
-    public User(int id, String username, String password, String phone, String email, String surname, String lastname, int role, String hash) {
-        this.id = id;
-        this.role = role;
-        this.username = username;
-        this.password = password;
-        this.phone = phone;
-        this.email = email;
-        this.surname = surname;
-        this.lastname = lastname;
-    }
-
-    public User(int id, String username, String password, String phone, String surname, String lastname) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.phone = phone;
-        this.surname = surname;
-        this.lastname = lastname;
-    }
-
-    public User(int id, int active, String username, String phone, String surname, String lastname) {
-        this.id = id;
         this.active = active;
-        this.username = username;
-        this.phone = phone;
-        this.surname = surname;
-        this.lastname = lastname;
     }
 
     public int getId() {
@@ -70,20 +49,14 @@ public class User {
         this.role = role;
     }
 
-    public int getActive() {
-        return active;
+
+    public String getUserName() {
+        return userName;
+
     }
 
-    public void setActive(int active) {
-        this.active = active;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -110,20 +83,20 @@ public class User {
         this.email = email;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getSurName() {
+        return surName;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setSurName(String surName) {
+        this.surName = surName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getHash() {
@@ -134,29 +107,8 @@ public class User {
         this.hash = hash;
     }
 
-    public Date getCreateAt() {
-        return createAt;
-    }
 
-    public void setCreateAt(Date createAt) {
-        this.createAt = createAt;
-    }
 
-    public Date getUpdateAt() {
-        return updateAt;
-    }
-
-    public void setUpdateAt(Date updateAt) {
-        this.updateAt = updateAt;
-    }
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
 
     // Phương thức dưới để xác định vai trò của người theo role
     public String roleString(){
@@ -175,22 +127,23 @@ public class User {
         }
     }
 
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", role=" + role +
-                ", active=" + active +
-                ", username='" + username + '\'' +
+                ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
-                ", surname='" + surname + '\'' +
-                ", lastname='" + lastname + '\'' +
+                ", surName='" + surName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", hash='" + hash + '\'' +
-                ", picture='" + picture + '\'' +
-                ", createAt=" + createAt +
-                ", updateAt=" + updateAt +
+                ", active=" + active +
                 '}';
     }
 }
+
+
+

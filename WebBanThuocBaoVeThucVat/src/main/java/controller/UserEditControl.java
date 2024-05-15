@@ -38,20 +38,16 @@ public class UserEditControl extends HttpServlet {
         User userSession = (User) session.getAttribute("user");
         String emailSession = userSession.getEmail();
         String passwordSession = userSession.getPassword();
-        String surnameSession = userSession.getSurname();
-        String lastnameSession = userSession.getLastname();
-        String usernameSession = userSession.getUsername();
+        String surnameSession = userSession.getSurName();
+        String lastnameSession = userSession.getLastName();
+        String usernameSession = userSession.getUserName();
         String phoneSession = userSession.getPhone();
 
         boolean passwordChanged = false;
-        boolean dataChanged = false;
-
-        if ((surname != null && !surname.isEmpty()) ||
+        boolean dataChanged = (surname != null && !surname.isEmpty()) ||
                 (lastname != null && !lastname.isEmpty()) ||
                 (username != null && !username.isEmpty()) ||
-                (phone != null && !phone.isEmpty())) {
-            dataChanged = true;
-        }
+                (phone != null && !phone.isEmpty());
 
         if (surname == null || surname.isEmpty()) {
             surname = surnameSession;
@@ -109,9 +105,9 @@ public class UserEditControl extends HttpServlet {
         }
 
         if (dataChanged || passwordChanged) {
-            userSession.setSurname(surname);
-            userSession.setLastname(lastname);
-            userSession.setUsername(username);
+            userSession.setSurName(surname);
+            userSession.setLastName(lastname);
+            userSession.setUserName(username);
             userSession.setPhone(phone);
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
             session.setAttribute("uslogin", userSession);

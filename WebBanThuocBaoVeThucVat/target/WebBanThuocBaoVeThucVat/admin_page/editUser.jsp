@@ -81,21 +81,21 @@
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>Họ</label>
-                                                                <input class="form-control" id="lastname" type="text" name="lastname" placeholder="<%=a.getLastname()%>">
+                                                                <input class="form-control" id="lastname" type="text" name="lastname" placeholder="<%=a.getLastName()%>">
                                                             </div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>Tên</label>
 <%--                                                                <input class="form-control" id="lastname" type="text" name="lastname" placeholder="<%= user.getLastname() %>">--%>
-                                                                <input class="form-control" id="surname" type="text" name="surname" placeholder="<%= a.getSurname() %>">
+                                                                <input class="form-control" id="surname" type="text" name="surname" placeholder="<%= a.getSurName() %>">
                                                             </div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>Tên người dùng</label>
 <%--                                                                <input class="form-control" id="username" type="text" name="username" placeholder="<%= user.getUsername() %>">--%>
-                                                                <input class="form-control" id="username" type="text" name="username" placeholder="<%= a.getUsername() %>">
+                                                                <input class="form-control" id="username" type="text" name="username" placeholder="<%= a.getUserName() %>">
                                                             </div>
                                                         </div>
                                                     </div>

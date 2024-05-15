@@ -6,7 +6,7 @@ import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 public class SendingEmail {
-    private String userEmail;
+    private final String userEmail;
     private String myHash;
 
     public SendingEmail(String userEmail) {

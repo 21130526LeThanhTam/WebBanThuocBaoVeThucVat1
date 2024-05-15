@@ -6,7 +6,7 @@ import java.util.Properties;
 
 public class DBProperties {
 
-    private static  Properties prop =new Properties();
+    private static final Properties prop =new Properties();
     static {
         try {
             prop.load(DBProperties.class.getClassLoader().getResourceAsStream("DB.properties"));

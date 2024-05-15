@@ -22,7 +22,7 @@ public class HomePageController extends HttpServlet {
         IProductService productService = new ProductService();
         IProductDAO proDAO = new ProductDAO();
         CategoryDAO dao = new CategoryDAO();
-        List<Category> cateList = dao.getList();
+        List<Category> cateList = CategoryDAO.getList();
         List<Products> products = productService.findAll1();
         List<Product> products2 = productService.findAll2();
         List<Products> productsNew1 = proDAO.findNewPro1();

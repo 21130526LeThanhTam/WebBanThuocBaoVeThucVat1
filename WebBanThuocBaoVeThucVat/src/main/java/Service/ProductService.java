@@ -8,7 +8,7 @@ import dao.ProductDAO;
 import java.util.List;
 
 public class ProductService implements IProductService{
-    private IProductDAO productDAO = new ProductDAO();
+    private final IProductDAO productDAO = new ProductDAO();
     @Override
     public List<Products> findAll1() {
         return productDAO.findAll1();
