@@ -24,6 +24,10 @@
     <div class="form login">
         <div class="form-content">
             <header>Login</header>
+<<<<<<< HEAD
+=======
+            <!-- Nội dung của form login -->
+>>>>>>> 6527770 (fix bug)
         </div>
     </div>
 
@@ -40,19 +44,6 @@
                 </div>
             </form>
         </div>
-        <%--        <div class="line"></div>--%>
-        <%--        <div class="media-options">--%>
-        <%--            <a href="#" class="field facebook">--%>
-        <%--                <i class='bx bxl-facebook facebook-icon'></i>--%>
-        <%--                <span>Login with Facebook</span>--%>
-        <%--            </a>--%>
-        <%--        </div>--%>
-        <%--        <div class="media-options">--%>
-        <%--            <a href="#" class="field google">--%>
-        <%--                <img src="#" alt="" class="google-img">--%>
-        <%--                <span>Login with Google</span>--%>
-        <%--            </a>--%>
-        <%--        </div>--%>
     </div>
 </section>
 <!-- JavaScript -->

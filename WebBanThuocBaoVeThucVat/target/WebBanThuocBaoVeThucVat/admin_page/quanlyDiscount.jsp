@@ -263,7 +263,7 @@
                             <tr>
                                 <th><span class="custom-checkbox">
 							 <input type="checkbox" id="selectAll">
-							 <label for="selectAll"></label></th>
+                                    <label for="selectAll"></label></span></th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Address</th>
@@ -276,7 +276,7 @@
                             <tr>
                                 <th><span class="custom-checkbox">
 							 <input type="checkbox" id="checkbox1" name="option[]" value="1">
-							 <label for="checkbox1"></label></th>
+                                    <label for="checkbox1"></label></span></th>
                                 <th>Thomas Hardy</th>
                                 <th>ThomasHardy@gmail.com</th>
                                 <th>90r parkdground poland Usa.</th>
@@ -295,7 +295,7 @@
                             <tr>
                                 <th><span class="custom-checkbox">
 							 <input type="checkbox" id="checkbox2" name="option[]" value="1">
-							 <label for="checkbox2"></label></th>
+                                    <label for="checkbox2"></label></span></th>
                                 <th>Dominique Perrier</th>
                                 <th>dominiquePerrier@gmail.com</th>
                                 <th>90r ser57, Berlin poland Bermany.</th>
@@ -314,7 +314,7 @@
                             <tr>
                                 <th><span class="custom-checkbox">
 							 <input type="checkbox" id="checkbox3" name="option[]" value="1">
-							 <label for="checkbox3"></label></th>
+                                    <label for="checkbox3"></label></span></th>
                                 <th>Marai Andres</th>
                                 <th>MarariAndres@gmail.com</th>
                                 <th>90r ser57, Berlin poland Bermany.</th>
@@ -332,7 +332,7 @@
                             <tr>
                                 <th><span class="custom-checkbox">
 							 <input type="checkbox" id="checkbox4" name="option[]" value="1">
-							 <label for="checkbox4"></label></th>
+                                    <label for="checkbox4"></label></span></th>
                                 <th>Vishweb Design</th>
                                 <th>vishwebdesign@gmail.com</th>
                                 <th> B-2 ser57 Nodia East Delhi,India.</th>
@@ -350,7 +350,7 @@
                             <tr>
                                 <th><span class="custom-checkbox">
 							 <input type="checkbox" id="checkbox5" name="option[]" value="1">
-							 <label for="checkbox5"></label></th>
+                                    <label for="checkbox5"></label></span></th>
                                 <th>Vishwajeet Kumar</th>
                                 <th>vishkumar234@gmail.com</th>
                                 <th> B-2 ser57 Nodia East Delhi,India.</th>

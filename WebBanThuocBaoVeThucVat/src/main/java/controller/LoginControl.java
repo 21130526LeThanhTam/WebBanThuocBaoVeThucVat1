@@ -58,12 +58,15 @@ public class LoginControl extends HttpServlet {
                 session.removeAttribute("errorlogin");
                 // phân quyền để chuyển trang
 
-                if (user.getRole() == 0) {
-                    session.setAttribute("user", user);
-                    out.println("{\"role\":0}");
-                } else if (user.getRole() == 1) {
-                    session.setAttribute("admin", user);
-                    out.println("{\"role\":1}");
+                if (!user.getRole()) {
+                session.setAttribute("user", user);
+//                    session.removeAttribute("passF");
+                    resp.sendRedirect("HomePageController");
+                }
+                if (user.getRole()) {
+                session.setAttribute("admin", user);
+                    resp.sendRedirect("admin_dashboard");
+
                 }
 
 ////                session.setAttribute("uslogin", user);

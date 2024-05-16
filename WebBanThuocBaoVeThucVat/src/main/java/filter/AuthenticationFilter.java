@@ -31,9 +31,9 @@ public class AuthenticationFilter implements Filter {
         if (url.startsWith("/WebBanThuocBaoVeThucVat/admin")) {
             if (session != null && session.getAttribute("admin") != null) {
                 User user = (User) session.getAttribute("admin");
-                if (user.getRole() == 1) {
+                if (user.getRole()) {
                     chain.doFilter(request, response);
-                } else if (user.getRole() == 0) {
+                } else if (!user.getRole()) {
                     String error = "Không có quyền đăng nhập !!!";
                     session.setAttribute("errorlogin", error);
                     resp.sendRedirect("login");

@@ -202,4 +202,3 @@ public class AccountDAO extends AbstractDao<User> {
         AccountDAO.getInstance().login("abc@gmail.com","4297f44b13955235245b2497399d7a93","",4,"","Login");
     }
 }
-

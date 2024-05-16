@@ -220,6 +220,3 @@ public class User implements IModel {
     }
 
 }
-
-
-

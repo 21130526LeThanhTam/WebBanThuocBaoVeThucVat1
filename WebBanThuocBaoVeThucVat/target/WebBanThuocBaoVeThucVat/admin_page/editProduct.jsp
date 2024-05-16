@@ -70,19 +70,22 @@ if(products==null) products=new Products();%>
                                 <select class="form-control" id="productCate" name="productCate">
                                   <option value="<%=products.getId_category()%>"><%=products.cateOfProduct()%></option>
                                   <% for(Category a : cb.getListCategory()){%>
-                                  <option value="<%=a.getId()%>"><%=a.getCategoryName()%></option>
+
+                                  <option value="<%=a.getId()%>"></option>
                                   <% } %>
                                 </select>
                               </div>
                               <div class="form-group">
                                 <label>Số lượng trong kho</label>
-                                <input class="form-control" id="productNum" type="number" name="productNum" value="<%=products.getquantity()%>">
+<%--                                <%=products.getquantity()%>--%>
+                                <input class="form-control" id="productNum" type="number" name="productNum" value="">
                               </div>
                             </div>
                             <div class="col">
                               <div class="form-group">
                                 <label>Ảnh</label>
-                                <img id="image" src="<%=products.getPicture()%>" alt="" style="width: 302px; height: 200px; border-style: dashed; border-width: 0.1mm">
+<%--                                <%=products.getPicture()%>--%>
+                                <img id="image" src="" alt="" style="width: 302px; height: 200px; border-style: dashed; border-width: 0.1mm">
                                 <input type="file" name="imageFile" id="imageFile"  onchange="chooseFile(this)" accept="image/jpg , image/jpeg, image/png">
                               </div>
                             </div>
@@ -110,7 +113,8 @@ if(products==null) products=new Products();%>
                               <div class="form-group">
                                 <label>Quy cách</label>
                                 <%--  <input class="form-control ckeditor" id="role" type="text" name="role" placeholder="">--%>
-                                <textarea class="form-control ckeditor" id="cktext" placeholder="<%=products.getSpecifications()%>" name="specifications" rows="3"></textarea>
+<%--                                <%=products.getSpecifications()%>--%>
+                                <textarea class="form-control ckeditor" id="cktext" placeholder="" name="specifications" rows="3"></textarea>
                               </div>
                             </div>
                           </div>
@@ -118,7 +122,8 @@ if(products==null) products=new Products();%>
                             <div class="col">
                               <div class="form-group">
                                 <label>Mô tả</label>
-                                <textarea class="form-control ckeditor" id="cktext1" placeholder="<%=products.getSpecifications()%>" name="proDesc" rows="3"></textarea>
+<%--                                <%=products.getSpecifications()%> placeholder--%>
+                                <textarea class="form-control ckeditor" id="cktext1" placeholder="" name="proDesc" rows="3"></textarea>
                               </div>
                             </div>
                           </div>

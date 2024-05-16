@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 public class JDBIConnector {
     private static final JDBIConnector instance = new JDBIConnector();
+    //tạo đối tượng jdbi
     public static Jdbi jdbi;
 
     public static Jdbi getJdbi() {
@@ -26,6 +27,7 @@ public class JDBIConnector {
 
     public static Jdbi get() throws SQLException {
         if (jdbi == null) {
+            //khai báo connect trong này
             connect();
         }
         return jdbi;

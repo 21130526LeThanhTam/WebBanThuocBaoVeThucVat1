@@ -35,6 +35,10 @@ public class SignUpControl extends HttpServlet {
         String lastname = req.getParameter("lastname");
         String phone = req.getParameter("phone");
         String pass = req.getParameter("pass");
+
+
+
+
         String re_pass = req.getParameter("rePass");
 
         //mã hóa mật khẩu sang md5
@@ -52,7 +56,7 @@ public class SignUpControl extends HttpServlet {
         User user = new User();
     // kiểm tra user có tồn tại trước đó hay không
     AccountDAO acc = new AccountDAO();
-    user = acc.checkAccountExist(email);
+    user = acc.checkExistUser(email);
     String error;
     //nếu user khác null thì đăng kí
         // không thì sẽ chuyền về là tài khoản đã đăng kí

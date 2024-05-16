@@ -16,6 +16,7 @@ import java.util.List;
 
 @WebServlet(name = "ThanhToanCL", value = "/ThanhToanCL")
 public class ThanhToanCL extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
     private IOrdersService orderService;
 
@@ -78,4 +79,5 @@ public class ThanhToanCL extends HttpServlet {
 
         }
     }
+
 }
