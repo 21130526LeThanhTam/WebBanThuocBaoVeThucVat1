@@ -32,7 +32,7 @@
                                     <div class="mx-auto" style="width: 140px;">
                                         <!--ảnh profile-->
                                         <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
-                                            <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span>
+                                            <img src="<%=session.getAttribute("profilePic") %>" alt="Profile Picture" style="width: 140px; height: 140px; object-fit: cover;">
                                         </div>
                                     </div>
                                 </div>
@@ -42,11 +42,21 @@
                                         <p class="mb-0">@<%= user.getEmail() %></p>
                                         <div class="text-muted"><small>Last seen 2 hours ago</small></div>
                                         <div class="mt-2">
-                                            <button class="btn btn-primary" type="button" style="background-color: #7fad39; border: #7fad39;">
-                                                <i class="fa fa-fw fa-camera"></i>
-                                                <span>Change Photo</span>
-                                            </button>
+                                            <form action="upload" method="post" enctype="multipart/form-data">
+                                                <input type="file" name="profilePic" accept="image/*" style="display: none;" id="fileInput">
+                                                <button class="btn btn-primary" type="button" style="background-color: #7fad39; border: #7fad39;" onclick="document.getElementById('fileInput').click();">
+                                                    <i class="fa fa-fw fa-camera"></i>
+                                                    <span>Change Photo</span>
+                                                </button>
+                                                <input type="submit" value="Upload" style="display: none;" id="submitBtn">
+                                            </form>
                                         </div>
+
+                                        <script>
+                                            document.getElementById('fileInput').onchange = function() {
+                                                document.getElementById('submitBtn').click();
+                                            };
+                                        </script>
                                     </div>
                                     <div class="text-center text-sm-right">
                                         <div class="text-muted"><small>Joined 09 Dec 2017</small></div>
@@ -76,13 +86,13 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label>Họ</label>
-                                                        <input class="form-control" id="surname" type="text" name="surname" placeholder="<%= user.getSurname() %>">
+                                                        <input class="form-control" id="surname" type="text" name="surname" placeholder="<%= user.getSurName() %>">
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label>Tên</label>
-                                                        <input class="form-control" id="lastname" type="text" name="lastname" placeholder="<%= user.getLastname() %>">
+                                                        <input class="form-control" id="lastname" type="text" name="lastname" placeholder="<%= user.getLastName() %>">
                                                     </div>
                                                 </div>
                                                 <div class="col">
