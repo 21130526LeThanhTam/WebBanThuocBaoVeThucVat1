@@ -24,10 +24,6 @@
     <div class="form login">
         <div class="form-content">
             <header>Login</header>
-<<<<<<< HEAD
-=======
-            <!-- Nội dung của form login -->
->>>>>>> 6527770 (fix bug)
         </div>
     </div>
 

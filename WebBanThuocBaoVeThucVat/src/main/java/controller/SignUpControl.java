@@ -26,8 +26,7 @@ public class SignUpControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
-        String regrexEmail = "^[A-Z0-9_a-z]+@[A-Z0-9\\.a-z]+\\.[A-Za-z]{2,6}$";
-        String regrexPassword = "[a-zA-Z0-9_!@#$%^&*]+";
+
         //============================================
         String email = req.getParameter("email");
         String username = req.getParameter("username");
@@ -35,10 +34,6 @@ public class SignUpControl extends HttpServlet {
         String lastname = req.getParameter("lastname");
         String phone = req.getParameter("phone");
         String pass = req.getParameter("pass");
-
-
-
-
         String re_pass = req.getParameter("rePass");
 
         //mã hóa mật khẩu sang md5
@@ -46,19 +41,18 @@ public class SignUpControl extends HttpServlet {
 
         HttpSession session = req.getSession();
         //Tạo mã xác nhận ngẫu nhiên bằng cách sử dụng md5 và số ngẫu nhiên để tạo ra đường link đăng kí cho mỗi người
-
         String myHash ;
         Random random = new Random();
         random.nextInt(999999);
         myHash = DigestUtils.md5DigestAsHex((String.valueOf(random)).getBytes());
 
-    // khởi tạo trước một đối tượng user
+        // khởi tạo trước một đối tượng user
         User user = new User();
-    // kiểm tra user có tồn tại trước đó hay không
-    AccountDAO acc = new AccountDAO();
-    user = acc.checkExistUser(email);
-    String error;
-    //nếu user khác null thì đăng kí
+        // kiểm tra user có tồn tại trước đó hay không
+        AccountDAO acc = new AccountDAO();
+        user = acc.checkAccountExist(email);
+        String error;
+        //nếu user khác null thì đăng kí
         // không thì sẽ chuyền về là tài khoản đã đăng kí
         if(user == null){
             //Tên tài khoản và dài hơn 3 kí tự và kí tự đầu tiên phải là chữ cái
@@ -86,19 +80,13 @@ public class SignUpControl extends HttpServlet {
 
                 String str = acc.signUp(email, hashpass, username, surname, lastname, phone, myHash);
 
-                    if(str.equals("success")){
-                        SendingEmail se = new SendingEmail(email, myHash);
-                        se.sendMail();
-                        error = "Kích hoạt email để đăng nhập";
-                        session.setAttribute("errorRegis", error);
-
-                        resp.sendRedirect("login");
-
-                    }
-
-
-
-
+                if(str.equals("success")){
+                    SendingEmail se = new SendingEmail(email, myHash);
+                    se.sendMail();
+                    error = "Kích hoạt email để đăng nhập";
+                    session.setAttribute("errorRegis", error);
+                    resp.sendRedirect("login");
+                }
             }
         }
         else{
@@ -110,6 +98,3 @@ public class SignUpControl extends HttpServlet {
     }
 
 }
-
-
-

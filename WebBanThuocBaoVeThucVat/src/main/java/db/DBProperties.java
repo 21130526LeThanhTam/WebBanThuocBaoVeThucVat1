@@ -5,13 +5,9 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class DBProperties {
-<<<<<<< HEAD
 
     private static final Properties prop =new Properties();
-=======
-// tạo properties để lấy ra giá trị từ lớp db.prototyle
-    private static  Properties prop =new Properties();
->>>>>>> 6527770 (fix bug)
+
     static {
         try {
             prop.load(DBProperties.class.getClassLoader().getResourceAsStream("DB.properties"));

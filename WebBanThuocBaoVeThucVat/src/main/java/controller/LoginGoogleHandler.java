@@ -49,9 +49,8 @@ public class LoginGoogleHandler extends HttpServlet {
         HttpSession session = req.getSession();
         try {
             user= getUserInfo(accessToken);
-            userCheck= AccountDAO.getInstance().checkExistUser(user.getEmail());
+            userCheck= AccountDAO.getInstance().checkAccountExist(user.getEmail());
             if(userCheck ==null){
-
                 String str = AccountDAO.getInstance().signUp2( user.getEmail(), null, user.getUsername(),user.getSurName() ,user.getLastName() ,user.getPhone(), myHash);
 
                 if(str.equals("success")){
@@ -106,4 +105,3 @@ public class LoginGoogleHandler extends HttpServlet {
         return googlePojo;
     }
 }
-

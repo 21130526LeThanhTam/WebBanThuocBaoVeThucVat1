@@ -36,7 +36,7 @@
 </head>
 <body>
     <h1>THANKS FOR YOUR JOIN</h1>
+    <% session.removeAttribute("errorRegis"); %>
     <button class="backLogin"><a href="login" style="text-decoration: none">Login</a></button>
-
 </body>
 </html>

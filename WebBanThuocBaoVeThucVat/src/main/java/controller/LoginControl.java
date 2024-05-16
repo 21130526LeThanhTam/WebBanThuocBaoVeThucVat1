@@ -3,7 +3,9 @@ package controller;
 import bean.User;
 import dao.AccountDAO;
 import org.springframework.util.DigestUtils;
+import utils.SessionUtil;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +22,6 @@ public class LoginControl extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
-
         count = 0;
     }
 
@@ -35,52 +36,27 @@ public class LoginControl extends HttpServlet {
         PrintWriter out = resp.getWriter();
         String email = req.getParameter("email");
         String pass = req.getParameter("password");
-
-
-        String newPword = DigestUtils.md5DigestAsHex(pass.getBytes());
-        User user = new User();
-
-        AccountDAO acc = new AccountDAO();
-        HttpSession session = req.getSession();
-
-        if((email == null || email.isEmpty()) || (pass == null || pass.isEmpty())){
-            String error = "Không để trống thông tin đăng nhập";
-            session.setAttribute("errorlogin", error);
-            resp.sendRedirect("login");
-        }else if((email != null || !email.isEmpty()) && (pass != null || !pass.isEmpty())) {
-            user = acc.login(email, newPword,"", count, "","Login");
+        if (email == null || email.isEmpty() || pass == null || pass.isEmpty()){
+            out.println("{\"error\":\"Tài khoản hoặc mật khẩu không được để trống.\"}");
+        } else {
+            User user = AccountDAO.login(email, DigestUtils.md5DigestAsHex(pass.getBytes()));
             if (user == null) {
-                String error = "Tài khoản hoặc mật khẩu không đúng,vui lòng kiểm tra lại.";
-                session.setAttribute("errorlogin", error);
                 count++;
-                resp.sendRedirect("login");
+                if(count==5) {
+                    out.println("{\"error\":\"Bạn đã vượt quá số lần đăng nhập cho phép,vui lòng thử lại sau\"}");
+                }
+                else {
+                    out.println("{\"error\":\"Tài khoản hoặc mật khẩu không đúng, vui lòng kiểm tra lại.\"}");
+                }
             } else {
-                session.removeAttribute("errorlogin");
-                // phân quyền để chuyển trang
-
-                if (!user.getRole()) {
-                session.setAttribute("user", user);
-//                    session.removeAttribute("passF");
-                    resp.sendRedirect("HomePageController");
+                HttpSession session = req.getSession();
+                if (user.getRole() == 0) {
+                    session.setAttribute("user", user);
+                    out.println("{\"role\":0}");
+                } else if (user.getRole() == 1) {
+                    session.setAttribute("admin", user);
+                    out.println("{\"role\":1}");
                 }
-                if (user.getRole()) {
-                session.setAttribute("admin", user);
-                    resp.sendRedirect("admin_dashboard");
-
-                }
-
-////                session.setAttribute("uslogin", user);
-////                session.removeAttribute("errorlogin");
-//                // phân quyền để chuyển trang
-//                if (user.getRole() == 0) {
-//                    session.setAttribute("user", user);
-////                    session.removeAttribute("passF");
-//                    resp.sendRedirect("HomePageController");
-//                }
-//                if (user.getRole() == 1) {
-//                    session.setAttribute("admin", user);
-//                    resp.sendRedirect("admin_dashboard");
-//                }
             }
             out.close();
         }
