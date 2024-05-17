@@ -5,13 +5,18 @@ import bean.User;
 import db.DBContext;
 import db.JDBIConnector;
 
+import log.AbstractDao;
+
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
-public class AccountDAO {
+
+public class AccountDAO extends AbstractDao<User> {
+
     public AccountDAO() {
     }
 
@@ -23,19 +28,22 @@ public class AccountDAO {
     //Phương thức lấy ra id cao nhất.
     public int GetId() throws SQLException {
         String sql = "SELECT * FROM users WHERE id = (SELECT MAX(id) FROM users)";
+
+
         Connection conn = DBContext.getConnection();
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
+
             if(rs.next()) {
                 return rs.getInt("id");
+
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return -1;
     }
-    //int id, String username, String password, String phone, String email, String surname, String lastname, int role, String hash) {
     public static User login(String email, String pass){
         String sql = "SELECT id, role, user_name, password, phone, email, sur_name, last_name, hash, active FROM users WHERE email = ? AND password = ? AND active = 1";
         Connection conn = DBContext.getConnection();
@@ -66,6 +74,9 @@ public class AccountDAO {
 
 
 
+
+
+
     public User checkAccountExist(String email){
         String sql = "select id, role,user_name, password, phone, email, sur_name, last_name, hash, active from users where email = ?";
         Connection conn = DBContext.getConnection();
@@ -92,14 +103,7 @@ public class AccountDAO {
         }
         return null;
     }
-    // kiểm tra ng dùng.
-    public User checExistUser(String email){
-        Optional<User> user = JDBIConnector.getJdbi().withHandle(handle ->
-                handle.createQuery("select id, role,user_name, password, phone, email, sur_name, last_name, hash, active from users where email = ?")
-                        .bind(0, email)
-                        .mapToBean(User.class).stream().findFirst());
-        return user.isEmpty() ? null : user.get();
-    }
+
 
     public String signUp(String email,String pass,String username,String surname,String lastname,String phone,String hash){
         String sql = "insert into users(user_name, password, phone, email, sur_name, last_name, hash, role, active) values (?,?,?,?,?,?,?,0,0)";
@@ -144,32 +148,10 @@ public class AccountDAO {
         return null;
     }
 
-//    public String loginGoogle(String email,String username,String surname,String lastname,String hash,String picture){
-//        String sql = "insert into users(user_name, password, phone, email, sur_name, last_name, hash, role, active) values (?,?,?,?,?,?,?,0,0)";
-//        Connection conn = DBContext.getConnection();
-//        try {
-//            PreparedStatement ps = conn.prepareStatement(sql);
-//            ps.setString(1, username);
-//            ps.setString(2, pass);
-//            ps.setString(3, phone);
-//            ps.setString(4, email);
-//            ps.setString(5, surname);
-//            ps.setString(6, lastname);
-//            ps.setString(7, hash);
-//            int i = ps.executeUpdate();
-//            if(i != 0){
-//                return "success";
-//            }
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//        return null;
-//    }
 
 
     public String activeAccount(String email, String hash){
         Connection con = DBContext.getConnection();
-
         try {
             PreparedStatement ps = con.prepareStatement("select email, hash, active from users where email = ? and hash = ? and active = 0");
             ps.setString(1, email);
@@ -219,6 +201,5 @@ public class AccountDAO {
     }
 
     public static void main(String[] args) {
-        System.out.println(AccountDAO.getInstance().checExistUser("abc@gmail.com"));
     }
 }

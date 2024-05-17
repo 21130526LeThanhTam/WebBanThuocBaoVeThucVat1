@@ -4,6 +4,7 @@ import dao.ProductsDao;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
+import java.util.Date;
 
 public class Products implements Serializable {
     private int id;
@@ -14,6 +15,11 @@ public class Products implements Serializable {
     private int price;
     private String des;
     private int status;
+
+
+    private Date update_at;
+
+
 
     //SELECT id , product_name ,picture, price, id_category, quanitity, status, specifications,pro_desc FROM product
 
@@ -89,12 +95,30 @@ public class Products implements Serializable {
         this.product_name = product_name;
         this.image = image;
         this.price = price;
+
+        this.des = des;
+        this.status = status;
+    }
+    //SELECT id, product_name, image, price, id_category, status, des, create_at FROM products
+    public Products(int id, int id_category, int id_discount, String product_name, String image, int price, String des) {
+        this.id = id;
+        this.id_category = id_category;
+        this.id_discount = id_discount;
+        this.product_name = product_name;
+        this.image = image;
+        this.price = price;
+
         this.des = des;
         this.status = status;
     }
 
     public Products() {
     }
+//    id, product_name, image, price, id_category, status, des FROM products
+
+//    public Products(int id, String product_name) {
+//        this.id = id;
+//    }
 
 //    public Products(int id, String product_name, String picture, int price, int id_category) {
 //        this.id = id;
@@ -143,4 +167,7 @@ public class Products implements Serializable {
 //        System.out.println(a.formatPrice());
 
     }
+
+
 }
+

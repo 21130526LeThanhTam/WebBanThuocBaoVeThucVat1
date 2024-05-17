@@ -42,14 +42,17 @@ public class LoginGoogleHandler extends HttpServlet {
         String myHash ;
         Random random = new Random();
         random.nextInt(999999);
-        myHash = DigestUtils.md5DigestAsHex((String.valueOf(random)).getBytes());
+
+        myHash = DigestUtils.md5DigestAsHex((""+random).getBytes());
+
         Timestamp currentTimestamp= Util.getCurrentTimestamp();
         HttpSession session = req.getSession();
         try {
             user= getUserInfo(accessToken);
-            userCheck= AccountDAO.getInstance().checExistUser(user.getEmail());
+            userCheck= AccountDAO.getInstance().checkAccountExist(user.getEmail());
             if(userCheck ==null){
-                String str = AccountDAO.getInstance().signUp2( user.getEmail(), null, user.getUserName(),user.getSurName() ,user.getLastName() ,user.getPhone(), myHash);
+                String str = AccountDAO.getInstance().signUp2( user.getEmail(), null, user.getUsername(),user.getSurName() ,user.getLastName() ,user.getPhone(), myHash);
+
                 if(str.equals("success")){
                     session.setAttribute("user", user);
                     resp.sendRedirect("./HomePageController");
@@ -68,7 +71,9 @@ public class LoginGoogleHandler extends HttpServlet {
 
         //4%2F0AeaYSHAk-qshsZIeHG32Cogy6bVnLeQRzUWjcZ9srNZ-w-aXgGcOU_MNsTa2UdyOS50YrQ
     }
-    public static String getToken(String code) throws IOException {
+
+    public static String getToken(String code) throws ClientProtocolException, IOException {
+
         String response = Request.Post(DBProperties.GOOGLE_LINK_GET_TOKEN)
                 .bodyForm(Form.form().add("client_id", DBProperties.GOOGLE_CLIENT_ID)
                         .add("client_secret", DBProperties.GOOGLE_CLIENT_SECRET)
@@ -77,12 +82,15 @@ public class LoginGoogleHandler extends HttpServlet {
                         .add("grant_type", DBProperties.GOOGLE_GRANT_TYPE).build())
                 .execute().returnContent().asString();
 
-        JsonObject jobj = (new Gson()).fromJson(response, JsonObject.class);
+        JsonObject jobj = (JsonObject) (new Gson()).fromJson(response, JsonObject.class);
+
         String accessToken = jobj.get("access_token").toString().replaceAll("\"", "");
         return accessToken;
     }
 
-    public static User getUserInfo(String accessToken) throws IOException, SQLException {
+
+    public static User getUserInfo(String accessToken) throws ClientProtocolException, IOException, SQLException {
+
         String link = DBProperties.GOOGLE_LINK_GET_USER_INFO + accessToken;
         String response = Request.Get(link).execute().returnContent().asString();
         JsonObject jsonObject = JsonParser.parseString(response).getAsJsonObject();
@@ -92,7 +100,8 @@ public class LoginGoogleHandler extends HttpServlet {
         jsonObject.add("lastname", value);
         jsonObject.add("username", value2);
 
-        User googlePojo = (new Gson()).fromJson(jsonObject, User.class);
+
+        User googlePojo = (User) (new Gson()).fromJson(jsonObject, User.class);
         return googlePojo;
     }
 }

@@ -1,30 +1,53 @@
 package bean;
 
-public class User {
 
-    private int id;
-    private int role;
-    private String userName;
-    private String password;
-    private String phone;
-    private String email;
-    private String surName;
-    private String lastName;
-    private String hash;
-    private int active;
+import log.IModel;
+
+import java.util.Date;
+
+public class User implements IModel {
+    private int id, role,active;
+    private String username, password, phone, email, surname, lastname,hash,picture;
+    private Date createAt,updateAt;
 
     public User() {
     }
 
-    public User(int id, int role, String userName, String password, String phone, String email, String surName, String lastName, String hash, int active) {
-        this.id = id;
+    public User(int role, int active, String username, String password, String phone, String email, String surname, String lastname) {
         this.role = role;
-        this.userName = userName;
+        this.active = active;
+        this.username = username;
         this.password = password;
         this.phone = phone;
         this.email = email;
-        this.surName = surName;
-        this.lastName = lastName;
+        this.surname = surname;
+        this.lastname = lastname;
+    }
+    //id, role,user_name, password, phone, email, sur_name, last_name, hash, active.
+
+    public User(int id, int role,  String username, String password, String phone, String email, String surname, String lastname, String hash,int active) {
+        this.id = id;
+        this.role = role;
+        this.active = active;
+        this.username = username;
+        this.password = password;
+        this.phone = phone;
+        this.email = email;
+        this.surname = surname;
+        this.lastname = lastname;
+        this.hash = hash;
+    }
+
+    public User(int id, String username, String password, String phone, String email, String surname, String lastname, int role, String hash) {
+
+        this.id = id;
+        this.role = role;
+        this.username = username;
+        this.password = password;
+        this.phone = phone;
+        this.email = email;
+        this.surname = surname;
+        this.lastname = lastname;
         this.hash = hash;
         this.active = active;
     }
@@ -45,12 +68,22 @@ public class User {
         this.role = role;
     }
 
-    public String getUserName() {
-        return userName;
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
+    }
+
+    public String getUsername() {
+        return username;
+
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.username = userName;
     }
 
     public String getPassword() {
@@ -78,19 +111,19 @@ public class User {
     }
 
     public String getSurName() {
-        return surName;
+        return surname;
     }
 
-    public void setSurName(String surName) {
-        this.surName = surName;
+    public void setSurName(String surname) {
+        this.surname = surname;
     }
 
     public String getLastName() {
-        return lastName;
+        return lastname;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.lastname = lastName;
     }
 
     public String getHash() {
@@ -101,13 +134,31 @@ public class User {
         this.hash = hash;
     }
 
-    public int getActive() {
-        return active;
+
+    public Date getCreateAt() {
+        return createAt;
     }
 
-    public void setActive(int active) {
-        this.active = active;
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
     }
+
+    public Date getUpdateAt() {
+        return updateAt;
+    }
+
+    public void setUpdateAt(Date updateAt) {
+        this.updateAt = updateAt;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
 
     // Phương thức dưới để xác định vai trò của người theo role
     public String roleString(){
@@ -126,20 +177,46 @@ public class User {
         }
     }
 
+
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", role=" + role +
-                ", userName='" + userName + '\'' +
+
+                ", active=" + active +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
-                ", surName='" + surName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                ", surname='" + surname + '\'' +
+                ", lastname='" + lastname + '\'' +
                 ", hash='" + hash + '\'' +
-                ", active=" + active +
+                ", picture='" + picture + '\'' +
+                ", createAt=" + createAt +
+                ", updateAt=" + updateAt +
                 '}';
     }
-}
 
+
+    public static void main(String[] args) {
+
+    }
+
+    @Override
+    public String getTable() {
+        return "User";
+    }
+
+    @Override
+    public String beforeData() {
+        return this.toString();
+    }
+
+    @Override
+    public String afterData() {
+        return this.toString();
+    }
+
+}

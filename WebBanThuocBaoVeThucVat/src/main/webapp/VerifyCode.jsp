@@ -24,6 +24,8 @@
     <div class="form login">
         <div class="form-content">
             <header>Login</header>
+        </div>
+    </div>
 
     <!-- Signup Form -->
     <div class="form signup">
@@ -38,19 +40,6 @@
                 </div>
             </form>
         </div>
-        <%--        <div class="line"></div>--%>
-        <%--        <div class="media-options">--%>
-        <%--            <a href="#" class="field facebook">--%>
-        <%--                <i class='bx bxl-facebook facebook-icon'></i>--%>
-        <%--                <span>Login with Facebook</span>--%>
-        <%--            </a>--%>
-        <%--        </div>--%>
-        <%--        <div class="media-options">--%>
-        <%--            <a href="#" class="field google">--%>
-        <%--                <img src="#" alt="" class="google-img">--%>
-        <%--                <span>Login with Google</span>--%>
-        <%--            </a>--%>
-        <%--        </div>--%>
     </div>
 </section>
 <!-- JavaScript -->

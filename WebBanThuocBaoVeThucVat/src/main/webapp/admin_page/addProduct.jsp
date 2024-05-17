@@ -94,7 +94,8 @@
                                                                 <label for="productCate">Doanh mục</label>
                                                                 <select class="form-control" id="productCate" name="productCate">
                                                                     <% for(Category a : cb.getListCategory()){%>
-                                                                    <option value="<%=a.getId()%>"><%=a.getCategoryName()%></option>
+<%--                                                                    <%=a.getCategoryName()%>--%>
+                                                                    <option value="<%=a.getId()%>"></option>
                                                                     <% } %>
                                                                 </select>
                                                             </div>

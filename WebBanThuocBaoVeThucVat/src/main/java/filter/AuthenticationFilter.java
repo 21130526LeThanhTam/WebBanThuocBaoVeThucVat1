@@ -19,7 +19,7 @@ public class AuthenticationFilter implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {
         this.context = filterConfig.getServletContext();
     }
-
+    //đang bị lỗi filter
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
@@ -28,7 +28,7 @@ public class AuthenticationFilter implements Filter {
         HttpSession session = req.getSession();
 
         String url = req.getRequestURI();
-        if (url.startsWith("/WebBanThuocBaoVeThucVat/admin")) {
+        if (url.startsWith("/admin")) {
             if (session != null && session.getAttribute("admin") != null) {
                 User user = (User) session.getAttribute("admin");
                 if (user.getRole() == 1) {

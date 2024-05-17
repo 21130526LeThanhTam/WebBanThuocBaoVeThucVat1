@@ -37,7 +37,10 @@ public class HomePageController extends HttpServlet {
         request.setAttribute("findDiscountPro1", findDiscountPro1);
         request.setAttribute("findDiscountPro2", findDiscountPro2);
         String url = "index.jsp";
-        request.getRequestDispatcher(url).forward(request, response);
+
+        //request deparcher nó có thể là forward hoặc inclue nó
+        request.getRequestDispatcher(url).forward(request, response); // dùng getRequestDipascher để chuyển hướng sang jsp
+
     }
 
     @Override

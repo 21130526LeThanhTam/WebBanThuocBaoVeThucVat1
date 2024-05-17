@@ -1,4 +1,6 @@
 <%@ page import="bean.User" %>
+<%@ page import="org.jdbi.v3.core.Jdbi" %>
+<%@ page import="db.JDBIConnector" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -15,8 +17,16 @@
         }
     </style>
 </head>
+<%
+    User user = (User) session.getAttribute("user");
+    // lấy ra picture trong user tại database
+    Jdbi jdbi= JDBIConnector.getJdbi();
+    String picture = jdbi.withHandle(handle -> handle.createQuery("select picture from users where id = ?")
+    .bind(0,user.getId())
+    .mapTo(String.class)
+    .one());
+%>
 <body>
-<% User user = (User) session.getAttribute("user"); %>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
     <div class="row flex-lg-nowrap">
@@ -30,8 +40,9 @@
                             <div class="row">
                                 <div class="col-12 col-sm-auto mb-3">
                                     <div class="mx-auto" style="width: 140px;">
+                                        <!--ảnh profile-->
                                         <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
-                                            <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span>
+                                            <img src="<%=request.getContextPath()%>/<%=picture%>" alt="Profile Picture" style="width: 140px; height: 140px; object-fit: cover;">
                                         </div>
                                     </div>
                                 </div>
@@ -41,11 +52,21 @@
                                         <p class="mb-0">@<%= user.getEmail() %></p>
                                         <div class="text-muted"><small>Last seen 2 hours ago</small></div>
                                         <div class="mt-2">
-                                            <button class="btn btn-primary" type="button" style="background-color: #7fad39; border: #7fad39;">
-                                                <i class="fa fa-fw fa-camera"></i>
-                                                <span>Change Photo</span>
-                                            </button>
+                                            <form action="upload" method="post" enctype="multipart/form-data">
+                                                <input type="file" name="profilePic" accept="image/*" style="display: none;" id="fileInput">
+                                                <button class="btn btn-primary" type="button" style="background-color: #7fad39; border: #7fad39;" onclick="document.getElementById('fileInput').click();">
+                                                    <i class="fa fa-fw fa-camera"></i>
+                                                    <span>Change Photo</span>
+                                                </button>
+                                                <input type="submit" value="Upload" style="display: none;" id="submitBtn">
+                                            </form>
                                         </div>
+
+                                        <script>
+                                            document.getElementById('fileInput').onchange = function() {
+                                                document.getElementById('submitBtn').click();
+                                            };
+                                        </script>
                                     </div>
                                     <div class="text-center text-sm-right">
                                         <div class="text-muted"><small>Joined 09 Dec 2017</small></div>
@@ -75,13 +96,13 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label>Họ</label>
-                                                        <input class="form-control" id="surname" type="text" name="surname" placeholder="<%= user.getSurname() %>">
+                                                        <input class="form-control" id="surname" type="text" name="surname" placeholder="<%= user.getSurName() %>">
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label>Tên</label>
-                                                        <input class="form-control" id="lastname" type="text" name="lastname" placeholder="<%= user.getLastname() %>">
+                                                        <input class="form-control" id="lastname" type="text" name="lastname" placeholder="<%= user.getLastName() %>">
                                                     </div>
                                                 </div>
                                                 <div class="col">

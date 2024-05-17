@@ -116,7 +116,7 @@
                                 <div class="header__top__right__social">
                                     <a class="#" href="logout"><i class="fa fa-user"></i> Đăng xuất </a>
                                 </div>
-                                <a class="#" href="user-profile.jsp"> Xin chào <%= auth.getUserName() %></a>
+                                <a class="#" href="user-profile.jsp"> Xin chào <%= auth.getUsername() %></a>
                             </div>
                             <% }else { %>
                             <div class="openBtn">
@@ -154,6 +154,9 @@
                             <span class="cart-word" style="font-weight: bold;">Giỏ hàng</span>
                             <li><i class="fa-solid fa-cart-shopping"></i> <span><%=shoppingCart.getCartItemList().size()%></span></li>
                         </ul>
+                        <!--có thể xóa-->
+
+
                     </a>
                 </div>
             </div>

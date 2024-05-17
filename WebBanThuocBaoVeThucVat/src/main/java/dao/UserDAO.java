@@ -3,6 +3,7 @@ package dao;
 import bean.User;
 import db.DBContext;
 import db.JDBIConnector;
+import log.AbstractDao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,19 +12,14 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class UserDAO {
+
+public class UserDAO extends AbstractDao<User> {
     private static UserDAO instance;
-
-    public UserDAO() {
-    }
-
-    public static UserDAO getInstance() {
-        if (instance == null) {
-            instance = new UserDAO();
-        }
-
+    public static UserDAO getInstance(){
+        if(instance ==null) instance= new UserDAO();
         return instance;
     }
+
 
     public int GetId() throws SQLException {
         List<User> users = JDBIConnector.getJdbi().withHandle((handle) -> {
@@ -33,6 +29,7 @@ public class UserDAO {
         });
         return users.get(0).getId();
     }
+
 
     public String userChangeInfo(String surname, String lastname, String username, String phone,String email){
         Connection conn = DBContext.getConnection();
@@ -79,7 +76,7 @@ public class UserDAO {
         ));
         return user.isEmpty() ? null : user.get();
     }
-  //2. lấy người dùng theo id. đã check
+    //2. lấy người dùng theo id. đã check
     public static User selectUser(int id){
         Optional<User> user = JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createQuery("select id,user_name,password,phone,email,sur_name,last_name,role,hash,active from users where id = ?")
@@ -88,20 +85,22 @@ public class UserDAO {
         return user.isEmpty() ? null : user.get();
     }
 
-//    //3. lấy ra all user. đã check
+    //    //3. lấy ra all user. đã check
     public static List<User> dsUsers(){
+
         List<User> users = JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createQuery("select id,user_name,password,phone,email,sur_name,last_name,role,hash,active from users").mapToBean(User.class).collect(Collectors.toList()));
         return users;
+
     }
-//    //xóa ng dùng theo email.đã check
+    //    //xóa ng dùng theo email.đã check
     public static void deleteUser(int id){// đã check
         JDBIConnector.getJdbi().useHandle(handle ->
                 handle.createUpdate("DELETE FROM users WHERE id = ?")
                         .bind(0,id)
                         .execute());
     }
-//    // thêm người dùng.đẫ check
+    //    // thêm người dùng.đẫ check
     public static void insertUser(String email, String pass, String username, int role, String surname, String lastname, String phone, String hash, int active) {
         JDBIConnector.getJdbi().useHandle(handle ->
                 handle.createUpdate("INSERT INTO users(email, password, user_name, role, sur_name, last_name, phone, hash, active) VALUES (?,?,?,?,?,?,?,?,?)")
@@ -120,7 +119,7 @@ public class UserDAO {
     //
 ////    UPDATE `users` SET `email`='dinhvu@gmail.com',`pass`='123dc',`name`='Dinh Vu',`role`=0 WHERE`id`=2;
     // thay đổi thông tin người dùng.
-    public static void updateUser(String surname,String lastname,String username,String phone,int active,int id) {
+        public static void updateUser(String surname,String lastname,String username,String phone,int active,int id) {
         JDBIConnector.getJdbi().useHandle(handle ->
                 handle.createUpdate("UPDATE users SET sur_name=?,last_name=?,user_name=?,phone=?,active=? WHERE id=?")
                         .bind(0,surname)
@@ -133,16 +132,18 @@ public class UserDAO {
         );
     }
 
-//// kiểm tra người dùng tồn tại.nếu người dùng ko tồn tại false và ngc lại
+    //// kiểm tra người dùng tồn tại.nếu người dùng ko tồn tại false và ngc lại
     public boolean isUserExists(String email) {
         User a= UserDAO.getUserByEmail(email);
         return a !=null;
     }
-//
-   // lấy ra số lượng của của từng vai trò
+    //
+    // lấy ra số lượng của của từng vai trò
     public static int numOfRole(int role,String search){
         Integer integer = JDBIConnector.getJdbi().withHandle(handle ->
+
                 handle.createQuery("SELECT COUNT(*)  FROM users where role=? AND (last_name LIKE ? OR user_name LIKE ?)")
+
                         .bind(0,role)
                         .bind(1, "%" + search + "%")
                         .bind(2, "%" + search + "%")
@@ -150,7 +151,7 @@ public class UserDAO {
                         .one());
         return integer != null ?integer :0;
     }
-//    // Lấy ra 10 người .
+    //    // Lấy ra 10 người .
     public static List<User>selectTen(int index){
         List<User> users = JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createQuery("SELECT id,user_name,password,phone,email,sur_name,last_name,role,hash,active FROM users\n" +
@@ -194,8 +195,61 @@ public class UserDAO {
         return users;
     }
 
+    @Override
+    public boolean selectModel(int id) {
+        super.selectModel(id);
 
+        return true;
+    }
+
+    @Override
+    public boolean insertModel(User model, String ip, int level, String address) {
+        Integer i =JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createUpdate("INSERT INTO users(role, user_name, phone,email, sur_name, last_name, active,password) VALUES (?,?,?,?,?,?,?,?)")
+                        .bind(0,model.getRole())
+                        .bind(1,model.getUsername())
+                        .bind(2,model.getPhone())
+                        .bind(3,model.getEmail())
+                        .bind(4,model.getSurName())
+                        .bind(5,model.getLastName())
+                        .bind(6,model.getActive())
+                        .bind(7,model.getPassword())
+                        .execute()
+        );
+        super.insertModel(model,ip,level,address);
+        if(i==1){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean deleteModel(User model, String ip, int level, String address) {
+
+        super.deleteModel(model,ip,level,address);
+        return true;
+    }
+    @Override
+    public boolean updateModel(User model, String ip, int level, String address) {
+        Integer i = JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createUpdate("UPDATE users SET sur_name=?,last_name=?,user_name=?,phone=?,active=? WHERE id=?")
+                        .bind(0,model.getSurName())
+                        .bind(1,model.getLastName())
+                        .bind(2,model.getUsername())
+                        .bind(3,model.getPhone())
+                        .bind(4,model.getActive())
+                        .bind(5,model.getId())
+                        .execute()
+        );
+
+        super.updateModel(model,ip,level,address);
+        if(i==1) return true;
+        return false;
+    }
+
+    //int id, int active, String username, String phone, String surname, String lastname
     public static void main(String[] args) {
+
 //        for(User a: UserDAO.listOfRoleWithSearch(0,1,"")){
 //            System.out.println(a);
 //        }
@@ -204,5 +258,6 @@ public class UserDAO {
 //        }
 //        UserDAO.updateUser("Trung Kiên","Nguyễn","TrKien","0932493567",1,8);
 //        System.out.println(UserDAO.numOfRole(0,"tu"));
+
     }
 }

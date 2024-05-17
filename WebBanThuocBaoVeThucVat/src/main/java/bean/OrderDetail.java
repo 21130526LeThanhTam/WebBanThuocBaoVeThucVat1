@@ -1,9 +1,15 @@
 package bean;
 
-public class OrderDetail {
-    private int order_id;
-    private int product_id;
-    private int quantity;
+
+import java.io.Serializable;
+
+public class OrderDetail implements Serializable {
+    int id;
+    int product_id;
+    int order_id;
+    int quantity;
+    double price;
+
 
     public OrderDetail() {
     }

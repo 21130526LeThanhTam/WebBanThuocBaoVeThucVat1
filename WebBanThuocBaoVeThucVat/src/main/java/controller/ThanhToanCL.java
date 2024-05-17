@@ -16,6 +16,7 @@ import java.util.List;
 
 @WebServlet(name = "ThanhToanCL", value = "/ThanhToanCL")
 public class ThanhToanCL extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
     private IOrdersService orderService;
 
@@ -37,7 +38,7 @@ public class ThanhToanCL extends HttpServlet {
 //        System.out.println(shoppingCart.getTotalPrice());
         if (user != null) {
             request.setAttribute("firstname", user.getSurName());
-            request.setAttribute("username", user.getUserName());
+            request.setAttribute("username", user.getUsername());
             request.setAttribute("phone", user.getPhone());
 
         } else {
@@ -78,4 +79,5 @@ public class ThanhToanCL extends HttpServlet {
 
         }
     }
+
 }

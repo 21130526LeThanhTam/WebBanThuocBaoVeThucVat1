@@ -38,18 +38,15 @@ public class LoginControl extends HttpServlet {
         String pass = req.getParameter("password");
         if (email == null || email.isEmpty() || pass == null || pass.isEmpty()){
             out.println("{\"error\":\"Tài khoản hoặc mật khẩu không được để trống.\"}");
-////            resp.sendRedirect("login");
         } else {
             User user = AccountDAO.login(email, DigestUtils.md5DigestAsHex(pass.getBytes()));
             if (user == null) {
                 count++;
                 if(count==5) {
-/*                    User user1 = AccountDAO.lockUser(email);*/
-                    out.println("{\"error\":\"Tài khoản cua ban da bi khoa\"}");
+                    out.println("{\"error\":\"Bạn đã vượt quá số lần đăng nhập cho phép,vui lòng thử lại sau\"}");
                 }
                 else {
                     out.println("{\"error\":\"Tài khoản hoặc mật khẩu không đúng, vui lòng kiểm tra lại.\"}");
-////                resp.sendRedirect("login");
                 }
             } else {
                 HttpSession session = req.getSession();
@@ -60,19 +57,6 @@ public class LoginControl extends HttpServlet {
                     session.setAttribute("admin", user);
                     out.println("{\"role\":1}");
                 }
-
-////                session.setAttribute("uslogin", user);
-////                session.removeAttribute("errorlogin");
-//                // phân quyền để chuyển trang
-//                if (user.getRole() == 0) {
-//                    session.setAttribute("user", user);
-////                    session.removeAttribute("passF");
-//                    resp.sendRedirect("HomePageController");
-//                }
-//                if (user.getRole() == 1) {
-//                    session.setAttribute("admin", user);
-//                    resp.sendRedirect("admin_dashboard");
-//                }
             }
             out.close();
         }

@@ -104,8 +104,10 @@
                             <input type="text" required name = "district">
                         </div>
                         <div class="checkout__input">
+
                             <p>Địa chỉ<span>*</span></p>
                             <input type="text" name ="homeNumber" required placeholder="Số nhà" class="checkout__input__add">
+
                         </div>
                         <div class="row">
                             <div class="col-lg-12">

@@ -7,6 +7,7 @@ import java.util.Properties;
 public class DBProperties {
 
     private static final Properties prop =new Properties();
+
     static {
         try {
             prop.load(DBProperties.class.getClassLoader().getResourceAsStream("DB.properties"));
@@ -21,6 +22,9 @@ public class DBProperties {
     public static String password = prop.getProperty("db.password");
     public static String dbName = prop.getProperty("db.name");
 
+    //google
+
+
     public static String GOOGLE_CLIENT_ID = prop.getProperty("GOOGLE_CLIENT_ID");
     public static String GOOGLE_CLIENT_SECRET = prop.getProperty("GOOGLE_CLIENT_SECRET");
     public static String GOOGLE_REDIRECT_URI  = prop.getProperty("GOOGLE_REDIRECT_URI");
@@ -28,5 +32,15 @@ public class DBProperties {
     public static String GOOGLE_LINK_GET_USER_INFO = prop.getProperty("GOOGLE_LINK_GET_USER_INFO");
     public static String GOOGLE_GRANT_TYPE = prop.getProperty("GOOGLE_GRANT_TYPE");
 
+
+    public static void main(String[] args) {
+        System.out.println(GOOGLE_CLIENT_ID);
+        System.out.println(GOOGLE_CLIENT_SECRET);
+        System.out.println(GOOGLE_REDIRECT_URI);
+        System.out.println(GOOGLE_LINK_GET_TOKEN);
+        System.out.println(GOOGLE_LINK_GET_USER_INFO);
+        System.out.println(GOOGLE_GRANT_TYPE);
+//        System.out.println(host);
+    }
 
 }

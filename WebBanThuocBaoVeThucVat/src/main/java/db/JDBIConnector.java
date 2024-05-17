@@ -1,6 +1,7 @@
 package db;
 
 import bean.Product;
+import bean.User;
 import com.mysql.cj.jdbc.MysqlDataSource;
 import org.jdbi.v3.core.Jdbi;
 
@@ -10,6 +11,7 @@ import java.util.stream.Collectors;
 
 public class JDBIConnector {
     private static final JDBIConnector instance = new JDBIConnector();
+    //tạo đối tượng jdbi
     public static Jdbi jdbi;
 
     public static Jdbi getJdbi() {
@@ -25,6 +27,7 @@ public class JDBIConnector {
 
     public static Jdbi get() throws SQLException {
         if (jdbi == null) {
+            //khai báo connect trong này
             connect();
         }
         return jdbi;
@@ -46,13 +49,14 @@ public class JDBIConnector {
     }
 
     public static void main(String[] args) {
-        Jdbi jdbi = JDBIConnector.getJdbi();
+//        Jdbi jdbi = JDBIConnector.getJdbi();
 
         // Lấy dữ liệu từ table products
-        List<Product> products = jdbi.withHandle(handle -> {
+            List<Product> products = jdbi.withHandle(handle -> {
             String sql = "SELECT * FROM products";
             return handle.createQuery(sql).mapToBean(Product.class).stream().collect(Collectors.toList());
         });
+//        List<User> listUser= JDBIConnector.getJdbi().withHandle()
 
         // Lấy dữ liệu từ table products2
         List<Product> products2 = jdbi.withHandle(handle -> {

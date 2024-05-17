@@ -47,10 +47,10 @@ form{
 }
 .form .field{
     position: relative;
-    height: 50px;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 30px;
     border-radius: 6px;
+
 }
 .field input,
 .field button{
@@ -63,7 +63,7 @@ form{
 }
 .field input{
     outline: none;
-    padding: 0 15px;
+    padding: 10px 15px;
     border: 1px solid#CACACA;
 }
 .field input:focus{

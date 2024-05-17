@@ -14,45 +14,29 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+// đây là trang khi mà người dùng bấm link xác thực account thì sẽ chuyển hướng ra đâu đấy
+
 @WebServlet(urlPatterns = "/ActiveAccount")
 public class ActiveAccount extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String email = req.getParameter("key1");
+        String email = req.getParameter("key1"); // lấy ra giá trị của key1 và key 2 là số tài khoản và hash của tài khoản đó
         String hash = req.getParameter("key2");
-//        Connection con = DBContext.getConnection();
-//
-//        try {
-//            PreparedStatement ps = con.prepareStatement("select email, hash, active from users where email = ? and hash = ? and active = 0");
-//            ps.setString(1, email);
-//            ps.setString(2, hash);
-//            ResultSet rs = ps.executeQuery();
-//            if(rs.next()){
-//                PreparedStatement ps1 = con.prepareStatement("update users set active = 1 where email = ? and hash = ?");
-//                ps1.setString(1, email);
-//                ps1.setString(2, hash);
-//                int i = ps1.executeUpdate();
-//                if(i == 1){
-//                    resp.sendRedirect("login_register.jsp");
-//                }else{
-//                    resp.sendRedirect("index.jsp");
-//                }
-//            }
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
         AccountDAO dao = new AccountDAO();
+        //phương thức activeAccount được chuyển qua lớp AccountDao
         String str = dao.activeAccount(email, hash);
         if(str.equals("success")){
-            resp.sendRedirect("login?action=login");
+            //nếu người dùng đã bấm vào thì chuyển hướng sang trang thành công
+            resp.sendRedirect("verify.jsp");
         }else{
-            resp.sendRedirect("signup?action=register");
+            //nếu không thành công thì về lại trang đăng kí
+            resp.sendRedirect("register.jsp");
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        doGet(req,resp);
     }
 }

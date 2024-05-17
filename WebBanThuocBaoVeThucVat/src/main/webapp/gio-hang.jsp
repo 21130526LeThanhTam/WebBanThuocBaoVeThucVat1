@@ -97,7 +97,6 @@
                         <%
                             int count = 0;
                             for(CartItem cartItem : cartItems){
-
                         %>
                         <tr>
                             <td class="shoping__cart__item">
