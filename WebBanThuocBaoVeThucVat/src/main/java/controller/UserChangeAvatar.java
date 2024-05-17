@@ -21,27 +21,24 @@ public class UserChangeAvatar extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Tạo thư mục để lưu trữ ảnh nếu chưa tồn tại
-        String uploadPath = getServletContext().getRealPath("") + File.separator + "uploads";
+        String uploadPath = getServletContext().getRealPath("") + File.separator + "upload";
       //  String uploadPath= "uploads";
         File uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) uploadDir.mkdir();
 
         // Lấy phần file từ request
         Part filePart = request.getPart("profilePic");
-        if (filePart != null) {
-            String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-            // Lưu file
-            HttpSession session = request.getSession();
-            session.setAttribute("profilePic", uploadPath + File.separator + fileName);
-            filePart.write(uploadPath + File.separator + fileName);
-            //tạo ra phương thức lưu đường dẫn vào cơ sở dữ liệu
-            User user = (User)session.getAttribute("user");
-            int id_user = user.getId();
-            saveFilePathToDatabase(uploadPath + File.separator + fileName, id_user);
-            response.sendRedirect("user-profile.jsp");
-        } else {
-            response.getWriter().println("No file uploaded");
-        }
+        String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+        String relativePath ="upload" + File.separator +fileName;
+        // Lưu file
+        HttpSession session = request.getSession();
+        session.setAttribute("profilePic", relativePath);
+        filePart.write(uploadPath + File.separator + fileName);
+        //tạo ra phương thức lưu đường dẫn vào cơ sở dữ liệu
+        User user = (User)session.getAttribute("user");
+        int id_user = user.getId();
+        saveFilePathToDatabase(relativePath, id_user);
+        response.sendRedirect("user-profile.jsp");
     }
     private void saveFilePathToDatabase(String filePath,int idUser) {
         Jdbi jdbi = JDBIConnector.getJdbi();
@@ -52,5 +49,4 @@ public class UserChangeAvatar extends HttpServlet {
                 .bind(1,idUser)
                 .execute());
     }
-
 }

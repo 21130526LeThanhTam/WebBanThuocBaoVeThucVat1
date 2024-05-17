@@ -1,4 +1,6 @@
 <%@ page import="bean.User" %>
+<%@ page import="org.jdbi.v3.core.Jdbi" %>
+<%@ page import="db.JDBIConnector" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -15,8 +17,16 @@
         }
     </style>
 </head>
+<%
+    User user = (User) session.getAttribute("user");
+    // lấy ra picture trong user tại database
+    Jdbi jdbi= JDBIConnector.getJdbi();
+    String picture = jdbi.withHandle(handle -> handle.createQuery("select picture from users where id = ?")
+    .bind(0,user.getId())
+    .mapTo(String.class)
+    .one());
+%>
 <body>
-<% User user = (User) session.getAttribute("user"); %>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
     <div class="row flex-lg-nowrap">
@@ -32,7 +42,7 @@
                                     <div class="mx-auto" style="width: 140px;">
                                         <!--ảnh profile-->
                                         <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
-                                            <img src="<%=session.getAttribute("profilePic") %>" alt="Profile Picture" style="width: 140px; height: 140px; object-fit: cover;">
+                                            <img src="<%=request.getContextPath()%>/<%=picture%>" alt="Profile Picture" style="width: 140px; height: 140px; object-fit: cover;">
                                         </div>
                                     </div>
                                 </div>
