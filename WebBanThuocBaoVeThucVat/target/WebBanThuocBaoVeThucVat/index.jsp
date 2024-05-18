@@ -117,13 +117,16 @@
                         <% for(Category list : cb.getListCategory()) {%>
                         <% String id = null; %>
                         <% if(list.getId() == 1) {%>
-                        <li data-filter=".a">Thuốc kích rễ</li>
+                        <li data-filter=".a">Thuốc trừ cỏ</li>
                         <% } %>
                         <% if(list.getId() == 2) {%>
                         <li data-filter=".b">Thuốc trừ sâu</li>
                         <% } %>
                         <% if(list.getId() == 3) {%>
                         <li data-filter=".c">Thuốc trừ bệnh</li>
+                        <% } %>
+                        <% if(list.getId() == 4) {%>
+                        <li data-filter=".d">Thuốc trừ ốc</li>
                         <% } %>
                         <%--                        <li data-filter=".fastfood">Thuốc bảo vệ thực vật</li>--%>
                         <% } %>
@@ -184,6 +187,23 @@
                 </div>
             </div>
             <% } %>
+            <% if(p.getId_category() == 4) {%>
+            <div class="col-lg-3 col-md-4 col-sm-6 mix d">
+                <div class="featured__item">
+                    <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
+                        <ul class="featured__item__pic__hover">
+                            <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
+                            <li><a class="d-flex align-items-center justify-content-center" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a href="ProductInfor?id_product=<%= p.getId() %>"><%=p.getProduct_name()%></a></h6>
+                        <%--                        <h5><%=p.getPrice()%></h5>--%>
+                        <h5><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</h5>
+                    </div>
+                </div>
+            </div>
+            <% } %>
             <% } %>
         </div>
 
@@ -213,7 +233,7 @@
 <!-- Latest Product Section Begin -->
 <section class="latest-product spad">
     <div class="container">
-        <div class="row">
+        <div class="row" style="justify-content: space-around">
             <div class="col-lg-4 col-md-6">
                 <div class="latest-product__text">
                     <h4>Sản phẩm mới nhất</h4>
@@ -247,39 +267,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="latest-product__text">
-                    <h4>Sản phẩm bán chạy</h4>
-                    <div class="latest-product__slider owl-carousel">
-                        <div class="latest-prdouct__slider__item">
-                            <% for(Products p : productNew1) {%>
-                            <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="<%=p.getImage()%>" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6><%=p.getProduct_name()%></h6>
-                                    <span><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</span>
-                                </div>
-                            </a>
-                            <% } %>
-                        </div>
-                        <div class="latest-prdouct__slider__item">
-                            <% for(Products p : productNew2) {%>
-                            <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="<%=p.getImage()%>" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6><%=p.getProduct_name()%></h6>
-                                    <span><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</span>
-                                </div>
-                            </a>
-                            <% } %>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             <div class="col-lg-4 col-md-6">
                 <div class="latest-product__text">
                     <h4>Sản phẩm đang giảm giá</h4>
