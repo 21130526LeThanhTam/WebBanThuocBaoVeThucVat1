@@ -1,23 +1,20 @@
 package bean;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 public class Product implements Serializable {
     private int id;
-    private String name;
-    private double price;
+    private int id_category;
+    private int id_discount;
+    private String product_name;
+    private int price;
     private String des;
-    private String thumb;
-    public Product(int id, String name, double price, String des, String thumb) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.des = des;
-        this.thumb = thumb;
-    }
-    public Product(){
-
-    }
+    private Timestamp create_at;
+    private String create_by;
+    private int status;
+    private Timestamp update_at;
+    private String update_by;
 
     public int getId() {
         return id;
@@ -27,19 +24,35 @@ public class Product implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public int getId_category() {
+        return id_category;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId_category(int id_category) {
+        this.id_category = id_category;
     }
 
-    public double getPrice() {
+    public int getId_discount() {
+        return id_discount;
+    }
+
+    public void setId_discount(int id_discount) {
+        this.id_discount = id_discount;
+    }
+
+    public String getProduct_name() {
+        return product_name;
+    }
+
+    public void setProduct_name(String product_name) {
+        this.product_name = product_name;
+    }
+
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -51,22 +64,60 @@ public class Product implements Serializable {
         this.des = des;
     }
 
-    public String getThumb() {
-        return thumb;
+    public Timestamp getCreate_at() {
+        return create_at;
     }
 
-    public void setThumb(String thumb) {
-        this.thumb = thumb;
+    public void setCreate_at(Timestamp create_at) {
+        this.create_at = create_at;
+    }
+
+    public String getCreate_by() {
+        return create_by;
+    }
+
+    public void setCreate_by(String create_by) {
+        this.create_by = create_by;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public Timestamp getUpdate_at() {
+        return update_at;
+    }
+
+    public void setUpdate_at(Timestamp update_at) {
+        this.update_at = update_at;
+    }
+
+    public String getUpdate_by() {
+        return update_by;
+    }
+
+    public void setUpdate_by(String update_by) {
+        this.update_by = update_by;
     }
 
     @Override
     public String toString() {
         return "Product{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", id_category=" + id_category +
+                ", id_discount=" + id_discount +
+                ", product_name='" + product_name + '\'' +
                 ", price=" + price +
                 ", des='" + des + '\'' +
-                ", thumb='" + thumb + '\'' +
+                ", create_at=" + create_at +
+                ", create_by='" + create_by + '\'' +
+                ", status=" + status +
+                ", update_at=" + update_at +
+                ", update_by='" + update_by + '\'' +
                 '}';
     }
 }

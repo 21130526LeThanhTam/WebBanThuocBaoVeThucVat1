@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page import="java.util.List" %>
-<%@ page import="bo.CategoryBO" %>
 <%@ page import="bean.*" %>
 <%@ page import="dao.OrdersDAO" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -35,7 +34,6 @@
     <link rel="stylesheet" href="assets/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
     <link rel="stylesheet" href="assets/css/Log_Regis.css">
-    <script src="js/log_reg.js" defer></script>
     <style>
         a{
             text-decoration: none !important;
@@ -47,7 +45,6 @@
 <main>
     <div class="container mt-5">
         <h2 class="mb-4">Lịch sử mua hàng</h2>
-
         <table id="orderDetailsTable" class="table table-striped table-bordered" style="width:100%">
             <thead>
             <tr>
@@ -61,7 +58,7 @@
             <tbody>
             <%
                 List<OrderDetail> details = (List<OrderDetail>) session.getAttribute("details");
-                if(!details.isEmpty()) {
+                if (details != null && !details.isEmpty())  {
                     for(OrderDetail detail : details) {
                         OrdersDAO dao = new OrdersDAO();
                         Products p = dao.findImageBy(detail.getProduct_id());
