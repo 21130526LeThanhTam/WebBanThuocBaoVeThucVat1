@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Random;
 
 @WebServlet(urlPatterns = {"/signup"})
@@ -25,7 +26,8 @@ public class SignUpControl extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/plain; charset=utf-8");
+        PrintWriter out = resp.getWriter();
 
         //============================================
         String email = req.getParameter("email");
@@ -34,7 +36,7 @@ public class SignUpControl extends HttpServlet {
         String lastname = req.getParameter("lastname");
         String phone = req.getParameter("phone");
         String pass = req.getParameter("pass");
-        String re_pass = req.getParameter("rePass");
+        String rePass = req.getParameter("rePass");
 
         //mã hóa mật khẩu sang md5
         String hashpass = DigestUtils.md5DigestAsHex(pass.getBytes());
@@ -57,43 +59,31 @@ public class SignUpControl extends HttpServlet {
         if(user == null){
             //Tên tài khoản và dài hơn 3 kí tự và kí tự đầu tiên phải là chữ cái
             if(username.length() <= 3 || !(Character.isLetter(username.charAt(0)))){
-                error = "Tên tài khoản phải trên 3 kí tự và * Kí tự đầu tiên phải là chữ cái";
-
-
-                session.setAttribute("errorNumber", error);
-                resp.sendRedirect("signup");
+                out.println("{\"error\":\"Tên tài khoản phải trên 3 kí tự và Kí tự đầu tiên phải là chữ cái.\"}");
+//                resp.sendRedirect("signup");
             }
             // số điện thoại phải là 10 chữ số
             else if(phone.length() != 10) {
-                error = "Số điện thoại phải là 10 chữ số";
-
-                session.setAttribute("errorNumber", error);
-                resp.sendRedirect("signup");
+                out.println("{\"error\":\"Số điện thoại phải là 10 chữ số\"}");
+//                resp.sendRedirect("signup");
             }
-            else if (!pass.equals(re_pass)) {
-                error = "Mật khẩu không trùng khớp";
-
-                session.setAttribute("errorNumber", error);
-                resp.sendRedirect("signup");
+            else if (!pass.equals(rePass)) {
+                out.println("{\"error\":\"Mật khẩu không trùng khớp\"}");
+//                resp.sendRedirect("signup");
             }
             else{
-
                 String str = acc.signUp(email, hashpass, username, surname, lastname, phone, myHash);
-
                 if(str.equals("success")){
                     SendingEmail se = new SendingEmail(email, myHash);
                     se.sendMail();
-                    error = "Kích hoạt email để đăng nhập";
-                    session.setAttribute("errorRegis", error);
-                    resp.sendRedirect("login");
+                    out.println("{\"error\":\"Kích hoạt email để đăng nhập\"}");
+//                    resp.sendRedirect("login");
                 }
             }
         }
         else{
-            error = "Email này đã được đăng kí, vui lòng sử dụng email khác";
-            session.setAttribute("errorNumber", error);
+            out.println("{\"error\":\"Email này đã được đăng kí, vui lòng sử dụng email khác\"}");
             resp.sendRedirect("signup");
-
         }
     }
 

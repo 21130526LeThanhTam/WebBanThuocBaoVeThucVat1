@@ -25,11 +25,9 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#btnLogin').click(function (event) {
-                event.preventDefault(); // Prevent the default form submission.
+                event.preventDefault();
                 var email = $('#email').val();
                 var password = $('#password').val();
-
-                // Proceed with AJAX call first
                 $.ajax({
                     type: 'POST',
                     data: {
