@@ -72,11 +72,6 @@ public class AccountDAO extends AbstractDao<User> {
         return null;
     }
 
-
-
-
-
-
     public User checkAccountExist(String email){
         String sql = "select id, role,user_name, password, phone, email, sur_name, last_name, hash, active from users where email = ?";
         Connection conn = DBContext.getConnection();

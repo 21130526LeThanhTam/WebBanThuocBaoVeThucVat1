@@ -91,7 +91,6 @@ public class UserDAO extends AbstractDao<User> {
         List<User> users = JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createQuery("select id,user_name,password,phone,email,sur_name,last_name,role,hash,active from users").mapToBean(User.class).collect(Collectors.toList()));
         return users;
-
     }
     //    //xóa ng dùng theo email.đã check
     public static void deleteUser(int id){// đã check
