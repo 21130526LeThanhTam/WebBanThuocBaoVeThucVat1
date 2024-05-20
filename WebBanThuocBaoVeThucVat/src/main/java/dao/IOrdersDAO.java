@@ -10,8 +10,8 @@ public interface IOrdersDAO {
 	
 	Integer insertOrder(Orders o);
 
-	Integer insertOrdersDetail(Integer orderId, int productId, int amount);
-	List<Orders> getOrder(Orders o);
+	Integer insertOrdersDetail(OrderDetail od);
+	List<Orders> getOrder();
 
 	List<Orders> getOrdersByUser(User user);
 

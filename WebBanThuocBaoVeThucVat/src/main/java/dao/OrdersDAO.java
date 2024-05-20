@@ -20,12 +20,12 @@ public class OrdersDAO extends AbstractDAO<Orders> implements IOrdersDAO {
 
 	@Override
 	public Integer insertOrder(Orders o) {
-		String sql = "insert into orders(id_user, total_price, shipping_fee, address, phone_number, status_id) values(?,?,?,?,?,?)";
-		return insert(sql, o.getIdUser(), o.getTotalPrice(), o.getShippingFee(), o.getAddress(), o.getPhoneNumber(), o.getStatus());
+		String sql = "insert into orders(id_user, total_price, shipping_fee, address, phone_number) values(?,?,?,?,?)";
+		return insert(sql, o.getIdUser(), o.getTotalPrice(), o.getShippingFee(), o.getAddress(), o.getPhoneNumber());
 	}
 
 	@Override
-	public List<Orders> getOrder(Orders o) {
+	public List<Orders> getOrder() {
 		String sql = "select * from orders";
 		return query(sql, new OrderMapper());
 	}
@@ -37,13 +37,14 @@ public class OrdersDAO extends AbstractDAO<Orders> implements IOrdersDAO {
 	}
 
 	@Override
-	public Integer insertOrdersDetail(Integer orderId, int productId, int amount) {
+	public Integer insertOrdersDetail(OrderDetail od) {
 		String sql="insert into order_details(id_order, id_product, quantity) values(?,?,?)";
-		return insert(sql, orderId, productId, amount);
+		return insert(sql, od.getOrder_id(), od.getProduct_id(), od.getQuantity());
 	}
 
 	@Override
 	public List<OrderDetail> getDetailsByOrder(List<Integer> ordersId) {
+
 		// Tạo chuỗi các tham số
 		String params = ordersId.stream()
 				.map(Object::toString)
@@ -57,5 +58,12 @@ public class OrdersDAO extends AbstractDAO<Orders> implements IOrdersDAO {
 	public Orders findBy(int orderId) {
 		String sql = "select * from orders where id = ?";
 		return query(sql, new OrderMapper(), orderId).get(0);
+	}
+
+	public static void main(String[] args) {
+		Orders o = new Orders(1,5,5,"158","240");
+		IOrdersDAO order = new OrdersDAO();
+		System.out.println(order.insertOrder(o));
+
 	}
 }
