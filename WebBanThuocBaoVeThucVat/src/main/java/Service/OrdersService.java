@@ -16,14 +16,12 @@ public class OrdersService implements IOrdersService {
 	public OrdersService() {
 		this.ordersDAO = new OrdersDAO();
 	}
-
 	@Override
-	public void insertOrder(Orders o) {
-
+	public void insertOrderDetail(Orders o) {
 		Integer orderId = this.ordersDAO.insertOrder(o);
 		List<CartItem> list = o.getLp();
 		for (CartItem p : list) {
-			OrderDetail od = new OrderDetail(o.getId(),p.getProduct().getId(),p.getQuantity());
+			OrderDetail od = new OrderDetail(orderId,p.getProduct().getId(),p.getQuantity());
 			this.ordersDAO.insertOrdersDetail(od);
 		}
 	}

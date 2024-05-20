@@ -40,6 +40,14 @@ public class Orders {
 
     }
 
+    public Orders(int idUser, float totalPrice, float shippingFee, String address, String phoneNumber) {
+        this.idUser = idUser;
+        this.totalPrice = totalPrice;
+        this.shippingFee = shippingFee;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+    }
+
     public List<CartItem> getLp() {
         return lp;
     }

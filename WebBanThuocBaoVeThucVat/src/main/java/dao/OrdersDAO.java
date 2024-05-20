@@ -20,7 +20,7 @@ public class OrdersDAO extends AbstractDAO<Orders> implements IOrdersDAO {
 
 	@Override
 	public Integer insertOrder(Orders o) {
-		String sql = "insert into orders(id_user, total_price, shipping_fee, address, phone_number) values(?,?,?,?,?,?)";
+		String sql = "insert into orders(id_user, total_price, shipping_fee, address, phone_number) values(?,?,?,?,?)";
 		return insert(sql, o.getIdUser(), o.getTotalPrice(), o.getShippingFee(), o.getAddress(), o.getPhoneNumber());
 	}
 
@@ -58,5 +58,12 @@ public class OrdersDAO extends AbstractDAO<Orders> implements IOrdersDAO {
 	public Orders findBy(int orderId) {
 		String sql = "select * from orders where id = ?";
 		return query(sql, new OrderMapper(), orderId).get(0);
+	}
+
+	public static void main(String[] args) {
+		Orders o = new Orders(1,5,5,"158","240");
+		IOrdersDAO order = new OrdersDAO();
+		System.out.println(order.insertOrder(o));
+
 	}
 }

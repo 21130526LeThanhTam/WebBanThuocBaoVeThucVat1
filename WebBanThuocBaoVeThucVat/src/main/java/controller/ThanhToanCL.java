@@ -70,8 +70,10 @@ public class ThanhToanCL extends HttpServlet {
             User user = (User) session.getAttribute("user");
             String address = homeNumber + ", " + district + ", " + city;
             List<CartItem> products = c.getCartItemList();
-            this.orderService.insertOrder(new Orders(user.getId(), (float) c.getTotalPrice(),
-                    0, address, phone, 1, products));
+            Orders order = new Orders(user.getId(), (float) c.getTotalPrice(),
+                    0, address, phone);
+            order.setLp(products);
+            this.orderService.insertOrderDetail(order);
             double total = c.getTotalPrice();
             session.setAttribute("total", total);
             session.removeAttribute("cart");

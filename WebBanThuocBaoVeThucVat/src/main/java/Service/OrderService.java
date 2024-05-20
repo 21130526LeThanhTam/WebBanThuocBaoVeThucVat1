@@ -1,6 +1,6 @@
 package Service;
 
-import bean.Order;
+import bean.Orders;
 import db.DBContext;
 
 import java.sql.*;

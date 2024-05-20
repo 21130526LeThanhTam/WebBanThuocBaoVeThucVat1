@@ -113,8 +113,7 @@
                             <div class="col-lg-12">
                                 <div class="checkout__input">
                                     <p>Số điện thoại<span>*</span></p>
-                                    <input type="tel" pattern="^\+?[0-9]{1,3}?[-. ]?\(?[0-9]{3}\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}$" required name="phone">
-
+                                    <input type="tel" pattern="^\+?[0-9]{1,3}?[-. ]?\(?[0-9]{3}\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}$" required name="phone" value="<%=request.getAttribute("phone")%>">
                                 </div>
                             </div>
                         </div>

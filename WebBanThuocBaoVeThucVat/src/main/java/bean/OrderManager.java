@@ -8,7 +8,7 @@ package bean;
 import java.util.List;
 
 public class OrderManager {
-    List<Order> listOrder;
+    List<Orders> listOrder;
 
     //tạo ra phương thức thêm đơn hàng
     public void addOrder(){

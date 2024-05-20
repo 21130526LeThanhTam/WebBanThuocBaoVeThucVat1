@@ -1,8 +1,10 @@
 package Service;
 
+import bean.OrderDetail;
 import bean.Orders;
 
 public interface IOrdersService {
 	
-	void insertOrder(Orders o);
+	void insertOrderDetail(Orders o);
+
 }
