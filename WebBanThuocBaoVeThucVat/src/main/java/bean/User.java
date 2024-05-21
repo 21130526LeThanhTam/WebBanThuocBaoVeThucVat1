@@ -82,7 +82,7 @@ public class User implements IModel {
 
     }
 
-    public void setUserName(String userName) {
+    public void setUsername(String userName) {
         this.username = userName;
     }
 

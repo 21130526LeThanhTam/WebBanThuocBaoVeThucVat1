@@ -26,19 +26,18 @@ public class CategoryDAO {
         return cateList;
     }
     // đây là danh sách category có thể tìm theo tên và chia số trang.
-    public static List<Category> listCategory(String name,int index){
-        List<Category> listCate = JDBIConnector.getJdbi().withHandle(handle ->
-
-                handle.createQuery("SELECT id, name_category\\n\" +\n" +
-                                "\"FROM categories\\n\" +\n" +
-                                "\"WHERE name_category LIKE ?" +
-
-                                "ORDER BY id LIMIT 5 OFFSET ?")
-                        .bind(0, "%"+name+"%")
-                        .bind(1, index)
+    public static List<Category> listCategory(String name, int index) {
+        return JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT id, name_category " +
+                                "FROM categories " +
+                                "WHERE name_category LIKE :name " +
+                                "ORDER BY id " +
+                                "LIMIT 5 OFFSET :offset")
+                        .bind("name", "%" + name + "%")
+                        .bind("offset", index)
                         .mapToBean(Category.class)
-                        .collect(Collectors.toList()));
-        return  listCate;
+                        .collect(Collectors.toList())
+        );
     }
     // thêm doanh mục
     public static void insertCategory(String nameCate){
@@ -72,7 +71,6 @@ public class CategoryDAO {
 //            System.out.println(i.toString());
 //        }
 //        System.out.println(CategoryDAO.listCategory("ô",0));
-
         CategoryDAO.updateCategory("Phân bón",3);
         System.out.println("ffewfewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
         System.out.println(CategoryDAO.getList());

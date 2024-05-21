@@ -161,7 +161,7 @@
                             <div class="blog__details__widget">
                                 <ul>
                                     <li><span>Danh mục:</span> Kĩ thuật nông nghiệp</li>
-                                    <li><span>Tags:</span> All, Trending, Cooking, Healthy Food, Life Style</li>
+                                    <li><span>Tags:</span> All, Trending, Cooking, Healthy Food, LifeSytle</li>
                                 </ul>
                                 <div class="blog__details__social">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
