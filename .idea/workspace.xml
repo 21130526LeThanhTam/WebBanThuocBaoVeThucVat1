@@ -10,20 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4b7277f-3123-43a3-8334-fad619072ac6" name="Changes" comment="Login with google">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_17_2024_12_24_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_17_2024_12_24_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/SignUpControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/SignUpControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/login-register/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/login-register/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/login-register/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/login-register/register.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat.war" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/SignUpControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/SignUpControl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/login-register/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/login-register/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/login-register/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/login-register/register.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/SignUpControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/SignUpControl.class" afterDir="false" />
     </list>
-    <list id="57e9dd8f-37f1-4591-9ce2-f24d39f7343a" name="Changes by Thuan" comment="">
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/SignUpControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/SignUpControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/AccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/AccountDAO.java" afterDir="false" />
-    </list>
+    <list id="57e9dd8f-37f1-4591-9ce2-f24d39f7343a" name="Changes by Thuan" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,29 +41,6 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/SignUpControl.java">
-      <ranges>
-        <range start1="12" end1="13" start2="12" end2="12" changelist="b4b7277f-3123-43a3-8334-fad619072ac6" />
-        <range start1="23" end1="24" start2="22" end2="23" changelist="57e9dd8f-37f1-4591-9ce2-f24d39f7343a" />
-        <range start1="39" end1="39" start2="38" end2="39" changelist="57e9dd8f-37f1-4591-9ce2-f24d39f7343a" />
-        <range start1="40" end1="41" start2="40" end2="41" changelist="57e9dd8f-37f1-4591-9ce2-f24d39f7343a" />
-        <range start1="43" end1="46" start2="43" end2="45" changelist="57e9dd8f-37f1-4591-9ce2-f24d39f7343a" />
-        <range start1="48" end1="49" start2="47" end2="48" changelist="57e9dd8f-37f1-4591-9ce2-f24d39f7343a" />
-        <range start1="50" end1="53" start2="49" end2="52" changelist="57e9dd8f-37f1-4591-9ce2-f24d39f7343a" />
-        <range start1="55" end1="58" start2="54" end2="56" changelist="57e9dd8f-37f1-4591-9ce2-f24d39f7343a" />
-        <range start1="59" end1="60" start2="57" end2="57" changelist="57e9dd8f-37f1-4591-9ce2-f24d39f7343a" />
-        <range start1="62" end1="66" start2="59" end2="60" changelist="57e9dd8f-37f1-4591-9ce2-f24d39f7343a" />
-        <range start1="67" end1="70" start2="61" end2="62" changelist="57e9dd8f-37f1-4591-9ce2-f24d39f7343a" />
-        <range start1="71" end1="74" start2="63" end2="64" changelist="57e9dd8f-37f1-4591-9ce2-f24d39f7343a" />
-        <range start1="78" end1="80" start2="68" end2="71" changelist="57e9dd8f-37f1-4591-9ce2-f24d39f7343a" />
-        <range start1="82" end1="84" start2="73" end2="74" changelist="57e9dd8f-37f1-4591-9ce2-f24d39f7343a" />
-        <range start1="85" end1="86" start2="75" end2="75" changelist="57e9dd8f-37f1-4591-9ce2-f24d39f7343a" />
-        <range start1="87" end1="87" start2="76" end2="77" changelist="57e9dd8f-37f1-4591-9ce2-f24d39f7343a" />
-        <range start1="88" end1="89" start2="78" end2="78" changelist="57e9dd8f-37f1-4591-9ce2-f24d39f7343a" />
-      </ranges>
-    </file>
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -580,6 +549,9 @@
       <workItem from="1716087373703" duration="529000" />
       <workItem from="1716097437777" duration="11000" />
       <workItem from="1716099328242" duration="16255000" />
+      <workItem from="1716206049271" duration="2000" />
+      <workItem from="1716272979584" duration="625000" />
+      <workItem from="1716296524993" duration="837000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
