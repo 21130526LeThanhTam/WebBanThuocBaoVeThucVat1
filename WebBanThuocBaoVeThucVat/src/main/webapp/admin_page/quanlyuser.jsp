@@ -36,13 +36,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-<<<<<<< HEAD
-<style>
-   a{
-       text-decoration: none !important;
-   }
-</style>
-=======
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <style>
         a {
@@ -55,7 +49,7 @@
             background-color: whitesmoke;
         }
     </style>
->>>>>>> 21130526-LeThanhTam
+
 </head>
 <body>
 <div class="wrapper">
@@ -407,8 +401,7 @@
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
-=======
+
 
                 <!----edit-modal end--------->
 
@@ -460,7 +453,7 @@
                 <!----edit-modal end--------->
 
 
->>>>>>> 21130526-LeThanhTam
+
             </div>
         </div>
         <footer class="footer">
