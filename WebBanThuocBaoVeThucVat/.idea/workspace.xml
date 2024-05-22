@@ -9,1033 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4b7277f-3123-43a3-8334-fad619072ac6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/WebBanThuocBaoVeThucVat.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ogani-master.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2024_6_13_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2024_6_13_PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2024_6_16_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2024_6_16_PM_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2024_6_16_PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" />
+    <list default="true" id="b4b7277f-3123-43a3-8334-fad619072ac6" name="Changes" comment="Login with google">
+      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/.idea/libraries/Source.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/.idea/ogani-master.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/CKeditor/HtmlUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/Service/ActiveAccount.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/Service/CategoryService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/Service/CustomAuthenticator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/Service/ForgotPasswordControl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/Service/IProductService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/Service/OrderDetailService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/Service/OrderService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/Service/ProductService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/Service/ProductsService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/Service/SendingEmail.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/Service/UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/CartItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/Category.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/Comment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bean/Log.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/Order.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/OrderDetail.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/Product.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/Products.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/ShoppingCart.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bean/Util.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bo/CategoryBO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/Admin/LogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Admin/LogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/AdminControl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/AdminOrderControl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/AdminProductControl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/AdminUserControl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/CategoryManagement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/CheckLoginCart.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/Dashboard.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/DeleteCategory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/DeleteProduct.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/DeleteUser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/EditCategory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/EditProduct.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/ForgotPassControl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/HomeControl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/HomePageController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/InsertCategory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/InsertProduct.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/InsertUser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/LoginControl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/LoginGoogleHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/LogoutControl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/ProductController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/ProductInfor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/ProductManagement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/SendEmailControl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/ShoppingCartCL.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/SignUpControl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/StoreProductHome.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/ThanhToanCL.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/ThongTinDonHangCL.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/UserChangeAvatar.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/UserEdit.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/UserEditControl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/UserManagement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/AccountDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/CategoryDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/CommentDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/IProductDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/IProductsDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/LogDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/LogDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/ProductDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/ProductsDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/UserDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/db/DBContext.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/db/DBProperties.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/db/JDBIConnector.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/filter/AuthenticationFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/log/AbstractDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/log/AbstractDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/log/AbstractIModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/log/AbstractIModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/log/IDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/log/IDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/log/IModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/log/IModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/utils/SessionUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/resources/DB.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/FailCheck.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/Source/OwlCarousel2-2.3.4.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/Source/SlickNav-master.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/Source/bootstrap-4.4.1-dist.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/Source/font-awesome-4.7.0.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/Source/jquery-nice-select-1.1.0.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/Source/jquery-ui-1.12.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/Source/sass.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/Testing.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/VerifyCode.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/addProduct.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/admin.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/css/bootstrap.min.admin.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/css/custom.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/editProduct.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/editUser.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/include/header_content.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/js/adminJS/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/js/adminJS/jquery-3.3.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/js/adminJS/jquery-3.3.1.slim.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/js/adminJS/popper.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/logDemo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin_page/logDemo.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/quanlyCategory.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/quanlyDiscount.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/quanlyDonHang.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/quanlyLog.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin_page/quanlyLog.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/quanlyProduct.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/quanlyuser.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/css/Log_Regis.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/css/elegant-icons.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/css/font-awesome.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/css/jquery-ui.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/css/nice-select.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/css/owl.carousel.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/css/slicknav.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/fonts/ElegantIcons.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/fonts/ElegantIcons.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/fonts/ElegantIcons.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/fonts/ElegantIcons.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/fonts/FontAwesome.otf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/fonts/fontawesome-webfont.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/fonts/fontawesome-webfont.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/fonts/fontawesome-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/fonts/fontawesome-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/fonts/fontawesome-webfont.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/banner/banner-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/banner/banner-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/banner/user.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/blog/blog-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/blog/blog-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/blog/blog-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/blog/blog-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/blog/blog-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/blog/blog-6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/blog/details/details-author.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/blog/details/details-hero.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/blog/details/details-pic.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/blog/sidebar/sr-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/blog/sidebar/sr-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/blog/sidebar/sr-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/breadcrumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/cart/cart-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/cart/cart-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/cart/cart-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/categories/cat-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/categories/cat-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/categories/cat-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/categories/cat-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/categories/cat-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/featured/feature-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/featured/feature-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/featured/feature-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/featured/feature-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/featured/feature-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/featured/feature-6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/featured/feature-7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/featured/feature-8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/hero/banner.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/language.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/latest-product/lp-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/latest-product/lp-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/latest-product/lp-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/payment-item.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/details/product-details-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/details/product-details-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/details/product-details-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/details/product-details-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/details/product-details-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/details/thumb-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/details/thumb-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/details/thumb-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/details/thumb-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/discount/pd-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/discount/pd-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/discount/pd-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/discount/pd-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/discount/pd-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/discount/pd-6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/feature-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/feature-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/lp-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/pd-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/pd-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/pd-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/pd-6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/product-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/product-10.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/product-11.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/product-12.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/product-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/product-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/product-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/product-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/product-6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/product-7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/product-8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/product-9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/img/product/product-details-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/js/jquery-3.3.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/js/jquery-ui.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/js/jquery.nice-select.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/js/jquery.slicknav.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/js/log_reg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/js/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/js/mixitup.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/js/owl.carousel.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/sass/_base.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/sass/_blog-details.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/sass/_blog-sidebar.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/sass/_blog.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/sass/_breadcrumb.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/sass/_checkout.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/sass/_contact.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/sass/_footer.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/sass/_header.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/sass/_hero.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/sass/_home-page.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/sass/_mixins.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/sass/_responsive.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/sass/_shop-details.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/sass/_shop-grid.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/sass/_shoping-cart.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/sass/_sidebar.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/sass/_variable.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/sass/style.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/blog-details.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/blog.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/cuahang.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/gio-hang.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/include/header_content.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/layout/footer.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/layout/header.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/lien-he.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/login-register/css/login.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/login-register/css/register.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/login-register/forgot_password.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/login-register/form_create_nPassword.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/login-register/js/signup_signin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/login-register/log_reg.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/login-register/login.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/login-register/login_register.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/login-register/register.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/main.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/thanh-toan.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/thong-tin-don-hang.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/user-profile.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/userManager.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/userManager.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/verify.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat.war" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/FailCheck.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/Source/OwlCarousel2-2.3.4.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/Source/SlickNav-master.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/Source/bootstrap-4.4.1-dist.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/Source/font-awesome-4.7.0.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/Source/jquery-nice-select-1.1.0.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/Source/jquery-ui-1.12.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/Source/sass.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/Testing.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/VerifyCode.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/CKeditor/HtmlUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/DB.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/Service/ActiveAccount.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/Service/CategoryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/Service/CustomAuthenticator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/Service/ForgotPasswordControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/Service/IProductService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/Service/OrderDetailService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/Service/OrderService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/Service/ProductService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/Service/ProductsService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/Service/SendingEmail$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/Service/SendingEmail$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/Service/SendingEmail$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/Service/SendingEmail.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/Service/UserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bean/CartItem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bean/Category.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bean/Comment.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bean/Log.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bean/Order.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bean/OrderDetail.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bean/Product.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bean/Products.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bean/ShoppingCart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bean/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bean/Util.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bo/CategoryBO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/Admin/LogController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/AdminControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/AdminOrderControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/AdminProductControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/AdminUserControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/CategoryManagement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/CheckLoginCart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/Dashboard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/DeleteCategory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/DeleteProduct.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/DeleteUser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/EditCategory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/EditProduct.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/ForgotPassControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/HomeControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/HomePageController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/InsertCategory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/InsertProduct.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/InsertUser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/LoginControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/LoginGoogleHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/LogoutControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/ProductController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/ProductInfor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/ProductManagement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/SendEmailControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/ShoppingCartCL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/SignUpControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/StoreProductHome.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/ThanhToanCL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/ThongTinDonHangCL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/User/RegisController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/UserChangeAvatar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/UserEdit.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/UserEditControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/UserManagement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/AccountDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/CategoryDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/CommentDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/IProductDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/IProductsDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/LogDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/ProductDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/ProductsDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/UserDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/db/DBContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/db/DBProperties.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/db/JDBIConnector.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/filter/AuthenticationFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/log/AbstractDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/log/AbstractIModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/log/IDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/log/IModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/utils/SessionUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/FastInfoset-1.2.15.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/HikariCP-3.4.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/activation-1.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/antlr-2.7.7.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/aspectjweaver-1.9.5.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/byte-buddy-1.10.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/classmate-1.5.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/commons-codec-1.11.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/commons-logging-1.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/dom4j-2.1.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/fluent-hc-4.5.14.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/geantyref-1.3.14.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/gson-2.10.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/hibernate-commons-annotations-5.1.0.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/hibernate-core-5.4.9.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/httpclient-4.5.14.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/httpcore-4.4.9.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/istack-commons-runtime-3.0.7.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/jakarta.activation-api-1.2.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/jakarta.annotation-api-1.3.5.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/jakarta.persistence-api-2.2.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/jakarta.transaction-api-1.3.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/jandex-2.1.1.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/javaee-api-8.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/javassist-3.24.0-GA.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/javax.mail-1.6.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/javax.servlet-api-3.1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/jaxb-runtime-2.3.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/jboss-logging-3.3.2.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/jdbi3-core-3.41.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/jstl-1.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/jul-to-slf4j-1.7.29.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/log4j-api-2.12.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/log4j-to-slf4j-2.12.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/logback-classic-1.2.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/logback-core-1.2.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/mysql-connector-j-8.2.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/mysql-connector-java-8.0.28.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/mysql-connector-java-8.0.30.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/protobuf-java-3.11.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/protobuf-java-3.19.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/slf4j-api-1.7.36.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/snakeyaml-1.25.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-aop-5.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-aop-6.1.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-aspects-5.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-beans-5.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-beans-6.1.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-boot-2.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-boot-autoconfigure-2.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-boot-starter-2.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-boot-starter-aop-2.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-boot-starter-data-jpa-2.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-boot-starter-jdbc-2.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-boot-starter-logging-2.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-context-5.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-core-5.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-core-6.1.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-data-commons-2.2.3.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-data-jpa-2.2.3.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-expression-5.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-jcl-5.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-jcl-6.1.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-jdbc-5.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-orm-5.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-tx-5.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/stax-ex-1.8.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/surefire-shared-utils-3.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/txw2-2.3.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/admin_page/addProduct.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/admin_page/admin.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/admin_page/css/bootstrap.min.admin.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/admin_page/css/custom.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/admin_page/editProduct.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/admin_page/editUser.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/admin_page/include/header_content.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/admin_page/js/adminJS/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/admin_page/js/adminJS/jquery-3.3.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/admin_page/js/adminJS/jquery-3.3.1.slim.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/admin_page/js/adminJS/popper.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/admin_page/logDemo.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/admin_page/quanlyCategory.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/admin_page/quanlyDiscount.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/admin_page/quanlyDonHang.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/admin_page/quanlyLog.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/admin_page/quanlyProduct.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/admin_page/quanlyuser.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/css/Log_Regis.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/css/elegant-icons.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/css/font-awesome.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/css/jquery-ui.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/css/nice-select.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/css/owl.carousel.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/css/slicknav.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/fonts/ElegantIcons.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/fonts/ElegantIcons.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/fonts/ElegantIcons.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/fonts/ElegantIcons.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/fonts/FontAwesome.otf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/fonts/fontawesome-webfont.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/fonts/fontawesome-webfont.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/fonts/fontawesome-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/fonts/fontawesome-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/fonts/fontawesome-webfont.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/banner/banner-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/banner/banner-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/banner/user.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/blog/blog-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/blog/blog-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/blog/blog-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/blog/blog-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/blog/blog-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/blog/blog-6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/blog/details/details-author.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/blog/details/details-hero.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/blog/details/details-pic.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/blog/sidebar/sr-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/blog/sidebar/sr-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/blog/sidebar/sr-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/breadcrumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/cart/cart-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/cart/cart-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/cart/cart-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/categories/cat-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/categories/cat-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/categories/cat-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/categories/cat-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/categories/cat-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/featured/feature-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/featured/feature-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/featured/feature-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/featured/feature-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/featured/feature-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/featured/feature-6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/featured/feature-7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/featured/feature-8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/hero/banner.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/language.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/latest-product/lp-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/latest-product/lp-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/latest-product/lp-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/payment-item.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/details/product-details-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/details/product-details-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/details/product-details-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/details/product-details-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/details/product-details-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/details/thumb-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/details/thumb-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/details/thumb-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/details/thumb-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/discount/pd-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/discount/pd-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/discount/pd-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/discount/pd-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/discount/pd-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/discount/pd-6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/feature-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/feature-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/lp-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/pd-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/pd-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/pd-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/pd-6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/product-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/product-10.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/product-11.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/product-12.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/product-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/product-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/product-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/product-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/product-6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/product-7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/product-8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/product-9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/img/product/product-details-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/js/jquery-3.3.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/js/jquery-ui.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/js/jquery.nice-select.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/js/jquery.slicknav.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/js/log_reg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/js/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/js/mixitup.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/js/owl.carousel.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/sass/_base.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/sass/_blog-details.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/sass/_blog-sidebar.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/sass/_blog.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/sass/_breadcrumb.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/sass/_checkout.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/sass/_contact.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/sass/_footer.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/sass/_header.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/sass/_hero.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/sass/_home-page.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/sass/_mixins.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/sass/_responsive.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/sass/_shop-details.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/sass/_shop-grid.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/sass/_shoping-cart.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/sass/_sidebar.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/sass/_variable.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/assets/sass/style.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/blog-details.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/blog.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/cuahang.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/gio-hang.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/include/header_content.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/layout/footer.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/layout/header.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/lien-he.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/login-register/css/login.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/login-register/css/register.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/login-register/forgot_password.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/login-register/form_create_nPassword.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/login-register/js/signup_signin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/login-register/log_reg.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/login-register/login.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/login-register/login_register.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/login-register/register.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/main.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/thanh-toan.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/thong-tin-don-hang.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/user-profile.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/userManager.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/verify.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/CKeditor/HtmlUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/DB.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/Service/ActiveAccount.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/Service/CategoryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/Service/CustomAuthenticator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/Service/ForgotPasswordControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/Service/IProductService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/Service/OrderDetailService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/Service/OrderService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/Service/ProductService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/Service/ProductsService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/Service/SendingEmail$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/Service/SendingEmail$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/Service/SendingEmail$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/Service/SendingEmail.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/Service/UserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/bean/CartItem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/bean/Category.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/bean/Comment.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/bean/Log.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/bean/Order.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/bean/OrderDetail.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/bean/Product.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/bean/Products.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/bean/ShoppingCart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/bean/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/bean/Util.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/bo/CategoryBO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/Admin/LogController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/AdminControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/AdminOrderControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/AdminProductControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/AdminUserControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/CategoryManagement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/CheckLoginCart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/Dashboard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/DeleteCategory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/DeleteProduct.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/DeleteUser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/EditCategory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/EditProduct.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/ForgotPassControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/HomeControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/HomePageController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/InsertCategory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/InsertProduct.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/InsertUser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/LoginControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/LoginGoogleHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/LogoutControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/ProductController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/ProductInfor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/ProductManagement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/SendEmailControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/ShoppingCartCL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/SignUpControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/StoreProductHome.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/ThanhToanCL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/ThongTinDonHangCL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/UserChangeAvatar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/UserEdit.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/UserEditControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/UserManagement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/AccountDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/CategoryDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/CommentDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/IProductDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/IProductsDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/LogDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/ProductDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/ProductsDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/UserDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/db/DBContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/db/DBProperties.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/db/JDBIConnector.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/filter/AuthenticationFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/log/AbstractDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/log/AbstractIModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/log/IDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/log/IModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/utils/SessionUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bean/Products.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bean/Products.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bean/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bean/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bean/Users.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Dashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/DeleteUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/DeleteUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LoginControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LoginControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LoginGoogleHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LoginGoogleHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/SignUpControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/SignUpControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/UserManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/UserManagement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/AccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/AccountDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/ProductsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/ProductsDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/db/JDBIConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/db/JDBIConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin_page/admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin_page/admin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin_page/editUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin_page/editUser.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin_page/quanlyuser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin_page/quanlyuser.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/gio-hang.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/gio-hang.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/layout/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/layout/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/thong-tin-don-hang.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/thong-tin-don-hang.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/user-profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/user-profile.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat.war" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/FailCheck.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/Source/OwlCarousel2-2.3.4.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/Source/SlickNav-master.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/Source/bootstrap-4.4.1-dist.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/Source/font-awesome-4.7.0.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/Source/jquery-nice-select-1.1.0.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/Source/jquery-ui-1.12.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/Source/sass.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/Testing.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/VerifyCode.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/CKeditor/HtmlUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/DB.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/Service/ActiveAccount.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/Service/CategoryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/Service/CustomAuthenticator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/Service/ForgotPasswordControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/Service/IProductService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/Service/OrderDetailService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/Service/OrderService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/Service/ProductService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/Service/ProductsService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/Service/SendingEmail$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/Service/SendingEmail$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/Service/SendingEmail$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/Service/SendingEmail.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/Service/UserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bean/CartItem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bean/Category.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bean/Comment.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bean/Order.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bean/OrderDetail.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bean/Product.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bean/Products.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bean/ShoppingCart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bean/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bean/Users.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bo/CategoryBO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/AdminControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/AdminOrderControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/AdminProductControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/AdminUserControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/CategoryManagement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/CheckLoginCart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/Dashboard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/DeleteCategory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/DeleteProduct.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/DeleteUser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/EditCategory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/EditProduct.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/ForgotPassControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/HomeControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/HomePageController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/InsertCategory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/InsertProduct.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/InsertUser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/LoginControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/LoginGoogleHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/LogoutControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/ProductController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/ProductInfor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/ProductManagement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/SendEmailControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/ShoppingCartCL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/SignUpControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/StoreProductHome.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/ThanhToanCL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/ThongTinDonHangCL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/User/RegisController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/UserChangeAvatar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/UserEdit.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/UserEditControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/UserManagement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/AccountDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/CategoryDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/CommentDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/IProductDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/IProductsDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/ProductDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/ProductsDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/UserDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/db/DBContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/db/DBProperties.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/db/JDBIConnector.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/filter/AuthenticationFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/utils/SessionUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/FastInfoset-1.2.15.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/HikariCP-3.4.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/activation-1.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/antlr-2.7.7.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/aspectjweaver-1.9.5.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/byte-buddy-1.10.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/classmate-1.5.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/commons-codec-1.11.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/commons-logging-1.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/dom4j-2.1.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/fluent-hc-4.5.14.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/geantyref-1.3.14.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/gson-2.10.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/hibernate-commons-annotations-5.1.0.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/hibernate-core-5.4.9.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/httpclient-4.5.14.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/httpcore-4.4.9.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/istack-commons-runtime-3.0.7.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/jakarta.activation-api-1.2.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/jakarta.annotation-api-1.3.5.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/jakarta.persistence-api-2.2.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/jakarta.transaction-api-1.3.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/jandex-2.1.1.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/javaee-api-8.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/javassist-3.24.0-GA.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/javax.mail-1.6.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/javax.servlet-api-3.1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/jaxb-runtime-2.3.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/jboss-logging-3.3.2.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/jdbi3-core-3.41.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/jstl-1.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/jul-to-slf4j-1.7.29.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/log4j-api-2.12.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/log4j-to-slf4j-2.12.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/logback-classic-1.2.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/logback-core-1.2.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/mysql-connector-j-8.2.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/mysql-connector-java-8.0.28.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/mysql-connector-java-8.0.30.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/protobuf-java-3.11.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/protobuf-java-3.19.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/slf4j-api-1.7.36.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/snakeyaml-1.25.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-aop-5.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-aop-6.1.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-aspects-5.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-beans-5.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-beans-6.1.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-boot-2.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-boot-autoconfigure-2.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-boot-starter-2.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-boot-starter-aop-2.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-boot-starter-data-jpa-2.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-boot-starter-jdbc-2.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-boot-starter-logging-2.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-context-5.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-core-5.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-core-6.1.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-data-commons-2.2.3.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-data-jpa-2.2.3.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-expression-5.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-jcl-5.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-jcl-6.1.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-jdbc-5.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-orm-5.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/spring-tx-5.2.2.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/stax-ex-1.8.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/surefire-shared-utils-3.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/lib/txw2-2.3.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/admin_page/addProduct.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/admin_page/admin.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/admin_page/css/bootstrap.min.admin.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/admin_page/css/custom.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/admin_page/editProduct.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/admin_page/editUser.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/admin_page/include/header_content.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/admin_page/js/adminJS/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/admin_page/js/adminJS/jquery-3.3.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/admin_page/js/adminJS/jquery-3.3.1.slim.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/admin_page/js/adminJS/popper.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/admin_page/quanlyCategory.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/admin_page/quanlyDiscount.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/admin_page/quanlyDonHang.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/admin_page/quanlyProduct.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/admin_page/quanlyuser.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/css/Log_Regis.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/css/elegant-icons.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/css/font-awesome.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/css/jquery-ui.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/css/nice-select.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/css/owl.carousel.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/css/slicknav.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/fonts/ElegantIcons.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/fonts/ElegantIcons.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/fonts/ElegantIcons.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/fonts/ElegantIcons.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/fonts/FontAwesome.otf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/fonts/fontawesome-webfont.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/fonts/fontawesome-webfont.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/fonts/fontawesome-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/fonts/fontawesome-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/fonts/fontawesome-webfont.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/banner/banner-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/banner/banner-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/banner/user.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/blog/blog-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/blog/blog-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/blog/blog-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/blog/blog-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/blog/blog-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/blog/blog-6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/blog/details/details-author.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/blog/details/details-hero.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/blog/details/details-pic.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/blog/sidebar/sr-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/blog/sidebar/sr-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/blog/sidebar/sr-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/breadcrumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/cart/cart-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/cart/cart-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/cart/cart-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/categories/cat-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/categories/cat-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/categories/cat-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/categories/cat-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/categories/cat-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/featured/feature-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/featured/feature-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/featured/feature-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/featured/feature-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/featured/feature-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/featured/feature-6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/featured/feature-7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/featured/feature-8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/hero/banner.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/language.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/latest-product/lp-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/latest-product/lp-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/latest-product/lp-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/payment-item.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/details/product-details-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/details/product-details-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/details/product-details-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/details/product-details-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/details/product-details-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/details/thumb-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/details/thumb-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/details/thumb-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/details/thumb-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/discount/pd-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/discount/pd-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/discount/pd-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/discount/pd-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/discount/pd-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/discount/pd-6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/feature-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/feature-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/lp-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/pd-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/pd-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/pd-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/pd-6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/product-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/product-10.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/product-11.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/product-12.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/product-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/product-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/product-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/product-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/product-6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/product-7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/product-8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/product-9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/img/product/product-details-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/js/jquery-3.3.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/js/jquery-ui.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/js/jquery.nice-select.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/js/jquery.slicknav.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/js/log_reg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/js/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/js/mixitup.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/js/owl.carousel.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/sass/_base.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/sass/_blog-details.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/sass/_blog-sidebar.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/sass/_blog.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/sass/_breadcrumb.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/sass/_checkout.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/sass/_contact.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/sass/_footer.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/sass/_header.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/sass/_hero.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/sass/_home-page.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/sass/_mixins.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/sass/_responsive.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/sass/_shop-details.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/sass/_shop-grid.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/sass/_shoping-cart.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/sass/_sidebar.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/sass/_variable.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/assets/sass/style.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/blog-details.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/blog.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/cuahang.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/gio-hang.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/include/header_content.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/layout/footer.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/layout/header.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/lien-he.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/login-register/css/login.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/login-register/css/register.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/login-register/forgot_password.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/login-register/form_create_nPassword.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/login-register/js/signup_signin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/login-register/log_reg.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/login-register/login.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/login-register/login_register.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/login-register/register.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/main.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/thanh-toan.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/thong-tin-don-hang.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/user-profile.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/WebBanThuocBaoVeThucVat/verify.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/UserEditControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/UserEditControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/CategoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/CategoryDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/editUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/editUser.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/quanlyProduct.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/quanlyProduct.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/quanlyuser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/quanlyuser.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/blog-details.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/blog-details.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat.war" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/admin_page/quanlyProduct.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/admin_page/quanlyProduct.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/blog-details.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/blog-details.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -1045,118 +31,111 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="HTML File" />
-        <option value="JUnit5 Test Class" />
-        <option value="Interface" />
-        <option value="JUnit3 Test Class" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+        <option value="Servlet" />
         <option value="Jsp File" />
+        <option value="Interface" />
+        <option value="package-info" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-<<<<<<< HEAD
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-=======
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="21130514_VuTranThaiSon" />
+        <entry key="$PROJECT_DIR$" value="21130091_DoanNhatLinh" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
-    <option name="FILTER_INFO" value="true" />
-    <option name="FILTER_DEBUG" value="true" />
-    <option name="CUSTOM_FILTER" />
->>>>>>> 21130526-LeThanhTam
+    <option name="FILTER_INFO" value="false" />
+    <option name="FILTER_DEBUG" value="false" />
+    <option name="CUSTOM_FILTER" value="" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 2
-}</component>
+    &quot;associatedIndex&quot;: 2
+    }</component>
   <component name="ProjectId" id="2YIdC4QUipJ4ENXKCeAXcV5rI4a" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-<<<<<<< HEAD
   <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
+    &quot;keyToString&quot;: {
+    &quot;Application.CategoryDAO.executor&quot;: &quot;Run&quot;,
+    &quot;Application.DBContext.executor&quot;: &quot;Run&quot;,
+    &quot;Application.JDBIConnector.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ProductDAO.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Products.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ProductsDao.executor&quot;: &quot;Run&quot;,
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JavaScript Debug.index.jsp.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.Tomcat 9.0.81.executor&quot;: &quot;Run&quot;,
+    &quot;Tomcat Server.Tomcat 9.0.executor&quot;: &quot;Run&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;21130514__VuTranThaiSon&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin1/Documents/GitHub/WebBanThuocBaoVeThucVat&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/website/WebBanThuocBaoVeThucVat&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.29388815&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;160df4a56551aad3a8a3e031b462e798&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-=======
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit3",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3": "junit.framework.TestCase",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "21130526-LeThanhTam",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/website/WebBanThuocBaoVeThucVat",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.29388815",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.web.browsers",
-    "spring.configuration.checksum": "160df4a56551aad3a8a3e031b462e798",
-    "vue.rearranger.settings.migration": "true"
->>>>>>> 21130526-LeThanhTam
-  }
-}]]></component>
+    }
+    }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
-      <recent name="logging" />
-      <recent name="log" />
+      <recent name="dao" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\website\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main\java\dao" />
-      <recent name="C:\website\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main\java" />
+      <recent name="C:\website\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main" />
+      <recent name="D:\website\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main\java\dao" />
+      <recent name="D:\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main\webapp" />
+      <recent name="D:\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main" />
       <recent name="C:\Users\Admin1\Documents\GitHub\WebBanThuocBaoVeThucVat\js\adminJS" />
-      <recent name="C:\Users\Admin1\Documents\GitHub\WebBanThuocBaoVeThucVat\img\banner" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\website\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main\webapp" />
-      <recent name="C:\Users\Admin1\Documents\GitHub\WebBanThuocBaoVeThucVat\css\admin" />
+      <recent name="C:\website\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main\webapp\admin_page" />
+      <recent name="C:\website\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main\webapp" />
+      <recent name="D:\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main\webapp\css" />
+      <recent name="D:\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main\webapp\css\signup_signin" />
+      <recent name="D:\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main\webapp" />
     </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="junit.framework.TestCase" />
-      <recent name="" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="log" />
-    </key>
-    <key name="CreateTestDialog.RecentsKey">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="controller.Product" />
       <recent name="dao" />
-      <recent name="log" />
     </key>
   </component>
+  <component name="RunDashboard">
+    <option name="excludedTypes">
+      <set>
+        <option value="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" />
+      </set>
+    </option>
+  </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.81">
-    <configuration name="AccountDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="dao.AccountDAO" />
+    <configuration name="CategoryDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dao.CategoryDAO" />
       <module name="WebBanThuocBaoVeThucVat" />
       <extension name="coverage">
         <pattern>
@@ -1168,8 +147,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LogDao" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="dao.LogDao" />
+    <configuration name="OrdersDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dao.OrdersDAO" />
       <module name="WebBanThuocBaoVeThucVat" />
       <extension name="coverage">
         <pattern>
@@ -1181,8 +160,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="dao.UserDAO" />
+    <configuration name="Products" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="bean.Products" />
+      <module name="WebBanThuocBaoVeThucVat" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="bean.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductsDao" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dao.ProductsDao" />
       <module name="WebBanThuocBaoVeThucVat" />
       <extension name="coverage">
         <pattern>
@@ -1194,63 +186,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserDAOTest.testSelectModel" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProductsService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Service.ProductsService" />
       <module name="WebBanThuocBaoVeThucVat" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dao.*" />
+          <option name="PATTERN" value="Service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="dao" />
-      <option name="MAIN_CLASS_NAME" value="dao.UserDAOTest" />
-      <option name="METHOD_NAME" value="testSelectModel" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserDAOTest.testUpdateModel" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dao.ProductDAO" />
       <module name="WebBanThuocBaoVeThucVat" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="dao" />
-      <option name="MAIN_CLASS_NAME" value="dao.UserDAOTest" />
-      <option name="METHOD_NAME" value="testUpdateModel" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="WebBanThuocBaoVeThucVat (1)" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="WebBanThuocBaoVeThucVat (1)" />
-      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="Tomcat 9.0.81" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.81" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8081/WebBanThuocBaoVeThucVat/HomePageController" />
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8081/HomePageController" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="WebBanThuocBaoVeThucVat:war">
           <settings>
-            <option name="CONTEXT_PATH" value="/WebBanThuocBaoVeThucVat" />
+            <option name="CONTEXT_PATH" value="" />
           </settings>
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="e3ea64ef-545c-49b9-86f4-7448d9f6f800" />
+        <option name="BASE_DIRECTORY_NAME" value="5b48b930-41aa-452d-b4ce-440034b601f8" />
         <option name="HTTP_PORT" value="8081" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
@@ -1259,7 +226,7 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="60879" />
+        <option name="DEBUG_PORT" value="50225" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -1328,28 +295,113 @@
         </option>
       </method>
     </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
+      <deployment />
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="f201c8fc-80e9-473a-9fcc-861a1986af56" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="50225" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="Application.AccountDAO" />
-      <item itemvalue="Application.LogDao" />
-      <item itemvalue="Application.UserDAO" />
-      <item itemvalue="JUnit.UserDAOTest.testSelectModel" />
-      <item itemvalue="JUnit.UserDAOTest.testUpdateModel" />
+      <item itemvalue="Application.Unnamed" />
+      <item itemvalue="Application.OrdersDAO" />
+      <item itemvalue="Application.Products" />
+      <item itemvalue="Application.ProductsDao" />
+      <item itemvalue="Application.ProductsService" />
+      <item itemvalue="Application.CategoryDAO" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.81" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AccountDAO" />
-        <item itemvalue="Application.LogDao" />
-        <item itemvalue="Application.UserDAO" />
-        <item itemvalue="JUnit.UserDAOTest.testUpdateModel" />
-        <item itemvalue="JUnit.UserDAOTest.testSelectModel" />
+        <item itemvalue="Application.OrdersDAO" />
+        <item itemvalue="Application.Products" />
+        <item itemvalue="Application.ProductsDao" />
+        <item itemvalue="Application.ProductsService" />
+        <item itemvalue="Application.CategoryDAO" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-18.0.2-corretto-18.0.2-3183f394aec4-38982a12" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b4b7277f-3123-43a3-8334-fad619072ac6" name="Changes" comment="" />
+      <changelist id="b4b7277f-3123-43a3-8334-fad619072ac6" name="Changes" comment="Login with google" />
       <created>1700216902058</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -1365,59 +417,259 @@
       <workItem from="1700975980596" duration="67000" />
       <workItem from="1700980056951" duration="54000" />
       <workItem from="1700985812622" duration="109000" />
-<<<<<<< HEAD
-      <workItem from="1715681615323" duration="238000" />
-      <workItem from="1715681866884" duration="29000" />
-=======
-      <workItem from="1712657409421" duration="145000" />
-      <workItem from="1712657967565" duration="714000" />
-      <workItem from="1712658710692" duration="1893000" />
-      <workItem from="1712738437932" duration="3170000" />
-      <workItem from="1712812135567" duration="17574000" />
-      <workItem from="1712895903463" duration="5620000" />
-      <workItem from="1712908692690" duration="2752000" />
-      <workItem from="1713097690922" duration="1681000" />
-      <workItem from="1713437620987" duration="705000" />
-      <workItem from="1713516490454" duration="2059000" />
-      <workItem from="1713781974827" duration="1054000" />
-      <workItem from="1713865750954" duration="2852000" />
-      <workItem from="1713869728748" duration="181000" />
-      <workItem from="1713870160353" duration="1725000" />
-      <workItem from="1713949122910" duration="642000" />
-      <workItem from="1714034240737" duration="12558000" />
-      <workItem from="1714211359078" duration="1712000" />
-      <workItem from="1714228506111" duration="2897000" />
-      <workItem from="1714295496570" duration="2340000" />
-      <workItem from="1714367112279" duration="13404000" />
-      <workItem from="1714466192375" duration="17006000" />
-      <workItem from="1714551660361" duration="946000" />
-      <workItem from="1714553271972" duration="13724000" />
-      <workItem from="1714638755994" duration="9895000" />
-      <workItem from="1714665046031" duration="7843000" />
-      <workItem from="1714708640365" duration="15454000" />
-      <workItem from="1714805641281" duration="6282000" />
-      <workItem from="1714813146372" duration="456000" />
-      <workItem from="1714814943503" duration="2104000" />
-      <workItem from="1714818103520" duration="68000" />
-      <workItem from="1714818225460" duration="9076000" />
-      <workItem from="1714830462339" duration="1418000" />
-      <workItem from="1714834257903" duration="439000" />
-      <workItem from="1714842318128" duration="45000" />
-      <workItem from="1714844688596" duration="138000" />
-      <workItem from="1714868296635" duration="379000" />
-      <workItem from="1714905880493" duration="848000" />
-      <workItem from="1714908211048" duration="2417000" />
-      <workItem from="1714915286549" duration="3105000" />
-      <workItem from="1715140296659" duration="103000" />
-      <workItem from="1715140593308" duration="120000" />
-      <workItem from="1715141190424" duration="369000" />
-      <workItem from="1715245257502" duration="4477000" />
-      <workItem from="1715444889361" duration="8000" />
-      <workItem from="1715444974137" duration="607000" />
-      <workItem from="1715519418261" duration="6987000" />
-      <workItem from="1715679135230" duration="599000" />
->>>>>>> 21130526-LeThanhTam
+      <workItem from="1701139797102" duration="784000" />
+      <workItem from="1701140732566" duration="23000" />
+      <workItem from="1701140778227" duration="34000" />
+      <workItem from="1701141039027" duration="206000" />
+      <workItem from="1701141849985" duration="291000" />
+      <workItem from="1701142195458" duration="123000" />
+      <workItem from="1701142341330" duration="100000" />
+      <workItem from="1701142488283" duration="815000" />
+      <workItem from="1701173896849" duration="593000" />
+      <workItem from="1701255264215" duration="2049000" />
+      <workItem from="1701440929781" duration="286000" />
+      <workItem from="1702102393461" duration="15000" />
+      <workItem from="1702481457106" duration="41000" />
+      <workItem from="1701175048564" duration="2683000" />
+      <workItem from="1701187207908" duration="44000" />
+      <workItem from="1701240704213" duration="906000" />
+      <workItem from="1701245811592" duration="1278000" />
+      <workItem from="1701270245163" duration="109000" />
+      <workItem from="1701488366563" duration="512000" />
+      <workItem from="1701488921992" duration="57000" />
+      <workItem from="1702032844702" duration="469000" />
+      <workItem from="1702033358510" duration="1049000" />
+      <workItem from="1702556114595" duration="131000" />
+      <workItem from="1702556270858" duration="187000" />
+      <workItem from="1702556481495" duration="375000" />
+      <workItem from="1702556921717" duration="1787000" />
+      <workItem from="1702602774827" duration="2014000" />
+      <workItem from="1702718444075" duration="1336000" />
+      <workItem from="1702720797861" duration="4215000" />
+      <workItem from="1702734865686" duration="591000" />
+      <workItem from="1702735492744" duration="607000" />
+      <workItem from="1702736126278" duration="7000" />
+      <workItem from="1702736162454" duration="1555000" />
+      <workItem from="1702738093946" duration="127000" />
+      <workItem from="1702738258772" duration="1211000" />
+      <workItem from="1702739572187" duration="404000" />
+      <workItem from="1702740202824" duration="357000" />
+      <workItem from="1702801330939" duration="5656000" />
+      <workItem from="1702912223813" duration="633000" />
+      <workItem from="1702975132645" duration="18995000" />
+      <workItem from="1703081170399" duration="6888000" />
+      <workItem from="1703234237900" duration="11362000" />
+      <workItem from="1703315238646" duration="7678000" />
+      <workItem from="1703504414956" duration="1107000" />
+      <workItem from="1703590079605" duration="7524000" />
+      <workItem from="1703657584846" duration="10761000" />
+      <workItem from="1704100674454" duration="7238000" />
+      <workItem from="1704112185857" duration="3773000" />
+      <workItem from="1704116137860" duration="1206000" />
+      <workItem from="1704118318010" duration="4609000" />
+      <workItem from="1704330041710" duration="1643000" />
+      <workItem from="1704332234962" duration="9796000" />
+      <workItem from="1704344609827" duration="1631000" />
+      <workItem from="1704353371363" duration="653000" />
+      <workItem from="1704436517935" duration="362000" />
+      <workItem from="1704530990320" duration="470000" />
+      <workItem from="1704619901764" duration="29000" />
+      <workItem from="1705036093157" duration="11343000" />
+      <workItem from="1705086811017" duration="1816000" />
+      <workItem from="1705116850454" duration="3170000" />
+      <workItem from="1705128426090" duration="6066000" />
+      <workItem from="1705135888971" duration="8622000" />
+      <workItem from="1705160448068" duration="5336000" />
+      <workItem from="1705194654716" duration="1181000" />
+      <workItem from="1705201547493" duration="16285000" />
+      <workItem from="1705232218987" duration="11311000" />
+      <workItem from="1705255919284" duration="2197000" />
+      <workItem from="1705294091827" duration="928000" />
+      <workItem from="1705295037107" duration="14432000" />
+      <workItem from="1705311069703" duration="51000" />
+      <workItem from="1705333295493" duration="16739000" />
+      <workItem from="1705374086143" duration="72000" />
+      <workItem from="1705396894544" duration="11397000" />
+      <workItem from="1705416913840" duration="114000" />
+      <workItem from="1705466337074" duration="17589000" />
+      <workItem from="1705564348296" duration="2989000" />
+      <workItem from="1705567355470" duration="4957000" />
+      <workItem from="1705598794311" duration="27000" />
+      <workItem from="1705598879709" duration="8011000" />
+      <workItem from="1705626804085" duration="348000" />
+      <workItem from="1705628406151" duration="18000" />
+      <workItem from="1705628475960" duration="67000" />
+      <workItem from="1705628556938" duration="41000" />
+      <workItem from="1705628673112" duration="725000" />
+      <workItem from="1705629841837" duration="530000" />
+      <workItem from="1705644013965" duration="297000" />
+      <workItem from="1705650183825" duration="15606000" />
+      <workItem from="1705717794091" duration="4640000" />
+      <workItem from="1705726726953" duration="5697000" />
+      <workItem from="1705736728636" duration="3476000" />
+      <workItem from="1705748213580" duration="35310000" />
+      <workItem from="1705831799686" duration="9164000" />
+      <workItem from="1705899241733" duration="39916000" />
+      <workItem from="1705944066140" duration="6929000" />
+      <workItem from="1705970866589" duration="1013000" />
+      <workItem from="1706182582950" duration="29000" />
+      <workItem from="1708685519376" duration="8000" />
+      <workItem from="1708685678902" duration="620000" />
+      <workItem from="1708911996430" duration="5305000" />
+      <workItem from="1709021265228" duration="1760000" />
+      <workItem from="1709091808629" duration="1296000" />
+      <workItem from="1709551962791" duration="1254000" />
+      <workItem from="1709946688230" duration="147000" />
+      <workItem from="1709946840526" duration="11911000" />
+      <workItem from="1710036949205" duration="2143000" />
+      <workItem from="1710488510409" duration="3520000" />
+      <workItem from="1710572383757" duration="5311000" />
+      <workItem from="1710583248716" duration="1858000" />
+      <workItem from="1710641942055" duration="7546000" />
+      <workItem from="1710931856897" duration="61000" />
+      <workItem from="1711095430772" duration="375000" />
+      <workItem from="1711099661257" duration="666000" />
+      <workItem from="1711275279877" duration="3350000" />
+      <workItem from="1711380703473" duration="3004000" />
+      <workItem from="1711600932538" duration="44000" />
+      <workItem from="1711601003152" duration="18000" />
+      <workItem from="1711601063622" duration="29000" />
+      <workItem from="1711601100137" duration="70000" />
+      <workItem from="1711601208761" duration="104000" />
+      <workItem from="1711601327042" duration="395000" />
+      <workItem from="1711601741834" duration="34000" />
+      <workItem from="1711601906287" duration="306000" />
+      <workItem from="1711602298063" duration="7952000" />
+      <workItem from="1711638530973" duration="650000" />
+      <workItem from="1711698061881" duration="3985000" />
+      <workItem from="1711871123206" duration="79000" />
+      <workItem from="1711871228302" duration="280000" />
+      <workItem from="1711871526719" duration="7693000" />
+      <workItem from="1711981298849" duration="1840000" />
+      <workItem from="1712112185064" duration="506000" />
+      <workItem from="1712112959359" duration="730000" />
+      <workItem from="1712117740017" duration="15000" />
+      <workItem from="1712144883666" duration="595000" />
+      <workItem from="1712221357999" duration="1845000" />
+      <workItem from="1712223226807" duration="6851000" />
+      <workItem from="1712302444450" duration="3997000" />
+      <workItem from="1712312940242" duration="235000" />
+      <workItem from="1713868225003" duration="2960000" />
+      <workItem from="1715875176536" duration="295000" />
+      <workItem from="1715903601922" duration="7224000" />
+      <workItem from="1715917295802" duration="61000" />
+      <workItem from="1715952858370" duration="5100000" />
+      <workItem from="1715991357631" duration="21417000" />
+      <workItem from="1716107368428" duration="1499000" />
+      <workItem from="1716125596899" duration="26000" />
+      <workItem from="1716221475265" duration="1186000" />
+      <workItem from="1716271404934" duration="2871000" />
     </task>
+    <task id="LOCAL-00001" summary="test">
+      <option name="closed" value="true" />
+      <created>1702556843694</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1702556843694</updated>
+    </task>
+    <task id="LOCAL-00002" summary="test">
+      <option name="closed" value="true" />
+      <created>1702735598895</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1702735598895</updated>
+    </task>
+    <task id="LOCAL-00003" summary="test">
+      <option name="closed" value="true" />
+      <created>1702736816865</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1702736816866</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fix bug">
+      <option name="closed" value="true" />
+      <created>1709552982620</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1709552982620</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Thêm button mua hàng ở trang chi tiết sản phẩm">
+      <option name="closed" value="true" />
+      <created>1710650519405</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1710650519405</updated>
+    </task>
+    <task id="LOCAL-00006" summary="đưa trang blog lên thanh menu">
+      <option name="closed" value="true" />
+      <created>1711100182773</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1711100182773</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Sửa lỗi chức năng giỏ hàng">
+      <option name="closed" value="true" />
+      <created>1711605421238</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1711605421238</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Sửa lỗi chức năng giỏ hàng">
+      <option name="closed" value="true" />
+      <created>1711605625830</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1711605625830</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Sửa lỗi chức năng giỏ hàng">
+      <option name="closed" value="true" />
+      <created>1711605928351</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1711605928351</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Sửa lỗi chức năng giỏ hàng">
+      <option name="closed" value="true" />
+      <created>1711606467336</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1711606467336</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Sửa lỗi chức năng giỏ hàng">
+      <option name="closed" value="true" />
+      <created>1711606642636</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1711606642636</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Hoàn thiện giao diện trang chủ">
+      <option name="closed" value="true" />
+      <created>1711608235014</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1711608235014</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Thêm tính năng bắt buộc phải đăng nhập mới thêm sản phẩm vào giỏ hàng được">
+      <option name="closed" value="true" />
+      <created>1711609567793</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1711609567793</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1433,5 +685,15 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="test" />
+    <MESSAGE value="fix bug" />
+    <MESSAGE value="Thêm button mua hàng ở trang chi tiết sản phẩm" />
+    <MESSAGE value="đưa trang blog lên thanh menu" />
+    <MESSAGE value="Sửa lỗi chức năng giỏ hàng" />
+    <MESSAGE value="Hoàn thiện giao diện trang chủ" />
+    <MESSAGE value="Thêm tính năng bắt buộc phải đăng nhập mới thêm sản phẩm vào giỏ hàng được" />
+    <option name="LAST_COMMIT_MESSAGE" value="Thêm tính năng bắt buộc phải đăng nhập mới thêm sản phẩm vào giỏ hàng được" />
   </component>
 </project>
