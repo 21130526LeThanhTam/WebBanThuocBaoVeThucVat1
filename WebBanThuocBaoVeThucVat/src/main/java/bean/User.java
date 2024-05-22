@@ -79,7 +79,6 @@ public class User implements IModel {
 
     public String getUsername() {
         return username;
-
     }
 
     public void setUsername(String userName) {

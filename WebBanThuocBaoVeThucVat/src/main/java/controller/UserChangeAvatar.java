@@ -49,4 +49,4 @@ public class UserChangeAvatar extends HttpServlet {
                 .bind(1,idUser)
                 .execute());
     }
-}
+}// start xamchpuap duoc chua duoc
