@@ -109,7 +109,7 @@ public class UserEditControl extends HttpServlet {
         if (dataChanged || passwordChanged) {
             userSession.setSurName(surname);
             userSession.setLastName(lastname);
-            userSession.setUserName(username);
+            userSession.setUsername(username);
             userSession.setPhone(phone);
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
             session.setAttribute("uslogin", userSession);

@@ -17,10 +17,10 @@
     column-gap: 30px;
 }
 .form{
-    position: absolute;
     max-width: 430px;
     width: 100%;
     padding: 30px;
+    margin: auto !important;
     border-radius: 6px;
     background: #FFF;
 }
@@ -54,7 +54,6 @@ form{
 }
 .field input,
 .field button{
-    height: 100%;
     width: 100%;
     border: none;
     font-size: 16px;

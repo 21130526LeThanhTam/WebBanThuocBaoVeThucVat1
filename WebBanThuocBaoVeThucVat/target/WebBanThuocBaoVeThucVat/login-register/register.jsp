@@ -69,8 +69,7 @@
         });
     </script>
 </head>
-<body>
-<section class="container forms">
+<body class="bg-success d-flex align-items-center justify-content-center" style="height: 1000px">
     <div class="form signup">
         <div class="form-content">
             <header>Signup</header>
@@ -105,12 +104,12 @@
                 <div class="field input-field">
                     <input name="rePass" type="password" id="rePass" placeholder="Nhập lại mật khẩu" class="password">
                 </div>
-                <div class="container-capcha" style="flex: auto">
+                <div class="container-capcha mt-5 d-flex justify-content-center align-items-center">
                     <div class="g-recaptcha" data-sitekey="6LeWqNkpAAAAANkqcg0zDmNz90pyG4FOLP4QiDQv"></div>
                 </div>
                 <span class="text-danger" id="errorRegister"></span><br>
                 <div class="field button-field">
-                    <input type="submit" id="btn_register" value="Đăng ký">
+                    <input type="submit" id="btn_register" class="btn btn-success" value="Đăng ký">
                 </div>
             </form>
             <div class="form-link">
@@ -118,6 +117,5 @@
             </div>
         </div>
     </div>
-</section>
 </body>
 </html>

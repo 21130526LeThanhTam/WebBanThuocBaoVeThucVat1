@@ -42,7 +42,7 @@ public class LoginControl extends HttpServlet {
             User user = AccountDAO.login(email, DigestUtils.md5DigestAsHex(pass.getBytes()));
             if (user == null) {
                 count++;
-                if(count==5) {
+                if(count ==5) {
                     out.println("{\"error\":\"Bạn đã vượt quá số lần đăng nhập cho phép,vui lòng thử lại sau\"}");
                 }
                 else {
