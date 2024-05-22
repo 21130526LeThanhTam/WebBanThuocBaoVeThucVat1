@@ -10,7 +10,6 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="WebBanThuocBaoVeThucVat" target="1.5" />
       <module name="WebBanThuocBaoVeThucVat (1)" target="1.5" />
       <module name="WebBanThuocBaoVeThucVat (2)" target="11" />
     </bytecodeTargetLevel>

@@ -58,8 +58,15 @@
                 <ul class="collapse list-unstyled menu" id="homeSubmenu2">
                     <li><a href="./maCategory">Quản lý doanh mục</a></li>
                     <li><a href="./maProduct">Quản lý sản phẩm</a></li>
-                    <li><a href="#">Quản lý mã giảm giá</a></li>
+                    <li><a href="./maDiscount">Quản lý mã giảm giá</a></li>
                 </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="./importManagement" data-toggle="collapse" aria-expanded="false"
+                   class="dropdown-toggle">
+                    <i class="material-icons">apps</i>Quản lý nhập hàng
+                </a>
             </li>
 
             <li class="dropdown">
@@ -316,7 +323,58 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header">
+                            <div class="icon icon-info">
+                                <span class="material-icons">follow_the_signs</span>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <p class="category text-danger"><strong>Sắp hết hàng</strong></p>
+                            <h3 class="" style="font-size: 16px">4 sản phẩm></h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons">update</i>
+                                <a href="#pablo">Cần nhập hàng</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+        <div class="container my-5">
+            <div class="mb-5 d-flex align-items-center">
+                <button class="btn btn-success">+ Tạo mới nhập hàng</button>
+                <button class="btn btn-info ml-3">=> Xuất file</button>
+            </div>
+            <table id="orderDetailsTable" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Id product</th>
+                    <th>Số lượng</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Giá tiền</th>
+                    <th>Ngày nhập</th>
+                    <th>Trình trạng</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>  <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></td>
+                </tr>
+
+                </tbody>
+            </table>
         </div>
 
         <!------main-content-end----------->
@@ -347,7 +405,11 @@
 <script src="admin_page/js/adminJS/popper.min.js"></script>
 <script src="admin_page/js/adminJS/jquery-3.3.1.min.js"></script>
 <script src="admin_page/js/adminJS/bootstrap.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.0.5/datatables.min.css" rel="stylesheet">
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.0.5/datatables.min.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -362,10 +424,18 @@
 
     });
 </script>
-
-
+<script>
+    new DataTable('#orderDetailsTable', {
+        layout: {
+            bottomEnd: {
+                paging: {
+                    boundaryNumbers: false
+                }
+            }
+        }
+    });
+</script>
 </body>
-
 </html>
 
 

@@ -121,6 +121,7 @@ public class AccountDAO extends AbstractDao<User> {
         }
         return null;
     }
+
     public String signUp2(String email,String pass,String username,String surname,String lastname,String phone,String hash){
         String sql = "insert into users(user_name, password, phone, email, sur_name, last_name, hash, role, active) values (?,?,?,?,?,?,?,0,1)";
         Connection conn = DBContext.getConnection();
