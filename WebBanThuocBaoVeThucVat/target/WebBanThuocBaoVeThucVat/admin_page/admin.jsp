@@ -63,11 +63,10 @@
             </li>
 
             <li class="dropdown">
-                <a href="./nhapHang" data-toggle="collapse" aria-expanded="false"
+                <a href="./importManagement" data-toggle="collapse" aria-expanded="false"
                    class="dropdown-toggle">
                     <i class="material-icons">apps</i>Quản lý nhập hàng
                 </a>
-
             </li>
 
             <li class="dropdown">
