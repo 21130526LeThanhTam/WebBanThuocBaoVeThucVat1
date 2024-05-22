@@ -59,10 +59,9 @@ public class ProductDAO implements IProductDAO {
     public List<Products> findDiscountPro1() {
         Jdbi jdbi = JDBIConnector.getJdbi();
         List<Products> findNewPro1 = jdbi.withHandle(handle -> {
-            String sql = "SELECT id, product_name, image, price, id_category, status, des, create_at FROM products\n" +
-                    "where status = 1\n" +
-                    "order by status desc\n" +
-                    "LIMIT 3;";
+            String sql = "SELECT id, id_category, product_name, image, price, des, create_at FROM products\n" +
+                    "where status = 1 and id_discount is not null\n"
+                    + "LIMIT 3;";
             return handle.createQuery(sql).mapToBean(Products.class).stream().collect(Collectors.toList());
         });
         return findNewPro1;
@@ -71,14 +70,13 @@ public class ProductDAO implements IProductDAO {
     @Override
     public List<Products> findDiscountPro2() {
         Jdbi jdbi = JDBIConnector.getJdbi();
-        List<Products> findNewPro2 = jdbi.withHandle(handle -> {
-            String sql = "SELECT id, product_name, image, price, id_category, status, des, create_at FROM products\n" +
-                    "where status = 1\n" +
-                    "order by status desc\n" +
-                    "LIMIT 3 OFFSET 3;";
+        List<Products> findNewPro1 = jdbi.withHandle(handle -> {
+            String sql = "SELECT id, id_category, product_name, image, price, des, create_at FROM products\n" +
+                    "where status = 1 and id_discount is not null\n"
+                    + "LIMIT 3 OFFSET 3;";
             return handle.createQuery(sql).mapToBean(Products.class).stream().collect(Collectors.toList());
         });
-        return findNewPro2;
+        return findNewPro1;
     }
 
     @Override
@@ -118,6 +116,8 @@ public class ProductDAO implements IProductDAO {
 
     public static void main(String[] args) {
         ProductDAO dao = new ProductDAO();
-        dao.findByPriceMin("").forEach(System.out::println);
+//        dao.findByPriceMin("").forEach(System.out::println);
+        System.out.println(dao.findDiscountPro1().size());
+        System.out.println(dao.findDiscountPro2().size());
     }
 }

@@ -11,8 +11,6 @@
     <link rel="stylesheet" href="css/admin/bootstrap.min.admin.css">
     <!----css3---->
     <link rel="stylesheet" href="css/admin/custom.css">
-
-
     <!--google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

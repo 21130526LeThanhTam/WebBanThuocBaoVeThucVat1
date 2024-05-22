@@ -95,7 +95,7 @@
                                                             <div class="form-group">
                                                                 <label>Tên người dùng</label>
 <%--                                                                <input class="form-control" id="username" type="text" name="username" placeholder="<%= user.getUsername() %>">--%>
-                                                                <input class="form-control" id="username" type="text" name="username" placeholder="<%= a.getUserName() %>">
+                                                                <input class="form-control" id="username" type="text" name="username" placeholder="<%= a.getUsername() %>">
                                                             </div>
                                                         </div>
                                                     </div>

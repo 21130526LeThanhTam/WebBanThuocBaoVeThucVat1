@@ -14,11 +14,10 @@ public class OrderMapper implements RowMapper<Orders> {
             Orders order = new Orders();
             order.setId(resultSet.getInt("id"));
             order.setIdUser(resultSet.getInt("id_user"));
-             order.setAddress(resultSet.getString("address"));
+            order.setAddress(resultSet.getString("address"));
              order.setTotalPrice(resultSet.getFloat("total_price"));
              order.setShippingFee(resultSet.getFloat("shipping_fee"));
              order.setPhoneNumber(resultSet.getString("phone_number"));
-             order.setStatus(resultSet.getInt("status_id"));
              return order;
         } catch (SQLException e) {
             return null;

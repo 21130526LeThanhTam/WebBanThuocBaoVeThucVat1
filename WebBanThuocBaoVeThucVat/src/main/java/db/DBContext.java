@@ -13,7 +13,7 @@ public class DBContext {
             String username = "root";
             String password = "";
             return DriverManager.getConnection(url, username, password);
-        }catch(ClassNotFoundException ex){
+        }catch(ClassNotFoundException ex){//s
             ex.printStackTrace();
         }catch(SQLException ex){
             ex.printStackTrace();

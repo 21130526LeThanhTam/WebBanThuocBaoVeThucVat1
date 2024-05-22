@@ -11,9 +11,20 @@ public class Orders {
     private float shippingFee;
     private String address;
     private String phoneNumber;
-    private int status;
+    private Timestamp createAt;
 
     private List<CartItem> lp;
+
+
+    public Orders(int id, int idUser, float totalPrice, float shippingFee, String address, String phoneNumber, Timestamp createAt) {
+        this.id = id;
+        this.idUser = idUser;
+        this.totalPrice = totalPrice;
+        this.shippingFee = shippingFee;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.createAt = createAt;
+    }
 
     public Orders(int idUser, float totalPrice, float shippingFee, String address,
                   String phoneNumber, int status, List<CartItem> lp) {
@@ -22,12 +33,19 @@ public class Orders {
         this.shippingFee = shippingFee;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.status = status;
         this.lp = lp;
     }
 
     public Orders() {
 
+    }
+
+    public Orders(int idUser, float totalPrice, float shippingFee, String address, String phoneNumber) {
+        this.idUser = idUser;
+        this.totalPrice = totalPrice;
+        this.shippingFee = shippingFee;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
     }
 
     public List<CartItem> getLp() {
@@ -67,10 +85,6 @@ public class Orders {
     }
 
 
-    public int getStatus() {
-        return status;
-    }
-
 
 
     public void setIdUser(int idUser) {
@@ -93,8 +107,25 @@ public class Orders {
         this.phoneNumber = phoneNumber;
     }
 
+    public Timestamp getCreateAt() {
+        return createAt;
+    }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setCreateAt(Timestamp createAt) {
+        this.createAt = createAt;
+    }
+
+    @Override
+    public String toString() {
+        return "Orders{" +
+                "id=" + id +
+                ", idUser=" + idUser +
+                ", totalPrice=" + totalPrice +
+                ", shippingFee=" + shippingFee +
+                ", address='" + address + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", createAt=" + createAt +
+                ", lp=" + lp +
+                '}';
     }
 }

@@ -1,5 +1,6 @@
 package dao;
 
+import Service.UserService;
 import bean.User;
 import db.DBContext;
 import db.JDBIConnector;
@@ -87,11 +88,9 @@ public class UserDAO extends AbstractDao<User> {
 
     //    //3. lấy ra all user. đã check
     public static List<User> dsUsers(){
-
         List<User> users = JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createQuery("select id,user_name,password,phone,email,sur_name,last_name,role,hash,active from users").mapToBean(User.class).collect(Collectors.toList()));
         return users;
-
     }
     //    //xóa ng dùng theo email.đã check
     public static void deleteUser(int id){// đã check
@@ -249,15 +248,10 @@ public class UserDAO extends AbstractDao<User> {
 
     //int id, int active, String username, String phone, String surname, String lastname
     public static void main(String[] args) {
-
-//        for(User a: UserDAO.listOfRoleWithSearch(0,1,"")){
-//            System.out.println(a);
-//        }
-//        for(User a: UserDAO.listOfRole(0,1)){
-//            System.out.println(a);
-//        }
-//        UserDAO.updateUser("Trung Kiên","Nguyễn","TrKien","0932493567",1,8);
-//        System.out.println(UserDAO.numOfRole(0,"tu"));
+        List<User>userList= UserService.getInstance().getDSUsers();
+        for (User a: userList){
+            System.out.println(a);
+        }
 
     }
 }
