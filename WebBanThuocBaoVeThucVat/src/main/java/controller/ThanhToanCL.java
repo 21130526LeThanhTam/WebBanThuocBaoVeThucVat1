@@ -42,9 +42,7 @@ public class ThanhToanCL extends HttpServlet {
             request.setAttribute("phone", user.getPhone());
 
         } else {
-            request.setAttribute("firstname", "");
-            request.setAttribute("username", "");
-            request.setAttribute("phone", "");
+            getServletContext().getRequestDispatcher("/login-register/login.jsp").forward(request, response);
         }
         if (action != null && action.equals("checkout")) {
             session.setAttribute("list", shoppingCart.getCartItemList());
@@ -81,5 +79,4 @@ public class ThanhToanCL extends HttpServlet {
 
         }
     }
-
 }

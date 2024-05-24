@@ -98,7 +98,7 @@
                 </div>
                 <div class="field button-field">
                     <div class="container-capcha" style="margin-left:32px">
-                    <div class="g-recaptcha" data-sitekey="6LeWqNkpAAAAANkqcg0zDmNz90pyG4FOLP4QiDQv"></div>
+                        <div class="g-recaptcha" data-sitekey="6LeWqNkpAAAAANkqcg0zDmNz90pyG4FOLP4QiDQv"></div>
                     </div>
                     <span class="text-danger" id="errorLogin"></span><br>
                     <input type="submit" value="Đăng nhập" id="btnLogin" style="background-color:#FFCC33;color:white;border:none; font-weight: bold">

@@ -108,8 +108,13 @@
                                 </div>
                             </div>
                         </div>
-
-                        <a href="ShoppingCartCL?action=post&id=<%=proID.getId()%>&type=0" id="addToCartBtn" class="primary-btn"><i class="fa-solid fa-cart-plus"></i>THÊM VÀO GIỎ HÀNG</a>
+                    <a class="d-flex add-to-cart align-items-center justify-content-center"
+                       href="javascript:void(0)"
+                       data-id="<%=proID.getId()%>"
+                       onclick="addCart(this, '<%=proID.getId()%>')">
+                        THÊM VÀO GIỎ HÀNG
+                    </a>
+<%--                        <a href="ShoppingCartCL?action=post&id=<%=proID.getId()%>&type=0" id="addToCartBtn" class="primary-btn"><i class="fa-solid fa-cart-plus"></i>THÊM VÀO GIỎ HÀNG</a>--%>
                         <a href="javascript:void(0);" id="buyNowBtn" class="primary-btn">MUA NGAY</a>
 
 
@@ -414,9 +419,36 @@
 <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/main.js"></script>
 
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-
+    function addCart(btn, id) {
+        var quantity = $('#quantityInput').val();
+        $.ajax({
+            url: "ShoppingCartCL",
+            method: "POST",
+            data: {
+                id: id,
+                action: "add",
+                type: 1,
+                quantity: quantity
+            },
+            success: function (response) {
+                var res = JSON.parse(response);
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Thêm Sản Phẩm Vào Giỏ Hàng Thành Công!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                const badge = document.getElementById("badge");
+                badge.innerHTML = res.totalItems;
+            }
+        });
+    }
+</script>
+<script>
     document.getElementById('buyNowBtn').addEventListener('click', function() {
         // Lấy giá trị đã nhập từ input
         var quantity = document.getElementById('quantityInput').value;

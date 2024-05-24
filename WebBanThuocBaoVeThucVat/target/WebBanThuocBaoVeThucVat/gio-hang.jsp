@@ -118,7 +118,7 @@
                                     <input type ="hidden" name ="action" value="put">
                                     <input type ="hidden" name="id" value="<%=cartItem.getProduct().getId()%>">
                                     <button type="submit" class="btn button btn-primary">
-                                       Cập nhật
+                                        Cập nhật
                                     </button>
                                 </form>
                             </td>
@@ -144,10 +144,10 @@
                 <div class="shoping__cart__btns">
                     <a href="ProductController" class="primary-btn cart-btn">TIẾP TỤC MUA SẮM</a>
                     <%--                    <p class="text-danger"><%=e%></p>--%>
-<%--                    <button id="button2" type="submit" class="primary-btn cart-btn cart-btn-right">--%>
-<%--                        <span class="icon_loading"></span>--%>
-<%--                        Cập nhật giỏ hàng--%>
-<%--                    </button>--%>
+                    <%--                    <button id="button2" type="submit" class="primary-btn cart-btn cart-btn-right">--%>
+                    <%--                        <span class="icon_loading"></span>--%>
+                    <%--                        Cập nhật giỏ hàng--%>
+                    <%--                    </button>--%>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -169,9 +169,9 @@
                         <li>Tổng <span><%=shoppingCart.getTotalPrice()%></span></li>
                     </ul>
                     <input type="hidden" name="action" value="checkout">
-<%--                    <a href="thanh-toan.jsp" class="primary-btn">TIẾN HÀNH THANH TOÁN</a>--%>
+                    <%--                    <a href="thanh-toan.jsp" class="primary-btn">TIẾN HÀNH THANH TOÁN</a>--%>
                     <%if(!cartItems.isEmpty()){ %>
-                    <button class="btn btn-success" type="submit">   TIẾN HÀNH THANH TOÁN </button>
+                    <input class="btn btn-success" type="submit" value="TIẾN HÀNH THANH TOÁN">
                     <%}%>
                 </form>
             </div>
