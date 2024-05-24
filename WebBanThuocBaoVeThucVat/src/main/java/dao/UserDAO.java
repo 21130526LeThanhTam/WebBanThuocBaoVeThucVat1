@@ -4,6 +4,7 @@ import Service.UserService;
 import bean.User;
 import db.DBContext;
 import db.JDBIConnector;
+import log.AbsModel;
 import log.AbstractDao;
 
 import java.sql.Connection;
@@ -130,6 +131,13 @@ public class UserDAO extends AbstractDao<User> {
                         .execute()
         );
     }
+    public void LockUser(User user) {
+        JDBIConnector.getJdbi().useHandle(handle ->
+                handle.createUpdate("UPDATE users SET active=0 WHERE email=?")
+                        .bind(0,user.getEmail())
+                        .execute()
+        );
+    }
 
     //// kiểm tra người dùng tồn tại.nếu người dùng ko tồn tại false và ngc lại
     public boolean isUserExists(String email) {
@@ -202,17 +210,18 @@ public class UserDAO extends AbstractDao<User> {
     }
 
     @Override
-    public boolean insertModel(User model, String ip, int level, String address) {
+    public boolean insertModel(AbsModel model, String ip, int level, String address) {
+        User user= (User) model;
         Integer i =JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createUpdate("INSERT INTO users(role, user_name, phone,email, sur_name, last_name, active,password) VALUES (?,?,?,?,?,?,?,?)")
-                        .bind(0,model.getRole())
-                        .bind(1,model.getUsername())
-                        .bind(2,model.getPhone())
-                        .bind(3,model.getEmail())
-                        .bind(4,model.getSurName())
-                        .bind(5,model.getLastName())
-                        .bind(6,model.getActive())
-                        .bind(7,model.getPassword())
+                        .bind(0,user.getRole())
+                        .bind(1,user.getUsername())
+                        .bind(2,user.getPhone())
+                        .bind(3,user.getEmail())
+                        .bind(4,user.getSurName())
+                        .bind(5,user.getLastName())
+                        .bind(6,user.getActive())
+                        .bind(7,user.getPassword())
                         .execute()
         );
         super.insertModel(model,ip,level,address);
@@ -223,21 +232,22 @@ public class UserDAO extends AbstractDao<User> {
     }
 
     @Override
-    public boolean deleteModel(User model, String ip, int level, String address) {
+    public boolean deleteModel(AbsModel model, String ip, int level, String address) {
 
         super.deleteModel(model,ip,level,address);
         return true;
     }
     @Override
-    public boolean updateModel(User model, String ip, int level, String address) {
+    public boolean updateModel(AbsModel model, String ip, int level, String address) {
+        User user= (User) model;
         Integer i = JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createUpdate("UPDATE users SET sur_name=?,last_name=?,user_name=?,phone=?,active=? WHERE id=?")
-                        .bind(0,model.getSurName())
-                        .bind(1,model.getLastName())
-                        .bind(2,model.getUsername())
-                        .bind(3,model.getPhone())
-                        .bind(4,model.getActive())
-                        .bind(5,model.getId())
+                        .bind(0,user.getSurName())
+                        .bind(1,user.getLastName())
+                        .bind(2,user.getUsername())
+                        .bind(3,user.getPhone())
+                        .bind(4,user.getActive())
+                        .bind(5,user.getId())
                         .execute()
         );
 
@@ -248,10 +258,7 @@ public class UserDAO extends AbstractDao<User> {
 
     //int id, int active, String username, String phone, String surname, String lastname
     public static void main(String[] args) {
-        List<User>userList= UserService.getInstance().getDSUsers();
-        for (User a: userList){
-            System.out.println(a);
-        }
+
 
     }
 }

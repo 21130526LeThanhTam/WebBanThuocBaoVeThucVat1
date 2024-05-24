@@ -2,6 +2,7 @@ package controller;
 
 import bean.User;
 import dao.AccountDAO;
+import dao.UserDAO;
 import org.springframework.util.DigestUtils;
 import utils.SessionUtil;
 
@@ -36,17 +37,33 @@ public class LoginControl extends HttpServlet {
         PrintWriter out = resp.getWriter();
         String email = req.getParameter("email");
         String pass = req.getParameter("password");
+        String hashPass= DigestUtils.md5DigestAsHex(pass.getBytes());
+        User userLogin = new User();
+        userLogin.setEmail(email);
+        userLogin.setPassword(hashPass);
+        // địa chỉ ip
+        String ipAddress = req.getHeader("X-FORWARDED-FOR");
+        if (ipAddress == null) {
+            ipAddress = req.getRemoteAddr();
+        }
         if (email == null || email.isEmpty() || pass == null || pass.isEmpty()){
             out.println("{\"error\":\"Tài khoản hoặc mật khẩu không được để trống.\"}");
         } else {
-            User user = AccountDAO.login(email, DigestUtils.md5DigestAsHex(pass.getBytes()));
-            if (user == null) {
+            User user = AccountDAO.getInstance().loginAccount(userLogin,ipAddress,1,ipAddress);
+            if (user == null) {// m để ý cửa sổ con
                 count++;
-                if(count==5) {
-                    out.println("{\"error\":\"Bạn đã vượt quá số lần đăng nhập cho phép,vui lòng thử lại sau\"}");
+                if(count==3) {
+                    out.println("{\"error\":\"Bạn đã còn 2 lần đăng nhập.\"}");
                 }
+                else
+                    if (count==5){
+//                        UserDAO.getInstance().LockUser(userLogin);
+                        out.println("{\"error\":\"Bạn đã vượt quá số lần đăng nhập cho phép,chúng tôi đã khóa tài khoản\"}"+userLogin.getEmail());
+                    }
+
                 else {
                     out.println("{\"error\":\"Tài khoản hoặc mật khẩu không đúng, vui lòng kiểm tra lại.\"}");
+                    System.out.println(count);
                 }
             } else {
                 HttpSession session = req.getSession();

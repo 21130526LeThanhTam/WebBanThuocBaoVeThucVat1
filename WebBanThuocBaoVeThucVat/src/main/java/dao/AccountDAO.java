@@ -5,6 +5,7 @@ import bean.User;
 import db.DBContext;
 import db.JDBIConnector;
 
+import log.AbsModel;
 import log.AbstractDao;
 
 
@@ -12,7 +13,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 public class AccountDAO extends AbstractDao<User> {
@@ -44,32 +47,27 @@ public class AccountDAO extends AbstractDao<User> {
         }
         return -1;
     }
-    public static User login(String email, String pass){
-        String sql = "SELECT id, role, user_name, password, phone, email, sur_name, last_name, hash, active FROM users WHERE email = ? AND password = ? AND active = 1";
-        Connection conn = DBContext.getConnection();
-        try {
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, email);
-            ps.setString(2, pass);
-            ResultSet rs = ps.executeQuery();
-            while(rs.next()){
-                return new User(
-                        rs.getInt("id"),
-                        rs.getInt("role"),
-                        rs.getString("user_name"),
-                        rs.getString("password"),
-                        rs.getString("phone"),
-                        rs.getString("email"),
-                        rs.getString("sur_name"),
-                        rs.getString("last_name"),
-                        rs.getString("hash"),
-                        rs.getInt("active")
-                );
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+    public User loginAccount(AbsModel model, String ip, int level, String address){
+        User user = (User) model;
+        String email= user.getEmail();
+        String pass= user.getPassword();
+        String sql = "SELECT id, role, user_name, password, phone, email, sur_name, last_name, hash, active FROM users WHERE email = ? AND active = 1";
+        List<User> users = JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .bind(0,email)
+                        .mapToBean(User.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+        super.login(user,"Login fail!",ip,level,address);
+        if (users.size() != 1) return null;
+        User u = users.get(0);
+        if (!u.getEmail().equals(email) || !u.getPassword().equals(pass)){
+            super.login(user,"Login fail!",ip,level,address);
+            return null;
         }
-        return null;
+        super.login(user,"Login success!",ip,level,address);
+        return u;
     }
 
     public User checkAccountExist(String email){
@@ -196,5 +194,11 @@ public class AccountDAO extends AbstractDao<User> {
     }
 
     public static void main(String[] args) {
+        String email= "abc12@gmail.com";
+        String pass= "4297f44b13955235245b2497399d7a93";
+        User a = new User();
+        a.setEmail(email);
+        a.setPassword(pass);
+        System.out.println(AccountDAO.getInstance().loginAccount(a,"0:0:0:0:0:0:0:1",1,"06 Le Thi Hong Gam"));
     }
 }

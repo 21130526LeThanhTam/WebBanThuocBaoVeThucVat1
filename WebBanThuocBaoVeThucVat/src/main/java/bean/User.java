@@ -1,12 +1,16 @@
 package bean;
 
 
+import log.AbsModel;
 import log.IModel;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class User implements IModel {
+public class User extends AbsModel implements Serializable {
     private int id, role,active;
+
+
     private String username, password, phone, email, surname, lastname,hash,picture;
     private Date createAt,updateAt;
 
@@ -198,11 +202,6 @@ public class User implements IModel {
                 '}';
     }
 
-
-    public static void main(String[] args) {
-
-    }
-
     @Override
     public String getTable() {
         return "User";
@@ -218,4 +217,12 @@ public class User implements IModel {
         return this.toString();
     }
 
+    public static void main(String[] args) {
+        String email= "hiho@gmail.com";
+        String pass= "4297f44b13955235245b2497399d7a93";
+        User a = new User();
+        a.setEmail(email);
+        a.setPassword(pass);
+        System.out.println(a);
+    }
 }
