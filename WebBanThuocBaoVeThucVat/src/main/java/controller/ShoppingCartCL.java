@@ -94,6 +94,18 @@ public class ShoppingCartCL extends HttpServlet {
             shoppingCart.remove(id);
         }
         session.setAttribute("cart", shoppingCart);
+        // Tạo một Map để chứa dữ liệu phản hồi
+        Map<String, Object> responseData = new HashMap<>();
+
+        responseData.put("totalItems", shoppingCart.getCartItemList().size());
+        responseData.put("items", shoppingCart.getCartItemList());
+
+        // Chuyển đổi Map responseData thành chuỗi JSON
+        String jsonResponse = new Gson().toJson(responseData);
+
+        // Ghi chuỗi JSON vào response để gửi về client
+        resp.getWriter().write(jsonResponse);
+        session.setAttribute("totalItems", shoppingCart.getCartItemList().size());
     }
 
 
@@ -104,5 +116,17 @@ public class ShoppingCartCL extends HttpServlet {
         int id = Integer.parseInt(req.getParameter("id"));
         shoppingCart.remove(id);
         session.setAttribute("cart", shoppingCart);
+        // Tạo một Map để chứa dữ liệu phản hồi
+        Map<String, Object> responseData = new HashMap<>();
+
+        responseData.put("totalItems", shoppingCart.getCartItemList().size());
+        responseData.put("items", shoppingCart.getCartItemList());
+
+        // Chuyển đổi Map responseData thành chuỗi JSON
+        String jsonResponse = new Gson().toJson(responseData);
+
+        // Ghi chuỗi JSON vào response để gửi về client
+        resp.getWriter().write(jsonResponse);
+        session.setAttribute("totalItems", shoppingCart.getCartItemList().size());
     }
 }

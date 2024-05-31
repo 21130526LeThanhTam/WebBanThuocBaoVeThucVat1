@@ -19,6 +19,8 @@
     <!-- Google Font -->
 <%--    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">--%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Css Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
@@ -254,8 +256,8 @@
     });
     function changeStatus(pid, quantity, action) {
         console.log(pid, quantity, action)
-        document.querySelector('#p'+pid).innerHTML = quantity===0?document.querySelector("#tr"+pid).innerHTML = '' : quantity;
         document.querySelector('#t'+pid).innerHTML = Number(quantity)*Number(document.querySelector('#pr'+pid).textContent);
+        document.querySelector('#p'+pid).innerHTML = quantity===0?document.querySelector("#tr"+pid).innerHTML = '' : quantity;
         $.ajax({
             url: 'ShoppingCartCL',
             type: 'POST',
@@ -265,7 +267,16 @@
                 action: action
             },
             success: function(response) {
-
+                var res = JSON.parse(response);
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Thay Đổi Giỏ Hàng Thành Công!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                const badge = document.getElementById("badge");
+                badge.innerHTML = res.totalItems;
             }
         });
     }
