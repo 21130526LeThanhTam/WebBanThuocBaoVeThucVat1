@@ -41,12 +41,11 @@
                             if (data.error) {
                                 $('#errorLogin').html(data.error);
                             } else {
-                                // Check reCAPTCHA after successful user validation
                                 var response = grecaptcha.getResponse();
                                 if (response.length === 0) {
                                     $('#errorLogin').html("Làm ơn xác minh bạn không phải là robot");
                                 } else {
-                                    // Redirect based on user role if no error and reCAPTCHA is valid
+
                                     if (data.role === 1) {
                                         window.location.href = "admin_dashboard";
                                     } else if (data.role === 0) {

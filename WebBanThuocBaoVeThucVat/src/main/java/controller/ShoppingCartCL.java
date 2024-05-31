@@ -65,11 +65,16 @@ public class ShoppingCartCL extends HttpServlet {
             }
             shoppingCart.add(cartItem);
             session.setAttribute("cart", shoppingCart);
+            // Tạo một Map để chứa dữ liệu phản hồi
             Map<String, Object> responseData = new HashMap<>();
+
             responseData.put("totalItems", shoppingCart.getCartItemList().size());
             responseData.put("items", shoppingCart.getCartItemList());
 
+            // Chuyển đổi Map responseData thành chuỗi JSON
             String jsonResponse = new Gson().toJson(responseData);
+
+            // Ghi chuỗi JSON vào response để gửi về client
             response.getWriter().write(jsonResponse);
             session.setAttribute("totalItems", shoppingCart.getCartItemList().size());
             break;
@@ -82,29 +87,22 @@ public class ShoppingCartCL extends HttpServlet {
         shoppingCart = (ShoppingCart) session.getAttribute("cart");
         int id = Integer.parseInt(req.getParameter("id"));
         Products p = productService.findById(id);
-        String i = req.getParameter("quantity" + id);
-        int quantity = Integer.parseInt(i);
-        String e = "";
-
+        int quantity = Integer.parseInt(req.getParameter("quantity"));
         if (quantity > 0) {
             shoppingCart.update(p, quantity);
         } else if (quantity == 0) {
             shoppingCart.remove(id);
         }
-        req.setAttribute("error", e);
         session.setAttribute("cart", shoppingCart);
-        req.getRequestDispatcher("ShoppingCartCL?action=get").forward(req, resp);
     }
 
 
     protected void Delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         ShoppingCart shoppingCart;
         HttpSession session = req.getSession();
         shoppingCart = (ShoppingCart) session.getAttribute("cart");
         int id = Integer.parseInt(req.getParameter("id"));
         shoppingCart.remove(id);
         session.setAttribute("cart", shoppingCart);
-        resp.sendRedirect("gio-hang.jsp");
     }
 }
