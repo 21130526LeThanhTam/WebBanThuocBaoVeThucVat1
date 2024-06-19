@@ -451,11 +451,6 @@
 
                 <!----edit-modal end--------->
 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 21130526-LeThanhTam
             </div>
         </div>
         <footer class="footer">

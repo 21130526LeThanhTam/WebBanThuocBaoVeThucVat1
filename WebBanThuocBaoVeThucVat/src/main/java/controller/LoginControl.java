@@ -50,15 +50,16 @@ public class LoginControl extends HttpServlet {
             out.println("{\"error\":\"Tài khoản hoặc mật khẩu không được để trống.\"}");
         } else {
             User user = AccountDAO.getInstance().loginAccount(userLogin,ipAddress,1,ipAddress);
-            if (user == null) {// m để ý cửa sổ con
+            User exist = AccountDAO.getInstance().checkAccountExist(email);// kiểm tra email có ytoonf tại hay ko.
+            if (user == null && exist!=null) {
                 count++;
                 if(count==3) {
                     out.println("{\"error\":\"Bạn đã còn 2 lần đăng nhập.\"}");
                 }
                 else
                     if (count==5){
-//                        UserDAO.getInstance().LockUser(userLogin);
-                        out.println("{\"error\":\"Bạn đã vượt quá số lần đăng nhập cho phép,chúng tôi đã khóa tài khoản\"}"+userLogin.getEmail());
+                        UserDAO.getInstance().LockUser(exist);
+                        out.println("{\"error\":\"chúng tôi đã khóa tài khoản "+exist.getEmail()+"\"}");
                     }
 
                 else {

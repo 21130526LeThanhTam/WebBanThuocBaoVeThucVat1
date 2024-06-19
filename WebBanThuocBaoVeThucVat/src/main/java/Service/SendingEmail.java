@@ -1,5 +1,7 @@
 package Service;
 
+import bean.User;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -26,8 +28,8 @@ public class SendingEmail {
     // đây là phương thức gửi email chứa liên kết xác nhận khi người dùng yêu cầu muốn đặt lại mật khẩu
     public String sendFPassByEmail(){
         // tài khoản mk của email của mình
-        String email = "dphuc2363@gmail.com";
-        String pword = "tdnm xnue zhfr rmae";
+        String email = "linhson208@gmail.com";
+        String pword = "towk gnyo yraf ohhh";
         // sử dụng properties để cấu hình các thuộc tính của máy chủ email
         Properties properties = new Properties();
         // cấu hình smtp, port, quyền tác giả, giao thức bảo mật mã hóa dữ liệu gửi đi
@@ -69,8 +71,8 @@ public class SendingEmail {
     // đây là phương thức email dạng văn bản bình thường
     public String sendTextEmail(String messageContentContact, String userName){
         //bắt đầu tạo ra cấu hình email
-        String email = "dphuc2363@gmail.com";
-        String pword = "tdnm xnue zhfr rmae";
+        String email = "linhson208@gmail.com";
+        String pword = "towk gnyo yraf ohhh";
         String host = "smtp.gmail.com";
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
@@ -104,8 +106,8 @@ public class SendingEmail {
     //Phương thức gửi mail cho người dùng để họ xác nhận khi đăng nhập
 
     public void sendMail(){
-        String email = "dphuc2363@gmail.com";
-        String pword = "tdnm xnue zhfr rmae";
+        String email = "linhson208@gmail.com";
+        String pword = "towk gnyo yraf ohhh";
         Properties properties = new Properties();
 
         properties.put("mail.smtp.host", "smtp.gmail.com"); //SMTP Host
@@ -132,4 +134,39 @@ public class SendingEmail {
             throw new RuntimeException(e);
         }
     }
+    // gửi cảnh báo cho admin.
+    public void sendWarning(String warning){
+        String email = "linhson208@gmail.com";
+        String pword = "towk gnyo yraf ohhh";
+        Properties properties = new Properties();
+
+        properties.put("mail.smtp.host", "smtp.gmail.com"); //SMTP Host
+        properties.put("mail.smtp.port", "587"); //TLS Port
+        properties.put("mail.smtp.auth", "true"); //enable authentication
+        properties.put("mail.smtp.starttls.enable", "true"); //enable
+
+        Session session = Session.getDefaultInstance(properties, new Authenticator(){
+            protected PasswordAuthentication getPasswordAuthentication(){
+                return new PasswordAuthentication(email, pword);
+            }
+        });
+
+        MimeMessage message = new MimeMessage(session);
+        try {
+            message.setFrom(new InternetAddress(email));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(userEmail));
+            message.setSubject("Account registration verification email");
+
+            message.setText(warning);
+            Transport.send(message);
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void main(String[] args) {
+        SendingEmail a= new SendingEmail("tamle7723@gmail.com","91e12937ef6be30e81f3bab95ca8be46");
+        a.sendWarning("Có người dùng ");
+    }
+
 }
