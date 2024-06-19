@@ -1,17 +1,17 @@
 package controller;
 
-import Service.IProductService;
-import Service.ProductService;
 import Service.ProductsService;
 import bean.Pagination;
-import bean.Product;
 import bean.Products;
 import dao.IProductDAO;
 import dao.ProductDAO;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +43,7 @@ public class ProductController extends HttpServlet {
         String action = request.getParameter("action");
         String idCate = request.getParameter("id_category");
         List<Products> list = new ArrayList<>();
-        String url = null;
+        String url;
         if(action != null && !action.equals("")) {
             if (action.equalsIgnoreCase("By Name")) {
                 list = ProductsService.getInstance().searchByName(name);
@@ -74,6 +74,7 @@ public class ProductController extends HttpServlet {
             } else if(orderValue == 3){
                 dao.sortByPrice(list, false);
             }
+            session.setAttribute("order", order);
         }
         int totalPageSearch = (int) Math.ceil((double) list.size() / PRODUCTS_PER_PAGE);
         Pagination pagination = new Pagination(PRODUCTS_PER_PAGE, list);

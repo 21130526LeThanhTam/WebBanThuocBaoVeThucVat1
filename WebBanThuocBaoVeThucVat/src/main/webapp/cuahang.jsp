@@ -49,9 +49,10 @@
         String action = (String) session.getAttribute("action");
         String name = (String) session.getAttribute("name");
         String idCate = (String) session.getAttribute("idCate");
+        String order = (String) session.getAttribute("order");
         String page1 = request.getParameter("page");
         String pattern;
-        if(page1!= null || action.equals("search")) {
+        if(page1!= null) {
             pattern = "ProductController?action=" + action + "&search=" + name + "&";
         } else {
             if(idCate== null || idCate.equals("")) {
@@ -93,9 +94,9 @@
                     <div class="sidebar__item">
                         <h4>Danh mục sản phẩm</h4>
                         <ul>
-                            <li><a href="ProductController">Tất cả sản phẩm</a></li>
+                            <li><a href="ProductController?order=<%=order%>">Tất cả sản phẩm</a></li>
                             <% for(Category cate : cb.getListCategory()) {%>
-                                <li><a href="ProductController?id_category=<%=cate.getId()%>"><%=cate.getNameCategory()%></a></li>
+                                <li><a href="ProductController?id_category=<%=cate.getId()%>&order=<%=order%>"><%=cate.getNameCategory()%></a></li>
                             <% } %>
                         </ul>
                     </div>
@@ -185,10 +186,10 @@
                             <div class="filter__sort">
                                 <span>Sắp xếp : </span>
                                 <select id="selectOrder">
-                                    <option value="0">Thứ tự mặc định</option>
-                                    <option value="1">Thứ tự theo mức độ phổ biến</option>
-                                    <option value="2">Thứ tự theo giá: thấp đến cao</option>
-                                    <option value="3">Thứ tự theo giá: cao xuống thấp</option>
+                                    <option value="0" data-href="<%= pattern %>order=0&" <%= "0".equals(order) ? "selected" : "" %>>Thứ tự mặc định</option>
+                                    <option value="1" data-href="<%= pattern %>order=1&" <%= "1".equals(order) ? "selected" : "" %>>Thứ tự theo mức độ phổ biến</option>
+                                    <option value="2" data-href="<%= pattern %>order=2&" <%= "2".equals(order) ? "selected" : "" %>>Thứ tự theo giá: thấp đến cao</option>
+                                    <option value="3" data-href="<%= pattern %>order=3&" <%= "3".equals(order) ? "selected" : "" %>>Thứ tự theo giá: cao xuống thấp</option>
                                 </select>
                             </div>
                         </div>
@@ -227,27 +228,27 @@
 
                 <div class="product__pagination">
                     <% if(currentPage > 1) {%>
-                        <a href="<%=pattern%>currentPage=<%=currentPage - 1%>">Trước</a>
+                        <a href="<%=pattern%>order=<%=order%>&currentPage=<%=currentPage - 1%>">Trước</a>
                     <%}%>
                     <% if(startPage > 2) {%>
-                        <a href="<%=pattern%>currentPage=1">1</a>
+                        <a href="<%=pattern%>order=<%=order%>&currentPage=1">1</a>
                         <span>..</span>
                     <%}%>
                     <% for (int i = startPage; i <= endPage; i++) {
                         if(i == currentPage) {%>
                         <strong><%=i%></strong>
                     <%  } else { %>
-                        <a href="<%=pattern%>currentPage=<%=i%>"><%=i%></a>
+                        <a href="<%=pattern%>order=<%=order%>&currentPage=<%=i%>"><%=i%></a>
                     <%  }
                     } %>
 
                     <% if(endPage > totalPages) {%>
                         <span>..</span>
-                        <a href="<%=pattern%>currentPage=<%=totalPages%>"><%=totalPages%></a>
+                        <a href="<%=pattern%>order=<%=order%>&currentPage=<%=totalPages%>"><%=totalPages%></a>
                     <%}%>
 
                     <% if(currentPage > totalPages) {%>
-                        <a href="<%=pattern%>currentPage=<%=currentPage + 1%>">Next</a>
+                        <a href="<%=pattern%>order=<%=order%>&currentPage=<%=currentPage + 1%>">Next</a>
                     <%}%>
                 </div>
             </div>
@@ -322,13 +323,10 @@
 <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/main.js"></script>
 <script>
-    // Lắng nghe sự kiện thay đổi của thẻ select
     document.getElementById('selectOrder').addEventListener('change', function() {
-        // Lấy giá trị được chọn
-        var selectedValue = this.value;
-
-        // Chuyển hướng trình duyệt đến trang index với tham số là giá trị được chọn
-        window.location.href = <%=pattern%> + 'order=' + selectedValue + '&';
+        var selectedOption = this.options[this.selectedIndex];
+        var href = selectedOption.getAttribute('data-href');
+        window.location.href = href;
     });
 </script>
 </body>
