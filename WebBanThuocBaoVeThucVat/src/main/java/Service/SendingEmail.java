@@ -58,7 +58,7 @@ public class SendingEmail {
             //Đặt chủ đề cho email
             message.setSubject("Password verification email");
             //settext là đặt nội dung cho email
-            String verificationLink = "Your Verification Link :: http://localhost:8081/ForgotPassword?action=createPass&key1=" + userEmail;
+            String verificationLink = "Your Verification Link :: http://localhost:8081/ForgotPassword?action=createPass&key1=" + userEmail + "&key2=" + myHash;
             message.setText(verificationLink);
             // sử dụng transport để gửi tin nhắn đã được tạo ra
             Transport.send(message);

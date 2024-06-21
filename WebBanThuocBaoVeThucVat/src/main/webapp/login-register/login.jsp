@@ -42,6 +42,7 @@
                             var data = JSON.parse(result);
                             if (data.error) {
                                 $('#errorLogin').html(data.error);
+                                $('#checkNull').html("");
                             } else {
                                 // Check reCAPTCHA after successful user validation
                                 var response = grecaptcha.getResponse();
@@ -60,9 +61,9 @@
                             $('#errorLogin').html("Lỗi trong quá trình tải request,Vui lòng thử lại");
                         }
                     },
-                    // error: function() {
-                    //     $('#errorLogin').html("Lỗi kết nối. Hãy kiểm tra mạng của bạn và thử lại!");
-                    // }
+                    error: function() {
+                        $('#errorLogin').html("Lỗi kết nối. Hãy kiểm tra mạng của bạn và thử lại!");
+                    }
                 });
             });
         });
@@ -75,17 +76,9 @@
         <div class="form-content">
             <header>Login</header>
             <form id="form">
-                <% String error = (String) session.getAttribute("errorlogin"); %>
-                <% if(error != null){ %>
-
-                <% } %>
-                <% String passF = (String) session.getAttribute("passF"); %>
-                <% if(passF != null){ %>
-                <p class="text-success"><%= passF %></p>
-                <% } %>
-                <% String reg = (String) session.getAttribute("errorRegis"); %>
-                <% if(reg != null){ %>
-                <p class="text-success"><%= reg %></p>
+                <% String passF = (String) session.getAttribute("action"); %>
+                <% if(passF != null) { %>
+                    <p class="text-success" id="checkNull"><%= passF %></p>
                 <% } %>
                 <div class="field input-field">
                     <input name="email" type="email" placeholder="Email" class="input" id="email">

@@ -1,7 +1,6 @@
-package Service;
+package controller;
 
 import dao.AccountDAO;
-import db.DBContext;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,10 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 // đây là trang khi mà người dùng bấm link xác thực account thì sẽ chuyển hướng ra đâu đấy
 
@@ -26,7 +21,7 @@ public class ActiveAccount extends HttpServlet {
         AccountDAO dao = new AccountDAO();
         //phương thức activeAccount được chuyển qua lớp AccountDao
         String str = dao.activeAccount(email, hash);
-        if(str.equals("success")){
+        if(str.equalsIgnoreCase("success")){
             //nếu người dùng đã bấm vào thì chuyển hướng sang trang thành công
             resp.sendRedirect("verify.jsp");
         }else{

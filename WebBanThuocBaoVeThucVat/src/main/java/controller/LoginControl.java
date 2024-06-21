@@ -45,6 +45,9 @@ public class LoginControl extends HttpServlet {
             ipAddress = req.getRemoteAddr();
         }
 
+        HttpSession session = req.getSession();
+        System.out.println(session.getAttribute("action"));
+        session.removeAttribute("action");
         if (email == null || email.isEmpty() || pass == null || pass.isEmpty()){
             out.println("{\"error\":\"Tài khoản hoặc mật khẩu không được để trống.\"}");
         } else {
@@ -67,7 +70,6 @@ public class LoginControl extends HttpServlet {
                 }
             } else {
                 count = 0;
-                HttpSession session = req.getSession();
                 if (user.getRole() == 0) {
                     session.setAttribute("user", user);
                     out.println("{\"role\":0}");

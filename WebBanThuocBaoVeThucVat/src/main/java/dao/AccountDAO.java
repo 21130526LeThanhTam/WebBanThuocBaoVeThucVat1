@@ -143,7 +143,7 @@ public class AccountDAO extends AbstractDao<User> {
     public String activeAccount(String email, String hash){
         Connection con = DBContext.getConnection();
         try {
-            PreparedStatement ps = con.prepareStatement("select email, hash, active from users where email = ? and hash = ? and active = 0");
+            PreparedStatement ps = con.prepareStatement("select email, hash, active from users where email = ? and hash = ?");
             ps.setString(1, email);
             ps.setString(2, hash);
             ResultSet rs = ps.executeQuery();

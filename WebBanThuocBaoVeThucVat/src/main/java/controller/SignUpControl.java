@@ -84,8 +84,7 @@ public class SignUpControl extends HttpServlet {
                 if(str.equals("success")){
                     SendingEmail se = new SendingEmail(email, myHash);
                     se.sendMail();
-                    error = "Kích hoạt email để đăng nhập";
-                    session.setAttribute("errorRegis", error);
+                    session.setAttribute("action", "Kích hoạt email để đăng nhập");
                     resp.sendRedirect("login");
                 }
             }

@@ -34,7 +34,7 @@ public class ForgotPassControl extends HttpServlet {
             session.setAttribute("error", error);
             resp.sendRedirect("PasswordForgot?action=forget-page");
         }else{
-            SendingEmail se = new SendingEmail(email);
+            SendingEmail se = new SendingEmail(email, user.getHash());
             se.sendFPassByEmail();
             resp.sendRedirect("verify.jsp");
             session.removeAttribute("error");

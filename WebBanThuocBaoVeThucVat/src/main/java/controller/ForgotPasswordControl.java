@@ -1,9 +1,8 @@
-package Service;
+package controller;
 
-import Service.SendingEmail;
-import bean.User;
 import dao.AccountDAO;
 import org.springframework.util.DigestUtils;
+import utils.PasswordUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,8 +18,9 @@ public class ForgotPasswordControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        String email = req.getParameter("key1");
-        session.setAttribute("email", email);
+        session.removeAttribute("passF");
+        session.setAttribute("email", req.getParameter("key1"));
+        session.setAttribute("hash", req.getParameter("key2"));
         String action = req.getParameter("action");
         if(action != null && action.equals("createPass")){
             req.getRequestDispatcher("login-register/form_create_nPassword.jsp").forward(req, resp);
@@ -31,29 +31,25 @@ public class ForgotPasswordControl extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         String email = (String) session.getAttribute("email");
-
+        String hash = (String) session.getAttribute("hash");
         String newPassword = req.getParameter("newPassword");
         String rePassword = req.getParameter("rePassword");
-
-        String hashPassword = DigestUtils.md5DigestAsHex(newPassword.getBytes());
-
+        String hashPassword = PasswordUtils.encryptPassword(newPassword);
         AccountDAO dao = new AccountDAO();
-
         if((newPassword == null || newPassword.isEmpty()) || (rePassword == null || rePassword.isEmpty())){
             String passF = "Bạn nhập còn thiếu";
             session.setAttribute("passF", passF);
             req.getRequestDispatcher("login-register/form_create_nPassword.jsp").forward(req, resp);
         }
-
         if((newPassword != null && !newPassword.isEmpty()) || (rePassword != null && !rePassword.isEmpty())){
             if(newPassword.equals(rePassword)){
                 String str = dao.forgetPassword(email, hashPassword);
-                if(str.equals("Success")){
+                if(str.equalsIgnoreCase("Success")){
                     session.removeAttribute("passF");
-                    String passF = "Đã cập nhật thành công mật khẩu";
-                    session.setAttribute("passF", passF);
-                    resp.sendRedirect("login?action=login");
-                }else{
+                    session.setAttribute("action", "Đã cập nhật thành công mật khẩu");
+                    String active = dao.activeAccount(email, hash);
+                    resp.sendRedirect("login");
+                }else {
                     String passF = "Mời bạn nhập lại";
                     session.setAttribute("passF", passF);
                     req.getRequestDispatcher("login-register/form_create_nPassword.jsp").forward(req, resp);
@@ -66,4 +62,3 @@ public class ForgotPasswordControl extends HttpServlet {
         }
     }
 }
-
