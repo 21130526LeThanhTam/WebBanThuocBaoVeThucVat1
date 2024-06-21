@@ -1,20 +1,18 @@
 package dao;
 
-import Service.ProductsService;
 import bean.User;
 import db.DBContext;
 import db.JDBIConnector;
-
 import log.AbsModel;
 import log.AbstractDao;
-
+import org.apache.commons.codec.digest.Md5Crypt;
+import utils.PasswordUtils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -47,26 +45,25 @@ public class AccountDAO extends AbstractDao<User> {
         }
         return -1;
     }
-    public User loginAccount(AbsModel model, String ip, int level, String address){
+
+    public User loginAccount(AbsModel model, String ip, int level, String address) {
         User user = (User) model;
-        String email= user.getEmail();
-        String pass= user.getPassword();
+        User u = null;
         String sql = "SELECT id, role, user_name, password, phone, email, sur_name, last_name, hash, active FROM users WHERE email = ? AND active = 1";
         List<User> users = JDBIConnector.getJdbi().withHandle(handle ->
-                handle.createQuery(sql)
-                        .bind(0,email)
-                        .mapToBean(User.class)
-                        .stream()
-                        .collect(Collectors.toList())
+                handle.createQuery(sql).bind(0, user.getEmail()).mapToBean(User.class).stream().collect(Collectors.toList())
         );
-        super.login(user,"Login fail!",ip,level,address);
-        if (users.size() != 1) return null;
-        User u = users.get(0);
-        if (!u.getEmail().equals(email) || !u.getPassword().equals(pass)){
-            super.login(user,"Login fail!",ip,level,address);
-            return null;
+        if (users.size() != 1) {
+             super.login(user, "Login failed!", ip, level, address);
+        } else {
+            u = users.get(0);
+            if(PasswordUtils.verifyPassword(user.getPassword(), u.getPassword())){
+                super.login(user,"Login success!",ip,level,address);
+            } else {
+                super.login(user,"Login failed!",ip,level,address);
+                u = null;
+            }
         }
-        super.login(user,"Login success!",ip,level,address);
         return u;
     }
 

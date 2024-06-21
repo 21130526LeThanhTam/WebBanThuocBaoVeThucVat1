@@ -131,10 +131,10 @@ public class UserDAO extends AbstractDao<User> {
                         .execute()
         );
     }
-    public void LockUser(User user) {
+    public void LockUser(String email) {
         JDBIConnector.getJdbi().useHandle(handle ->
-                handle.createUpdate("UPDATE users SET active=0 WHERE email=?")
-                        .bind(0,user.getEmail())
+                handle.createUpdate("UPDATE users SET active=2 WHERE email=?")
+                        .bind(0, email)
                         .execute()
         );
     }

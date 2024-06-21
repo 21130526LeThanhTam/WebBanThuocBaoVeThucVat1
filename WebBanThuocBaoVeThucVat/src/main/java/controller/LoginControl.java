@@ -3,10 +3,8 @@ package controller;
 import bean.User;
 import dao.AccountDAO;
 import dao.UserDAO;
-import org.springframework.util.DigestUtils;
-import utils.SessionUtil;
+import utils.PasswordUtils;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,36 +35,38 @@ public class LoginControl extends HttpServlet {
         PrintWriter out = resp.getWriter();
         String email = req.getParameter("email");
         String pass = req.getParameter("password");
-        String hashPass= DigestUtils.md5DigestAsHex(pass.getBytes());
+
         User userLogin = new User();
         userLogin.setEmail(email);
-        userLogin.setPassword(hashPass);
+        userLogin.setPassword(pass);
         // địa chỉ ip
         String ipAddress = req.getHeader("X-FORWARDED-FOR");
         if (ipAddress == null) {
             ipAddress = req.getRemoteAddr();
         }
+
         if (email == null || email.isEmpty() || pass == null || pass.isEmpty()){
             out.println("{\"error\":\"Tài khoản hoặc mật khẩu không được để trống.\"}");
         } else {
-            User user = AccountDAO.getInstance().loginAccount(userLogin,ipAddress,1,ipAddress);
-            User exist = AccountDAO.getInstance().checkAccountExist(email);// kiểm tra email có ytoonf tại hay ko.
-            if (user == null && exist!=null) {
-                count++;
-                if(count==3) {
-                    out.println("{\"error\":\"Bạn đã còn 2 lần đăng nhập.\"}");
-                }
-                else
-                    if (count==5){
-                        UserDAO.getInstance().LockUser(exist);
-                        out.println("{\"error\":\"chúng tôi đã khóa tài khoản "+exist.getEmail()+"\"}");
+            User user = AccountDAO.getInstance().loginAccount(userLogin, ipAddress,1, ipAddress);
+            User checkEmail = AccountDAO.getInstance().checkAccountExist(userLogin.getEmail());
+            if (user == null) {
+                if(checkEmail != null && checkEmail.getActive()!=0 && checkEmail.getActive()!=2) {
+                    count++;
+                    if(count%5==0) {
+                        UserDAO.getInstance().LockUser(email);
+                        out.println("{\"error\":\"chúng tôi đã khóa tài khoản "+email + ".\"}");
+                        return;
+                    } else {
+                        out.println("{\"error\":\"Bạn đã còn "+ (5 - (count % 5)) +" lần đăng nhập.\"}");
                     }
-
-                else {
-                    out.println("{\"error\":\"Tài khoản hoặc mật khẩu không đúng, vui lòng kiểm tra lại.\"}");
-                    System.out.println(count);
+                } else {
+                    if(checkEmail == null) out.println("{\"error\":\"Tài khoản không đúng, vui lòng kiểm tra lại!\"}");
+                    else if(checkEmail.getActive()==0) out.println("{\"error\":\"Tài khoản chưa được kích hoạt để đăng nhập!\"}");
+                    else if(checkEmail.getActive()==2) out.println("{\"error\":\"chúng tôi đã khóa tài khoản "+email+"\"}");
                 }
             } else {
+                count = 0;
                 HttpSession session = req.getSession();
                 if (user.getRole() == 0) {
                     session.setAttribute("user", user);

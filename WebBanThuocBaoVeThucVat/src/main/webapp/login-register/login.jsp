@@ -60,10 +60,9 @@
                             $('#errorLogin').html("Lỗi trong quá trình tải request,Vui lòng thử lại");
                         }
                     },
-
-                    error: function() {
-                        $('#errorLogin').html("Lỗi kết nối. Hãy kiểm tra mạng của bạn và thử lại!");
-                    }
+                    // error: function() {
+                    //     $('#errorLogin').html("Lỗi kết nối. Hãy kiểm tra mạng của bạn và thử lại!");
+                    // }
                 });
             });
         });

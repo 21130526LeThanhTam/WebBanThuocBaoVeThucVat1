@@ -26,10 +26,10 @@
         <div class="form-content">
             <header>Signup</header>
             <form action="signup" method="post">
-                <% String error = (String) session.getAttribute("errorRegis"); %>
-                <% if(error != null){ %>
-                <p class="text-danger"><%= error %></p>
-                <% } %>
+<%--                <% String error = (String) session.getAttribute("errorRegis"); %>--%>
+<%--                <% if(error != null){ %>--%>
+<%--                <p class="text-danger"><%= error %></p>--%>
+<%--                <% } %>--%>
                 <% String error1 = (String) session.getAttribute("errorNumber"); %>
                 <% if(error1 != null){ %>
                 <p class="text-danger"><%= error1 %></p>

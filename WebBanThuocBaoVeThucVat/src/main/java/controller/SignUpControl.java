@@ -4,6 +4,7 @@ import Service.SendingEmail;
 import bean.User;
 import dao.AccountDAO;
 import org.springframework.util.DigestUtils;
+import utils.PasswordUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,7 +38,7 @@ public class SignUpControl extends HttpServlet {
         String re_pass = req.getParameter("rePass");
 
         //mã hóa mật khẩu sang md5
-        String hashpass = DigestUtils.md5DigestAsHex(pass.getBytes());
+        String hashpass = PasswordUtils.encryptPassword(pass);
 
         HttpSession session = req.getSession();
         //Tạo mã xác nhận ngẫu nhiên bằng cách sử dụng md5 và số ngẫu nhiên để tạo ra đường link đăng kí cho mỗi người
@@ -57,7 +58,7 @@ public class SignUpControl extends HttpServlet {
         if(user == null){
             //Tên tài khoản và dài hơn 3 kí tự và kí tự đầu tiên phải là chữ cái
             if(username.length() <= 3 || !(Character.isLetter(username.charAt(0)))){
-                error = "Tên tài khoản phải trên 3 kí tự và * Kí tự đầu tiên phải là chữ cái";
+                error = "Tên tài khoản phải trên 3 kí tự và Kí tự đầu tiên phải là chữ cái";
 
 
                 session.setAttribute("errorNumber", error);
