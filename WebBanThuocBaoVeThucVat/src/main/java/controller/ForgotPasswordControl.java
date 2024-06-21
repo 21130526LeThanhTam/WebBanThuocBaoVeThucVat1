@@ -1,6 +1,7 @@
 package controller;
 
 import dao.AccountDAO;
+import dao.UserDAO;
 import org.springframework.util.DigestUtils;
 import utils.PasswordUtils;
 
@@ -48,6 +49,7 @@ public class ForgotPasswordControl extends HttpServlet {
                     session.removeAttribute("passF");
                     session.setAttribute("action", "Đã cập nhật thành công mật khẩu");
                     String active = dao.activeAccount(email, hash);
+                    AccountDAO.getInstance().updateLoginFail(email, 0);
                     resp.sendRedirect("login");
                 }else {
                     String passF = "Mời bạn nhập lại";

@@ -28,13 +28,15 @@
                 event.preventDefault(); // Prevent the default form submission.
                 var email = $('#email').val();
                 var password = $('#password').val();
+                var rememberMe = $('#remember-me').is(':checked'); // Get the checkbox status
 
                 // Proceed with AJAX call first
                 $.ajax({
                     type: 'POST',
                     data: {
                         email: email,
-                        password: password
+                        password: password,
+                        rememberMe: rememberMe
                     },
                     url: 'login',
                     success: function (result) {
@@ -81,11 +83,17 @@
                     <p class="text-success" id="checkNull"><%= passF %></p>
                 <% } %>
                 <div class="field input-field">
-                    <input name="email" type="email" placeholder="Email" class="input" id="email">
+                    <% String emailCookie = ((String) request.getAttribute("email"))==null?"":((String) request.getAttribute("email"));%>
+                    <input name="email" type="email" placeholder="Email" class="input" id="email" value="<%=emailCookie%>">
                 </div>
                 <div class="field input-field">
-                    <input name="password" type="password" placeholder="Mật khẩu" class="password" id="password">
+                    <% String passCookie = ((String) request.getAttribute("password"))==null?"":((String) request.getAttribute("password"));%>
+                    <input name="password" type="password" placeholder="Mật khẩu" class="password" id="password" value="<%=passCookie%>">
                     <i class='bx bx-hide eye-icon'></i>
+                </div>
+                <div class="col-md-12">
+                    <input type="checkbox" id="remember-me" name="remember-me">
+                    <label for="remember-me">Remember-me</label>
                 </div>
                 <div class="form-link">
                     <a href="PasswordForgot" class="forgot-pass">Quên mật khẩu?</a>

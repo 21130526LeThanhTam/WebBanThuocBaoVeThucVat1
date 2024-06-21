@@ -5,7 +5,6 @@ import db.DBContext;
 import db.JDBIConnector;
 import log.AbsModel;
 import log.AbstractDao;
-import org.apache.commons.codec.digest.Md5Crypt;
 import utils.PasswordUtils;
 
 import java.sql.Connection;
@@ -190,12 +189,21 @@ public class AccountDAO extends AbstractDao<User> {
         return null;
     }
 
+    public boolean updateLoginFail(String email, int i) {
+        String sql = "update users set lock_fail = ? where email = ?";
+        int exe = JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createUpdate(sql).bind(0, i).bind(1, email).execute());
+        return exe==1?true:false;
+    }
+
+    public int getLoginFail(String email) {
+        String sql = "SELECT lock_fail FROM users WHERE email = ?";
+        return JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery(sql).bind(0, email).mapTo(Integer.class).first());
+    }
+
     public static void main(String[] args) {
-        String email= "abc12@gmail.com";
-        String pass= "4297f44b13955235245b2497399d7a93";
-        User a = new User();
-        a.setEmail(email);
-        a.setPassword(pass);
-        System.out.println(AccountDAO.getInstance().loginAccount(a,"0:0:0:0:0:0:0:1",1,"06 Le Thi Hong Gam"));
+        System.out.println(AccountDAO.getInstance().getLoginFail("21130526@st.hcmuaf.edu.vn"));
+        System.out.println(AccountDAO.getInstance().updateLoginFail("21130526@st.hcmuaf.edu.vn", 1));
     }
 }
