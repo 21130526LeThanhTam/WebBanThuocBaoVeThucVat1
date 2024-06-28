@@ -36,6 +36,11 @@ public class DBProperties {
     public static String DISCORD_REDIRECT_URI  = prop.getProperty("DISCORD_REDIRECT_URI");
     public static String DISCORD_LINK_GET_TOKEN = prop.getProperty("DISCORD_LINK_GET_TOKEN");
     public static String DISCORD_LINK_GET_USER_INFO = prop.getProperty("DISCORD_LINK_GET_USER_INFO");
+    public static String FACEBOOK_CLIENT_ID = prop.getProperty("FACEBOOK_CLIENT_ID");
+    public static String FACEBOOK_CLIENT_SECRET = prop.getProperty("FACEBOOK_CLIENT_SECRET");
+    public static String FACEBOOK_REDIRECT_URI  = prop.getProperty("FACEBOOK_REDIRECT_URI");
+    public static String FACEBOOK_LINK_GET_TOKEN = prop.getProperty("FACEBOOK_LINK_GET_TOKEN");
+    public static String FACEBOOK_LINK_GET_USER_INFO = prop.getProperty("FACEBOOK_LINK_GET_USER_INFO");
 
 
     public static void main(String[] args) {

@@ -118,9 +118,9 @@
                     </a>
                 </div>
                 <div class="text-center mt-3">
-                    <a href="https://accounts.google.com/o/oauth2/auth?scope=profile%20email&redirect_uri=http://localhost:8081/loginByGoogle&response_type=code&client_id=383862284423-7n769c739crto335iam2jg9hk2hqiiu0.apps.googleusercontent.com&prompt=select_account">
+                    <a href="https://www.facebook.com/v19.0/dialog/oauth?fields=id,name,first_name,last_name,email,picture&client_id=487765543790855&redirect_uri=http://localhost:8081/loginByFacebook">
                         <button type="button" class="btn btn-danger btn-block" style="padding:10px 102px; font-weight: bold">
-                            <i class="fab fa-google mr-2"></i> Login with Google
+                            <i class="fab fa-google mr-2"></i> Login with Facebook
                         </button>
                     </a>
                 </div>
