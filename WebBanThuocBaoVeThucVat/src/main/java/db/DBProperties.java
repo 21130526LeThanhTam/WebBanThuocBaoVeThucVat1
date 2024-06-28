@@ -31,6 +31,11 @@ public class DBProperties {
     public static String GOOGLE_LINK_GET_TOKEN = prop.getProperty("GOOGLE_LINK_GET_TOKEN");
     public static String GOOGLE_LINK_GET_USER_INFO = prop.getProperty("GOOGLE_LINK_GET_USER_INFO");
     public static String GOOGLE_GRANT_TYPE = prop.getProperty("GOOGLE_GRANT_TYPE");
+    public static String DISCORD_CLIENT_ID = prop.getProperty("DISCORD_CLIENT_ID");
+    public static String DISCORD_CLIENT_SECRET = prop.getProperty("DISCORD_CLIENT_SECRET");
+    public static String DISCORD_REDIRECT_URI  = prop.getProperty("DISCORD_REDIRECT_URI");
+    public static String DISCORD_LINK_GET_TOKEN = prop.getProperty("DISCORD_LINK_GET_TOKEN");
+    public static String DISCORD_LINK_GET_USER_INFO = prop.getProperty("DISCORD_LINK_GET_USER_INFO");
 
 
     public static void main(String[] args) {

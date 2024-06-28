@@ -110,6 +110,20 @@
                         </button>
                     </a>
                 </div>
+                <div class="text-center mt-3">
+                    <a href="https://discord.com/oauth2/authorize?client_id=1256117175874228275&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8081%2FloginByDiscord&scope=identify+guilds+gdm.join+email+guilds.join+connections">
+                        <button type="button" class="btn btn-danger btn-block" style="padding:10px 102px; font-weight: bold">
+                            <i class="fab fa-google mr-2"></i> Login with Discord
+                        </button>
+                    </a>
+                </div>
+                <div class="text-center mt-3">
+                    <a href="https://accounts.google.com/o/oauth2/auth?scope=profile%20email&redirect_uri=http://localhost:8081/loginByGoogle&response_type=code&client_id=383862284423-7n769c739crto335iam2jg9hk2hqiiu0.apps.googleusercontent.com&prompt=select_account">
+                        <button type="button" class="btn btn-danger btn-block" style="padding:10px 102px; font-weight: bold">
+                            <i class="fab fa-google mr-2"></i> Login with Google
+                        </button>
+                    </a>
+                </div>
             </form>
             <script src="https://www.google.com/recaptcha/api.js" async defer></script>
             <script>
