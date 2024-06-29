@@ -1,18 +1,19 @@
 package controller;
 
 import Service.IProductService;
-import Service.OrdersService;
 import Service.ProductService;
-import bean.*;
+import bean.CartItem;
+import bean.Products;
+import bean.ShoppingCart;
+import bean.User;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @WebServlet(name = "ShoppingCartCL", value = "/ShoppingCartCL")
 public class ShoppingCartCL extends HttpServlet {

@@ -84,6 +84,7 @@
         </div>
         <div class="row">
             <div class="categories__slider owl-carousel">
+                <!-- Các sản phẩm nổi bật  -->
                 <% for(Products p : products){%>
                 <div class="col-lg-3 col-md-4 col-sm-6 mix a">
                     <div class="featured__item">
