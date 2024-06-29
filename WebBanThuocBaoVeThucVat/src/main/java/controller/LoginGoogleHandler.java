@@ -49,9 +49,9 @@ public class LoginGoogleHandler extends HttpServlet {
         HttpSession session = req.getSession();
         try {
             user= getUserInfo(accessToken);
-            userCheck= AccountDAO.getInstance().checkAccountExist(user.getEmail());
-            if(userCheck ==null){
-                String str = AccountDAO.getInstance().signUp2( user.getEmail(), null, user.getUsername(),user.getSurName() ,user.getLastName() ,user.getPhone(), myHash);
+            userCheck= AccountDAO.getInstance().checkAccountExist(user.getEmail(), 1);
+            if(userCheck == null){
+                String str = AccountDAO.getInstance().signUp2(user.getEmail(), null, user.getUsername(),user.getSurName() ,user.getLastName() ,user.getPhone(), myHash, user.getLoginBy());
 
                 if(str.equals("success")){
                     session.setAttribute("user", user);
@@ -84,8 +84,7 @@ public class LoginGoogleHandler extends HttpServlet {
 
         JsonObject jobj = (JsonObject) (new Gson()).fromJson(response, JsonObject.class);
 
-        String accessToken = jobj.get("access_token").toString().replaceAll("\"", "");
-        return accessToken;
+        return jobj.get("access_token").toString().replaceAll("\"", "");
     }
 
 
@@ -93,15 +92,14 @@ public class LoginGoogleHandler extends HttpServlet {
 
         String link = DBProperties.GOOGLE_LINK_GET_USER_INFO + accessToken;
         String response = Request.Get(link).execute().returnContent().asString();
-        JsonObject jsonObject = JsonParser.parseString(response).getAsJsonObject();
-        jsonObject.addProperty("id", AccountDAO.getInstance().GetId());
-        JsonElement value = jsonObject.get("given_name");
-        JsonElement value2 = jsonObject.get("name");
-        jsonObject.add("lastname", value);
-        jsonObject.add("username", value2);
+        JsonObject json = JsonParser.parseString(response).getAsJsonObject();
+        User user = new User();
+        user.setUsername(json.has("given_name") ? json.get("given_name").getAsString() : null);
+        user.setEmail(json.has("email") ? json.get("email").getAsString() : null);
+        user.setLastName(json.has("name") ? json.get("name").getAsString() : null);
+        user.setPicture(json.has("picture") ? json.get("picture").getAsString() : null);
+        user.setLoginBy(1);
 
-
-        User googlePojo = (User) (new Gson()).fromJson(jsonObject, User.class);
-        return googlePojo;
+        return user;
     }
 }

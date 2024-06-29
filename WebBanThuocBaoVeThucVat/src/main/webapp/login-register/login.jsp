@@ -110,6 +110,34 @@
                         </button>
                     </a>
                 </div>
+                <div class="text-center mt-3">
+                    <a href="https://discord.com/oauth2/authorize?client_id=1256117175874228275&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8081%2FloginByDiscord&scope=identify+guilds+gdm.join+email+guilds.join+connections">
+                        <button type="button" class="btn btn-danger btn-block" style="padding:10px 102px; font-weight: bold">
+                            <i class="fab fa-google mr-2"></i> Login with Discord
+                        </button>
+                    </a>
+                </div>
+                <div class="text-center mt-3">
+                    <a href="https://www.facebook.com/v19.0/dialog/oauth?fields=id,name,first_name,last_name,email,picture&client_id=487765543790855&redirect_uri=http://localhost:8081/loginByFacebook">
+                        <button type="button" class="btn btn-danger btn-block" style="padding:10px 102px; font-weight: bold">
+                            <i class="fab fa-google mr-2"></i> Login with Facebook
+                        </button>
+                    </a>
+                </div>
+                <div class="text-center mt-3">
+                    <a href="https://twitter.com/i/oauth2/authorize?response_type=code&client_id=Q09mU0dCSXJtMWtLMGVsVDh0V0s6MTpjaQ&redirect_uri=http://localhost:8081/loginByTwitter&scope=tweet.read%20users.read%20follows.read%20offline.access&state=state&code_challenge=challenge&code_challenge_method=plain">
+                        <button type="button" class="btn btn-danger btn-block" style="padding:10px 102px; font-weight: bold">
+                            <i class="fab fa-google mr-2"></i> Login with Twitter
+                        </button>
+                    </a>
+                </div>
+                <div class="text-center mt-3">
+                    <a href="https://github.com/login/oauth/authorize?client_id=Ov23li6js9Ba8yvQj3aA">
+                        <button type="button" class="btn btn-danger btn-block" style="padding:10px 102px; font-weight: bold">
+                            <i class="fab fa-google mr-2"></i> Login with Github
+                        </button>
+                    </a>
+                </div>
             </form>
             <script src="https://www.google.com/recaptcha/api.js" async defer></script>
             <script>

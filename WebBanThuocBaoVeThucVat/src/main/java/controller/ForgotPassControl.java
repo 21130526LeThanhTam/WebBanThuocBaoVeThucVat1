@@ -28,7 +28,7 @@ public class ForgotPassControl extends HttpServlet {
         AccountDAO dao = new AccountDAO();
         //kiểm tra account đó nó có tồn tại hay không rồi mới đổi mk được
 
-        User user = dao.checkAccountExist(email);
+        User user = dao.checkAccountExist(email, 0);
         if(user == null){
             String error = "Nhập sai email hoặc email không tồn tại ";
             session.setAttribute("error", error);

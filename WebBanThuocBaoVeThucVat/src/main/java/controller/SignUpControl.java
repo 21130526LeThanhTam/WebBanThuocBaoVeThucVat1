@@ -51,7 +51,7 @@ public class SignUpControl extends HttpServlet {
         User user;
         // Kiểm tra user có tồn tại trước đó hay không
         AccountDAO acc = new AccountDAO();
-        user = acc.checkAccountExist(email);
+        user = acc.checkAccountExist(email, 0);
 
         // Nếu user khác null thì đăng kí, không thì sẽ chuyền về là tài khoản đã đăng kí
         if(user == null){
