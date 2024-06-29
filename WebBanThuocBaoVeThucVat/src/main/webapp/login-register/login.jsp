@@ -131,6 +131,13 @@
                         </button>
                     </a>
                 </div>
+                <div class="text-center mt-3">
+                    <a href="https://github.com/login/oauth/authorize?client_id=Ov23li6js9Ba8yvQj3aA">
+                        <button type="button" class="btn btn-danger btn-block" style="padding:10px 102px; font-weight: bold">
+                            <i class="fab fa-google mr-2"></i> Login with Github
+                        </button>
+                    </a>
+                </div>
             </form>
             <script src="https://www.google.com/recaptcha/api.js" async defer></script>
             <script>
