@@ -60,7 +60,7 @@ public class LoginDiscordHandler extends HttpServlet {
         }
     }
 
-    String getToken(final String code) throws ClientProtocolException, IOException {
+    public String getToken(final String code) throws ClientProtocolException, IOException {
         String response = Request.Post(DBProperties.DISCORD_LINK_GET_TOKEN).bodyForm(Form.form()
                         .add("client_id", DBProperties.DISCORD_CLIENT_ID)
                         .add("client_secret", DBProperties.DISCORD_CLIENT_SECRET)

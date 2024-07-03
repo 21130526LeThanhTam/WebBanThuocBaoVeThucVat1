@@ -41,6 +41,15 @@ public class DBProperties {
     public static String FACEBOOK_REDIRECT_URI  = prop.getProperty("FACEBOOK_REDIRECT_URI");
     public static String FACEBOOK_LINK_GET_TOKEN = prop.getProperty("FACEBOOK_LINK_GET_TOKEN");
     public static String FACEBOOK_LINK_GET_USER_INFO = prop.getProperty("FACEBOOK_LINK_GET_USER_INFO");
+    public static String GITHUB_CLIENT_ID = prop.getProperty("GITHUB_CLIENT_ID");
+    public static String GITHUB_CLIENT_SECRET = prop.getProperty("GITHUB_CLIENT_SECRET");
+    public static String GITHUB_LINK_GET_TOKEN = prop.getProperty("GITHUB_LINK_GET_TOKEN");
+    public static String GITHUB_LINK_GET_USER_INFO = prop.getProperty("GITHUB_LINK_GET_USER_INFO");
+    public static String TWITTER_CLIENT_ID = prop.getProperty("TWITTER_CLIENT_ID");
+    public static String TWITTER_CLIENT_SECRET = prop.getProperty("TWITTER_CLIENT_SECRET");
+    public static String TWITTER_REDIRECT_URI = prop.getProperty("TWITTER_REDIRECT_URI");
+    public static String TWITTER_LINK_GET_TOKEN = prop.getProperty("TWITTER_LINK_GET_TOKEN");
+    public static String TWITTER_LINK_GET_USER_INFO = prop.getProperty("TWITTER_LINK_GET_USER_INFO");
 
 
     public static void main(String[] args) {

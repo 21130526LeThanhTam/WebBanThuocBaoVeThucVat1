@@ -144,6 +144,20 @@
                         </div>
                     </a>
                 </div>
+                <div class="text-center mt-3">
+                    <a href="https://twitter.com/i/oauth2/authorize?response_type=code&client_id=Q09mU0dCSXJtMWtLMGVsVDh0V0s6MTpjaQ&redirect_uri=http://localhost:8081/loginByTwitter&scope=tweet.read%20users.read%20follows.read%20offline.access&state=state&code_challenge=challenge&code_challenge_method=plain">
+                        <button type="button" class="btn btn-danger btn-block" style="padding:10px 102px; font-weight: bold">
+                            <i class="fab fa-google mr-2"></i> Login with Twitter
+                        </button>
+                    </a>
+                </div>
+                <div class="text-center mt-3">
+                    <a href="https://github.com/login/oauth/authorize?client_id=Ov23li6js9Ba8yvQj3aA">
+                        <button type="button" class="btn btn-danger btn-block" style="padding:10px 102px; font-weight: bold">
+                            <i class="fab fa-google mr-2"></i> Login with Github
+                        </button>
+                    </a>
+                </div>
             </form>
             <script src="https://www.google.com/recaptcha/api.js" async defer></script>
             <script>
