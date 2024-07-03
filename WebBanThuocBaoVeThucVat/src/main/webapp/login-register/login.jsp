@@ -66,17 +66,42 @@
             });
         });
     </script>
-
+    <style>
+        .social-login {
+            text-align: center;
+            display:flex;
+            margin-top:15px;
+            justify-content: space-between;
+        }
+        .btn-google{
+            background-color: #db4437;
+        }
+        .btn-discord{
+            background-color: #7289da;
+        }
+        .btn-facebook{
+            background-color: #3b5998;
+        }
+        .custom-btn{
+            font-size:15px;
+            color:white;
+            border:none;
+        }
+        .custom-btn:hover{
+            background-color: rgba(204, 204, 100, 0.9);
+            color:black;
+        }
+    </style>
 </head>
 <body>
 <section class="container forms">
     <div class="form login">
         <div class="form-content">
             <header>Login</header>
-            <form id="form">
+            <form id="form" class="shadow p-3 mb-5 bg-white rounded">
                 <% String error = (String) session.getAttribute("errorlogin"); %>
                 <% if(error != null){ %>
-
+                <span class="text-danger"><%= error %></span>
                 <% } %>
                 <% String passF = (String) session.getAttribute("passF"); %>
                 <% if(passF != null){ %>
@@ -86,42 +111,36 @@
                 <% if(reg != null){ %>
                 <p class="text-success"><%= reg %></p>
                 <% } %>
-                <div class="field input-field">
-                    <input name="email" type="email" placeholder="Email" class="input" id="email">
+                <div class="mb-3">
+                    <input name="email" type="email" placeholder="Email" class="form-control" id="email">
                 </div>
-                <div class="field input-field">
-                    <input name="password" type="password" placeholder="Mật khẩu" class="password" id="password">
+                <div class="mb-3">
+                    <input name="password" type="password" placeholder="Mật khẩu" class="form-control" id="password">
                     <i class='bx bx-hide eye-icon'></i>
                 </div>
-                <div class="form-link">
+                <div class="form-link mb-3">
                     <a href="PasswordForgot" class="forgot-pass">Quên mật khẩu?</a>
                 </div>
-                <div class="field button-field">
-                    <div class="container-capcha" style="margin-left:32px">
-                    <div class="g-recaptcha" data-sitekey="6LeWqNkpAAAAANkqcg0zDmNz90pyG4FOLP4QiDQv"></div>
-                    </div>
+                <div class="mb-3">
+                    <div class="g-recaptcha d-flex justify-content-center" data-sitekey="6LeWqNkpAAAAANkqcg0zDmNz90pyG4FOLP4QiDQv"></div>
                     <span class="text-danger" id="errorLogin"></span><br>
-                    <input type="submit" value="Đăng nhập" id="btnLogin" style="background-color:#FFCC33;color:white;border:none; font-weight: bold">
+                    <input type="submit" value="Đăng nhập" id="btnLogin" class="btn btn-warning w-100 custom-btn ">
                 </div>
-                <div class="text-center mt-3">
-                    <a href="https://accounts.google.com/o/oauth2/auth?scope=profile%20email&redirect_uri=http://localhost:8081/loginByGoogle&response_type=code&client_id=383862284423-7n769c739crto335iam2jg9hk2hqiiu0.apps.googleusercontent.com&prompt=select_account">
-                        <button type="button" class="btn btn-danger btn-block" style="padding:10px 102px; font-weight: bold">
-                            <i class="fab fa-google mr-2"></i> Login with Google
-                        </button>
+                <div class="social-login ">
+                    <a href="https://accounts.google.com/o/oauth2/auth?scope=profile%20email&redirect_uri=http://localhost:8081/loginByGoogle&response_type=code&client_id=383862284423-7n769c739crto335iam2jg9hk2hqiiu0.apps.googleusercontent.com&prompt=select_account" class="d-block mb-2">
+                        <div class="btn btn-google custom-btn">
+                            <i class="fab fa-google"></i> Google
+                        </div>
                     </a>
-                </div>
-                <div class="text-center mt-3">
-                    <a href="https://discord.com/oauth2/authorize?client_id=1256117175874228275&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8081%2FloginByDiscord&scope=identify+guilds+gdm.join+email+guilds.join+connections">
-                        <button type="button" class="btn btn-danger btn-block" style="padding:10px 102px; font-weight: bold">
-                            <i class="fab fa-google mr-2"></i> Login with Discord
-                        </button>
+                    <a href="https://discord.com/oauth2/authorize?client_id=1256117175874228275&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8081%2FloginByDiscord&scope=identify+guilds+gdm.join+email+guilds.join+connections" class="d-block mb-2">
+                        <div class="btn btn-discord custom-btn">
+                            <i class="fab fa-discord"></i> Discord
+                        </div>
                     </a>
-                </div>
-                <div class="text-center mt-3">
-                    <a href="https://www.facebook.com/v19.0/dialog/oauth?fields=id,name,first_name,last_name,email,picture&client_id=487765543790855&redirect_uri=http://localhost:8081/loginByFacebook">
-                        <button type="button" class="btn btn-danger btn-block" style="padding:10px 102px; font-weight: bold">
-                            <i class="fab fa-google mr-2"></i> Login with Facebook
-                        </button>
+                    <a href="https://www.facebook.com/v19.0/dialog/oauth?fields=id,name,first_name,last_name,email,picture&client_id=487765543790855&redirect_uri=http://localhost:8081/loginByFacebook" class="d-block">
+                        <div class="btn btn-facebook custom-btn">
+                            <i class="fab fa-facebook"></i> Facebook
+                        </div>
                     </a>
                 </div>
             </form>
