@@ -91,6 +91,7 @@
             background-color: rgba(204, 204, 100, 0.9);
             color:black;
         }
+
     </style>
 </head>
 <body>
@@ -114,9 +115,9 @@
                 <div class="mb-3">
                     <input name="email" type="email" placeholder="Email" class="form-control" id="email">
                 </div>
-                <div class="mb-3">
+                <div class="mb-3" style="position: relative">
                     <input name="password" type="password" placeholder="Mật khẩu" class="form-control" id="password">
-                    <i class='bx bx-hide eye-icon'></i>
+                    <i class='fas fa-eye eye-icon' id="togglePassword"></i>
                 </div>
                 <div class="form-link mb-3">
                     <a href="PasswordForgot" class="forgot-pass">Quên mật khẩu?</a>
@@ -172,6 +173,19 @@
         }
         return true; // Allow form submission
     }
+</script>
+<script>
+    const togglePassword = document.getElementById('togglePassword');
+    const password = document.getElementById('password');
+
+    togglePassword.addEventListener('click', function (e) {
+        // toggle the type attribute
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        // toggle the eye icon
+        this.classList.toggle('fa-eye');
+        this.classList.toggle('fa-eye-slash');
+    });
 </script>
 </body>
 </html>
