@@ -1,2 +1,3 @@
-package controller;public class AdminUserControl {
+package controller;
+public class AdminUserControl {
 }
