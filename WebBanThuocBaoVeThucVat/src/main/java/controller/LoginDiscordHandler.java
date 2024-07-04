@@ -1,5 +1,5 @@
 package controller;
-
+// login discordHandle
 import bean.User;
 import bean.Util;
 import com.google.gson.Gson;
@@ -25,7 +25,6 @@ import java.util.Random;
 
 @WebServlet("/loginByDiscord")
 public class LoginDiscordHandler extends HttpServlet {
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         this.doPost(request, response);
@@ -38,9 +37,7 @@ public class LoginDiscordHandler extends HttpServlet {
         User user, userCheck;
         Random random = new Random();
         random.nextInt(999999);
-
         String myHash = DigestUtils.md5DigestAsHex((""+random).getBytes());
-
         Timestamp currentTimestamp= Util.getCurrentTimestamp();
         HttpSession session = request.getSession();
         try {
