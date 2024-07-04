@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$" libraries="{bootstrap, dataTables.bootstrap4, font-awesome, jquery, jquery.dataTables, xlsx}" />
-    <file url="file://$PROJECT_DIR$/WebBanThuocBaoVeThucVat" libraries="{bootstrap, dataTables.bootstrap4, font-awesome, jquery, jquery.dataTables, xlsx}" />
+    <file url="file://$PROJECT_DIR$" libraries="{bootstrap, chart.js, dataTables.bootstrap4, font-awesome, jquery, jquery-1.10.2, jquery-3.3.1, jquery.dataTables, materialize, metisMenu, morris.js, popper.js, raphael, xlsx}" />
+    <file url="file://$PROJECT_DIR$/WebBanThuocBaoVeThucVat" libraries="{bootstrap, chart.js, dataTables.bootstrap4, font-awesome, jquery, jquery-1.10.2, jquery-3.3.1, jquery.dataTables, materialize, metisMenu, morris.js, popper.js, raphael, xlsx}" />
   </component>
 </project>
