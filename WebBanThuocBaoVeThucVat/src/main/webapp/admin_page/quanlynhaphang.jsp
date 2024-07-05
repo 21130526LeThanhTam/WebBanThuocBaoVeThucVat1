@@ -16,7 +16,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- DataTables CSS with Bootstrap -->
     <link href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-<%--    fontawsome--%>
+    <%--    fontawsome--%>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -25,7 +25,7 @@
     <!-- DataTables JS with Bootstrap -->
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
-<%--    Excel--%>
+    <%--    Excel--%>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
     <style>
         /* Tùy chỉnh CSS cho DataTables */
@@ -48,6 +48,17 @@
             border: 1px solid #dee2e6;
             border-radius: 0.25rem;
             padding: 0.375rem 0.75rem;
+        }
+        input[type="search"]{
+            background-color:#fff;
+        }
+
+        .modal .modal-footer{
+            background-color:#fff;
+
+        }
+        table.table td:last-child{
+            font-size:14px;
         }
     </style>
 </head>
@@ -151,7 +162,6 @@
         </div>
     </div>
 </div>
-
 <!-- Modal Xóa -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -175,7 +185,7 @@
 </div>
 
 <script>
-<%--    Datatable--%>
+    <%--    Datatable--%>
     $(document).ready(function() {
         // Áp dụng DataTables cho bảng
         $('#orderDetailsTable').DataTable({
@@ -207,15 +217,15 @@
             $('#deleteOrderId').val(orderId);
         });
     });
- // Xuất file excel
+    // Xuất file excel
     document.getElementById('exportButton').addEventListener('click', function() {
-    // Lấy bảng HTML
-    var table = document.getElementById('orderDetailsTable');
-    // Chuyển đổi bảng HTML thành worksheet của Excel
-    var wb = XLSX.utils.table_to_book(table, {sheet: "Sheet1"});
-    // Xuất workbook thành file Excel
-    XLSX.writeFile(wb, 'OrderDetails.xlsx');
-});
+        // Lấy bảng HTML
+        var table = document.getElementById('orderDetailsTable');
+        // Chuyển đổi bảng HTML thành worksheet của Excel
+        var wb = XLSX.utils.table_to_book(table, {sheet: "Sheet1"});
+        // Xuất workbook thành file Excel
+        XLSX.writeFile(wb, 'OrderDetails.xlsx');
+    });
 </script>
 </body>
 </html>
