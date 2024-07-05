@@ -26,6 +26,9 @@
         .nav-custom{
             margin-top:-18px;
         }
+        .submenu-item{
+            padding-left: 20px !important;
+        }
     </style>
 </head>
 <body>
@@ -39,50 +42,49 @@
         </div>
         <ul class="list-unstyled components">
             <li class="active">
-                <a href="#" class="dashboard" id="dashboardLink">
+                <a href="#" class="dashboard" id="dashboardLink" data-url="./dashboard">
                     <i class="material-icons">dashboard</i> Trang chủ
                 </a>
             </li>
             <li>
                 <a href="#userSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <i class="material-icons">aspect_ratio</i> Quản lý người dùng
+                    <i class="fas fa-users-cog"></i> Quản lý người dùng
                 </a>
                 <ul class="collapse list-unstyled" id="userSubmenu">
-                    <li>
-                        <a href="./maUser?roleID=0&uid=1">
+                    <li class="submenu-item">
+                        <a href="#" data-url="./maUser?roleID=0&uid=1" class="load-content">
                             <i class="fas fa-user"></i> Quản lý khách hàng
                         </a>
                     </li>
-                    <li>
-                        <a href="./maUser?roleID=1&uid=1">
+                    <li class="submenu-item">
+                        <a href="#" data-url="./maUser?roleID=1&uid=1" class="load-content">
                             <i class="fas fa-user-tie"></i> Quản lý nhân viên
                         </a>
                     </li>
-                    <li>
-                        <a href="./logAdmin">
+                    <li class="submenu-item">
+                        <a href="#" data-url="./logAdmin" class="load-content">
                             <i class="fas fa-history"></i> Lịch sử hoạt động
                         </a>
                     </li>
                 </ul>
-
             </li>
             <li>
-                <a href="./maProduct">
+                <a href="#" data-url="./maProduct" class="load-content">
                     <i class="fas fa-boxes"></i> Quản lý Sản Phẩm
                 </a>
             </li>
             <li>
-                <a href="./maCategory">
+                <a href="#" data-url="./maCategory" class="load-content">
                     <i class="fas fa-list-alt"></i> Quản lý Danh Mục
                 </a>
             </li>
             <li>
-                <a href="#" id="importManagementLink">
+                <a href="#" id="importManagementLink" data-url="./importManagement" class="load-content">
                     <i class="fas fa-truck-loading"></i> Quản lý Nhập Hàng
                 </a>
             </li>
             <li>
-                <a href="./maDiscount">
+                <a href="#" data-url="./maDiscount" class="load-content">
                     <i class="fas fa-tags"></i> Quản lý Mã Giảm Giá
                 </a>
             </li>
@@ -94,7 +96,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <button type="button" id="sidebarCollapse" class="btn btn-info">
-                    <i class="material-icons ">signal_cellular_alt</i>
+                    <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav ml-auto">
@@ -152,14 +154,22 @@
             $('#content').toggleClass('active');
         });
 
+        // Function to load content and set active class
+        function loadContent(link) {
+            const url = $(link).data('url');
+            $('.list-unstyled .active').removeClass('active');
+            $(link).parent().addClass('active');
+            $('#mainContent').load(url);
+        }
+
+        // Handle click events for dynamic content loading
+        $('.load-content').on('click', function (e) {
+            e.preventDefault();
+            loadContent(this);
+        });
         // Load dashboard content
         $('#dashboardLink').on('click', function () {
-            $('#mainContent').load('./dashboard');
-        });
-
-        // Load import management content
-        $('#importManagementLink').on('click', function () {
-            $('#mainContent').load('./importManagement');
+            loadContent(this, './dashboard');
         });
 
         // Initially load dashboard content
