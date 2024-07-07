@@ -9,9 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4b7277f-3123-43a3-8334-fad619072ac6" name="Changes" comment="Login with facebook">
+    <list default="true" id="b4b7277f-3123-43a3-8334-fad619072ac6" name="Changes" comment="Login with discord 2">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/login-register/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/login-register/login.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,38 +62,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.CategoryDAO.executor": "Run",
-    "Application.DBContext.executor": "Run",
-    "Application.JDBIConnector.executor": "Run",
-    "Application.ProductDAO.executor": "Run",
-    "Application.Products.executor": "Run",
-    "Application.ProductsDao.executor": "Run",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "JavaScript Debug.index.jsp.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Tomcat Server.Tomcat 9.0.81.executor": "Run",
-    "Tomcat Server.Tomcat 9.0.executor": "Run",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "21130514__VuTranThaiSon",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/website/WebBanThuocBaoVeThucVat",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.29388815",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "spring.configuration.checksum": "160df4a56551aad3a8a3e031b462e798",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.CategoryDAO.executor&quot;: &quot;Run&quot;,
+    &quot;Application.DBContext.executor&quot;: &quot;Run&quot;,
+    &quot;Application.JDBIConnector.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ProductDAO.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Products.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ProductsDao.executor&quot;: &quot;Run&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JavaScript Debug.index.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Smart Tomcat.Smart Tomcat.executor&quot;: &quot;Run&quot;,
+    &quot;Smart Tomcat.smart tomcat.executor&quot;: &quot;Run&quot;,
+    &quot;Tomcat Server.Tomcat 9.0.81.executor&quot;: &quot;Run&quot;,
+    &quot;Tomcat Server.Tomcat 9.0.executor&quot;: &quot;Run&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;21130091__DoanNhatLinh&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/WebBanThuocBaoVeThucVat1/WebBanThuocBaoVeThucVat/src/main/webapp&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.29388815&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;160df4a56551aad3a8a3e031b462e798&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="dao" />
@@ -123,7 +126,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Smart Tomcat.Smart Tomcat">
+  <component name="RunManager" selected="Smart Tomcat.smart tomcat">
     <configuration name="CategoryDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="dao.CategoryDAO" />
       <module name="WebBanThuocBaoVeThucVat" />
@@ -194,95 +197,6 @@
       <module name="WebBanThuocBaoVeThucVat" />
       <method v="2">
         <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Tomcat 9.0.81" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.81" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8081/HomePageController" />
-      <option name="UPDATING_POLICY" value="restart-server" />
-      <deployment>
-        <artifact name="WebBanThuocBaoVeThucVat:war">
-          <settings>
-            <option name="CONTEXT_PATH" value="" />
-          </settings>
-        </artifact>
-      </deployment>
-      <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="dd572ff4-e244-4561-b842-bd57a0525aaf" />
-        <option name="HTTP_PORT" value="8081" />
-      </server-settings>
-      <predefined_log_file enabled="true" id="Tomcat" />
-      <predefined_log_file enabled="true" id="Tomcat Catalina" />
-      <predefined_log_file id="Tomcat Manager" />
-      <predefined_log_file id="Tomcat Host Manager" />
-      <predefined_log_file id="Tomcat Localhost Access" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="50225" />
-      </RunnerSettings>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <method v="2">
-        <option name="Make" enabled="true" />
-        <option name="BuildArtifacts" enabled="true">
-          <artifact name="WebBanThuocBaoVeThucVat:war" />
-        </option>
       </method>
     </configuration>
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
@@ -362,21 +276,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Smart Tomcat" type="com.poratu.idea.plugins.tomcat">
+    <configuration name="smart tomcat" type="com.poratu.idea.plugins.tomcat">
       <predefined_log_file enabled="true" id="Tomcat Localhost Log" />
       <predefined_log_file enabled="true" id="Tomcat Access Log" />
       <predefined_log_file id="Tomcat Catalina Log" />
       <predefined_log_file id="Tomcat Manager Log" />
       <predefined_log_file id="Tomcat Host Manager Log" />
-      <option name="catalinaBase" value="C:\Users\uyent\.SmartTomcat\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat" />
-      <option name="contextPath" value="/" />
+      <option name="catalinaBase" value="C:\Users\84828\.SmartTomcat\WebBanThuocBaoVeThucVat1\WebBanThuocBaoVeThucVat" />
+      <option name="contextPath" value="/WebBanThuocBaoVeThucVat" />
       <option name="docBase" value="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp" />
       <option name="extraClassPath" value="" />
       <option name="port" value="8081" />
       <option name="tomcatInfo">
         <TomcatInfo>
           <option name="name" value="Apache Tomcat/9.0.81" />
-          <option name="path" value="$PROJECT_DIR$/../../../../apache-tomcat-9.0.81" />
+          <option name="path" value="$USER_HOME$/Desktop/apache-tomcat-9.0.81" />
           <option name="version" value="9.0.81.0" />
         </TomcatInfo>
       </option>
@@ -388,28 +302,28 @@
     </configuration>
     <list>
       <item itemvalue="Application.Unnamed" />
+      <item itemvalue="Application.CategoryDAO" />
       <item itemvalue="Application.OrdersDAO" />
-      <item itemvalue="Application.Products" />
       <item itemvalue="Application.ProductsDao" />
       <item itemvalue="Application.ProductsService" />
-      <item itemvalue="Application.CategoryDAO" />
-      <item itemvalue="Smart Tomcat.Smart Tomcat" />
-      <item itemvalue="Tomcat Server.Tomcat 9.0.81" />
+      <item itemvalue="Application.Products" />
+      <item itemvalue="Smart Tomcat.smart tomcat" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.OrdersDAO" />
-        <item itemvalue="Application.Products" />
-        <item itemvalue="Application.ProductsDao" />
-        <item itemvalue="Application.ProductsService" />
         <item itemvalue="Application.CategoryDAO" />
+        <item itemvalue="Application.ProductsService" />
+        <item itemvalue="Application.ProductsDao" />
+        <item itemvalue="Application.Products" />
+        <item itemvalue="Application.OrdersDAO" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-18.0.2-corretto-18.0.2-3183f394aec4-38982a12" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
       </set>
     </attachedChunks>
   </component>
@@ -586,10 +500,10 @@
       <workItem from="1719550368861" duration="1053000" />
       <workItem from="1719552722856" duration="472000" />
       <workItem from="1719553218902" duration="113000" />
-      <workItem from="1719553345142" duration="8871000" />
-      <workItem from="1719800247854" duration="3194000" />
-      <workItem from="1719895859245" duration="3153000" />
-      <workItem from="1719992212764" duration="13649000" />
+      <workItem from="1719553345142" duration="7618000" />
+      <workItem from="1719666685653" duration="2000" />
+      <workItem from="1720160728466" duration="3030000" />
+      <workItem from="1720177196971" duration="91000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -711,23 +625,7 @@
       <option name="project" value="LOCAL" />
       <updated>1719558152001</updated>
     </task>
-    <task id="LOCAL-00016" summary="Login with facebook">
-      <option name="closed" value="true" />
-      <created>1719562188474</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1719562188475</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Login with facebook">
-      <option name="closed" value="true" />
-      <created>1719562198649</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1719562198649</updated>
-    </task>
-    <option name="localTasksCounter" value="18" />
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -754,7 +652,7 @@
     <MESSAGE value="Thêm tính năng bắt buộc phải đăng nhập mới thêm sản phẩm vào giỏ hàng được" />
     <MESSAGE value="Login with discord" />
     <MESSAGE value="Login with discord 2" />
-    <MESSAGE value="Login with facebook" />
-    <option name="LAST_COMMIT_MESSAGE" value="Login with facebook" />
+    <MESSAGE value="login with Twitter" />
+    <option name="LAST_COMMIT_MESSAGE" value="login with Twitter" />
   </component>
 </project>
