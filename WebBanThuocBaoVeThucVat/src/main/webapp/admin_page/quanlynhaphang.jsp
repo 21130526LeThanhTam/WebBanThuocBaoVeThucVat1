@@ -63,7 +63,7 @@
             <th>Giá tiền</th>
             <th>Ngày nhập</th>
             <th>Tình Trạng</th>
-            <th>Tính Năng</th>
+            <th style="width:80px">Tính Năng</th>
         </tr>
         </thead>
         <tbody id='tableBody'>
