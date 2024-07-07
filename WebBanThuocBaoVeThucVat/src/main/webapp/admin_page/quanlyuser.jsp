@@ -25,23 +25,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.0.5/datatables.min.css" rel="stylesheet">
+
     <title>Quản lý người dùng</title>
-    <link rel="icon" type="image/x-icon" href="assets/img/logo.png">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="admin_page/css/bootstrap.min.admin.css">
-    <link rel="stylesheet" href="admin_page/css/custom.css">
-
-    <!--google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <style>
         a {
-            text-decoration: none;
+            text-decoration: none !important;
         }
         /*.col-md-auto .dt-search {*/
         /*    padding-right: 20px;*/
@@ -53,169 +43,10 @@
 
 </head>
 <body>
-<div class="wrapper">
-    <div class="body-overlay"></div>
-    <!-------sidebar--design------------>
-    <div id="sidebar">
-        <div class="sidebar-header">
-            <img src="./assets/img/logo.png" class="img-fluid"/>
-        </div>
-        <ul class="list-unstyled component m-0">
-            <li>
-                <a href="./admin_dashboard" class="dashboard"><i class="material-icons">dashboard</i>Trang chủ </a>
-            </li>
-
-            <li class="dropdown active">
-                <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false"
-                   class="dropdown-toggle">
-                    <i class="material-icons">aspect_ratio</i>Quản lý người dùng
-                </a>
-                <ul class="collapse list-unstyled menu" id="homeSubmenu1">
-                    <li><a href="./maUser?roleID=0&uid=1">Quản lý khách hàng</a></li>
-                    <li><a href="./maUser?roleID=1&uid=1">Quản lý nhân viên</a></li>
-                    <li><a href="#">Chủ cửa hàng</a></li>
-                </ul>
-            </li>
-
-            <li class="dropdown">
-                <a href="#homeSubmenu2" data-toggle="collapse" aria-expanded="false"
-                   class="dropdown-toggle">
-                    <i class="material-icons">apps</i>Quản lý sản phẩm
-                </a>
-                <ul class="collapse list-unstyled menu" id="homeSubmenu2">
-                    <li><a href="./maCategory">Quản lý doanh mục</a></li>
-                    <li><a href="./maProduct">Quản lý sản phẩm</a></li>
-                    <li><a href="#">Quản lý mã giảm giá</a></li>
-                </ul>
-            </li>
-
-            <li class="dropdown">
-                <a href="#homeSubmenu3" data-toggle="collapse" aria-expanded="false"
-                   class="dropdown-toggle">
-                    <i class="material-icons">equalizer</i>charts
-                </a>
-                <ul class="collapse list-unstyled menu" id="homeSubmenu3">
-                    <li><a href="#">Pages 1</a></li>
-                    <li><a href="#">Pages 2</a></li>
-                    <li><a href="#">Pages 3</a></li>
-                </ul>
-            </li>
-
-
-            <li class="dropdown">
-                <a href="#homeSubmenu4" data-toggle="collapse" aria-expanded="false"
-                   class="dropdown-toggle">
-                    <i class="material-icons">extension</i>UI Element
-                </a>
-                <ul class="collapse list-unstyled menu" id="homeSubmenu4">
-                    <li><a href="#">Pages 1</a></li>
-                    <li><a href="#">Pages 2</a></li>
-                    <li><a href="#">Pages 3</a></li>
-                </ul>
-            </li>
-
-            <li class="dropdown">
-                <a href="#homeSubmenu5" data-toggle="collapse" aria-expanded="false"
-                   class="dropdown-toggle">
-                    <i class="material-icons">border_color</i>forms
-                </a>
-                <ul class="collapse list-unstyled menu" id="homeSubmenu5">
-                    <li><a href="#">Pages 1</a></li>
-                    <li><a href="#">Pages 2</a></li>
-                    <li><a href="#">Pages 3</a></li>
-                </ul>
-            </li>
-
-            <li class="dropdown">
-                <a href="#homeSubmenu6" data-toggle="collapse" aria-expanded="false"
-                   class="dropdown-toggle">
-                    <i class="material-icons">grid_on</i>tables
-                </a>
-                <ul class="collapse list-unstyled menu" id="homeSubmenu6">
-                    <li><a href="#">table 1</a></li>
-                    <li><a href="#">table 2</a></li>
-                    <li><a href="#">table 3</a></li>
-                </ul>
-            </li>
-
-
-            <li class="dropdown">
-                <a href="#homeSubmenu7" data-toggle="collapse" aria-expanded="false"
-                   class="dropdown-toggle">
-                    <i class="material-icons">content_copy</i>Pages
-                </a>
-                <ul class="collapse list-unstyled menu" id="homeSubmenu7">
-                    <li><a href="#">Pages 1</a></li>
-                    <li><a href="#">Pages 2</a></li>
-                    <li><a href="#">Pages 3</a></li>
-                </ul>
-            </li>
-
-
-            <li class="">
-                <a href="#" class=""><i class="material-icons">date_range</i>copy </a>
-            </li>
-            <li class="">
-                <a href="#" class=""><i class="material-icons">library_books</i>calender </a>
-            </li>
-
-        </ul>
-    </div>
-
-    <!-------sidebar--design- close----------->
-
-
-    <!-------page-content start----------->
-
-    <div id="content">
-
-        <!------top-navbar-start----------->
-
-        <div class="top-navbar">
-            <div class="xd-topbar">
-                <div class="row">
-                    <div class="col-2 col-md-1 col-lg-1 order-2 order-md-1 align-self-center">
-                        <div class="xp-menubar">
-                            <span class="material-icons text-white">signal_cellular_alt</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-5 col-lg-3 order-3 order-md-2">
-                        <div class="xp-searchbar">
-                            <form action="./maUser?" method="get">
-                                <div class="input-group">
-                                    <input type="search" name="search" class="form-control"
-                                           placeholder="Search">
-                                    <div class="input-group-append">
-                                        <button class="btn" type="submit" id="button-addon2">Go
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                    <jsp:include page="include/header_content.jsp"/>
-
-                </div>
-                <div class="xp-breadcrumbbar text-center">
-                    <h4 class="page-title">Quản lý <%= (roleInt2 == 1) ? "Nhân viên" : "Khách hàng" %>
-                    </h4>
-                    </h4>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Vishweb</a></li>
-                        <li class="breadcrumb-item active" aria-curent="page">Dashboard</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-        <!------top-navbar-end----------->
         <%
             String dialog = request.getAttribute("dialog")==null?"":request.getAttribute("dialog")+"";
         %>
-
         <!------main-content-start----------->
-
         <div class="main-content">
             <div class="row">
                 <div class="col-md-12">
@@ -452,34 +283,10 @@
                 <!----edit-modal end--------->
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 21130526-LeThanhTam
             </div>
         </div>
-        <footer class="footer">
-            <div class="container-fluid">
-                <div class="footer-in">
-                    <p class="mb-0">&copy 2021 Vishweb Design . All Rights Reserved.</p>
-                </div>
-            </div>
-        </footer>
-
-
-    </div>
-
-</div>
-
-<script src="admin_page/js/adminJS/jquery-3.3.1.slim.min.js"></script>
-<script src="admin_page/js/adminJS/popper.min.js"></script>
-<script src="admin_page/js/adminJS/jquery-3.3.1.min.js"></script>
-<script src="admin_page/js/adminJS/bootstrap.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.0.5/datatables.min.css" rel="stylesheet">
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.0.5/datatables.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.0.5/datatables.min.js"></script>
 <script>
     new DataTable('#quanlyUserTable', {
         layout: {
@@ -522,18 +329,6 @@
     }
 </script>
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(".xp-menubar").on('click', function () {
-            $("#sidebar").toggleClass('active');
-            $("#content").toggleClass('active');
-        });
-
-        $('.xp-menubar,.body-overlay').on('click', function () {
-            $("#sidebar,.body-overlay").toggleClass('show-nav');
-        });
-    });
-</script>
 
 <script>
     function deleteUser(userID) {
@@ -564,11 +359,7 @@
         togglePassword.innerHTML = type === 'password' ? '<i class="fa fa-eye" aria-hidden="true"></i>' : '<i class="fa fa-eye-slash" aria-hidden="true"></i>';
     });
 </script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.0.5/datatables.min.css" rel="stylesheet">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.0.5/datatables.min.js"></script>
 <%--<script>--%>
 <%--    let table=new DataTable('#quanlyUserTable', {--%>
 <%--        order: [[3, 'desc']],--%>
