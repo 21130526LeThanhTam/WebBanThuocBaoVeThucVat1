@@ -19,12 +19,10 @@
 </head>
 <%
     User user = (User) session.getAttribute("user");
-    // lấy ra picture trong user tại database
-    Jdbi jdbi= JDBIConnector.getJdbi();
-    String picture = jdbi.withHandle(handle -> handle.createQuery("select picture from users where id = ?")
-    .bind(0,user.getId())
-    .mapTo(String.class)
-    .one());
+//    Jdbi jdbi= JDBIConnector.getJdbi();
+//    String picture = jdbi.withHandle(handle -> handle.createQuery("select picture from users where id = ?")
+//    .bind(0, user.getId()).mapTo(String.class).one());
+//    picture=picture==null ? "": picture;
 %>
 <body>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -42,7 +40,7 @@
                                     <div class="mx-auto" style="width: 140px;">
                                         <!--ảnh profile-->
                                         <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
-                                            <img src="<%=request.getContextPath()%>/<%=picture%>" alt="Profile Picture" style="width: 140px; height: 140px; object-fit: cover;">
+                                            <img src="" alt="Profile Picture" style="width: 140px; height: 140px; object-fit: cover;">
                                         </div>
                                     </div>
                                 </div>
