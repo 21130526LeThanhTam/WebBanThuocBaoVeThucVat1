@@ -45,12 +45,10 @@ public class UserService {
     public void updateUser(String surname,String lastname,String username,String phone,int active,int id){
         UserDAO.updateUser(surname, lastname, username, phone, active, id);
     }
-    public List<User> listOfRoleWithSearch(int role, int index, String search){
-        return UserDAO.listOfRoleWithSearch(role, index, search);
+    public List<User> listOfRoleWithSearch(int role) {
+        return UserDAO.listOfRoleWithSearch(role);
     }
     public static void main(String[] args) {
-        for(User a: UserService.getInstance().listOfRoleWithSearch(0,1,"Tai")){
-            System.out.println(a);
-        }
+
 }
 }

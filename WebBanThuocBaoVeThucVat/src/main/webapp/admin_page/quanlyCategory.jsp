@@ -56,7 +56,7 @@
         <button class="btn btn-success" data-toggle="modal" data-target="#addCategoryModal">+ Thêm mới danh mục</button>
         <button class="btn btn-info ml-3" id="exportButton">=> Xuất file</button>
     </div>
-    <table id="categoryTable" class="table table-striped table-bordered" style="width:100%">
+    <table id="quanlyTable" class="table table-striped table-bordered" style="width:100%">
         <thead>
         <tr>
             <th>Mã</th>
@@ -160,29 +160,9 @@
     </div>
 </div>
 <script type="text/javascript">
-    <%--    Datatable--%>
-    $(document).ready(function() {
-        // Áp dụng DataTables cho bảng
-        $('#categoryTable').DataTable({
-            "language": {
-                "lengthMenu": "Hiển thị _MENU_ bản ghi mỗi trang",
-                "zeroRecords": "Không tìm thấy kết quả",
-                "info": "Hiển thị trang _PAGE_ trong tổng số _PAGES_",
-                "infoEmpty": "Không có bản ghi nào",
-                "infoFiltered": "(lọc từ _MAX_ bản ghi)",
-                "search": "Tìm kiếm:",
-                "paginate": {
-                    "first": "Đầu",
-                    "last": "Cuối",
-                    "next": "Sau",
-                    "previous": "Trước"
-                },
-            }
-        });
-    });
     // Xuất file excel
     document.getElementById('exportButton').addEventListener('click', function() {
-        var table = document.getElementById('categoryTable');
+        var table = document.getElementById('quanlyTable');
         var wb = XLSX.utils.table_to_book(table, {sheet: "Sheet1"});
         XLSX.writeFile(wb, 'category.xlsx');
     });

@@ -1,4 +1,4 @@
-package controller;
+package controller.Admin;
 
 import Service.ProductsService;
 import bean.Product;
