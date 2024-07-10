@@ -80,19 +80,11 @@
     <div class="form signup">
         <div class="form-content">
             <header>Signup</header>
-<%--<<<<<<< HEAD--%>
             <form action="signup" method="post">
                 <% String error = (String) session.getAttribute("errorRegis"); %>
                 <% if(error != null){ %>
                 <p class="text-danger"><%= error %></p>
                 <% } %>
-<%--=======--%>
-<%--            <form id="form">--%>
-<%--                <% String error = (String) session.getAttribute("errorRegis"); %>--%>
-<%--                <% if(error != null){ %>--%>
-<%--                <p class="text-danger"><%= error %></p>--%>
-<%--                <% } %>--%>
-<%-->>>>>>> origin/main--%>
                 <% String error1 = (String) session.getAttribute("errorNumber"); %>
                 <% if(error1 != null){ %>
                 <p class="text-danger"><%= error1 %></p>
@@ -148,7 +140,6 @@
             this.classList.toggle('fa-eye-slash');
         });
     };
-
     togglePasswordVisibility('togglePassword', 'password');
     togglePasswordVisibility('reTogglePassword', 'rePassword');
 </script>

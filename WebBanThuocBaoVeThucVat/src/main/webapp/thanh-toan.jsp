@@ -314,20 +314,7 @@
         xhr.send(formBody);
     })
 </script>
-<%--<script>--%>
-<%--    document.getElementById("btn-Payafter").addEventListener("click",function (){--%>
-<%--        document.querySelector(".payAfterReceive").style.display = "block";--%>
-<%--        document.querySelector(".payBeforeReceive").style.display = "none";--%>
-<%--        document.getElementById("btn-Payafter").classList.add("active");--%>
-<%--        document.getElementById("btn-Paybefore").classList.remove("active");--%>
-<%--    });--%>
-<%--    document.getElementById("btn-Paybefore").addEventListener("click", function () {--%>
-<%--        document.querySelector(".payAfterReceive").style.display = "none";--%>
-<%--        document.querySelector(".payBeforeReceive").style.display = "block";--%>
-<%--        document.getElementById("btn-Payafter").classList.remove("active");--%>
-<%--        document.getElementById("btn-Paybefore").classList.add("active");--%>
-<%--    });--%>
-<%--</script>--%>
+
 
 </body>
 </html>

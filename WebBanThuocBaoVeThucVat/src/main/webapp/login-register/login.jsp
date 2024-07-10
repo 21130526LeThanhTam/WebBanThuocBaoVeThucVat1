@@ -28,12 +28,8 @@
                 event.preventDefault();
                 var email = $('#email').val();
                 var password = $('#password').val();
-// <<<<<<< HEAD
                 var rememberMe = $('#remember-me').is(':checked'); // Get the checkbox status
-
                 // Proceed with AJAX call first
-// =======
-// >>>>>>> origin/main
                 $.ajax({
                     type: 'POST',
                     data: {
@@ -117,7 +113,6 @@
     <div class="form login">
         <div class="form-content">
             <header>Login</header>
-<%--<<<<<<< HEAD--%>
             <form id="form">
                 <% String passF = (String) session.getAttribute("action"); %>
                 <% if(passF != null) { %>
@@ -143,33 +138,6 @@
                     <div class="container-capcha" style="margin-left:32px">
                         <div class="g-recaptcha" data-sitekey="6LeWqNkpAAAAANkqcg0zDmNz90pyG4FOLP4QiDQv"></div>
                     </div>
-<%--=======--%>
-<%--            <form id="form" class="shadow p-3 mb-2 bg-white rounded">--%>
-<%--                <% String error = (String) session.getAttribute("errorlogin"); %>--%>
-<%--                <% if(error != null){ %>--%>
-<%--                <span class="text-danger"><%= error %></span>--%>
-<%--                <% } %>--%>
-<%--                <% String passF = (String) session.getAttribute("passF"); %>--%>
-<%--                <% if(passF != null){ %>--%>
-<%--                <p class="text-success"><%= passF %></p>--%>
-<%--                <% } %>--%>
-<%--                <% String reg = (String) session.getAttribute("errorRegis"); %>--%>
-<%--                <% if(reg != null){ %>--%>
-<%--                <p class="text-success"><%= reg %></p>--%>
-<%--                <% } %>--%>
-<%--                <div class="mb-3">--%>
-<%--                    <input name="email" type="email" placeholder="Email" class="form-control" id="email">--%>
-<%--                </div>--%>
-<%--                <div class="mb-3" style="position: relative">--%>
-<%--                    <input name="password" type="password" placeholder="Mật khẩu" class="form-control" id="password">--%>
-<%--                    <i class='fas fa-eye eye-icon' id="togglePassword"></i>--%>
-<%--                </div>--%>
-<%--                <div class="form-link mb-3">--%>
-<%--                    <a href="PasswordForgot" class="forgot-pass">Quên mật khẩu?</a>--%>
-<%--                </div>--%>
-<%--                <div class="mb-3">--%>
-<%--                    <div class="g-recaptcha d-flex justify-content-center" data-sitekey="6LeWqNkpAAAAANkqcg0zDmNz90pyG4FOLP4QiDQv"></div>--%>
-<%-->>>>>>> origin/main--%>
                     <span class="text-danger" id="errorLogin"></span><br>
                     <input type="submit" value="Đăng nhập" id="btnLogin" class="btn btn-warning w-100 custom-btn ">
                 </div>
@@ -247,6 +215,38 @@
         // toggle the eye icon
         this.classList.toggle('fa-eye');
         this.classList.toggle('fa-eye-slash');
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let ipFor;
+        fetch('http://ip-api.com/json/?fields=61439')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                ipFor = data;
+                console.log('Fetched data:', data);
+                // Gửi dữ liệu tới trang /login bằng Ajax
+                $.ajax({
+                    url: '/login',
+                    method: 'POST',
+                    data: JSON.stringify(ipFor),
+                    contentType: 'application/json; charset=utf-8',
+                    success: function() {
+                        console.log('Data sent successfully');
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Ajax error:', xhr, status, error);
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+            });
     });
 </script>
 </body>

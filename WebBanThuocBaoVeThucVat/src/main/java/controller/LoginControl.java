@@ -2,7 +2,9 @@ package controller;
 
 import bean.User;
 import dao.AccountDAO;
+import dao.OrdersDAO;
 import dao.UserDAO;
+import debug.LoggingConfig;
 import utils.PasswordUtils;
 
 import javax.servlet.ServletException;
@@ -10,10 +12,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Logger;
 
 @WebServlet(urlPatterns = {"/login"})
 public class LoginControl extends HttpServlet {
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -40,6 +42,7 @@ public class LoginControl extends HttpServlet {
         String email = req.getParameter("email");
         String pass = req.getParameter("password");
         String remember = req.getParameter("rememberMe");
+
 
         User userLogin = new User();
         userLogin.setEmail(email);
