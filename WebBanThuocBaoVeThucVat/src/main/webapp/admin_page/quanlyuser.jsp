@@ -42,6 +42,9 @@
         input[type="search"] {
             background-color: #fff;
         }
+        #togglePassword{
+         cursor:pointer;
+        }
     </style>
 </head>
 <body>
@@ -65,6 +68,7 @@
                 <th style="width: 100px">Email</th>
                 <th style="width: 100px">Số điện thoại</th>
                 <th style="width: 100px">Vai trò</th>
+                <th style="width: 100px">Trạng Thái</th>
                 <th style="width: 150px">Tính Năng</th>
             </tr>
             </thead>
@@ -76,9 +80,10 @@
                 <th><%=a.getEmail()%></th>
                 <th><%=a.getPhone()%></th>
                 <th><%=a.roleString()%></th>
+                <th><%= a.getActive() == 1 ? "Hoạt động" : "Vô Hiệu Hóa" %></th>
                 <th>
-                    <button class="btn btn-primary update-btn" data-toggle="modal" data-target="#editEmployeeModal<%=a.getId()%>">
-                        <i class="fa-solid fa-pen-to-square"></i>
+                    <button class="btn <%= a.getActive() == 1 ? "btn-warning" : "btn-success" %>" data-toggle="modal" data-target="#toggleDisableModal<%=a.getId()%>">
+                        <i class="fas <%= a.getActive() == 1 ? "fa-ban" : "fa-check" %>"></i>
                     </button>
                     <button class="btn btn-danger delete-btn" data-toggle="modal" data-target="#deleteEmployeeModal<%=a.getId()%>">
                         <i class="fa-solid fa-trash"></i></button>
@@ -106,40 +111,23 @@
                     </div>
                 </div>
             </div>
-            <!-- Cập nhật người dùng -->
-            <div class="modal fade" id="editEmployeeModal<%=a.getId()%>" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+            <!-- vô hiệu hóa, kích hoạt lại người dùng-->
+            <div class="modal fade" id="toggleDisableModal<%=a.getId()%>" tabindex="-1" role="dialog" aria-labelledby="disableModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Cập nhật người dùng</h5>
+                            <h5 class="modal-title"><%= a.getActive() == 1 ? "Xác nhận vô hiệu hóa" : "Xác nhận kích hoạt lại" %></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <div class="form-group">
-                                <label>Tên</label>
-                                <input type="text" name="name" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" name="email" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Mật khẩu</label>
-                                <input type="password" name="pass"  class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Vai trò</label>
-                                <select class="form-control" name="role" required>
-                                    <option value="user" >User</option>
-                                    <option value="admin">Admin</option>
-                                </select>
-                            </div>
+                            <p>Bạn có chắc chắn muốn <%= a.getActive() == 1 ? "vô hiệu hóa" : "kích hoạt lại" %> tài khoản của <%=a.getUsername()%>?</p>
+                            <p class="text-warning"><small>Bấm "Hủy" để dừng lại</small></p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-success" id="saveButton">Lưu</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                            <button type="button" class="btn <%= a.getActive() == 1 ? "btn-danger" : "btn-success" %>" onclick="toggleDisableUser(<%=a.getId()%>, <%=a.getActive()%>)"><%= a.getActive() == 1 ? "Vô hiệu hóa" : "Kích hoạt lại" %></button>
                         </div>
                     </div>
                 </div>
@@ -149,7 +137,6 @@
         </table>
     </div>
 </div>
-
 
 <!-- Thêm người dùng -->
 <div class="modal fade" id="addEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
@@ -161,6 +148,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+
             <div class="modal-body">
                 <form id="addUserForm" action="<%=request.getServletContext().getContextPath()%>/insertUser" method="post" accept-charset="UTF-8">
                     <div class="form-group">
@@ -217,7 +205,7 @@
             var fileName = (roleInt2 == 1 ? 'EmployeeDetails.xlsx' : 'CustomerDetails.xlsx');
             XLSX.writeFile(wb, fileName);
         });
-        // logic add
+        // thêm người dùng
         $('#addUserForm').submit(function(e) {
             e.preventDefault();
             $.ajax({
@@ -234,17 +222,53 @@
             });
         });
 
-        function deleteUser(userID) {
+        //xóa người dùng
+        window.deleteUser = function(userID) {
             $.ajax({
-                url: "/WebBanThuocBaoVeThucVat/deleteUser",
+                url: "/deleteUser",
                 type: "POST",
                 data: { 'userID': userID },
                 success: function(data) {
                     alert('Người dùng đã được xóa thành công!');
                     $("#row_user_" + userID).remove();
+                    // Đóng hộp thoại sau khi xóa thành công
+                    $('#deleteEmployeeModal' + userID).modal('hide');
                 },
                 error: function(xhr, error) {
-                    alert('Lỗi xảy ra khi xóa người dùng!');
+                    alert('Lỗi xảy ra khi xóa người dùng! Lỗi: ' + xhr.responseText);
+                }
+            });
+        };
+        // logic toggle disable user
+        window.toggleDisableUser = function(userID, currentState) {
+            var action = currentState == 1 ? 'disableUser' : 'cancelDisableUser';
+            $.ajax({
+                url: '/' + action,
+                type: "POST",
+                data: { 'userID': userID },
+                success: function(data) {
+                    alert(currentState == 1 ? 'Tài khoản đã được vô hiệu hóa!' : 'Tài khoản đã được kích hoạt lại!');
+                    loadUserTable();
+                },
+                error: function(xhr, error) {
+                    alert('Lỗi xảy ra khi ' + (currentState == 1 ? 'vô hiệu hóa' : 'kích hoạt lại') + ' tài khoản! Lỗi: ' + xhr.responseText);
+                }
+            });
+        };
+
+        // Load user table
+        function loadUserTable() {
+            var roleInt2 = $('#roleInt2').val();
+            $.ajax({
+                url: '/maUser?roleID=' + roleInt2 + '&uid=1',
+                type: "GET",
+                success: function(data) {
+                    $('#userContent').html($(data).find('#userContent').html());
+                    // Re-initialize the DataTable
+                    $('#quanlyTable').DataTable();
+                },
+                error: function(xhr, error) {
+                    alert('Lỗi xảy ra khi tải lại bảng người dùng! Lỗi: ' + xhr.responseText);
                 }
             });
         }

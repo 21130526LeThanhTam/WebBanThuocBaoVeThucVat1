@@ -48,6 +48,9 @@ public class UserService {
     public List<User> listOfRoleWithSearch(int role) {
         return UserDAO.listOfRoleWithSearch(role);
     }
+    public boolean toggleUserStatus (int userID,boolean disable){
+        return UserDAO.toggleUserStatus(userID,disable);
+    }
     public static void main(String[] args) {
 
 }
