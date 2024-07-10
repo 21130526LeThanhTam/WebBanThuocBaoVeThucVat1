@@ -6,7 +6,7 @@ import log.IModel;
 import java.util.Date;
 
 public class User implements IModel {
-    private int id, role,active;
+    private int id, role,active,loginBy, loginTimes;
     private String username, password, phone, email, surname, lastname,hash,picture;
     private Date createAt,updateAt;
 
@@ -158,6 +158,37 @@ public class User implements IModel {
         this.picture = picture;
     }
 
+    public int getLoginBy() {
+        return loginBy;
+    }
+
+    public void setLoginBy(int loginBy) {
+        this.loginBy = loginBy;
+    }
+
+    public int getLoginTimes() {
+        return loginTimes;
+    }
+
+    public void setLoginTimes(int loginTimes) {
+        this.loginTimes = loginTimes;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
 
     // Phương thức dưới để xác định vai trò của người theo role
     public String roleString(){
