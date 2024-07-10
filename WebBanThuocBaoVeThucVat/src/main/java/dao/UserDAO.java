@@ -21,6 +21,19 @@ public class UserDAO extends AbstractDao<User> {
         return instance;
     }
 
+    public static boolean toggleUserStatus(int userID, boolean disable) {
+        String query = "UPDATE users SET active = ? WHERE id = ?";
+        int status = disable ? 0 : 1;
+        int rowsUpdated = JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createUpdate(query)
+                        .bind(0, status)
+                        .bind(1, userID)
+                        .execute()
+        );
+        return rowsUpdated > 0;
+    }
+
+
 
     public int GetId() throws SQLException {
         List<User> users = JDBIConnector.getJdbi().withHandle((handle) -> {
@@ -176,23 +189,18 @@ public class UserDAO extends AbstractDao<User> {
                         .collect(Collectors.toList()));
         return users;
     }
-    public static List<User> listOfRoleWithSearch(int role, int index, String search) {
+    public static List<User> listOfRoleWithSearch(int role) {
         List<User> users = JDBIConnector.getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT id, role, user_name, password, phone, email"+
-                                ",sur_name,last_name,hash\n" +
-                                "FROM users\n" +
-                                "WHERE role=? AND (last_name LIKE ? OR user_name LIKE ?)\n" +
-                                "ORDER BY id\n" +
-                                "LIMIT 5\n" +
-                                "OFFSET ? ")
+                handle.createQuery("SELECT id, role,active, user_name, password, phone, email, sur_name, last_name, hash " +
+                                "FROM users " +
+                                "WHERE role = ? " +
+                                "ORDER BY id")
                         .bind(0, role)
-                        .bind(1, "%" + search + "%")
-                        .bind(2, "%" + search + "%")
-                        .bind(3, (index - 1) * 5)
                         .mapToBean(User.class)
                         .collect(Collectors.toList()));
         return users;
     }
+
 
     @Override
     public boolean selectModel(int id) {
@@ -248,10 +256,5 @@ public class UserDAO extends AbstractDao<User> {
 
     //int id, int active, String username, String phone, String surname, String lastname
     public static void main(String[] args) {
-        List<User>userList= UserService.getInstance().getDSUsers();
-        for (User a: userList){
-            System.out.println(a);
-        }
-
     }
 }
