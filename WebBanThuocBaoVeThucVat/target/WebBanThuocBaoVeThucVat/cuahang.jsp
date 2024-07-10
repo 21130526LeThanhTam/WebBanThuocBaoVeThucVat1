@@ -5,7 +5,9 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="bean.Category" %>
 <%@ page import="bo.CategoryBO" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -105,7 +107,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <%for(Products a : products){%>
+                    <c:choose>
+                    <c:when test="${param.page eq 'home'}">
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div id="" class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="<%=a.getImage()%>">
@@ -122,11 +125,65 @@
                     </div>
                     <%}%>
                 </div>
+                <c:choose>
+                    <c:when test="${param.page eq 'home' }">
+                        <c:set var="totalPages" value="${totalPageHome}"></c:set>
+                        <c:set var="currentPage" value="${currentPageHome }"></c:set>
+                        <c:set var="startPage" value="${startPageHome }"></c:set>
+                        <c:set var="endPage" value="${endPageHome }"></c:set>
+                    </c:when>
+                    <c:when test="${param.page eq 'search' }">
+                        <c:set var="totalPages" value="${totalPageSearch}"></c:set>
+                        <c:set var="currentPage" value="${currentPageSearch }"></c:set>
+                        <c:set var="startPage" value="${startPageSearch }"></c:set>
+                        <c:set var="endPage" value="${endPageSearch }"></c:set>
+                    </c:when>
+                </c:choose>
+                <c:set var="PRODUCTS_PER_PAGE" value="${products_per_page}"></c:set>
+                <c:if test="${param.page eq 'home' }">
+                    <c:set var="pattern" value="ProductController?"></c:set>
+                </c:if>
+                <c:if test="${param.page eq 'search' }">
+                    <c:set var="pattern"
+                           value="SearchServlet?action=${action }&name=${name }&"></c:set>
+                </c:if>
                 <div class="product__pagination">
-                    <a href="#">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#"><i class="fa fa-long-arrow-right"></i></a>
+                    <c:if test="${currentPage > 1 }">
+                        <a
+                                href="<c:url value="${pattern }currentPage=${currentPage - 1}&lang=${sessionScope.LANG}"/>"><fmt:message>pagination.previous</fmt:message></a>
+                    </c:if>
+
+                    <c:if test="${startPage > 2 }">
+                        <a href="<c:url value="${pattern }currentPage=1&lang=${sessionScope.LANG}"/>">1</a>
+                        <span>..</span>
+                    </c:if>
+
+                    <c:forEach var="pageNumber" begin="${startPage }" end="${endPage}">
+                        <c:choose>
+                            <c:when test="${pageNumber == currentPage }">
+                                <strong>${pageNumber}</strong>
+                            </c:when>
+                            <c:otherwise>
+                                <a href="<c:url value="${pattern }currentPage=${pageNumber}&lang=${sessionScope.LANG}"/>">${pageNumber}</a>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+
+                    <c:if test="${endPage < totalPages}">
+                        <span>..</span>
+                        <a
+                                href="
+									<c:url value="${pattern }currentPage=${totalPages }&lang=${sessionScope.LANG}"/>">${totalPages }
+                        </a>
+                    </c:if>
+
+                    <c:if test="${currentPage < totalPages }">
+                        <a
+                                href="
+					<c:url value="${pattern }currentPage=${currentPage + 1}&lang=${sessionScope.LANG}"/>"><fmt:message>pagination.next</fmt:message></a>
+                    </c:if>
+                    </c:when>
+                </c:choose>
                 </div>
             </div>
         </div>
