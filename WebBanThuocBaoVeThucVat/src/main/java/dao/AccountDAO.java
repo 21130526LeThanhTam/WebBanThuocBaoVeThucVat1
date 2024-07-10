@@ -2,10 +2,13 @@ package dao;
 
 import bean.User;
 import db.DBContext;
+
 import db.JDBIConnector;
 import log.AbsModel;
 import log.AbstractDao;
 import utils.PasswordUtils;
+
+import javax.persistence.criteria.CriteriaBuilder;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,15 +19,14 @@ import java.util.stream.Collectors;
 
 
 public class AccountDAO extends AbstractDao<User> {
-
-    public AccountDAO() {
-    }
-
     private static AccountDAO instance;
-    public static AccountDAO getInstance(){
-        if(instance ==null ) instance = new AccountDAO();
+
+    public static AccountDAO getInstance() {
+        if(instance ==null) instance = new AccountDAO();
         return instance;
     }
+
+
     //Phương thức lấy ra id cao nhất.
     public int GetId() throws SQLException {
         String sql = "SELECT * FROM users WHERE id = (SELECT MAX(id) FROM users)";
@@ -53,7 +55,7 @@ public class AccountDAO extends AbstractDao<User> {
                 handle.createQuery(sql).bind(0, user.getEmail()).mapToBean(User.class).stream().collect(Collectors.toList())
         );
         if (users.size() != 1) {
-             super.login(user, "Login failed!", ip, level, address);
+            super.login(user, "Login failed!", ip, level, address);
         } else {
             u = users.get(0);
             if(PasswordUtils.verifyPassword(user.getPassword(), u.getPassword())){
@@ -93,8 +95,7 @@ public class AccountDAO extends AbstractDao<User> {
         return null;
     }
 
-
-    public String signUp(String email,String pass,String username,String surname,String lastname,String phone,String hash){
+    public String signUp(String email,String pass,String username,String surname,String lastname,String phone,String hash) {
         String sql = "insert into users(user_name, password, phone, email, sur_name, last_name, hash, role, active) values (?,?,?,?,?,?,?,0,0)";
         Connection conn = DBContext.getConnection();
         try {
@@ -115,8 +116,9 @@ public class AccountDAO extends AbstractDao<User> {
         }
         return null;
     }
-    public String signUp2(String email,String pass,String username,String surname,String lastname,String phone,String hash){
-        String sql = "insert into users(user_name, password, phone, email, sur_name, last_name, hash, role, active) values (?,?,?,?,?,?,?,0,1)";
+
+    public String signUp2(String email, String pass, String username, String surname, String lastname, String phone, String hash, Integer login_By){
+        String sql = "insert into users(user_name, password, phone, email, sur_name, last_name, hash, role, active, login_by) values (?,?,?,?,?,?,?,0,1,?)";
         Connection conn = DBContext.getConnection();
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -127,6 +129,7 @@ public class AccountDAO extends AbstractDao<User> {
             ps.setString(5, surname);
             ps.setString(6, lastname);
             ps.setString(7, hash);
+            ps.setInt(8, login_By);
             int i = ps.executeUpdate();
             if(i != 0){
                 return "success";
@@ -142,7 +145,8 @@ public class AccountDAO extends AbstractDao<User> {
     public String activeAccount(String email, String hash){
         Connection con = DBContext.getConnection();
         try {
-            PreparedStatement ps = con.prepareStatement("select email, hash, active from users where email = ? and hash = ?");
+
+            PreparedStatement ps = con.prepareStatement("select email, hash, active from users where email = ? and hash = ? and active = 0 and login_by = 0");
             ps.setString(1, email);
             ps.setString(2, hash);
             ResultSet rs = ps.executeQuery();
@@ -163,13 +167,13 @@ public class AccountDAO extends AbstractDao<User> {
 
     public String forgetPassword(String email, String newPassword) {
         Connection con = DBContext.getConnection();
-        String sql = "update users set password = ? where email = ?";
-
+        String sql = "update users set password = ? where email = ? and login_by = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             // Trong câu lệnh SQL UPDATE, chúng ta cần set password = ? và email = ?
             ps.setString(1, newPassword); // Chỗ này sử dụng newPassword thay vì email
-            ps.setString(2, email); // Chỗ này sử dụng email thay vì newPassword
+            ps.setString(2, email);
+            ps.setInt(3, 0);// Chỗ này sử dụng email thay vì newPassword
             int i = ps.executeUpdate();
             if (i > 0) {
                 return "Success";
@@ -188,7 +192,6 @@ public class AccountDAO extends AbstractDao<User> {
         }
         return null;
     }
-
     public boolean updateLoginFail(String email, int i) {
         String sql = "update users set lock_fail = ? where email = ?";
         int exe = JDBIConnector.getJdbi().withHandle(handle ->
@@ -206,4 +209,5 @@ public class AccountDAO extends AbstractDao<User> {
         System.out.println(AccountDAO.getInstance().getLoginFail("21130526@st.hcmuaf.edu.vn"));
         System.out.println(AccountDAO.getInstance().updateLoginFail("21130526@st.hcmuaf.edu.vn", 1));
     }
+
 }

@@ -8,11 +8,43 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class User extends AbsModel implements Serializable {
-    private int id, role,active;
-
-
+    private int id, role,active ,loginBy, loginTimes;;
     private String username, password, phone, email, surname, lastname,hash,picture;
     private Date createAt,updateAt;
+
+    public int getLoginBy() {
+        return loginBy;
+    }
+
+    public void setLoginBy(int loginBy) {
+        this.loginBy = loginBy;
+    }
+
+    public int getLoginTimes() {
+        return loginTimes;
+    }
+
+    public void setLoginTimes(int loginTimes) {
+        this.loginTimes = loginTimes;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+
 
     public User() {
     }

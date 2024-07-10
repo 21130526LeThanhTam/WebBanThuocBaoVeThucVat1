@@ -37,6 +37,25 @@
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
     <link rel="stylesheet" href="assets/css/Log_Regis.css">
     <script src="assets/js/log_reg.js" defer></script>
+    <style>
+        .btn_chosePay {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .btn_chosePay .btn {
+            background-color: #0069d9;
+            flex: 1;
+            margin: 0 10px;
+        }
+        .payBeforeReceive {
+            display: none;
+        }
+        .active {
+            background-color: #28a745 !important;
+            color: white !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -78,7 +97,11 @@
         </div>
         <div class="checkout__form">
             <h4>Thông tin thanh toán</h4>
-            <form action="ThanhToanCL" method="post">
+<%--            <div class="btn_chosePay">--%>
+<%--                <button type="button" class="btn btn-primary active" id="btn-Payafter">Thanh toán sau khi nhận hàng</button>--%>
+<%--                <button type="button" class="btn btn-success" id="btn-Paybefore">Thanh toán online</button>--%>
+<%--            </div>--%>
+            <form action="ThanhToanCL" method="post" class="payAfterReceive">
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <div class="row">
@@ -91,29 +114,29 @@
                             <div class="col-lg-12">
                                 <div class="checkout__input">
                                     <p>Họ Tên<span>*</span></p>
-                                    <input type="text" name = "username" required value="<%=request.getAttribute("username")%>">
+                                    <input id="username" type="text" name ="username" required value="<%=request.getAttribute("username")%>">
                                 </div>
                             </div>
                         </div>
                         <div class="checkout__input">
                             <p>Tỉnh / Thành phố<span>*</span></p>
-                            <input required type="text" name = "city">
+                            <input id="city" required type="text" name = "city">
                         </div>
                         <div class="checkout__input">
                             <p>Phường, xã<span>*</span></p>
-                            <input type="text" required name = "district">
+                            <input id="district" type="text" required name = "district">
                         </div>
                         <div class="checkout__input">
 
                             <p>Địa chỉ<span>*</span></p>
-                            <input type="text" name ="homeNumber" required placeholder="Số nhà" class="checkout__input__add">
+                            <input id="homeNumber" type="text" name ="homeNumber" required placeholder="Số nhà" class="checkout__input__add">
 
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="checkout__input">
                                     <p>Số điện thoại<span>*</span></p>
-                                    <input type="tel" pattern="^\+?[0-9]{1,3}?[-. ]?\(?[0-9]{3}\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}$" required name="phone" value="<%=request.getAttribute("phone")%>">
+                                    <input id="phoneNumber" type="tel" pattern="^\+?[0-9]{1,3}?[-. ]?\(?[0-9]{3}\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}$" required name="phone" value="<%=request.getAttribute("phone")%>">
                                 </div>
                             </div>
                         </div>
@@ -172,6 +195,7 @@
 <%--                            </div>--%>
                             <input id="hidden" type="hidden" name="action" value="order">
                             <button type="submit" class="site-btn">Đặt hàng</button>
+                            <button type="button" class="site-btn" id="payButton">Thanh toán ngay</button>
                         </div>
                     </div>
                 </div>
@@ -184,70 +208,7 @@
 <!-- Footer Section Begin -->
 <jsp:include page="layout/footer.jsp"/>
 <!-- Footer Section End -->
-<%--<div class="blur-bg-overlay"></div>--%>
-<%--<div class="form-popup">--%>
-<%--    <span class="close-btn material-symbols-rounded"><svg xmlns="http://www.w3.org/2000/svg" height="1em"--%>
-<%--                                                          viewBox="0 0 384 512"><path--%>
-<%--            d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/></svg></span>--%>
-<%--    <div class="form-box login">--%>
-<%--        <div class="form-details">--%>
-<%--            <h2>Chào mừng quý khách quay lại</h2>--%>
-<%--            <p>Hãy điền địa chỉ email và mật khẩu vào các ô bên phải</p>--%>
-<%--        </div>--%>
-<%--        <div class="form-content">--%>
-<%--            <h2>ĐĂNG NHẬP</h2>--%>
-<%--            <form action="#">--%>
-<%--                <div class="input-field">--%>
-<%--                    <input type="text" name="name" required>--%>
-<%--                    <label>Email</label>--%>
-<%--                </div>--%>
-<%--                <div class="input-field">--%>
-<%--                    <input type="password" name="password" required>--%>
-<%--                    <label>Password</label>--%>
-<%--                </div>--%>
-<%--                <a href="#" class="forgot-pw">Quên mật khẩu?</a>--%>
-<%--                <button type="submit">Login</button>--%>
-<%--            </form>--%>
-<%--            <div class="bottom-link">--%>
-<%--                Chưa có tài khoản--%>
-<%--                <a href="#" id="signup-link">Đăng ký</a>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--    <!--ĐĂNG KÝ-->--%>
-<%--    <div class="form-box signup">--%>
-<%--        <div class="form-details">--%>
-<%--            <h2>Tạo tài khoản</h2>--%>
-<%--            <p>Điền thông tin theo yêu cầu bên phải</p>--%>
-<%--        </div>--%>
-<%--        <div class="form-content">--%>
-<%--            <h2>ĐĂNG KÝ</h2>--%>
-<%--            <form action="#">--%>
-<%--                <div class="input-field">--%>
-<%--                    <input type="text" name="name" required>--%>
-<%--                    <label>Nhập email</label>--%>
-<%--                </div>--%>
-<%--                <div class="input-field">--%>
-<%--                    <input type="password" name="password" required>--%>
-<%--                    <label>Tạo Password</label>--%>
-<%--                </div>--%>
-<%--                <div class="policy-text">--%>
-<%--                    <input type="checkbox" id="policy">--%>
-<%--                    <label for="policy">--%>
-<%--                        Tôi đồng ý với--%>
-<%--                        <a href="">Điều khoản</a>--%>
-<%--                    </label>--%>
 
-<%--                </div>--%>
-<%--                <button type="submit">Register</button>--%>
-<%--            </form>--%>
-<%--            <div class="bottom-link">--%>
-<%--                Đã có sẵn tài khoản?--%>
-<%--                <a href="#" id="login-link">Login</a>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
 
 <!-- Js Plugins -->
 <script src="assets/js/jquery-3.3.1.min.js"></script>
@@ -258,9 +219,115 @@
 <script src="assets/js/mixitup.min.js"></script>
 <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/main.js"></script>
+<script>
+    document.getElementById("payButton").addEventListener("click",function () {
+        const username = document.getElementById("username").value;
+        const city = document.getElementById("city").value;
+        const district = document.getElementById("district").value;
+        const address = document.getElementById("homeNumber").value;
+        const phoneNumber = document.getElementById("phoneNumber").value;
+        const amount = Math.round(<%= shoppingCart.getTotalPrice() %>);
+        // if (!username || !city || !district || !address || !phoneNumber) {
 
 
+            // if (!username) {
+            //     document.getElementById("username").setCustomValidity("Vui lòng nhập họ tên");
+            //     document.getElementById("username").reportValidity();
+            //     event.preventDefault(); // Ngăn chặn form được gửi đi
+            //
+            // } else {
+            //     document.getElementById("username").setCustomValidity("");
+            // }
+            //
+            // if (!city) {
+            //     document.getElementById("city").setCustomValidity("Vui lòng nhập tỉnh/thành phố");
+            //     document.getElementById("city").reportValidity();
+            //     event.preventDefault(); // Ngăn chặn form được gửi đi
+            //     console.log(amount);
+            // } else {
+            //     document.getElementById("city").setCustomValidity("");
+            // }
+            //
+            // if (!district) {
+            //     document.getElementById("district").setCustomValidity("Vui lòng nhập phường/xã");
+            //     document.getElementById("district").reportValidity();
+            //     event.preventDefault(); // Ngăn chặn form được gửi đi
+            // } else {
+            //     document.getElementById("district").setCustomValidity("");
+            // }
+            //
+            // if (!address) {
+            //     document.getElementById("homeNumber").setCustomValidity("Vui lòng nhập địa chỉ");
+            //     document.getElementById("homeNumber").reportValidity();
+            //     event.preventDefault(); // Ngăn chặn form được gửi đi
+            // } else {
+            //     document.getElementById("homeNumber").setCustomValidity("");
+            // }
+            //
+            // if (!phoneNumber) {
+            //     document.getElementById("phoneNumber").setCustomValidity("Vui lòng nhập số điện thoại");
+            //     document.getElementById("phoneNumber").reportValidity();
+            //     event.preventDefault(); // Ngăn chặn form được gửi đi
+            // } else {
+            //     document.getElementById("phoneNumber").setCustomValidity("");
+            // }
+            // return;
+        // }
+
+
+        const data = {
+            vnp_OrderInfo: "Thanh toan don hang",
+            ordertype: "Sample order type",
+            amount: amount,
+            bankcode: "NCB",
+            language: "vn",
+            txt_billing_mobile: phoneNumber,
+            txt_billing_email: "example@example.com",
+            txt_billing_fullname: "John Doe",
+            txt_inv_addr1: "123 Sample Street",
+            txt_bill_city: "Hanoi",
+            txt_bill_country: "Vietnam",
+            txt_bill_state: "HN",
+            txt_inv_mobile: phoneNumber,
+            txt_inv_email: "example@example.com",
+            txt_inv_customer: "John Doe",
+            txt_inv_addr1: "123 Sample Street",
+            txt_inv_company: "Sample Company",
+            txt_inv_taxcode: "123456789",
+            cbo_inv_type: "I",
+        };
+        const formBody = Object.keys(data).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])).join('&');
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost:8081/payByVN", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText);
+                if (response.code === "00") {
+                    // Redirect to payment URL
+                    window.location.href = response.data;
+                } else {
+                    alert("Error: " + response.message);
+                }
+            }
+        };
+        xhr.send(formBody);
+    })
+</script>
+<%--<script>--%>
+<%--    document.getElementById("btn-Payafter").addEventListener("click",function (){--%>
+<%--        document.querySelector(".payAfterReceive").style.display = "block";--%>
+<%--        document.querySelector(".payBeforeReceive").style.display = "none";--%>
+<%--        document.getElementById("btn-Payafter").classList.add("active");--%>
+<%--        document.getElementById("btn-Paybefore").classList.remove("active");--%>
+<%--    });--%>
+<%--    document.getElementById("btn-Paybefore").addEventListener("click", function () {--%>
+<%--        document.querySelector(".payAfterReceive").style.display = "none";--%>
+<%--        document.querySelector(".payBeforeReceive").style.display = "block";--%>
+<%--        document.getElementById("btn-Payafter").classList.remove("active");--%>
+<%--        document.getElementById("btn-Paybefore").classList.add("active");--%>
+<%--    });--%>
+<%--</script>--%>
 
 </body>
-
 </html>

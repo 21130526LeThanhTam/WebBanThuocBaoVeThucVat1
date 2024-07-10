@@ -49,7 +49,7 @@ public class JDBIConnector {
     }
 
     public static void main(String[] args) {
-//        Jdbi jdbi = JDBIConnector.getJdbi();
+        Jdbi jdbi = JDBIConnector.getJdbi();
 
         // Lấy dữ liệu từ table products
             List<Product> products = jdbi.withHandle(handle -> {
@@ -59,13 +59,12 @@ public class JDBIConnector {
 //        List<User> listUser= JDBIConnector.getJdbi().withHandle()
 
         // Lấy dữ liệu từ table products2
-        List<Product> products2 = jdbi.withHandle(handle -> {
-            String sql = "SELECT * FROM products2";
-            return handle.createQuery(sql).mapToBean(Product.class).stream().collect(Collectors.toList());
-        });
+
 
         // In ra kết quả
-        System.out.println("Products from 'products' table: " + products);
-        System.out.println("Products from 'products2' table: " + products2);
+        for(Product pr : products){
+            System.out.println(pr);
+        }
+//        System.out.println("Products from 'products2' table: " + products2);
     }
 }

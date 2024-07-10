@@ -153,7 +153,7 @@
 
                     <div class="col-md-5 col-lg-3 order-3 order-md-2">
                         <div class="xp-searchbar">
-                            <form>
+                            <form action="./nhapHang" method="get">
                                 <div class="input-group">
                                     <input type="search" class="form-control"
                                            placeholder="Search">

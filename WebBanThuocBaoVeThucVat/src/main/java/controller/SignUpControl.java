@@ -11,8 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Random;
 
 @WebServlet(urlPatterns = {"/signup"})
@@ -21,12 +21,13 @@ public class SignUpControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
-        req.getRequestDispatcher("login-register/register.jsp").forward(req,resp);
+        req.getRequestDispatcher("login-register/register.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/plain; charset=utf-8");
+        PrintWriter out = resp.getWriter();
 
         //============================================
         String email = req.getParameter("email");
@@ -35,66 +36,50 @@ public class SignUpControl extends HttpServlet {
         String lastname = req.getParameter("lastname");
         String phone = req.getParameter("phone");
         String pass = req.getParameter("pass");
-        String re_pass = req.getParameter("rePass");
+        String rePass = req.getParameter("rePass");
+        //============================================
 
-        //mã hóa mật khẩu sang md5
-        String hashpass = PasswordUtils.encryptPassword(pass);
 
-        HttpSession session = req.getSession();
-        //Tạo mã xác nhận ngẫu nhiên bằng cách sử dụng md5 và số ngẫu nhiên để tạo ra đường link đăng kí cho mỗi người
-        String myHash ;
+        // Mã hóa mật khẩu sang md5
+        String hashpass = DigestUtils.md5DigestAsHex(pass.getBytes());
+
+        // Tạo mã xác nhận ngẫu nhiên bằng cách sử dụng md5 và số ngẫu nhiên để tạo ra đường link đăng kí cho mỗi người
+        String myHash;
         Random random = new Random();
         random.nextInt(999999);
-        myHash = DigestUtils.md5DigestAsHex((String.valueOf(random)).getBytes());
+        myHash = DigestUtils.md5DigestAsHex(String.valueOf(random).getBytes());
 
-        // khởi tạo trước một đối tượng user
-        User user = new User();
-        // kiểm tra user có tồn tại trước đó hay không
+        // Khởi tạo trước một đối tượng user
+        User user;
+        // Kiểm tra user có tồn tại trước đó hay không
         AccountDAO acc = new AccountDAO();
         user = acc.checkAccountExist(email);
-        String error;
-        //nếu user khác null thì đăng kí
-        // không thì sẽ chuyền về là tài khoản đã đăng kí
+
+        // Nếu user khác null thì đăng kí, không thì sẽ chuyền về là tài khoản đã đăng kí
         if(user == null){
-            //Tên tài khoản và dài hơn 3 kí tự và kí tự đầu tiên phải là chữ cái
             if(username.length() <= 3 || !(Character.isLetter(username.charAt(0)))){
-                error = "Tên tài khoản phải trên 3 kí tự và Kí tự đầu tiên phải là chữ cái";
 
-
-                session.setAttribute("errorNumber", error);
-                resp.sendRedirect("signup");
-            }
-            // số điện thoại phải là 10 chữ số
-            else if(phone.length() != 10) {
-                error = "Số điện thoại phải là 10 chữ số";
-
-                session.setAttribute("errorNumber", error);
-                resp.sendRedirect("signup");
-            }
-            else if (!pass.equals(re_pass)) {
-                error = "Mật khẩu không trùng khớp";
-
-                session.setAttribute("errorNumber", error);
-                resp.sendRedirect("signup");
-            }
-            else{
+                out.println("{\"error\":\"Tên tài khoản phải trên 3 kí tự và Kí tự đầu tiên phải là chữ cái.\"}");
+            } else if(phone.length() != 10) {
+                out.println("{\"error\":\"Số điện thoại phải là 10 chữ số\"}");
+            } else if (!pass.equals(rePass)) {
+                out.println("{\"error\":\"Mật khẩu không trùng khớp\"}");
+            } else {
 
                 String str = acc.signUp(email, hashpass, username, surname, lastname, phone, myHash);
-
                 if(str.equals("success")){
                     SendingEmail se = new SendingEmail(email, myHash);
                     se.sendMail();
-                    session.setAttribute("action", "Kích hoạt email để đăng nhập");
-                    resp.sendRedirect("login");
+
+                    out.println("{\"success\":\"true\"}");
+                } else {
+                    out.println("{\"error\":\"Đã có lỗi xảy ra trong quá trình đăng ký\"}");
+
                 }
             }
+        } else {
+            out.println("{\"error\":\"Email này đã được đăng kí, vui lòng sử dụng email khác\"}");
         }
-        else{
-            error = "Email này đã được đăng kí, vui lòng sử dụng email khác";
-            session.setAttribute("errorNumber", error);
-            resp.sendRedirect("signup");
-
-        }
+        out.close();
     }
-
 }

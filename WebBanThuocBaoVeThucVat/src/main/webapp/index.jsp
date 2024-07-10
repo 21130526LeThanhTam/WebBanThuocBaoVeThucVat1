@@ -50,7 +50,7 @@
 
         ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
         CategoryBO cb = new CategoryBO();
-        System.out.println("linh"+cb);
+
         if(shoppingCart==null){
             shoppingCart = new ShoppingCart();
         }

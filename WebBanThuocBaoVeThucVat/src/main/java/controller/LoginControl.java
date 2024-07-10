@@ -55,6 +55,7 @@ public class LoginControl extends HttpServlet {
             User user = AccountDAO.getInstance().loginAccount(userLogin, ipAddress,1, ipAddress);
             User checkEmail = AccountDAO.getInstance().checkAccountExist(userLogin.getEmail());
             if (user == null) {
+
                 if(checkEmail != null && checkEmail.getActive()!=0 && checkEmail.getActive()!=2) {
                     int loginFail = AccountDAO.getInstance().getLoginFail(email);
                     AccountDAO.getInstance().updateLoginFail(email, loginFail + 1);
