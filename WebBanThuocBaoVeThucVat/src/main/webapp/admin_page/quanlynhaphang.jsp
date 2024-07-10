@@ -53,7 +53,7 @@
         <button class="btn btn-success" data-toggle="modal" data-target="#createModal">+ Tạo mới nhập hàng</button>
         <button class="btn btn-info ml-3" id="exportButton">=> Xuất file</button>
     </div>
-    <table id="orderDetailsTable" class="table table-striped table-bordered" style="width:100%">
+    <table id="quanlyTable" class="table table-striped table-bordered" style="width:100%">
         <thead>
         <tr class="ex">
             <th>Id</th>
@@ -63,7 +63,7 @@
             <th>Giá tiền</th>
             <th>Ngày nhập</th>
             <th>Tình Trạng</th>
-            <th>Tính Năng</th>
+            <th style="width:80px">Tính Năng</th>
         </tr>
         </thead>
         <tbody id='tableBody'>
@@ -170,26 +170,7 @@
 </div>
 
 <script>
-    <%--    Datatable--%>
     $(document).ready(function() {
-        // Áp dụng DataTables cho bảng
-        $('#orderDetailsTable').DataTable({
-            "language": {
-                "lengthMenu": "Hiển thị _MENU_ bản ghi mỗi trang",
-                "zeroRecords": "Không tìm thấy kết quả",
-                "info": "Hiển thị trang _PAGE_ trong tổng số _PAGES_",
-                "infoEmpty": "Không có bản ghi nào",
-                "infoFiltered": "(lọc từ _MAX_ bản ghi)",
-                "search": "Tìm kiếm:",
-                "paginate": {
-                    "first": "Đầu",
-                    "last": "Cuối",
-                    "next": "Sau",
-                    "previous": "Trước"
-                },
-            }
-        });
-
         // Xử lý khi nhấn vào nút "Cập nhật"
         $('.update-btn').on('click', function() {
             var orderId = $(this).data('order-id');
@@ -205,7 +186,7 @@
     // Xuất file excel
     document.getElementById('exportButton').addEventListener('click', function() {
         // Lấy bảng HTML
-        var table = document.getElementById('orderDetailsTable');
+        var table = document.getElementById('quanlyTable');
         // Chuyển đổi bảng HTML thành worksheet của Excel
         var wb = XLSX.utils.table_to_book(table, {sheet: "Sheet1"});
         // Xuất workbook thành file Excel

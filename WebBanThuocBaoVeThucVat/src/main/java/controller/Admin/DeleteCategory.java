@@ -1,7 +1,6 @@
-package controller;
+package controller.Admin;
 
 import Service.CategoryService;
-import bean.Category;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,10 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
-@WebServlet(name = "CategoryManagement",value = "/maCategory")
-public class CategoryManagement extends HttpServlet {
+@WebServlet(name = "DeleteCategory", value = "/deleteCate")
+public class DeleteCategory extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req, resp);
@@ -20,12 +18,12 @@ public class CategoryManagement extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String search=req.getParameter("search");
-        if (search == null) {
-            search = "";
+        String cateID =req.getParameter("cateID");
+        int intCateID=0;
+        if((cateID!= null) && (!cateID.isEmpty()) ){
+            intCateID= Integer.parseInt(cateID);
         }
-        List<Category> listCategory= CategoryService.getInstance().listCategory(search,0);
-        req.setAttribute("listCategory",listCategory);
-        req.getRequestDispatcher("admin_page/quanlyCategory.jsp").forward(req,resp);
+        CategoryService.getInstance().deleteCategory(intCateID);
+        resp.sendRedirect("./maCategory");
     }
 }

@@ -49,7 +49,7 @@
                             </div>
                         </div>
 
-                        <table class="table table-striped table-hover">
+                        <table class="table table-striped table-hover quanlyTable">
                             <thead>
                             <tr>
                                 <th><span class="custom-checkbox">

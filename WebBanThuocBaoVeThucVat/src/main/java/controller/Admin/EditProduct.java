@@ -1,4 +1,4 @@
-package controller;
+package controller.Admin;
 
 import CKeditor.HtmlUtils;
 import Service.ProductsService;

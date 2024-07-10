@@ -159,7 +159,15 @@
             const url = $(link).data('url');
             $('.list-unstyled .active').removeClass('active');
             $(link).parent().addClass('active');
-            $('#mainContent').load(url);
+
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: function(data) {
+                    $('#mainContent').html(data);
+                    initializeDataTable();
+                }
+            });
         }
 
         // Handle click events for dynamic content loading
@@ -167,14 +175,40 @@
             e.preventDefault();
             loadContent(this);
         });
+
         // Load dashboard content
         $('#dashboardLink').on('click', function () {
-            loadContent(this, './dashboard');
+            loadContent(this);
         });
 
         // Initially load dashboard content
         $('#mainContent').load('./dashboard');
+
+        function initializeDataTable() {
+            if ($.fn.dataTable.isDataTable('#quanlyTable')) {
+                $('#quanlyTable').DataTable().destroy();
+                $('#quanlyTable').empty(); // Clear the table body to remove old data
+            }
+
+            $('#quanlyTable').DataTable({
+                "language": {
+                    "lengthMenu": "Hiển thị _MENU_ bản ghi mỗi trang",
+                    "zeroRecords": "Không tìm thấy kết quả",
+                    "info": "Hiển thị trang _PAGE_ trong tổng số _PAGES_",
+                    "infoEmpty": "Không có bản ghi nào",
+                    "infoFiltered": "(lọc từ _MAX_ bản ghi)",
+                    "search": "Tìm kiếm:",
+                    "paginate": {
+                        "first": "Đầu",
+                        "last": "Cuối",
+                        "next": "Sau",
+                        "previous": "Trước"
+                    },
+                }
+            });
+        }
     });
+
 </script>
 </body>
 </html>

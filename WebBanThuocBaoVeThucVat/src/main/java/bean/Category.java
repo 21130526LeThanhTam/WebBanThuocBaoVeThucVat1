@@ -1,5 +1,8 @@
 package bean;
 
+import lombok.Data;
+
+@Data
 public class Category {
     private int id;
     private String nameCategory;
@@ -35,4 +38,5 @@ public class Category {
                 ", nameCategory='" + nameCategory + '\'' +
                 '}';
     }
+
 }
