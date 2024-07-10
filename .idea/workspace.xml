@@ -10,133 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4b7277f-3123-43a3-8334-fad619072ac6" name="Changes" comment="province api form checkout">
-      <change afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/GoogleService/OAuth2Callback.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/LoginDiscordHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/LoginFacebookHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/LoginGithubHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/LoginTwitterHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/UserInfoServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/LoginDiscordHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/LoginFacebookHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/LoginGithubHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/LoginTwitterHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/UserInfoServlet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/LoginDiscordHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/LoginFacebookHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/LoginGithubHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/LoginTwitterHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/UserInfoServlet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/Service/IOrdersService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/Service/OrdersService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/bean/Level.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/bean/Log.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/bean/OrderManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/bean/OrderStatus.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/bean/Orders.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/bean/Util.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/controller/Admin/LogController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/controller/ImportManagement.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/controller/LoginFacebookHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/controller/LoginTwitterHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/controller/OrderHistoryCL.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/dao/AbstractDAO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/dao/GenericDAO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/dao/IDAO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/dao/IOrdersDAO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/dao/LogDao.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/dao/OrdersDAO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/debug/LoggingConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/log/AbstractDao.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/log/AbstractIModel.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/log/IDao.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/log/IModel.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/OrderDetailMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/OrderMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/ProductMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/RowMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/ForgotPassControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/ForgotPassControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/GoogleService/Service.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/LoginGoogleHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/LoginGoogleHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/SignUpControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/SignUpControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/AccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/AccountDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/db/DBProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/db/DBProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/resources/DB.properties" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/resources/DB.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/login-register/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/login-register/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/login-register/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/login-register/register.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/thanh-toan.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/thanh-toan.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/user-profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/user-profile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/Service/OrderService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat.war" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/DB.properties" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/DB.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bean/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/bean/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/ForgotPassControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/ForgotPassControl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/GoogleService/Service.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/LoginGoogleHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/LoginGoogleHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/SignUpControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/SignUpControl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/ThanhToanCL.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/controller/ThanhToanCL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/AccountDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/dao/AccountDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/db/DBProperties.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/classes/db/DBProperties.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/login-register/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/login-register/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/login-register/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/login-register/register.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/thanh-toan.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/thanh-toan.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/user-profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/user-profile.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/DB.properties" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/DB.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/bean/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/bean/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/ForgotPassControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/ForgotPassControl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/GoogleService/Service.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/LoginGoogleHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/LoginGoogleHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/SignUpControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/SignUpControl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/ThanhToanCL.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/ThanhToanCL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/AccountDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/AccountDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/db/DBProperties.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/db/DBProperties.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DB.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Service/ActiveAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Service/ActiveAccount.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Service/CustomAuthenticator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Service/CustomAuthenticator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Service/OrderDetailService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Service/OrderDetailService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Service/ProductService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Service/ProductService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Service/ProductsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Service/ProductsService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Service/SendingEmail$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Service/SendingEmail$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Service/SendingEmail$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Service/SendingEmail$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Service/SendingEmail$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Service/SendingEmail$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Service/SendingEmail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Service/SendingEmail.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bean/Order.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bean/OrderDetail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/OrderDetail.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bean/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/Product.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bean/Products.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/Products.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bean/ShoppingCart.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/ShoppingCart.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bean/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bean/Users.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bo/CategoryBO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bo/CategoryBO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/Dashboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/Dashboard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/DeleteUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/DeleteUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/ForgotPassControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ForgotPassControl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/HomePageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/HomePageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/LoginControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/LoginControl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/LoginGoogleHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/LoginGoogleHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/LogoutControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/LogoutControl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/ShoppingCartCL.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ShoppingCartCL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/SignUpControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/SignUpControl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/ThanhToanCL.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ThanhToanCL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/ThongTinDonHangCL.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ThongTinDonHangCL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/UserChangeAvatar.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/UserChangeAvatar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/UserEdit.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/UserEdit.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/UserEditControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/UserEditControl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/UserManagement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/UserManagement.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/AccountDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/AccountDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/CategoryDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/CategoryDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/ProductDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/ProductDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/ProductsDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/ProductsDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/UserDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/db/DBContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/db/DBContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/db/DBProperties.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/db/DBProperties.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/db/JDBIConnector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/db/JDBIConnector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/filter/AuthenticationFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/filter/AuthenticationFilter.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,6 +71,7 @@
     "Application.CategoryDAO.executor": "Run",
     "Application.DBContext.executor": "Run",
     "Application.JDBIConnector.executor": "Run",
+    "Application.OrdersDAO.executor": "Run",
     "Application.ProductDAO.executor": "Run",
     "Application.Products.executor": "Run",
     "Application.ProductsDao.executor": "Run",
@@ -208,7 +85,7 @@
     "Tomcat Server.Tomcat 9.0.81.executor": "Run",
     "Tomcat Server.Tomcat 9.0.executor": "Run",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging 21130091__DoanNhatLinh",
+    "git-widget-placeholder": "21130091__DoanNhatLinh",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/84828/.SmartTomcat/WebBanThuocBaoVeThucVat1/WebBanThuocBaoVeThucVat/conf",
@@ -529,10 +406,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.OrdersDAO" />
         <item itemvalue="Application.Products" />
         <item itemvalue="Application.ProductsService" />
         <item itemvalue="Application.ProductsDao" />
-        <item itemvalue="Application.OrdersDAO" />
         <item itemvalue="Application.CategoryDAO" />
       </list>
     </recent_temporary>
@@ -731,7 +608,7 @@
       <workItem from="1720322618202" duration="203000" />
       <workItem from="1720511588736" duration="6234000" />
       <workItem from="1720534130847" duration="1092000" />
-      <workItem from="1720591863316" duration="9250000" />
+      <workItem from="1720591863316" duration="5572000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
