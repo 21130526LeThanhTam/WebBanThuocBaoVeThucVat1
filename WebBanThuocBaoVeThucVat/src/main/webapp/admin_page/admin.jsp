@@ -29,7 +29,12 @@
         .submenu-item{
             padding-left: 20px !important;
         }
+        body.modal-open {
+            padding-right: 0 !important;
+        }
     </style>
+    <!-- Script - custom -->
+    <script src="/admin_page/js/adminJS/custom.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -132,6 +137,7 @@
 </div>
 
 <!-- Optional JavaScript -->
+
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -145,7 +151,7 @@
 <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
 <%--    Excel--%>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
-<!-- Script - custom -->
+
 <script type="text/javascript">
     $(document).ready(function () {
         // Toggle sidebar
@@ -153,60 +159,17 @@
             $('#sidebar').toggleClass('active');
             $('#content').toggleClass('active');
         });
-
-        // Function to load content and set active class
-        function loadContent(link) {
-            const url = $(link).data('url');
-            $('.list-unstyled .active').removeClass('active');
-            $(link).parent().addClass('active');
-
-            $.ajax({
-                url: url,
-                type: 'GET',
-                success: function(data) {
-                    $('#mainContent').html(data);
-                    initializeDataTable();
-                }
-            });
-        }
-
         // Handle click events for dynamic content loading
         $('.load-content').on('click', function (e) {
             e.preventDefault();
             loadContent(this);
         });
-
         // Load dashboard content
         $('#dashboardLink').on('click', function () {
             loadContent(this);
         });
-
         // Initially load dashboard content
         $('#mainContent').load('./dashboard');
-
-        function initializeDataTable() {
-            if ($.fn.dataTable.isDataTable('#quanlyTable')) {
-                $('#quanlyTable').DataTable().destroy();
-                $('#quanlyTable').empty(); // Clear the table body to remove old data
-            }
-
-            $('#quanlyTable').DataTable({
-                "language": {
-                    "lengthMenu": "Hiển thị _MENU_ bản ghi mỗi trang",
-                    "zeroRecords": "Không tìm thấy kết quả",
-                    "info": "Hiển thị trang _PAGE_ trong tổng số _PAGES_",
-                    "infoEmpty": "Không có bản ghi nào",
-                    "infoFiltered": "(lọc từ _MAX_ bản ghi)",
-                    "search": "Tìm kiếm:",
-                    "paginate": {
-                        "first": "Đầu",
-                        "last": "Cuối",
-                        "next": "Sau",
-                        "previous": "Trước"
-                    },
-                }
-            });
-        }
     });
 
 </script>

@@ -2,6 +2,7 @@ package controller.Admin;
 
 import bean.Import;
 import dao.admin.ImportDao;
+import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,11 +10,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-@WebServlet(name = "ImportManagement",value = "/importManagement")
+@WebServlet(name = "ImportManagement", value = "/importManagement")
 public class ImportController extends HttpServlet {
     private static final long serialVersionUID = 1L;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
@@ -21,38 +25,49 @@ public class ImportController extends HttpServlet {
         resp.setContentType("text/html; charset=UTF-8");
         List<Import> importOrders = ImportDao.getList(); // lấy ra danh sách import
         req.setAttribute("importOrders", importOrders);
-        req.getRequestDispatcher("admin_page/quanlynhaphang.jsp").forward(req,resp);
+        req.getRequestDispatcher("admin_page/quanlynhaphang.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
-        resp.setContentType("text/html; charset=UTF-8");
+        resp.setContentType("application/json; charset=UTF-8");
         String action = req.getParameter("action");
 
+        Map<String, String> result = new HashMap<>();
         if (action != null) {
-            switch (action) {
+          try{  switch (action) {
                 case "create":
                     Import newOrder = new Import();
                     newOrder.setId_product(Integer.parseInt(req.getParameter("productId")));
                     newOrder.setQuantity(Integer.parseInt(req.getParameter("quantity")));
                     newOrder.setPrice(Double.parseDouble(req.getParameter("price")));
-                    ImportDao.insertImport(newOrder);
+                    boolean insertSuccess = ImportDao.insertImport(newOrder);
+                    result.put("status", insertSuccess ? "success" : "error");
                     break;
                 case "delete":
                     int orderIdToDelete = Integer.parseInt(req.getParameter("orderId"));
-                    ImportDao.deleteImport(orderIdToDelete);
+                    boolean deleteSuccess = ImportDao.deleteImport(orderIdToDelete);
+                    result.put("status", deleteSuccess ? "success" : "error");
                     break;
                 case "update":
                     int orderIdToUpdate = Integer.parseInt(req.getParameter("orderId"));
                     String status = req.getParameter("status");
-                    ImportDao.updateImport(orderIdToUpdate,status);
+                    boolean updateSuccess = ImportDao.updateImport(orderIdToUpdate, status);
+                    result.put("status", updateSuccess ? "success" : "error");
                     break;
-            }
+            }}
+             catch (Exception e) {
+                e.printStackTrace();
+                result.put("status", "error");
+                result.put("message", e.getMessage());}
+        } else {
+            result.put("message", "Action is null");
         }
 
-        resp.sendRedirect("/importManagement");
+        Gson gson = new Gson();
+        String jsonResponse = gson.toJson(result);
+        resp.getWriter().write(jsonResponse);
     }
-    }
-
+}
