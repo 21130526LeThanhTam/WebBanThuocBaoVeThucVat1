@@ -42,6 +42,7 @@ public class ProductsService {
         ProductsDao.editProduct(name, image, price, idCategory, status, proDesc, id);
     }
     public List<Products> numOfPro(){return ProductsDao.numOfPro();}
+    public List<Products> getAllProducts(){return ProductsDao.getAllProducts();}
     public static void main(String[] args) {
         System.out.println(ProductsService.getInstance().numOfPro());
 //        System.out.println(ProductsService.getInstance().getProductById(1));

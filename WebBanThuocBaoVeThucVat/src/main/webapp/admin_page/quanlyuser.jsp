@@ -214,7 +214,7 @@
                 data: $(this).serialize(),
                 success: function(response) {
                     alert('Người dùng đã được thêm thành công!');
-                    location.reload();
+                    loadContent($('#waiterManagementLink'));
                 },
                 error: function() {
                     alert('Lỗi xảy ra khi thêm người dùng!');

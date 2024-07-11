@@ -19,6 +19,13 @@ public class ProductsDao implements IProductsDao{
         return products;
     }
 
+    public static List<Products> getAllProducts() {
+        List<Products> products = JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT id, product_name, image, price, id_category FROM products")
+                        .mapToBean(Products.class)
+                        .collect(Collectors.toList()));
+        return products;
+    }
     @Override
     public List<Products> findByCategory(int idCate, String name) {
         List<Products> products = JDBIConnector.getJdbi().withHandle(handle ->

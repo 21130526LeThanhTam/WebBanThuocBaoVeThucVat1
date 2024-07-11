@@ -57,12 +57,12 @@
                 </a>
                 <ul class="collapse list-unstyled" id="userSubmenu">
                     <li class="submenu-item">
-                        <a href="#" data-url="./maUser?roleID=0&uid=1" class="load-content">
+                        <a href="#" data-url="./maUser?roleID=0&uid=1" class="load-content" id="customerManagementLink">
                             <i class="fas fa-user"></i> Quản lý khách hàng
                         </a>
                     </li>
                     <li class="submenu-item">
-                        <a href="#" data-url="./maUser?roleID=1&uid=1" class="load-content">
+                        <a href="#" data-url="./maUser?roleID=1&uid=1" class="load-content" id="waiterManagementLink">
                             <i class="fas fa-user-tie"></i> Quản lý nhân viên
                         </a>
                     </li>
@@ -74,7 +74,7 @@
                 </ul>
             </li>
             <li>
-                <a href="#" data-url="./maProduct" class="load-content">
+                <a href="#" data-url="./maProduct" class="load-content" id="productManagementLink">
                     <i class="fas fa-boxes"></i> Quản lý Sản Phẩm
                 </a>
             </li>

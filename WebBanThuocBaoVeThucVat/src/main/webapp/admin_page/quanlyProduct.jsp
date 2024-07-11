@@ -46,11 +46,7 @@
         }
     </style>
 </head>
-<%List<Products> getTenPro = (List<Products>) request.getAttribute("getTenPro");
-    if (getTenPro == null) getTenPro = new ArrayList<>();%>
-<%int pageValue = (int) request.getAttribute("page");%>
-<%Integer tagAttribute = (Integer) request.getAttribute("tag");
-    int tag = (tagAttribute != null) ? tagAttribute.intValue() : 1;%>
+<%List<Products> allProducts = (List<Products>) request.getAttribute("allProducts");%>
 
 <body>
 <div class="container my-5">
@@ -58,13 +54,14 @@
         <h3 class="page-title" style="color:black; font-weight: bold; margin-top: 30px; margin-bottom: 40px">Quản Lý Sản Phẩm</h3>
     </div>
     <div class="mb-5 d-flex align-items-center">
-        <a href="./insertPro?finalPage=<%=pageValue%>" class="btn btn-success">+ Thêm sản phẩm mới</a>
+        <a href="./insertPro" class="btn btn-success">+ Thêm sản phẩm mới</a>
         <button class="btn btn-info ml-3" id="exportButton">=> Xuất file</button>
     </div>
     <table id="quanlyTable" class="table table-striped table-bordered" style="width:100%">
         <thead>
         <tr>
             <th></th>
+            <th style="width: 20px">ID</th>
             <th style="width: 200px;">Tên</th>
             <th style="width:175px">Loại sản phẩm</th>
             <th>Ảnh</th>
@@ -73,11 +70,12 @@
         </tr>
         </thead>
         <tbody>
-        <%for (Products a : getTenPro) {%>
+        <%for (Products a : allProducts) {%>
         <tr>
             <th>
                 <i class="fa-solid fa-circle-info"></i>
             </th>
+            <th><%= a.getId()%></th>
             <th><%= a.getProduct_name() %></th>
             <th><%= a.cateOfProduct() %></th>
             <th><img src="<%= a.getImage() %>" alt="" style="width: 110px;height: 110px"></th>
@@ -106,7 +104,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                        <button type="button" class="btn btn-success" onclick="deleteUser(<%= a.getId() %>, <%= tag %>)">Xóa</button>
+                        <button type="button" class="btn btn-success">Xóa</button>
                     </div>
                 </div>
             </div>
