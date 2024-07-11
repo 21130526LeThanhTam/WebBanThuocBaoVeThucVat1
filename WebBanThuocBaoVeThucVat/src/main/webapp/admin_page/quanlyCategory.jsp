@@ -70,14 +70,13 @@
             <th style="text-align: center; width: 20px"><%= a.getId() %></th>
             <th style="width:150px;"><%= a.getNameCategory() %></th>
             <th>
-                <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" onclick="submitEditForm(<%= a.getId() %>)">
+                <a href="#editCategoryModal<%= a.getId() %>" class="btn btn-primary" data-toggle="modal">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </a>
                 <a href="#deleteCategoryModal<%= a.getId() %>" class="btn btn-danger" data-toggle="modal">
                     <i class="fa-solid fa-trash"></i>
                 </a>
             </th>
-            <form id="editForm<%= a.getId() %>" action="./editCategory" method="post" accept-charset="UTF-8"></form>
         </tr>
 <%--        xóa danh mục--%>
         <div class="modal fade" id="deleteCategoryModal<%= a.getId() %>" tabindex="-1" role="dialog" aria-labelledby="deleteCategoryModalLabel" aria-hidden="true">
@@ -92,8 +91,33 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                        <button type="button" class="btn btn-success" onclick="deleteCate(<%=a.getId()%>)">Xóa</button>
+                        <button type="button" class="btn btn-success" onclick="deleteCategory(<%=a.getId()%>)">Xóa</button>
                     </div>
+                </div>
+            </div>
+        </div>
+        <%--edit danh mục--%>
+        <div class="modal fade" id="editCategoryModal<%= a.getId() %>" tabindex="-1" role="dialog" aria-labelledby="editCategoryModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editCategoryModalLabel">Chỉnh sửa danh mục</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="editCategoryForm" method="post">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="editCategoryName<%= a.getId() %>">Tên danh mục</label>
+                                <input type="text" class="form-control" id="editCategoryName<%= a.getId() %>" name="categoryName" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                            <button type="submit" class="btn btn-success" onclick="submitEditForm(<%=a.getId()%>)">Thay Đổi</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -102,13 +126,13 @@
     </table>
 </div>
 <%--THêm mới danh mục--%>
-<div class="modal fade" id="addEmployeeModal" tabindex="-1" role="dialog"  aria-hidden="true">
+<div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog"  aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="addCategoryModalLabel">Thêm mới danh mục</h5>
             </div>
-            <form action="./insertCate" method="post" accept-charset="UTF-8">
+            <form action="./insertCate" method="post" accept-charset="UTF-8" id="addCategoryForm">
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Tên danh mục</label>
@@ -123,42 +147,8 @@
         </div>
     </div>
 </div>
-<%--edit danh mục--%>
-<!----edit-modal start--------->
-<div class="modal fade" tabindex="-1" id="editEmployeeModal" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Edit Employees</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="emil" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label>Address</label>
-                    <textarea class="form-control" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Phone</label>
-                    <input type="text" class="form-control" required>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-success">Save</button>
-            </div>
-        </div>
-    </div>
-</div>
+
+
 <script type="text/javascript">
     // Xuất file excel
     document.getElementById('exportButton').addEventListener('click', function() {
@@ -166,34 +156,73 @@
         var wb = XLSX.utils.table_to_book(table, {sheet: "Sheet1"});
         XLSX.writeFile(wb, 'category.xlsx');
     });
-
+    //xóa danh mục
     function deleteCategory(cateID) {
-        var form = document.createElement("form");
-        form.setAttribute("method", "post");
-        form.setAttribute("action", "./deleteCate");
-
-        var inputCateID = document.createElement("input");
-        inputCateID.setAttribute("type", "hidden");
-        inputCateID.setAttribute("name", "cateID");
-        inputCateID.setAttribute("value", cateID);
-
-        form.appendChild(inputCateID);
-        document.body.appendChild(form);
-
-        form.submit();
+        $.ajax({
+            type: "POST",
+            url: "./deleteCate",
+            data: { cateID: cateID },
+            success: function(data) {
+                if (data.status === "success") {
+                    alert(data.message);
+                    loadContent($('#categoryManagementLink'));
+                } else {
+                    alert(data.message);
+                }
+            },
+            error: function(xhr, error) {
+                alert('Lỗi xảy ra khi xóa danh mục! Lỗi: ' + xhr.responseText);
+            }
+        });
     }
-
-    function submitEditForm(categoryId) {
-        var form = document.getElementById('editForm' + categoryId);
-
-        var inputCateID = document.createElement("input");
-        inputCateID.type = "hidden";
-        inputCateID.name = "categoryId";
-        inputCateID.value = categoryId;
-        form.appendChild(inputCateID);
-
-        form.submit();
+    // chỉnh sửa danh mục
+    function submitEditForm(cateID) {
+        var categoryName = $('#editCategoryName' + cateID).val();
+        var formData = {
+            cateID: cateID,
+            categoryName: categoryName
+        };
+        console.log()
+        $.ajax({
+            type: "POST",
+            url: "./editCategory",
+            data: formData,
+            success: function(data) {
+                if (data.status === "success") {
+                    alert(data.message);
+                    loadContent($('#categoryManagementLink'));
+                } else {
+                    alert(data.message);
+                }
+            },
+            error: function(xhr, error) {
+                alert('Lỗi xảy ra khi xóa danh mục! Lỗi: ' + xhr.responseText);
+            }
+        });
     }
+    // thêm danh mục sử dụng ajax
+    $(document).ready(function() {
+        $('#addCategoryForm').on('submit', function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "./insertCate",
+                data: $(this).serialize(),
+                success: function(data) {
+                    if (data.status === "success") {
+                        alert(data.message);
+                        $('#addCategoryModal').modal('hide');
+                        loadContent($('#categoryManagementLink'));
+                    } else {
+                        alert(data.message);
+                    }
+                },
+                error: function(xhr, error) {
+                    alert('Lỗi xảy ra khi thêm danh mục mới! Lỗi: ' + xhr.responseText);
+                }
+            });
+        });
+    });
 </script>
 </body>
 </html>

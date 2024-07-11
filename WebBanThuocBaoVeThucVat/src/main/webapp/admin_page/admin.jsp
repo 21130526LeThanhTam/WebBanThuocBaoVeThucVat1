@@ -79,7 +79,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" data-url="./maCategory" class="load-content">
+                <a href="#" data-url="./maCategory" class="load-content" id="categoryManagementLink">
                     <i class="fas fa-list-alt"></i> Quản lý Danh Mục
                 </a>
             </li>

@@ -41,39 +41,42 @@ CategoryDAO {
         );
     }
     // thêm doanh mục
-    public static void insertCategory(String nameCate){
-        JDBIConnector.getJdbi().useHandle(handle ->
-                handle.createUpdate("INSERT INTO categories(name_category) VALUES (?)")
-                        .bind(0, nameCate)
-                        .execute()
+    public static boolean insertCategory(String nameCate) {
+        try {
+            int rowsAffected = JDBIConnector.getJdbi().withHandle(handle ->
+                    handle.createUpdate("INSERT INTO categories(name_category) VALUES (?)")
+                            .bind(0, nameCate)
+                            .execute()
+            );
+            return rowsAffected > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    // xóa danh mục
+    public static boolean deleteCategory(int idCate) {
+        return JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createUpdate("DELETE FROM categories WHERE id = ?")
+                        .bind(0, idCate)
+                        .execute() > 0
         );
     }
-    // xóa danh mục
-    public static void deleteCategory(int idCate){
-        JDBIConnector.getJdbi().useHandle(handle ->
-                handle.createUpdate("DELETE FROM categories WHERE id=?")
-                        .bind(0,idCate)
-                        .execute());
+    public static boolean updateCategory(String categoryName, int idCategory) {
+        int rowsAffected = JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createUpdate("UPDATE categories SET name_category=? WHERE id=?")
+                        .bind(0, categoryName)
+                        .bind(1, idCategory)
+                        .execute()
+        );
+        return rowsAffected > 0;
     }
-    public static void updateCategory(String categoryName,int idCategory){
-        JDBIConnector.getJdbi().useHandle(handle ->
-                handle.createUpdate("UPDATE categories SET  \n" +
-                        "name_category=? WHERE id=?")
-                        .bind(0,categoryName)
-                        .bind(1,idCategory)
-                        .execute());
-    }
+
 
 
     public static void main(String[] args) {
-        CategoryDAO dao = new CategoryDAO();
-//        List<Category> list = dao.getList();
-//        for(Category i : list){
-//            System.out.println(i.toString());
-//        }
-//        System.out.println(CategoryDAO.listCategory("ô",0));
-        CategoryDAO.updateCategory("Phân bón",3);
-        System.out.println("ffewfewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
+
         System.out.println(CategoryDAO.getList());
 
     }
