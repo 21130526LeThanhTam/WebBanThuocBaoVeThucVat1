@@ -31,6 +31,21 @@
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
     <%--    <link rel="stylesheet" href="assets/css/Log_Regis.css">--%>
     <%--    <script src="assets/js/log_reg.js" defer></script>--%>
+    <style>
+        .review-rating {
+            font-size: 1.5rem;
+            color: #FFD700; /* Gold color for stars */
+        }
+        .review-user {
+            font-weight: bold;
+        }
+        .review-content {
+            margin-top: 10px;
+        }
+        .filter-buttons button {
+            margin-right: 5px;
+        }
+    </style>
 </head>
 <%
     List<Comment> comments = (List<Comment>) request.getAttribute("comments");
@@ -224,34 +239,45 @@
 
                         <div class="tab-pane" id="tabs-3" role="tabpanel">
                             <div class="product__details__tab__desc">
-                                <form action = "comment" method="post">
-                                <h4>Đánh giá về sản phẩm</h4>
-                                <label for="">Đánh giá của bạn về sản phẩm này*</label>
-                                <textarea name="commentText" id="" cols="30" rows="10" placeholder="Đánh giá của bạn"
-                                          style="width: 100%; height: 100px;"></textarea>
-                                <div class="reviewer__information">
-                                    <div class="reviewer__information_detail">
-                                        <label for="">Tên*</label>
-                                        <input name="username" type="name" placeholder="Tên">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h2 class="mb-4">Đánh Giá Sản Phẩm</h2>
+                                        <div class="d-flex align-items-center mb-4">
+                                            <div class="mr-3">
+                                                <span class="review-rating">4.8</span> trên 5
+                                            </div>
+                                            <div>
+                                                <span class="text-warning">★★★★★</span>
+                                                <span>(120 đánh giá)</span>
+                                            </div>
+                                        </div>
+                                        <div class="filter-buttons mb-4">
+                                            <button class="btn btn-outline-secondary p-2">Tất Cả</button>
+                                            <button class="btn btn-outline-secondary p-2">5 Sao (112)</button>
+                                            <button class="btn btn-outline-secondary p-2">4 Sao (10)</button>
+                                            <button class="btn btn-outline-secondary p-2">3 Sao (5)</button>
+                                            <button class="btn btn-outline-secondary p-2">2 Sao (0)</button>
+                                            <button class="btn btn-outline-secondary p-2">1 Sao (3)</button>
+                                            <button class="btn btn-outline-secondary p-2">Có Bình Luận (73)</button>
+                                            <button class="btn btn-outline-secondary p-2">Có Hình Ảnh / Video (41)</button>
+                                        </div>
+                                        <div class="review">
+                                            <div class="d-flex align-items-center">
+                                                <img src="https://via.placeholder.com/50" class="rounded-circle mr-3" alt="User Image">
+                                                <div>
+                                                    <span class="review-user">h****n</span>
+                                                    <span class="text-muted">2024-07-04 16:38 | Phân loại hàng: màu nữ</span>
+                                                </div>
+                                            </div>
+                                            <div class="review-content mt-3">
+                                                <p>Chất liệu: nhựa<br>Chất lượng sản phẩm: tốt<br>Đúng với mô tả: đúng mô tả của shop</p>
+                                                <p>Giao hàng nhanh chóng, đóng gói cẩn thận, rất đáng mua bạn.</p>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <!-- Repeat the .review block for more reviews -->
                                     </div>
-<%--                                    <div class="reviewer__information_detail">--%>
-<%--                                        <label for="">Địa chỉ email*</label>--%>
-<%--                                        <input name="email" type="email" placeholder="Địa chỉ email">--%>
-<%--                                    </div>--%>
                                 </div>
-                                <button>GỬI ĐÁNH GIÁ</button>
-                                </form>
-                                <ul>
-                                    <%
-                                        for (Comment comment : comments) {
-                                    %>
-                                    <li>
-                                        <%= comment.getUsername() %> - <%= comment.getCommentText() %> (Created at <%= comment.getCreatedAt() %>)
-                                    </li>
-                                    <%
-                                        }
-                                    %>
-                                </ul>
                             </div>
                         </div>
                     </div>
