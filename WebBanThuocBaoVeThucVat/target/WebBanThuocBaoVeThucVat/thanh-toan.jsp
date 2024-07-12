@@ -49,9 +49,9 @@
 %>
 
 <jsp:include page="layout/header.jsp"/>
-
+<%----%>
 <!-- Breadcrumb Section Begin -->
-<section class="breadcrumb-section set-bg" data-setbg="assets/img/breadcrumb.jpg">
+<section class="breadcrumb-section set-bg" data-setbg="./assets/img/breadcrumb.jpg">
 
     <div class="container">
         <div class="row">
@@ -280,7 +280,7 @@
             if (data_tinh.error == 0) {
                 $.each(data_tinh.data, function (key_tinh, val_tinh) {
                     $("#tinh").append('<option value="' + val_tinh.id + '" data-full-name="' + val_tinh.full_name + '">' + val_tinh.full_name + '</option>');
-                    console.log('<option value="' + val_tinh.id + '" data-full-name="' + val_tinh.full_name + '">' + val_tinh.full_name + '</option>')
+                    console.log(val_tinh.full_name)
                 });
                 console.log($("#tinh").value)
             }
