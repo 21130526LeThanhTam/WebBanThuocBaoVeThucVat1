@@ -37,6 +37,9 @@
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
     <link rel="stylesheet" href="assets/css/Log_Regis.css">
     <script src="assets/js/log_reg.js" defer></script>
+    <style>
+
+    </style>
 </head>
 
 <body>
@@ -97,19 +100,19 @@
                         </div>
                         <div class="checkout__input">
                             <p>Tỉnh / Thành phố<span>*</span></p>
-                            <select id="tinh" name="tinh" title="Chọn Tỉnh Thành">
-                                <option value="0">Tỉnh Thành</option>
-                            </select>
+                                <select id="tinh" name="tinh" class="form-control" title="Chọn Tỉnh Thành">
+                                    <option value="0">Tỉnh Thành</option>
+                                </select>
                         </div>
                         <div class="checkout__input">
                             <p>Quận/ Huyện<span>*</span></p>
-                            <select class="css_select" id="quan" name="quan" title="Chọn Quận Huyện">
+                            <select class="css_select form-control" id="quan"  name="quan" title="Chọn Quận Huyện">
                                 <option value="0">Quận Huyện</option>
                             </select>
                         </div>
                         <div class="checkout__input">
                             <p>Phường, xã<span>*</span></p>
-                            <select class="css_select" id="phuong" name="phuong" title="Chọn Phường Xã">
+                            <select class="css_select form-control" id="phuong" name="phuong" title="Chọn Phường Xã">
                                 <option value="0">Phường Xã</option>
                             </select>
                         </div>

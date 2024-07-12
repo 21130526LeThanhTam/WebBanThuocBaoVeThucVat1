@@ -116,19 +116,21 @@
                     <p><%= proID.getDes() %></p>
 
 
-                        <div class="product__details__quantity">
-                            <div class="quantity">
-                                <div class="pro-qty">
-                                    <input type="text" name="quantity" id="quantityInput" value="1">
+                        <div class="d-flex align-items-center">
+                            <div class="product__details__quantity mr-3">
+                                <div class="quantity">
+                                    <div class="pro-qty">
+                                        <input type="text" name="quantity" id="quantityInput" value="1">
+                                    </div>
                                 </div>
                             </div>
+                            <a class="d-flex btn btn-success add-to-cart align-items-center justify-content-center"
+                               href="javascript:void(0)"
+                               data-id="<%=proID.getId()%>"
+                               onclick="addCart(this, '<%=proID.getId()%>')">
+                                THÊM VÀO GIỎ HÀNG
+                            </a>
                         </div>
-                    <a class="d-flex add-to-cart align-items-center justify-content-center"
-                       href="javascript:void(0)"
-                       data-id="<%=proID.getId()%>"
-                       onclick="addCart(this, '<%=proID.getId()%>')">
-                        THÊM VÀO GIỎ HÀNG
-                    </a>
 <%--                        <a href="ShoppingCartCL?action=post&id=<%=proID.getId()%>&type=0" id="addToCartBtn" class="primary-btn"><i class="fa-solid fa-cart-plus"></i>THÊM VÀO GIỎ HÀNG</a>--%>
                         <a href="javascript:void(0);" id="buyNowBtn" class="primary-btn">MUA NGAY</a>
 

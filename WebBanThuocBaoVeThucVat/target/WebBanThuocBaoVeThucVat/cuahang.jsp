@@ -5,9 +5,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="bean.Category" %>
 <%@ page import="bo.CategoryBO" %>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
-
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -77,6 +75,83 @@
                             <% } %>
                         </ul>
                     </div>
+                    <%--                    <div class="sidebar__item">--%>
+                    <%--                        <h4>Khoảng giá</h4>--%>
+                    <%--                        <div class="price-range-wrap">--%>
+                    <%--                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"--%>
+                    <%--                                data-min="10000" data-max="10000000">--%>
+                    <%--                                <div class="ui-slider-range ui-corner-all ui-widget-header"></div>--%>
+                    <%--                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>--%>
+                    <%--                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>--%>
+                    <%--                            </div>--%>
+                    <%--                            <div class="range-slider">--%>
+                    <%--                                <div class="price-input">--%>
+                    <%--                                    <input name="priceMin" type="text" id="minamount">--%>
+                    <%--                                    <input name="priceMax" type="text" id="maxamount">--%>
+                    <%--                                </div>--%>
+                    <%--                            </div>--%>
+                    <%--                        </div>--%>
+                    <%--                    </div>--%>
+                    <%--                    <div class="sidebar__item">--%>
+                    <%--                        <h4>Popular Size</h4>--%>
+                    <%--                        <div class="sidebar__item__size">--%>
+                    <%--                            <label for="large">--%>
+                    <%--                                Large--%>
+                    <%--                                <input type="radio" id="large">--%>
+                    <%--                            </label>--%>
+                    <%--                        </div>--%>
+                    <%--                        <div class="sidebar__item__size">--%>
+                    <%--                            <label for="medium">--%>
+                    <%--                                Medium--%>
+                    <%--                                <input type="radio" id="medium">--%>
+                    <%--                            </label>--%>
+                    <%--                        </div>--%>
+                    <%--                        <div class="sidebar__item__size">--%>
+                    <%--                            <label for="small">--%>
+                    <%--                                Small--%>
+                    <%--                                <input type="radio" id="small">--%>
+                    <%--                            </label>--%>
+                    <%--                        </div>--%>
+                    <%--                        <div class="sidebar__item__size">--%>
+                    <%--                            <label for="tiny">--%>
+                    <%--                                Tiny--%>
+                    <%--                                <input type="radio" id="tiny">--%>
+                    <%--                            </label>--%>
+                    <%--                        </div>--%>
+                    <%--                    </div>--%>
+                    <%--                    <div class="sidebar__item">--%>
+                    <%--                        <div class="latest-product__text">--%>
+                    <%--                            <h4>Mới nhất</h4>--%>
+                    <%--                            <div class="latest-product__slider owl-carousel">--%>
+                    <%--                                <div class="latest-prdouct__slider__item">--%>
+                    <%--                             --%>
+                    <%--                                    <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">--%>
+                    <%--                                        <div class="latest-product__item__pic">--%>
+                    <%--                                            <img src="assets/<%=p.getPicture()%>" alt="">--%>
+                    <%--                                        </div>--%>
+                    <%--                                        <div class="latest-product__item__text">--%>
+                    <%--                                            <h6><%=p.getProduct_name()%></h6>--%>
+                    <%--                                            <span><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</span>--%>
+                    <%--                                        </div>--%>
+                    <%--                                    </a>--%>
+                    <%--                                    <% } %>--%>
+                    <%--                                </div>--%>
+                    <%--                                <div class="latest-prdouct__slider__item">--%>
+                    <%--                                    <% for(Products p : productNew2) {%>--%>
+                    <%--                                    <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">--%>
+                    <%--                                        <div class="latest-product__item__pic">--%>
+                    <%--                                            <img src="assets/<%=p.getPicture()%>" alt="">--%>
+                    <%--                                        </div>--%>
+                    <%--                                        <div class="latest-product__item__text">--%>
+                    <%--                                            <h6><%=p.getProduct_name()%></h6>--%>
+                    <%--                                            <span><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</span>--%>
+                    <%--                                        </div>--%>
+                    <%--                                    </a>--%>
+                    <%--                                    <% } %>--%>
+                    <%--                                </div>--%>
+                    <%--                            </div>--%>
+                    <%--                        </div>--%>
+                    <%--                    </div>--%>
                 </div>
             </div>
             <div class="col-lg-9 col-md-7">
@@ -107,8 +182,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <c:choose>
-                    <c:when test="${param.page eq 'home'}">
+                    <%for(Products a : products){%>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div id="" class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="<%=a.getImage()%>">
@@ -125,65 +199,11 @@
                     </div>
                     <%}%>
                 </div>
-                <c:choose>
-                    <c:when test="${param.page eq 'home' }">
-                        <c:set var="totalPages" value="${totalPageHome}"></c:set>
-                        <c:set var="currentPage" value="${currentPageHome }"></c:set>
-                        <c:set var="startPage" value="${startPageHome }"></c:set>
-                        <c:set var="endPage" value="${endPageHome }"></c:set>
-                    </c:when>
-                    <c:when test="${param.page eq 'search' }">
-                        <c:set var="totalPages" value="${totalPageSearch}"></c:set>
-                        <c:set var="currentPage" value="${currentPageSearch }"></c:set>
-                        <c:set var="startPage" value="${startPageSearch }"></c:set>
-                        <c:set var="endPage" value="${endPageSearch }"></c:set>
-                    </c:when>
-                </c:choose>
-                <c:set var="PRODUCTS_PER_PAGE" value="${products_per_page}"></c:set>
-                <c:if test="${param.page eq 'home' }">
-                    <c:set var="pattern" value="ProductController?"></c:set>
-                </c:if>
-                <c:if test="${param.page eq 'search' }">
-                    <c:set var="pattern"
-                           value="SearchServlet?action=${action }&name=${name }&"></c:set>
-                </c:if>
                 <div class="product__pagination">
-                    <c:if test="${currentPage > 1 }">
-                        <a
-                                href="<c:url value="${pattern }currentPage=${currentPage - 1}&lang=${sessionScope.LANG}"/>"><fmt:message>pagination.previous</fmt:message></a>
-                    </c:if>
-
-                    <c:if test="${startPage > 2 }">
-                        <a href="<c:url value="${pattern }currentPage=1&lang=${sessionScope.LANG}"/>">1</a>
-                        <span>..</span>
-                    </c:if>
-
-                    <c:forEach var="pageNumber" begin="${startPage }" end="${endPage}">
-                        <c:choose>
-                            <c:when test="${pageNumber == currentPage }">
-                                <strong>${pageNumber}</strong>
-                            </c:when>
-                            <c:otherwise>
-                                <a href="<c:url value="${pattern }currentPage=${pageNumber}&lang=${sessionScope.LANG}"/>">${pageNumber}</a>
-                            </c:otherwise>
-                        </c:choose>
-                    </c:forEach>
-
-                    <c:if test="${endPage < totalPages}">
-                        <span>..</span>
-                        <a
-                                href="
-									<c:url value="${pattern }currentPage=${totalPages }&lang=${sessionScope.LANG}"/>">${totalPages }
-                        </a>
-                    </c:if>
-
-                    <c:if test="${currentPage < totalPages }">
-                        <a
-                                href="
-					<c:url value="${pattern }currentPage=${currentPage + 1}&lang=${sessionScope.LANG}"/>"><fmt:message>pagination.next</fmt:message></a>
-                    </c:if>
-                    </c:when>
-                </c:choose>
+                    <a href="#">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#"><i class="fa fa-long-arrow-right"></i></a>
                 </div>
             </div>
         </div>
