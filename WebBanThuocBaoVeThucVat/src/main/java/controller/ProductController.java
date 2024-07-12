@@ -72,19 +72,6 @@ public class ProductController extends HttpServlet {
             session.setAttribute("name", name);
             session.setAttribute("words", name);
             url = "cuahang.jsp?page=search";
-//=======
-//        response.setContentType("text/html; charset=UTF-8");
-//        response.setCharacterEncoding("UTF-8");
-//
-//        HttpSession session = request.getSession();
-//        String idCate = request.getParameter("id_category");
-//        String page = request.getParameter("page");
-//        String order = request.getParameter("order");
-//        List<Products> list;
-//        if (idCate == null) {
-//            idCate = "";
-//            list = ProductsService.getInstance().findAll1(idCate);
-//>>>>>>> origin/main
         } else {
             if (idCate == null) {
                 idCate = "";
@@ -103,16 +90,6 @@ public class ProductController extends HttpServlet {
                 dao.sortByPrice(list, true);
             } else if(orderValue == 3){
                 dao.sortByPrice(list, false);
-//=======
-//            return;
-//        }
-//        if(order != null) {
-//            int orderValue = Integer.parseInt(order);
-//            if(orderValue == 2) {
-//                list = dao.findByPriceMin("");
-//            } else if(orderValue == 3) {
-//                list = dao.findByPriceMax("");
-//>>>>>>> origin/main
             }
             session.setAttribute("order", order);
         }

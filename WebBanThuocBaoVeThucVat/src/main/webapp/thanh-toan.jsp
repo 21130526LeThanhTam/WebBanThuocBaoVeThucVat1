@@ -243,6 +243,7 @@
         const phuongText = document.getElementById('phuong').options[document.getElementById('phuong').selectedIndex].text;
         const homeNumber = document.getElementById("homeNumber").value;
         const phoneNumber = document.getElementById("phoneNumber").value;
+
         console.log(username+"/"+amount+"/"+tinhText+"/"+quanText+"/"+phuongText+"/"+homeNumber+"/"+phoneNumber);
 
         const data = {
@@ -251,7 +252,7 @@
             phuongText: phuongText,
             vnp_OrderInfo: "Thanh toan don hang",
             ordertype: "Sample order type",
-            amount: 10000,
+            amount: amount,
             bankcode: "NCB",
             language: "vn",
             txt_billing_mobile: "0123456789",
