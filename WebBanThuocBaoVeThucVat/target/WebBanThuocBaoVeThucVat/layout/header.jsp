@@ -149,10 +149,10 @@
             <div class="col-lg-2"> <a href="OrderHistoryCL" class="btn btn-primary d-block">Lịch sử mua hàng</a></div>
             <div class="col-lg-2">
                 <div class="header__cart">
-                    <a href="gio-hang.jsp">
+                    <a href="ShoppingCartCL">
                         <ul>
                             <span class="cart-word" style="font-weight: bold;">Giỏ hàng</span>
-                            <li><i class="fa-solid fa-cart-shopping"></i> <span><%=shoppingCart.getCartItemList().size()%></span></li>
+                            <li><i class="fa-solid fa-cart-shopping"></i> <span id="badge" class="cart-count"></span></li>
                         </ul>
                         <!--có thể xóa-->
 
@@ -180,22 +180,48 @@
                         <span>Danh mục sản phẩm</span>
                     </div>
                     <ul>
-                        <li><a href="StoreProductHome">Tất cả sản phẩm</a></li>
+                        <li><a href="ProductController">Tất cả sản phẩm</a></li>
                         <% for(Category cate : cb.getListCategory()) {%>
                         <li><a href="ProductController?id_category=<%=cate.getId()%>"><%= cate.getNameCategory() %></a></li>
                         <% } %>
                     </ul>
                 </div>
             </div>
+            <%
+                String words = session.getAttribute("words")!= null? (String)session.getAttribute("words") : "";
+            %>
             <div class="col-lg-9">
                 <div class="hero__search">
-                    <div class="hero__search__form">
-                        <form action="ProductController" method="post">
-                            <input type="text" name="search" placeholder="Bạn cần tìm thứ gì?">
-                            <button type="submit" class="site-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-                        </form>
-                    </div>
-                    <div class="hero__search__phone">
+<%--                    <div class="hero__search__form">--%>
+<%--                        <form action="ProductController" method="post">--%>
+<%--                            <input type="text" name="search" placeholder="Bạn cần tìm thứ gì?" value="${sessionScope.words == null ? '' : sessionScope.words}">--%>
+<%--                            <button type="submit" class="site-btn"><i class="fa-solid fa-magnifying-glass"></i></button>--%>
+<%--                        </form>--%>
+<%--                    </div>--%>
+    <div class="hero__search__form">
+        <form style="display: flex; align-items: center; width: 100%; gap: 10px" action="ProductController" method="GET">
+
+            <input type="hidden" id="searchTypeValue" name="action" value="" />
+
+            <input id="search-panel" style="flex: 1; border: none; padding-left: 12px; margin-right: 10px; outline: none; border-right: 1px solid #ccc"
+                   type="text" name="search" placeholder="Bạn cần tìm thứ gì?" value="<%=words%>">
+
+            <!-- Search type dropdown -->
+            <div class="bc" style="position: relative; margin-right: 120px; cursor: pointer;">
+                <span id="searchType" onclick="toggleSearchTypeDropdown()">Theo loại</span>
+                <div id="dropdownMenu" class="de" style="position: absolute; display: block; z-index: 1000; top: 100%; left: 0; right: 0; background: #fff; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+                    <p style="width: 100%; text-align: center; cursor: pointer;" class="a" onclick="setSearchType('name')">By Name</p>
+                    <p style="width: 100%; text-align: center; cursor: pointer;" class="a" onclick="setSearchType('description')">By Description</p>
+                    <p style="width: 100%; text-align: center; cursor: pointer;" class="a" onclick="setSearchType('price')">By Price</p>
+                </div>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="site-btn"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+
+    <div class="hero__search__phone">
                         <div class="hero__search__phone__icon">
                             <i class="fa fa-phone"></i>
                         </div>
@@ -210,6 +236,59 @@
     </div>
 </section>
 <!-- Hero Section End -->
+<% Integer total= (Integer) session.getAttribute("totalItems");
+    ShoppingCart c = (ShoppingCart) session.getAttribute("cart");
+    if (!c.getCartItemList().isEmpty()) {
+        if(total==null) total = 0;
+    } else {
+        total = 0;
+    }
+
+%>
+<script>
+    const badge = document.getElementById("badge");
+    const totalItems = '<%=total%>';
+
+    if (badge.innerHTML === '') {
+        badge.innerHTML = totalItems;
+    }
+</script>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Toggle display of elements with class "de" when hovering over elements with class "bc"
+        var bcElement = document.querySelector('.bc');
+        var deElement = document.querySelector('.de');
+        if (bcElement && deElement) {
+            bcElement.addEventListener("mouseenter", function () {
+                deElement.style.display = 'block';
+            });
+            bcElement.addEventListener("mouseleave", function () {
+                deElement.style.display = 'none';
+            });
+        }
+
+        // Update search type display and hidden input value when a dropdown item is clicked
+        var searchTypeElement = document.getElementById('searchType');
+        var hiddenInputElement = document.getElementById('searchTypeValue');
+        if (searchTypeElement && hiddenInputElement) {
+            document.querySelectorAll('.de p').forEach(function (element) {
+                element.addEventListener('click', function () {
+                    var selectedValue = this.innerText; // Get the selected text
+                    searchTypeElement.innerHTML = selectedValue; // Update displayed search type
+                    hiddenInputElement.value = selectedValue; // Update hidden input value
+                    deElement.style.display = 'none'; // Hide the dropdown
+                });
+            });
+        }
+    });
+
+    function toggleSearchTypeDropdown() {
+        var deElement = document.querySelector('.de');
+        if (deElement) {
+            deElement.style.display = deElement.style.display === 'none' || deElement.style.display === '' ? 'block' : 'none';
+        }
+    }
+</script>
 
 </html>

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = "/PasswordForgot")
-public class ForgotPassControl extends HttpServlet {
+public class    ForgotPassControl extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,13 +28,13 @@ public class ForgotPassControl extends HttpServlet {
         AccountDAO dao = new AccountDAO();
         //kiểm tra account đó nó có tồn tại hay không rồi mới đổi mk được
 
-        User user = dao.checkAccountExist(email, 0);
+        User user = dao.checkAccountExist(email);
         if(user == null){
             String error = "Nhập sai email hoặc email không tồn tại ";
             session.setAttribute("error", error);
             resp.sendRedirect("PasswordForgot?action=forget-page");
         }else{
-            SendingEmail se = new SendingEmail(email);
+            SendingEmail se = new SendingEmail(email, user.getHash());
             se.sendFPassByEmail();
             resp.sendRedirect("verify.jsp");
             session.removeAttribute("error");

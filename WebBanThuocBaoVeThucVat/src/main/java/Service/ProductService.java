@@ -7,7 +7,7 @@ import dao.ProductDAO;
 
 import java.util.List;
 
-public class ProductService implements IProductService{
+public class ProductService implements IProductService {
     private final IProductDAO productDAO = new ProductDAO();
     @Override
     public List<Products> findAll1() {

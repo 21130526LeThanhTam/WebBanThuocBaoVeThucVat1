@@ -9,6 +9,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class ProductsDao implements IProductsDao{
+
     public static boolean toggleProductStatus(int id, boolean disable) {
         String query = "UPDATE products SET status = ? WHERE id = ?";
         int status = disable ? 0 : 1;
@@ -21,12 +22,15 @@ public class ProductsDao implements IProductsDao{
         return rowsUpdated > 0;
     }
 
+
+    private static final int PRODUCTS_PER_PAGE = 3;
+
     // lấy ra ds sp đc active.
     @Override
     public List<Products> findAll1(String name) {
         List<Products> products=JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createQuery("SELECT id,product_name,image,price,id_category FROM products WHERE status=1 AND product_name LIKE ?")
-                        .bind(0,"%"+name+"%")
+                        .bind(0,"%"+ name + "%")
                         .mapToBean(Products.class).collect(Collectors.toList()));
         return products;
     }
@@ -50,6 +54,54 @@ public class ProductsDao implements IProductsDao{
                         .list());
         return products;
     }
+
+    @Override
+    public List<Products> searchByName(String productName) {
+        String sql = "SELECT id,product_name,image,price,id_category FROM products where LOWER(product_name) like LOWER(?) AND status = 1";
+        return JDBIConnector.getJdbi().withHandle(handle -> handle.createQuery(sql)
+                .bind(0, "%" + productName + "%").
+                mapToBean(Products.class).stream().collect(Collectors.toList()));
+    }
+
+    @Override
+    public List<Products> searchByPrice(String productPrice) {
+        String sql = "SELECT id,product_name,image,price,id_category FROM products where price <= ? AND status = 1";
+        return JDBIConnector.getJdbi().withHandle(handle -> handle.createQuery(sql)
+                .bind(0, productPrice).
+                mapToBean(Products.class).stream().collect(Collectors.toList()));
+    }
+
+    @Override
+    public List<Products> searchByDescription(String productDes) {
+        String sql = "SELECT id,product_name,image,price,id_category FROM products where LOWER(des) like LOWER(?) AND status = 1";
+        return JDBIConnector.getJdbi().withHandle(handle -> handle.createQuery(sql)
+                .bind(0, "%" + productDes + "%").
+                mapToBean(Products.class).stream().collect(Collectors.toList()));
+    }
+
+    @Override
+    public int getTotalPages() {
+        String sql = "select count(*) as count from products WHERE status = 1";
+        int totalProducts = JDBIConnector.getJdbi().withHandle(handle -> handle.createQuery(sql).mapTo(Integer.class).one());
+        return (int) Math.ceil((double) totalProducts / getProductsPerPageConstant());
+    }
+
+    @Override
+    public List<Products> getProductsPerPage(int currentPage) {
+        int offset = (currentPage - 1) * getProductsPerPageConstant();
+        String sql = "SELECT id, product_name, image, price, id_category FROM products WHERE status = 1 LIMIT ?, ?";
+        return JDBIConnector.getJdbi().withHandle(handle -> handle.createQuery(sql)
+                .bind(0, offset)
+                .bind(1, getProductsPerPageConstant())
+                .mapToBean(Products.class)
+                .stream().collect(Collectors.toList()));
+    }
+
+    @Override
+    public int getProductsPerPageConstant() {
+        return PRODUCTS_PER_PAGE;
+    }
+
     // lấy ra số lượng của toàn bộ loại sản phẩm.
     public static int numOfProduct(String search){
         Integer integer = JDBIConnector.getJdbi().withHandle(handle ->
@@ -169,11 +221,9 @@ public class ProductsDao implements IProductsDao{
         return findNewPro2;
     }
 
-
     public static void main(String[] args) {
-
-//        ProductsDao.insertProduct("zxc", "img/product/product-2.jpg", 123, 1, 123,1,"432", "123123");
-        System.out.println(ProductsDao.numOfPro());
+        ProductsDao dao = new ProductsDao();
+        System.out.println(dao.getProductsPerPage(1));
 
     }
 }

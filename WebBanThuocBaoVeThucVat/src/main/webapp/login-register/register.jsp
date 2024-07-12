@@ -18,22 +18,22 @@
         $(document).ready(function() {
             $('#btn_register').click(function (event) {
                 event.preventDefault();
-
-                // Check if reCAPTCHA is verified first
+                    //lấy ra mã thông báo nếu xác minh thành công, chuỗi rỗng là xác minh thất bại
                 var response = grecaptcha.getResponse();
                 if (response.length === 0) {
                     $('#errorRegister').html("Làm ơn xác minh bạn không phải là robot");
-                    return; // Stop further execution if reCAPTCHA is not verified
+                    return;
                 }
 
-                // If reCAPTCHA is verified, proceed with form submission
+
                 var email = $('#email').val();
                 var username = $('#username').val();
                 var surname = $('#surname').val();
                 var lastname = $('#lastname').val();
                 var phone = $('#phone').val();
-                var pass = $('#pass').val();
-                var rePass = $('#rePass').val();
+                var pass = $('#password').val();
+                var rePass = $('#rePassword').val();
+
 
                 $.ajax({
                     type: 'POST',
@@ -48,7 +48,6 @@
                     },
                     url: 'signup',
                     success: function (result) {
-                        console.log(result);  // Log the result to see what is being returned
                         try {
                             var data = JSON.parse(result);
                             if (data.error) {
@@ -79,7 +78,7 @@
     <div class="form signup">
         <div class="form-content">
             <header>Signup</header>
-            <form id="form">
+            <form action="signup" method="post">
                 <% String error = (String) session.getAttribute("errorRegis"); %>
                 <% if(error != null){ %>
                 <p class="text-danger"><%= error %></p>
@@ -139,7 +138,6 @@
             this.classList.toggle('fa-eye-slash');
         });
     };
-
     togglePasswordVisibility('togglePassword', 'password');
     togglePasswordVisibility('reTogglePassword', 'rePassword');
 </script>

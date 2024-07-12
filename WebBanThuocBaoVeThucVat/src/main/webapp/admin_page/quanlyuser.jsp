@@ -89,7 +89,7 @@
             </tr>
 
             <!-- vô hiệu hóa, kích hoạt lại người dùng-->
-            <div class="modal fade" id="toggleDisableModal<%=a.getId()%>" tabindex="-1" role="dialog" aria-labelledby="disableModalLabel" aria-hidden="true">
+             <div class="modal fade" id="toggleDisableModal<%=a.getId()%>" tabindex="-1" role="dialog" aria-labelledby="disableModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -198,7 +198,6 @@
                 }
             });
         });
-
 
         // logic toggle disable user
         window.toggleDisableUser = function(userID, currentState) {

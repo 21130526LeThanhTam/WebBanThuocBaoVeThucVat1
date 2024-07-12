@@ -6,10 +6,13 @@ import db.JDBIConnector;
 import org.jdbi.v3.core.Jdbi;
 
 import java.sql.Connection;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ProductDAO implements IProductDAO {
+    private static final int PRODUCTS_PER_PAGE = 6;
+
     private Connection conn;
     @Override
     public List<Products> findAll1() {
@@ -90,34 +93,57 @@ public class ProductDAO implements IProductDAO {
     }
 
     @Override
-    public List<Products> findByPriceMax(String id) {
-        Jdbi jdbi = JDBIConnector.getJdbi();
-        List<Products> products = jdbi.withHandle(handle -> {
-            String sql = "SELECT id, product_name, image, price, id_category, status, des, create_at FROM products\n" +
-                    "where id_category like ? " + // Added space here
-                    "order by price desc";
-            return handle.createQuery(sql).bind(0, "%" + id + "%").mapToBean(Products.class).list();
+    public void sortByPrice(List<Products> products, boolean isAscending) {
+        Collections.sort(products, (o1, o2) -> {
+            if (isAscending) {
+                return Integer.compare(o1.getPrice(), o2.getPrice());
+            } else {
+                return Integer.compare(o2.getPrice(), o1.getPrice());
+            }
         });
-        return products;
+
     }
 
     @Override
     public List<Products> findByPriceMin(String id) {
         Jdbi jdbi = JDBIConnector.getJdbi();
-        List<Products> products = jdbi.withHandle(handle -> {
+        return jdbi.withHandle(handle -> {
             String sql = "SELECT id, product_name, image, price, id_category, status, des, create_at FROM products\n" +
                     "where id_category like ? " + // Added space here
                     "order by price asc";
             return handle.createQuery(sql).bind(0, "%" + id + "%").mapToBean(Products.class).list();
         });
-        return products;
+    }
+
+    @Override
+    public int getProductsPerPageConstant() {
+        return PRODUCTS_PER_PAGE;
+    }
+
+    @Override
+    public int getTotalPages() {
+        Jdbi jdbi = JDBIConnector.getJdbi();
+        int totalProducts = jdbi.withHandle(handle -> {
+            String sql = "select count(*) as count from products";
+            return handle.createQuery(sql).mapTo(Integer.class).one();
+        });
+        return (int) Math.ceil((double) totalProducts / getProductsPerPageConstant());
     }
 
 
+    @Override
+    public List<Products> getProductsPerPage(int currentPage) {
+        int offset = (currentPage - 1) * getProductsPerPageConstant();
+        Jdbi jdbi = JDBIConnector.getJdbi();
+        return jdbi.withHandle(handle -> {
+            String sql = "select id, product_name, image, price, id_category, status, des, create_at from products WHERE status=1 limit ?, ?";
+            return handle.createQuery(sql).bind(0, offset).bind(1, getProductsPerPageConstant())
+                    .mapToBean(Products.class).stream().collect(Collectors.toList());
+        });
+    }
+
     public static void main(String[] args) {
         ProductDAO dao = new ProductDAO();
-//        dao.findByPriceMin("").forEach(System.out::println);
-        System.out.println(dao.findDiscountPro1().size());
-        System.out.println(dao.findDiscountPro2().size());
+        System.out.println(dao.getProductsPerPage(1));
     }
 }

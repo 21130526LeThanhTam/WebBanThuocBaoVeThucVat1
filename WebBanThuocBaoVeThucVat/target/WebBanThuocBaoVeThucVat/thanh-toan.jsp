@@ -37,6 +37,9 @@
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
     <link rel="stylesheet" href="assets/css/Log_Regis.css">
     <script src="assets/js/log_reg.js" defer></script>
+    <style>
+
+    </style>
 </head>
 
 <body>
@@ -46,9 +49,9 @@
 %>
 
 <jsp:include page="layout/header.jsp"/>
-
+<%----%>
 <!-- Breadcrumb Section Begin -->
-<section class="breadcrumb-section set-bg" data-setbg="assets/img/breadcrumb.jpg">
+<section class="breadcrumb-section set-bg" data-setbg="./assets/img/breadcrumb.jpg">
 
     <div class="container">
         <div class="row">
@@ -97,15 +100,25 @@
                         </div>
                         <div class="checkout__input">
                             <p>Tỉnh / Thành phố<span>*</span></p>
-                            <input required type="text" name = "city">
+                                <select id="tinh" name="tinh" class="form-control" title="Chọn Tỉnh Thành">
+                                    <option value="0">Tỉnh Thành</option>
+                                </select>
+                        </div>
+                        <div class="checkout__input">
+                            <p>Quận/ Huyện<span>*</span></p>
+                            <select class="css_select form-control" id="quan"  name="quan" title="Chọn Quận Huyện">
+                                <option value="0">Quận Huyện</option>
+                            </select>
                         </div>
                         <div class="checkout__input">
                             <p>Phường, xã<span>*</span></p>
-                            <input type="text" required name = "district">
+                            <select class="css_select form-control" id="phuong" name="phuong" title="Chọn Phường Xã">
+                                <option value="0">Phường Xã</option>
+                            </select>
                         </div>
                         <div class="checkout__input">
 
-                            <p>Địa chỉ<span>*</span></p>
+                            <p>Số nhà<span>*</span></p>
                             <input type="text" name ="homeNumber" required placeholder="Số nhà" class="checkout__input__add">
 
                         </div>
@@ -250,7 +263,6 @@
 <%--</div>--%>
 
 <!-- Js Plugins -->
-<script src="assets/js/jquery-3.3.1.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/jquery.nice-select.min.js"></script>
 <script src="assets/js/jquery-ui.min.js"></script>
@@ -258,9 +270,51 @@
 <script src="assets/js/mixitup.min.js"></script>
 <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://esgoo.net/scripts/jquery.js"></script>
+<script>
+    $(document).ready(function () {
+        // Lấy tỉnh thành
+        $.getJSON('https://cors-anywhere.herokuapp.com/https://esgoo.net/api-tinhthanh/1/0.htm', function (data_tinh) {
 
+            if (data_tinh.error == 0) {
+                $.each(data_tinh.data, function (key_tinh, val_tinh) {
+                    $("#tinh").append('<option value="' + val_tinh.id + '" data-full-name="' + val_tinh.full_name + '">' + val_tinh.full_name + '</option>');
+                    console.log(val_tinh.full_name)
+                });
+                console.log($("#tinh").value)
+            }
+        });
 
+        $("#tinh").change(function (e) {
+            var idtinh = $(this).val(); // lấy ID của tỉnh
+            var fullNameTinh = $("#tinh option:selected").data('full-name'); // lấy full name của tỉnh đã chọn
+            // Lấy quận huyện
+            $.getJSON('https://cors-anywhere.herokuapp.com/https://esgoo.net/api-tinhthanh/2/' + idtinh + '.htm', function (data_quan) {
+                if (data_quan.error == 0) {
+                    $("#quan").empty().append('<option value="0">--Chọn Quận Huyện--</option>');
+                    $("#phuong").empty().append('<option value="0">--Chọn Phường/ Xã/ Thị trấn--</option>');
+                    $.each(data_quan.data, function (key_quan, val_quan) {
+                        $("#quan").append('<option value="' + val_quan.id + '" data-full-name="' + val_quan.full_name + '">' + val_quan.full_name + '</option>');
+                    });
+                }
+            });
+        });
 
+        $("#quan").change(function (e) {
+            var idquan = $(this).val(); // lấy ID của quận/huyện
+            var fullNameQuan = $("#quan option:selected").data('full-name'); // lấy full name của quận/huyện đã chọn
+            // Lấy phường xã
+            $.getJSON('https://cors-anywhere.herokuapp.com/https://esgoo.net/api-tinhthanh/3/' + idquan + '.htm', function (data_phuong) {
+                if (data_phuong.error == 0) {
+                    $("#phuong").empty().append('<option value="0">--Chọn Phường/ Xã/ Thị trấn--</option>');
+                    $.each(data_phuong.data, function (key_phuong, val_phuong) {
+                        $("#phuong").append('<option value="' + val_phuong.id + '" data-full-name="' + val_phuong.full_name + '">' + val_phuong.full_name + '</option>');
+                    });
+                }
+            });
+        });
+    });
+</script>
 </body>
-
 </html>

@@ -44,7 +44,7 @@ public class LoginGithubHandler extends HttpServlet {
        HttpSession session = request.getSession();
        try {
            user= getUserInfo(accessToken);
-           userCheck= AccountDAO.getInstance().checkAccountExist(user.getEmail(), 2);
+           userCheck= AccountDAO.getInstance().checkAccountExist(user.getEmail());
            if(userCheck == null){
                String str = AccountDAO.getInstance().signUp2(user.getEmail(), null, user.getUsername(), user.getSurName() ,user.getLastName() ,user.getPhone(), myHash, user.getLoginBy());
 

@@ -11,7 +11,7 @@ import java.io.IOException;
 public class LogController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+//        req.getRequestDispatcher("admin_page/quanlyLog.jsp").forward(req,resp);
     }
 
     @Override

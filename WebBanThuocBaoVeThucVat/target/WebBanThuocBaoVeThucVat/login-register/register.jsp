@@ -18,15 +18,14 @@
         $(document).ready(function() {
             $('#btn_register').click(function (event) {
                 event.preventDefault();
-
-                // Check if reCAPTCHA is verified first
+                    //lấy ra mã thông báo nếu xác minh thành công, chuỗi rỗng là xác minh thất bại
                 var response = grecaptcha.getResponse();
                 if (response.length === 0) {
                     $('#errorRegister').html("Làm ơn xác minh bạn không phải là robot");
-                    return; // Stop further execution if reCAPTCHA is not verified
+                    return;
                 }
 
-                // If reCAPTCHA is verified, proceed with form submission
+
                 var email = $('#email').val();
                 var username = $('#username').val();
                 var surname = $('#surname').val();
@@ -48,7 +47,6 @@
                     },
                     url: 'signup',
                     success: function (result) {
-                        console.log(result);  // Log the result to see what is being returned
                         try {
                             var data = JSON.parse(result);
                             if (data.error) {
@@ -68,8 +66,14 @@
             });
         });
     </script>
+    <style>
+        #btn_register:hover{
+            opacity:0.8;
+        }
+
+    </style>
 </head>
-<body class="bg-success d-flex align-items-center justify-content-center" style="height: 1000px">
+<body class="bg-success d-flex align-items-center justify-content-center" style="height: 1000px;background-color:#7fad39 !important;">
     <div class="form signup">
         <div class="form-content">
             <header>Signup</header>
@@ -83,33 +87,34 @@
                 <p class="text-danger"><%= error1 %></p>
                 <% } %>
                 <div class="field input-field">
-                    <input name="email" type="email" id="email" placeholder="Email" class="input">
+                    <input name="email" type="email" id="email" placeholder="Email" class="input form-control">
                 </div>
                 <div class="field input-field">
-                    <input name="username" type="text" id="username" placeholder="Tên người dùng" class="input">
+                    <input name="username" type="text" id="username" placeholder="Tên người dùng" class="input form-control">
                 </div>
                 <div class="field input-field">
-                    <input name="surname" type="text" id="surname" placeholder="Họ" class="input">
+                    <input name="surname" type="text" id="surname" placeholder="Họ" class="input form-control">
                 </div>
                 <div class="field input-field">
-                    <input name="lastname" type="text" id="lastname" placeholder="Tên" class="input">
+                    <input name="lastname" type="text" id="lastname" placeholder="Tên" class="input form-control">
                 </div>
                 <div class="field input-field">
-                    <input name="phone" id="phone" type="tel" placeholder="Số điện thoại" class="input">
+                    <input name="phone" id="phone" type="tel" placeholder="Số điện thoại" class="input form-control">
                 </div>
                 <div class="field input-field">
-                    <input name="pass" type="password" id="pass" placeholder="Nhập mật khẩu" class="password">
-                    <i class='bx bx-hide eye-icon'></i>
+                    <input name="pass" type="password" id="password" placeholder="Nhập mật khẩu" class="password form-control">
+                    <i class='fas fa-eye eye-icon' id="togglePassword"></i>
                 </div>
                 <div class="field input-field">
-                    <input name="rePass" type="password" id="rePass" placeholder="Nhập lại mật khẩu" class="password">
+                    <input name="rePass" type="password" id="rePassword" placeholder="Nhập lại mật khẩu" class="password form-control">
+                    <i class='fas fa-eye eye-icon' id="reTogglePassword"></i>
                 </div>
-                <div class="container-capcha mt-5 d-flex justify-content-center align-items-center">
+                <div class="container-capcha mt-4 d-flex justify-content-center align-items-center">
                     <div class="g-recaptcha" data-sitekey="6LeWqNkpAAAAANkqcg0zDmNz90pyG4FOLP4QiDQv"></div>
                 </div>
                 <span class="text-danger" id="errorRegister"></span><br>
-                <div class="field button-field">
-                    <input type="submit" id="btn_register" class="btn btn-success" value="Đăng ký">
+                <div class="field button-field" style="margin-top: 0px;">
+                    <input type="submit" id="btn_register" class="btn btn-success" value="Đăng ký" style="background-color:#7fad39 !important; border:none">
                 </div>
             </form>
             <div class="form-link">
@@ -118,4 +123,22 @@
         </div>
     </div>
 </body>
+<script>
+    const togglePasswordVisibility = (toggleElementId, passwordElementId) => {
+        const toggleElement = document.getElementById(toggleElementId);
+        const passwordElement = document.getElementById(passwordElementId);
+
+        toggleElement.addEventListener('click', function () {
+            // toggle the type attribute
+            const type = passwordElement.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordElement.setAttribute('type', type);
+            // toggle the eye icon
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+    };
+
+    togglePasswordVisibility('togglePassword', 'password');
+    togglePasswordVisibility('reTogglePassword', 'rePassword');
+</script>
 </html>

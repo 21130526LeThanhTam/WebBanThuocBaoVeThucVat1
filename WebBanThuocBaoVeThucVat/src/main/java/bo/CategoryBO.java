@@ -13,4 +13,12 @@ public class CategoryBO {
     public List<Category> getListCategory() {
         return CategoryDAO.getList();
     }
+
+    public static void main(String[] args) {
+        CategoryBO cb = new CategoryBO();
+
+        for(Category cate : cb.getListCategory()) {
+            System.out.println(cate);
+        }
+    }
 }

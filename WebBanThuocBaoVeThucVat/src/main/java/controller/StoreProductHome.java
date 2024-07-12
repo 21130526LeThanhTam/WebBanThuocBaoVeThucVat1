@@ -14,6 +14,8 @@ public class StoreProductHome extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         session.removeAttribute("idCate");
+        String order = (String) session.getAttribute("order");
+        session.setAttribute("order", "0");
         resp.sendRedirect("ProductController");
     }
 }
