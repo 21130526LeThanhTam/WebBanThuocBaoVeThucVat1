@@ -149,10 +149,10 @@
             <div class="col-lg-2"> <a href="OrderHistoryCL" class="btn btn-primary d-block">Lịch sử mua hàng</a></div>
             <div class="col-lg-2">
                 <div class="header__cart">
-                    <a href="gio-hang.jsp">
+                    <a href="ShoppingCartCL">
                         <ul>
                             <span class="cart-word" style="font-weight: bold;">Giỏ hàng</span>
-                            <li><i class="fa-solid fa-cart-shopping"></i> <span><%=shoppingCart.getCartItemList().size()%></span></li>
+                            <li><i class="fa-solid fa-cart-shopping"></i> <span id="badge" class="cart-count"></span></li>
                         </ul>
                         <!--có thể xóa-->
 
@@ -236,6 +236,23 @@
     </div>
 </section>
 <!-- Hero Section End -->
+<% Integer total= (Integer) session.getAttribute("totalItems");
+    ShoppingCart c = (ShoppingCart) session.getAttribute("cart");
+    if (!c.getCartItemList().isEmpty()) {
+        if(total==null) total = 0;
+    } else {
+        total = 0;
+    }
+
+%>
+<script>
+    const badge = document.getElementById("badge");
+    const totalItems = '<%=total%>';
+
+    if (badge.innerHTML === '') {
+        badge.innerHTML = totalItems;
+    }
+</script>
 </body>
 <script>
     document.addEventListener('DOMContentLoaded', function () {

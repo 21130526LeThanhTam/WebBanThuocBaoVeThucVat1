@@ -14,7 +14,11 @@ public class ProductsService {
     }
     private final IProductsDao productDAO = new ProductsDao();
 
-    public List<Products> findByCategory(int idCate,String name){
+
+    public List<Products> findAll1(String name){
+        return productDAO.findAll1(name);
+    }
+    public List<Products>findByCategory(int idCate,String name){
         return productDAO.findByCategory(idCate,name);
     }
     public int numOfProduct(String search){

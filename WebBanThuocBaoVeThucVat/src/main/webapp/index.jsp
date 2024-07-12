@@ -91,7 +91,15 @@
                         <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
                             <ul class="featured__item__pic__hover">
                                 <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                                <li><a class="d-flex align-items-center justify-content-center"  href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
+<%--                                <li><a class="d-flex align-items-center justify-content-center"  href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>--%>
+                                <li>
+                                    <a class="d-flex add-to-cart align-items-center justify-content-center"
+                                       href="javascript:void(0)"
+                                       data-id="<%=p.getId()%>"
+                                       onclick="addCart(this, '<%=p.getId()%>')">
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                         <div class="featured__item__text">
@@ -100,6 +108,7 @@
                         </div>
                     </div>
                 </div>
+
                 <% } %>
             </div>
         </div>
@@ -146,8 +155,15 @@
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
                         <ul class="featured__item__pic__hover">
                             <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                            <li><a class="d-flex align-items-center justify-content-center"
-                                   href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li>
+                                <a class="d-flex add-to-cart align-items-center justify-content-center"
+                                   href="javascript:void(0)"
+                                   data-id="<%=p.getId()%>"
+                                   onclick="addCart(this, '<%=p.getId()%>')">
+                                    <i class="fa fa-shopping-cart"></i>
+                                </a>
+                            </li>
+
                         </ul>
                     </div>
                     <div class="featured__item__text">
@@ -163,7 +179,15 @@
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
                         <ul class="featured__item__pic__hover">
                             <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                            <li><a class="d-flex align-items-center justify-content-center" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
+<%--                            <li><a class="d-flex align-items-center justify-content-center" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>--%>
+                            <li>
+                                <a class="d-flex add-to-cart align-items-center justify-content-center"
+                                   href="javascript:void(0)"
+                                   data-id="<%=p.getId()%>"
+                                   onclick="addCart(this, '<%=p.getId()%>')">
+                                    <i class="fa fa-shopping-cart"></i>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
@@ -180,7 +204,15 @@
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
                         <ul class="featured__item__pic__hover">
                             <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                            <li><a class="d-flex align-items-center justify-content-center" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
+<%--                            <li><a class="d-flex align-items-center justify-content-center" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>--%>
+                            <li>
+                                <a class="d-flex add-to-cart align-items-center justify-content-center"
+                                   href="javascript:void(0)"
+                                   data-id="<%=p.getId()%>"
+                                   onclick="addCart(this, '<%=p.getId()%>')">
+                                    <i class="fa fa-shopping-cart"></i>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
@@ -197,7 +229,15 @@
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
                         <ul class="featured__item__pic__hover">
                             <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                            <li><a class="d-flex align-items-center justify-content-center" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
+<%--                            <li><a class="d-flex align-items-center justify-content-center" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>--%>
+                            <li>
+                                <a class="d-flex add-to-cart align-items-center justify-content-center"
+                                   href="javascript:void(0)"
+                                   data-id="<%=p.getId()%>"
+                                   onclick="addCart(this, '<%=p.getId()%>')">
+                                    <i class="fa fa-shopping-cart"></i>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
@@ -376,6 +416,32 @@
 <script src="assets/js/mixitup.min.js"></script>
 <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function addCart(btn, id) {
+        $.ajax({
+            url: "ShoppingCartCL",
+            method: "POST",
+            data: {
+                id: id,
+                action: "add",
+                type: 0
+            },
+            success: function (response) {
+                var res = JSON.parse(response);
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Thêm Sản Phẩm Vào Giỏ Hàng Thành Công!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                const badge = document.getElementById("badge");
+                badge.innerHTML = res.totalItems;
+            }
+        });
+    }
+</script>
 </body>
-
 </html>

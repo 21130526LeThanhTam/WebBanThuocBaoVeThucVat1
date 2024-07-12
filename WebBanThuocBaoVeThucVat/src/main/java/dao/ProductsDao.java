@@ -11,14 +11,14 @@ import java.util.stream.Collectors;
 public class ProductsDao implements IProductsDao{
     private static final int PRODUCTS_PER_PAGE = 3;
     // lấy ra ds sp đc active.
-//    @Override
-//    public List<Products> findAll1(String name) {
-//        List<Products> products=JDBIConnector.getJdbi().withHandle(handle ->
-//                handle.createQuery("SELECT id,product_name,image,price,id_category FROM products WHERE status=1 AND product_name LIKE ?")
-//                        .bind(0,"%"+ name + "%")
-//                        .mapToBean(Products.class).collect(Collectors.toList()));
-//        return products;
-//    }
+    @Override
+    public List<Products> findAll1(String name) {
+        List<Products> products=JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT id,product_name,image,price,id_category FROM products WHERE status=1 AND product_name LIKE ?")
+                        .bind(0,"%"+ name + "%")
+                        .mapToBean(Products.class).collect(Collectors.toList()));
+        return products;
+    }
 
     @Override
     public List<Products> findByCategory(int idCate, String name) {

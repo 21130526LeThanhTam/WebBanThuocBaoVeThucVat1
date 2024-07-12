@@ -45,12 +45,11 @@
                                 $('#errorLogin').html(data.error);
                                 $('#checkNull').html("");
                             } else {
-                                // Check reCAPTCHA after successful user validation
                                 var response = grecaptcha.getResponse();
                                 if (response.length === 0) {
                                     $('#errorLogin').html("Làm ơn xác minh bạn không phải là robot");
                                 } else {
-                                    // Redirect based on user role if no error and reCAPTCHA is valid
+
                                     if (data.role === 1) {
                                         window.location.href = "admin_dashboard";
                                     } else if (data.role === 0) {
@@ -204,19 +203,20 @@
         return true; // Allow form submission
     }
 </script>
-<script>
-    const togglePassword = document.getElementById('togglePassword');
-    const password = document.getElementById('password');
+<%--<bỏ phần thừa phía dưới đi--%>
+<%--<script>--%>
+<%--    const togglePassword = document.getElementById('togglePassword');--%>
+<%--    const password = document.getElementById('password');--%>
 
-    togglePassword.addEventListener('click', function (e) {
-        // toggle the type attribute
-        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-        password.setAttribute('type', type);
-        // toggle the eye icon
-        this.classList.toggle('fa-eye');
-        this.classList.toggle('fa-eye-slash');
-    });
-</script>
+<%--    togglePassword.addEventListener('click', function (e) {--%>
+<%--        // toggle the type attribute--%>
+<%--        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';--%>
+<%--        password.setAttribute('type', type);--%>
+<%--        // toggle the eye icon--%>
+<%--        this.classList.toggle('fa-eye');--%>
+<%--        this.classList.toggle('fa-eye-slash');--%>
+<%--    });--%>
+<%--</script>--%>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         let ipFor;

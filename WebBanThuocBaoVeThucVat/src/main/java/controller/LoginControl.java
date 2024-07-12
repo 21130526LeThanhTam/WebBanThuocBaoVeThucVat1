@@ -1,5 +1,6 @@
 package controller;
 
+import bean.ShoppingCart;
 import bean.User;
 import dao.AccountDAO;
 import dao.OrdersDAO;
@@ -17,6 +18,7 @@ import java.util.logging.Logger;
 @WebServlet(urlPatterns = {"/login"})
 public class LoginControl extends HttpServlet {
     @Override
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
@@ -33,6 +35,7 @@ public class LoginControl extends HttpServlet {
             }
         }
         request.getRequestDispatcher("login-register/login.jsp").forward(request, response);
+
     }
 
     @Override
@@ -41,6 +44,7 @@ public class LoginControl extends HttpServlet {
         PrintWriter out = resp.getWriter();
         String email = req.getParameter("email");
         String pass = req.getParameter("password");
+
         String remember = req.getParameter("rememberMe");
 
 
@@ -93,6 +97,11 @@ public class LoginControl extends HttpServlet {
                 resp.addCookie(p);
                 if (user.getRole() == 0) {
                     session.setAttribute("user", user);
+                    ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
+                    if (cart == null) {
+                        cart = new ShoppingCart();
+                        session.setAttribute("cart", cart);
+                    }
                     out.println("{\"role\":0}");
                 } else if (user.getRole() == 1) {
                     session.setAttribute("admin", user);

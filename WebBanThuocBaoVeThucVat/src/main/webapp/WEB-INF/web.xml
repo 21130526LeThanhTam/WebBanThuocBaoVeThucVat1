@@ -6,7 +6,9 @@
   <display-name>Archetype Created Web Application</display-name>
 
 
-
+<welcome-file-list>
+  <welcome-file>/HomePageController</welcome-file>
+</welcome-file-list>
 <!--  <filter>-->
 <!--    <filter-name>servletFilter</filter-name>-->
 <!--    <filter-class>filter.AuthenticationFilter</filter-class>-->
