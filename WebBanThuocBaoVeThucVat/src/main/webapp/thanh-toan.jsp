@@ -227,6 +227,7 @@
         const address = document.getElementById("homeNumber").value;
         const phoneNumber = document.getElementById("phoneNumber").value;
         const amount = Math.round(<%= shoppingCart.getTotalPrice() %>);
+
         // if (!username || !city || !district || !address || !phoneNumber) {
 
 

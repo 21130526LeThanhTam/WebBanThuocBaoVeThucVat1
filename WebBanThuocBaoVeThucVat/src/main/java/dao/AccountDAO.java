@@ -95,7 +95,7 @@ public class AccountDAO extends AbstractDao<User> {
         return null;
     }
 
-    public String signUp(String email,String pass,String username,String surname,String lastname,String phone,String hash) {
+    public String signUp(String email,String pass,String username,String surname,String lastname,String phone,String hash,String ip, int level, String address) {
         String sql = "insert into users(user_name, password, phone, email, sur_name, last_name, hash, role, active) values (?,?,?,?,?,?,?,0,0)";
         Connection conn = DBContext.getConnection();
         try {
@@ -109,13 +109,17 @@ public class AccountDAO extends AbstractDao<User> {
             ps.setString(7, hash);
             int i = ps.executeUpdate();
             if(i != 0){
+                super.signUp(email, "insert user success!", ip, level, address);
                 return "success";
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        super.signUp(email, "insert user failed !", ip, level, address);
         return null;
     }
+
+
 
     public String signUp2(String email, String pass, String username, String surname, String lastname, String phone, String hash, Integer login_By){
         String sql = "insert into users(user_name, password, phone, email, sur_name, last_name, hash, role, active, login_by) values (?,?,?,?,?,?,?,0,1,?)";
@@ -205,9 +209,18 @@ public class AccountDAO extends AbstractDao<User> {
                 handle.createQuery(sql).bind(0, email).mapTo(Integer.class).first());
     }
 
+
     public static void main(String[] args) {
         System.out.println(AccountDAO.getInstance().getLoginFail("21130526@st.hcmuaf.edu.vn"));
         System.out.println(AccountDAO.getInstance().updateLoginFail("21130526@st.hcmuaf.edu.vn", 1));
+        String email= "hiho@gmail.com";
+        String pass= "4297f44b13955235245b2497399d7a93";
+        User a = new User();
+        a.setEmail(email);
+        a.setPassword(pass);
+        User b =new User(1,1,"Son","4297f44b13955235245b2497399d7a93","0123456789","Son@gmail.com","Son","dsf");
+        AccountDAO.getInstance().signUp(email,pass, "hihoo","hihoo","hihoo","hihoo","hihoo","hihoo", 1, "hihoo");
     }
+
 
 }

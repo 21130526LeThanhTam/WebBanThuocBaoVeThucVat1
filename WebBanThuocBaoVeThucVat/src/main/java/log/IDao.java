@@ -6,4 +6,6 @@ public interface IDao<T extends IModel> {
     boolean deleteModel(AbsModel model,String ip, int level, String address);
     boolean updateModel(AbsModel model,String ip, int level, String address);
     boolean login(AbsModel model,String action,String ip, int level, String address);
+    boolean signUp(String em,String action,String ip, int level, String address);
+
 }

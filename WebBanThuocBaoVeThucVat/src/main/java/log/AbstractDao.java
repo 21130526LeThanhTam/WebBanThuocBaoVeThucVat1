@@ -4,6 +4,12 @@ import dao.LogDao;
 
 public abstract class AbstractDao<T extends IModel> implements IDao {
     @Override
+    public boolean signUp(String email, String action, String ip, int level, String address) {
+        LogDao.getInstance().signUp(email, action, ip, level, address);
+        return true;
+    }
+
+    @Override
     public boolean selectModel(int id) {
         LogDao.getInstance().selectModel();
         return false;

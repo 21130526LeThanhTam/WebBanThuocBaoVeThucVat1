@@ -38,6 +38,10 @@ public class SignUpControl extends HttpServlet {
         String pass = req.getParameter("pass");
         String rePass = req.getParameter("rePass");
         //============================================
+        String ipAddress = req.getHeader("X-FORWARDED-FOR");
+        if (ipAddress == null) {
+            ipAddress = req.getRemoteAddr();
+        }
 
 
         // Mã hóa mật khẩu sang md5
@@ -66,7 +70,7 @@ public class SignUpControl extends HttpServlet {
                 out.println("{\"error\":\"Mật khẩu không trùng khớp\"}");
             } else {
 
-                String str = acc.signUp(email, hashpass, username, surname, lastname, phone, myHash);
+                String str = acc.signUp(email, hashpass, username, surname, lastname, phone, myHash,ipAddress,1,ipAddress);
                 if(str.equals("success")){
                     SendingEmail se = new SendingEmail(email, myHash);
                     se.sendMail();

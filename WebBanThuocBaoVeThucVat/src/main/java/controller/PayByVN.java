@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -24,6 +25,14 @@ public class PayByVN extends HttpServlet {
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
+            HttpSession session = req.getSession(true);
+            session.setAttribute("txt_inv_addr1", req.getParameter("txt_inv_addr1"));
+            session.setAttribute("txt_bill_city", req.getParameter("txt_bill_city"));
+            session.setAttribute("txt_bill_country", req.getParameter("txt_bill_country"));
+            session.setAttribute("txt_inv_customer", req.getParameter("txt_inv_customer"));
+            session.setAttribute("txt_billing_mobile", req.getParameter("txt_billing_mobile"));
+
+
             String vnp_Version = "2.1.0";
             String vnp_Command = "pay";
             String vnp_OrderInfo = req.getParameter("vnp_OrderInfo");
