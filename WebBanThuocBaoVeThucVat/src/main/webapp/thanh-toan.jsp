@@ -115,7 +115,7 @@
                         </div>
                         <div class="checkout__input">
 
-                            <p>Địa chỉ<span>*</span></p>
+                            <p>Số nhà<span>*</span></p>
                             <input type="text" name ="homeNumber" required placeholder="Số nhà" class="checkout__input__add">
 
                         </div>
@@ -272,7 +272,7 @@
 <script>
     $(document).ready(function () {
         // Lấy tỉnh thành
-        $.getJSON('https://esgoo.net/api-tinhthanh/1/0.htm', function (data_tinh) {
+        $.getJSON('https://cors-anywhere.herokuapp.com/https://esgoo.net/api-tinhthanh/1/0.htm', function (data_tinh) {
 
             if (data_tinh.error == 0) {
                 $.each(data_tinh.data, function (key_tinh, val_tinh) {
@@ -287,7 +287,7 @@
             var idtinh = $(this).val(); // lấy ID của tỉnh
             var fullNameTinh = $("#tinh option:selected").data('full-name'); // lấy full name của tỉnh đã chọn
             // Lấy quận huyện
-            $.getJSON('https://esgoo.net/api-tinhthanh/2/' + idtinh + '.htm', function (data_quan) {
+            $.getJSON('https://cors-anywhere.herokuapp.com/https://esgoo.net/api-tinhthanh/2/' + idtinh + '.htm', function (data_quan) {
                 if (data_quan.error == 0) {
                     $("#quan").empty().append('<option value="0">--Chọn Quận Huyện--</option>');
                     $("#phuong").empty().append('<option value="0">--Chọn Phường/ Xã/ Thị trấn--</option>');
@@ -302,7 +302,7 @@
             var idquan = $(this).val(); // lấy ID của quận/huyện
             var fullNameQuan = $("#quan option:selected").data('full-name'); // lấy full name của quận/huyện đã chọn
             // Lấy phường xã
-            $.getJSON('https://esgoo.net/api-tinhthanh/3/' + idquan + '.htm', function (data_phuong) {
+            $.getJSON('https://cors-anywhere.herokuapp.com/https://esgoo.net/api-tinhthanh/3/' + idquan + '.htm', function (data_phuong) {
                 if (data_phuong.error == 0) {
                     $("#phuong").empty().append('<option value="0">--Chọn Phường/ Xã/ Thị trấn--</option>');
                     $.each(data_phuong.data, function (key_phuong, val_phuong) {
@@ -313,8 +313,5 @@
         });
     });
 </script>
-
-
 </body>
-
 </html>
