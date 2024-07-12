@@ -81,7 +81,6 @@
             <td><%= order.getStatus() %></td>
             <td>
                 <button class="btn btn-primary update-btn" data-toggle="modal" data-target="#updateModal" data-order-id="<%= order.getId() %>"><i class="fa-solid fa-pen-to-square"></i></button>
-                <button class="btn btn-danger delete-btn" data-toggle="modal" data-target="#deleteModal" data-order-id="<%= order.getId() %>"><i class="fa-solid fa-trash"></i></button>
             </td>
         </tr>
         <%
@@ -94,7 +93,8 @@
 <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form action="/importManagement" method="post">
+            <form action="/importManagement" id="createOrderForm" method="post">
+                <input type="hidden" name="action" value="create">
                 <div class="modal-header">
                     <h5 class="modal-title" id="createModalLabel">Tạo mới nhập hàng</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -117,7 +117,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                    <button type="submit" class="btn btn-primary" name="action" value="create">Lưu</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
                 </div>
             </form>
         </div>
@@ -127,7 +127,7 @@
 <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form action="/importManagement" method="post">
+            <form action="/importManagement" id="updateOrderForm" method="post">
                 <div class="modal-header">
                     <h5 class="modal-title" id="updateModalLabel">Cập nhật tình trạng</h5>
                 </div>
@@ -147,51 +147,60 @@
         </div>
     </div>
 </div>
-<!-- Modal Xóa -->
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form action="/importManagement" method="post">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa</h5>
-                </div>
-                <div class="modal-body">
-                    <input type="hidden" name="action" value="delete">
-                    <input type="hidden" name="orderId" id="deleteOrderId">
-                    <p>Bạn có chắc chắn muốn xóa đơn hàng này không?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                    <button type="submit" class="btn btn-danger">Xóa</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
 <script>
     $(document).ready(function() {
-        // Xử lý khi nhấn vào nút "Cập nhật"
-        $('.update-btn').on('click', function() {
+        // Xử lý khi nhấn vào nút "Cập nhật", lấy ra trường id
+        $(document).on('click', '.update-btn', function() {
             var orderId = $(this).data('order-id');
             $('#updateOrderId').val(orderId);
         });
 
-        // Xử lý khi nhấn vào nút "Xóa"
-        $('.delete-btn').on('click', function() {
-            var orderId = $(this).data('order-id');
-            $('#deleteOrderId').val(orderId);
+
+        // Xử lý khi nhấn vào nút "Tạo mới"
+        $('#createOrderForm').on('submit', function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "/importManagement",
+                data: $(this).serialize(),
+                success: function(data) {
+                    alert('Đơn hàng mới đã được tạo thành công!');
+                    $('#createModal').modal('hide');
+                    loadContent($('#importManagementLink'));
+                },
+                error: function(xhr, error) {
+                    alert('Lỗi xảy ra khi tạo đơn hàng mới! Lỗi: ' + xhr.responseText);
+                }
+            });
+        });
+
+        // Xử lý khi nhấn vào nút "Cập nhật"
+        $('#updateOrderForm').on('submit', function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "/importManagement",
+                data: $(this).serialize(),
+                success: function(data) {
+                    alert('Tình trạng đơn hàng đã được cập nhật!');
+                    $('#updateModal').modal('hide');
+                    loadContent($('#importManagementLink'));
+                },
+                error: function(xhr, error) {
+                    alert('Lỗi xảy ra khi cập nhật tình trạng đơn hàng! Lỗi: ' + xhr.responseText);
+                }
+            });
+        });
+
+        // Xuất file excel
+        $('#exportButton').on('click', function() {
+            var tableElement = document.getElementById('quanlyTable');
+            var wb = XLSX.utils.table_to_book(tableElement, {sheet: "Sheet1"});
+            XLSX.writeFile(wb, 'OrderDetails.xlsx');
         });
     });
-    // Xuất file excel
-    document.getElementById('exportButton').addEventListener('click', function() {
-        // Lấy bảng HTML
-        var table = document.getElementById('quanlyTable');
-        // Chuyển đổi bảng HTML thành worksheet của Excel
-        var wb = XLSX.utils.table_to_book(table, {sheet: "Sheet1"});
-        // Xuất workbook thành file Excel
-        XLSX.writeFile(wb, 'OrderDetails.xlsx');
-    });
+
 </script>
 </body>
 </html>

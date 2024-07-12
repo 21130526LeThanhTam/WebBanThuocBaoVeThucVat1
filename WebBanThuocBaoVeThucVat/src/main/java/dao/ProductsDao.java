@@ -9,7 +9,22 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class ProductsDao implements IProductsDao{
+
+    public static boolean toggleProductStatus(int id, boolean disable) {
+        String query = "UPDATE products SET status = ? WHERE id = ?";
+        int status = disable ? 0 : 1;
+        int rowsUpdated = JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createUpdate(query)
+                        .bind(0, status)
+                        .bind(1, id)
+                        .execute()
+        );
+        return rowsUpdated > 0;
+    }
+
+
     private static final int PRODUCTS_PER_PAGE = 3;
+
     // lấy ra ds sp đc active.
     @Override
     public List<Products> findAll1(String name) {
@@ -20,6 +35,13 @@ public class ProductsDao implements IProductsDao{
         return products;
     }
 
+    public static List<Products> getAllProducts() {
+        List<Products> products = JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT id, product_name, image, price, id_category,status,inventory_quantity FROM products")
+                        .mapToBean(Products.class)
+                        .collect(Collectors.toList()));
+        return products;
+    }
     @Override
     public List<Products> findByCategory(int idCate, String name) {
         List<Products> products = JDBIConnector.getJdbi().withHandle(handle ->
@@ -141,18 +163,18 @@ public class ProductsDao implements IProductsDao{
 
         return cateName != null ? cateName : "";
     }
-    public static void insertProduct(String name, String image, int price, int category, int status, String desc) {
+    public static void insertProduct(String name, String image, int price, int category, int status, int inventory_quantity,String desc) {
         try {
             JDBIConnector.getJdbi().useHandle(handle ->
-                    handle.createUpdate("INSERT INTO products(product_name, image, price, id_category, status, des) " +
+                    handle.createUpdate("INSERT INTO products(product_name, image, price, id_category, status,inventory_quantity, des) " +
                                     "VALUES(?,?,?,?,?,?,?)")
                             .bind(0, name)
                             .bind(1, image)
                             .bind(2, price)
                             .bind(3, category)
-
                             .bind(4, status)
-                            .bind(5, desc)
+                            .bind(5,inventory_quantity)
+                            .bind(6, desc)
                             .execute());
         } catch (Exception e) {
             e.printStackTrace();
@@ -166,7 +188,7 @@ public class ProductsDao implements IProductsDao{
     }
     public static Products getProductById(int proID){
         Optional<Products> products = JDBIConnector.getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT products.id, products.product_name, products.image, products.price, products.id_category, products.status, products.des\n" +
+                handle.createQuery("SELECT products.id, products.product_name, products.image, products.price, products.id_category, products.status, products.des,products.inventory_quantity\n" +
                                 "FROM products\n" +
                                 "WHERE products.id=?")
                         .bind(0, proID)
@@ -175,16 +197,17 @@ public class ProductsDao implements IProductsDao{
     }
 
     //UPDATE product SET product_name="dfsd",image="fdsfs",price=5090,id_category=1,quantity=78,status=0,specifications="dfdsf",des="dfsdf" WHERE id=46
-    public static void editProduct(String name,String image,int price,int idCategory,int status,String proDesc,int id){
+    public static void editProduct(String name,String image,int price,int idCategory,int status,String proDesc,int inventory_quantity,int id){
         JDBIConnector.getJdbi().useHandle(handle ->
-                handle.createUpdate("UPDATE products SET product_name=?,image=?,price=?,id_category=?,status=?,des=? WHERE id=?")
+                handle.createUpdate("UPDATE products SET product_name=?,image=?,price=?,id_category=?,status=?,des=?,inventory_quantity=? WHERE id=?")
                         .bind(0,name)
                         .bind(1,image)
                         .bind(2,price)
                         .bind(3,idCategory)
                         .bind(4,status)
                         .bind(5,proDesc)
-                        .bind(6,id)
+                        .bind(6,inventory_quantity)
+                        .bind(7,id)
                         .execute()
         );
     }

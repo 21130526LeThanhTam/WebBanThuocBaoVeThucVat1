@@ -21,30 +21,8 @@ public class ProductManagement extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String search = req.getParameter("search");
-        if(search==null){
-            search="";
-        }
-//        System.out.println("search:"+search);
-        int pageChose=1;
-        String proID= req.getParameter("proID");
-        if(proID != null && !(proID.isEmpty())){
-            try {
-                pageChose=Integer.parseInt(proID);
-            }catch (NumberFormatException e){
-                e.printStackTrace();
-            }
-        }
-        List<Products>getTenPro= ProductsService.getInstance().getTenPro(pageChose,search);// ds 10 sp
-        List<Products> listPro=ProductsService.getInstance().productList(search);//ds toàn bộ sp
-        req.setAttribute("tag",pageChose);
-        req.setAttribute("getTenPro",getTenPro);
-        int numAllPro= listPro.size();// lấy ra số lượng của tất cả sản phẩm.
-        int page= numAllPro/10;
-        if(numAllPro%10 != 0){
-            page++;
-        }
-        req.setAttribute("page",page);
+        List<Products> allProducts= ProductsService.getInstance().getAllProducts();
+        req.setAttribute("allProducts",allProducts);
         req.getRequestDispatcher("admin_page/quanlyProduct.jsp").forward(req,resp);
     }
 }
