@@ -18,15 +18,14 @@
         $(document).ready(function() {
             $('#btn_register').click(function (event) {
                 event.preventDefault();
-
-                // Check if reCAPTCHA is verified first
+                    //lấy ra mã thông báo nếu xác minh thành công, chuỗi rỗng là xác minh thất bại
                 var response = grecaptcha.getResponse();
                 if (response.length === 0) {
                     $('#errorRegister').html("Làm ơn xác minh bạn không phải là robot");
-                    return; // Stop further execution if reCAPTCHA is not verified
+                    return;
                 }
 
-                // If reCAPTCHA is verified, proceed with form submission
+
                 var email = $('#email').val();
                 var username = $('#username').val();
                 var surname = $('#surname').val();
@@ -48,7 +47,6 @@
                     },
                     url: 'signup',
                     success: function (result) {
-                        console.log(result);  // Log the result to see what is being returned
                         try {
                             var data = JSON.parse(result);
                             if (data.error) {

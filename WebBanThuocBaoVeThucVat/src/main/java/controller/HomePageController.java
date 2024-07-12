@@ -5,10 +5,12 @@ import Service.ProductService;
 import bean.Category;
 import bean.Product;
 import bean.Products;
+import bean.ShoppingCart;
 import dao.CategoryDAO;
 import dao.IProductDAO;
 import dao.ProductDAO;
 
+import javax.mail.Session;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -21,6 +23,12 @@ public class HomePageController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         IProductService productService = new ProductService();
         IProductDAO proDAO = new ProductDAO();
+        HttpSession session = request.getSession();
+        ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
+        if(shoppingCart == null){
+            shoppingCart = new ShoppingCart();
+            session.setAttribute("cart", shoppingCart);
+        }
         List<Category> cateList = CategoryDAO.getList();
         List<Products> products = productService.findAll1();
         List<Products> productsNew1 = proDAO.findNewPro1();

@@ -1,7 +1,6 @@
 package dao;
 
 import bean.Product;
-import bean.Product;
 import bean.Products;
 
 import java.util.List;
@@ -25,4 +24,10 @@ public interface IProductDAO {
     List<Products> findByPriceMax(String id);
 
     List<Products> findByPriceMin(String id);
+
+    int getProductsPerPageConstant();
+
+    int getTotalPages();
+
+    List<Products> getProductsPerPage(int currentPage);
 }

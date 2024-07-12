@@ -11,10 +11,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b4b7277f-3123-43a3-8334-fad619072ac6" name="Changes" comment="Login with facebook">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/Service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/Admin/AdminUserControl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/quanlyuser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/admin_page/quanlyuser.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/thanh-toan.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/thanh-toan.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/thong-tin-don-hang.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/thong-tin-don-hang.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/thanh-toan.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/thanh-toan.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/thong-tin-don-hang.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/WebBanThuocBaoVeThucVat/thong-tin-don-hang.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,12 +74,15 @@
     &quot;Application.ProductsDao.executor&quot;: &quot;Run&quot;,
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;JavaScript Debug.index.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.WebBanThuocBaoVeThucVat [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.WebBanThuocBaoVeThucVat [install].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Smart Tomcat.Smart Tomcat.executor&quot;: &quot;Run&quot;,
     &quot;Tomcat Server.Tomcat 9.0.81.executor&quot;: &quot;Run&quot;,
     &quot;Tomcat Server.Tomcat 9.0.executor&quot;: &quot;Run&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;21130514__VuTranThaiSon&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;21130091__DoanNhatLinh&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/website/WebBanThuocBaoVeThucVat&quot;,
@@ -126,20 +129,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Smart Tomcat.Smart Tomcat">
-    <configuration name="CategoryDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="dao.CategoryDAO" />
-      <module name="WebBanThuocBaoVeThucVat" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.81">
     <configuration name="OrdersDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="dao.OrdersDAO" />
       <module name="WebBanThuocBaoVeThucVat" />
@@ -172,19 +162,6 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProductsService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Service.ProductsService" />
-      <module name="WebBanThuocBaoVeThucVat" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -388,9 +365,6 @@
       <option name="catalinaBase" value="C:\Users\uyent\.SmartTomcat\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat" />
       <option name="contextPath" value="/" />
       <option name="docBase" value="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp" />
-      <option name="envOptions">
-        <map />
-      </option>
       <option name="extraClassPath" value="" />
       <option name="port" value="8081" />
       <option name="tomcatInfo">
@@ -413,8 +387,6 @@
       <item itemvalue="Application.OrdersDAO" />
       <item itemvalue="Application.Products" />
       <item itemvalue="Application.ProductsDao" />
-      <item itemvalue="Application.ProductsService" />
-      <item itemvalue="Application.CategoryDAO" />
       <item itemvalue="Smart Tomcat.Smart Tomcat" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.81" />
     </list>
@@ -423,15 +395,14 @@
         <item itemvalue="Application.OrdersDAO" />
         <item itemvalue="Application.Products" />
         <item itemvalue="Application.ProductsDao" />
-        <item itemvalue="Application.ProductsService" />
-        <item itemvalue="Application.CategoryDAO" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-18.0.2-corretto-18.0.2-3183f394aec4-38982a12" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
       </set>
     </attachedChunks>
   </component>
@@ -619,6 +590,9 @@
       <workItem from="1720328354150" duration="16234000" />
       <workItem from="1720498969540" duration="7365000" />
       <workItem from="1720586214231" duration="5305000" />
+      <workItem from="1720608665322" duration="5875000" />
+      <workItem from="1720707333475" duration="692000" />
+      <workItem from="1720744154318" duration="3651000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />

@@ -1,28 +1,45 @@
 package controller;
 
 import Service.IProductService;
-import Service.ProductService;
 import Service.ProductsService;
-import bean.Product;
 import bean.Products;
 import dao.IProductDAO;
 import dao.ProductDAO;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "ProductController", value = "/ProductController")
 public class ProductController extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+    private static final int VISIBLE_PAGES = 5;
+    private ProductDAO dao = new ProductDAO();
+    private int totalPageHome;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        totalPageHome = this.dao.getTotalPages();
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
         HttpSession session = request.getSession();
         String idCate = request.getParameter("id_category");
-        List<Products> list = new ArrayList<>();
+        String page = request.getParameter("page");
+        String order = request.getParameter("order");
+        List<Products> list;
         if (idCate == null) {
             idCate = "";
             list = ProductsService.getInstance().findAll1(idCate);
@@ -30,21 +47,35 @@ public class ProductController extends HttpServlet {
             int cateId = Integer.parseInt(idCate);
             list = ProductsService.getInstance().findByCategory(cateId, "");
             session.setAttribute("idCate", idCate);
+            return;
         }
-
-        IProductDAO dao = new ProductDAO();
-        String order = request.getParameter("order");
-        if(order != null){
+        if(order != null) {
             int orderValue = Integer.parseInt(order);
-            if(orderValue == 2){
+            if(orderValue == 2) {
                 list = dao.findByPriceMin("");
-            }else if(orderValue == 3){
+            } else if(orderValue == 3) {
                 list = dao.findByPriceMax("");
             }
         }
-
-        request.setAttribute("products", list);
-        request.getRequestDispatcher("cuahang.jsp").forward(request, response);
+        if (page == null || page.equals("home")) {
+            int currentPage = 1;
+            String numberPage = request.getParameter("currentPage");
+            if (numberPage != null) {
+                currentPage = Integer.parseInt(numberPage);
+            }
+            int startPage = Math.max(currentPage - VISIBLE_PAGES/2, 1);
+            int endPage = Math.min(startPage + VISIBLE_PAGES - 1, totalPageHome);
+            List<Products> products = this.dao.getProductsPerPage(currentPage);
+            session.setAttribute("words", "");
+            session.setAttribute("currentPageHome", currentPage);
+            session.setAttribute("startPageHome", startPage);
+            session.setAttribute("endPageHome", endPage);
+            session.setAttribute("products_per_page", this.dao.getProductsPerPageConstant());
+            session.setAttribute("ProductHome", products);
+            session.setAttribute("totalPageHome", totalPageHome);
+            request.getRequestDispatcher("cuahang.jsp?page=home").forward(request, response);
+        }
+//        request.setAttribute("products", list);
     }
 
     @Override

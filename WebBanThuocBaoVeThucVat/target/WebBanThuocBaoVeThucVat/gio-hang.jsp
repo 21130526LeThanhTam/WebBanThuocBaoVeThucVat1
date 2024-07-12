@@ -17,8 +17,10 @@
     <title>Vườn phố</title>
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-
+<%--    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">--%>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Css Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
@@ -88,46 +90,38 @@
                         <tr>
                             <th class="shoping__product">Sản phẩm</th>
                             <th>Giá</th>
-                            <th>Số lượng</th>
                             <th>Tổng cộng</th>
+                            <th>Số lượng</th>
                             <th></th>
                         </tr>
                         </thead>
                         <tbody>
                         <%
                             int count = 0;
-                            for(CartItem cartItem : cartItems){
+                            for(CartItem cartItem : cartItems) {
                         %>
-                        <tr>
+                        <tr id="tr<%=cartItem.getProduct().getId()%>">
                             <td class="shoping__cart__item">
                                 <img class="product-image" src="<%=cartItem.getProduct().getImage()%>" alt="Vegetable's Package">
                                 <h5><%=cartItem.getProduct().getProduct_name()%></h5>
                             </td>
-                            <td class="shoping__cart__price">
+                            <td class="shoping__cart__price" id="pr<%=cartItem.getProduct().getId()%>">
                                 <%=cartItem.getProduct().getPrice()%>
                             </td>
-                            <td class="shoping__cart__total">
+                            <td class="shoping__cart__total" id="t<%=cartItem.getProduct().getId()%>">
                                 <%=numberFormat.format(cartItem.getTotalPrice())%>
                             </td>
                             <td class="shoping__cart__quantity">
-                                <form action="ShoppingCartCL" method="post">
-                                    <input class="w-25" type="number" min="0"
-                                           name="quantity<%=cartItem.getProduct().getId()%>"
-                                           value="<%=cartItem.getQuantity()%>">
-
-                                    <input type ="hidden" name ="action" value="put">
-                                    <input type ="hidden" name="id" value="<%=cartItem.getProduct().getId()%>">
-                                    <button type="submit" class="btn button btn-primary">
-                                       Cập nhật
-                                    </button>
-                                </form>
+                                <input class="w-25" type="number" min="0" id="p<%=cartItem.getProduct().getId()%>" value="<%=cartItem.getQuantity()%>">
+                                <button class="btn btn-success" onClick="changeStatus(<%=cartItem.getProduct().getId()%>, Number(document.querySelector('#p<%=cartItem.getProduct().getId()%>').value), 'put')">Cập nhật</button>
                             </td>
                             <td class="shoping__cart__item__close">
-                                <form action="ShoppingCartCL" method="get">
-                                    <input type="hidden" name="action" value="delete">
-                                    <input type="hidden" name="id" value="<%= cartItem.getProduct().getId() %>">
-                                    <button type="submit" class="icon_close"></button>
-                                </form>
+<%--                                <form action="ShoppingCartCL" method="get">--%>
+<%--                                    <input type="hidden" name="action" value="delete">--%>
+<%--                                    <input type="hidden" name="id" value="<%= cartItem.getProduct().getId() %>">--%>
+<%--                                    <button type="submit" class="icon_close"></button>--%>
+<%--                                </form>--%>
+                                <button class="btn btn-success" onClick="changeStatus(<%=cartItem.getProduct().getId()%>, 0, 'delete')">Xoá</button>
                             </td>
                             <% }%>
                         </tr>
@@ -144,10 +138,10 @@
                 <div class="shoping__cart__btns">
                     <a href="ProductController" class="primary-btn cart-btn">TIẾP TỤC MUA SẮM</a>
                     <%--                    <p class="text-danger"><%=e%></p>--%>
-<%--                    <button id="button2" type="submit" class="primary-btn cart-btn cart-btn-right">--%>
-<%--                        <span class="icon_loading"></span>--%>
-<%--                        Cập nhật giỏ hàng--%>
-<%--                    </button>--%>
+                    <%--                    <button id="button2" type="submit" class="primary-btn cart-btn cart-btn-right">--%>
+                    <%--                        <span class="icon_loading"></span>--%>
+                    <%--                        Cập nhật giỏ hàng--%>
+                    <%--                    </button>--%>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -169,9 +163,9 @@
                         <li>Tổng <span><%=shoppingCart.getTotalPrice()%></span></li>
                     </ul>
                     <input type="hidden" name="action" value="checkout">
-<%--                    <a href="thanh-toan.jsp" class="primary-btn">TIẾN HÀNH THANH TOÁN</a>--%>
+                    <%--                    <a href="thanh-toan.jsp" class="primary-btn">TIẾN HÀNH THANH TOÁN</a>--%>
                     <%if(!cartItems.isEmpty()){ %>
-                    <button class="btn btn-success" type="submit">   TIẾN HÀNH THANH TOÁN </button>
+                    <input class="btn btn-success" type="submit" value="TIẾN HÀNH THANH TOÁN">
                     <%}%>
                 </form>
             </div>
@@ -260,6 +254,32 @@
             button.click();
         });
     });
+    function changeStatus(pid, quantity, action) {
+        console.log(pid, quantity, action)
+        document.querySelector('#t'+pid).innerHTML = Number(quantity)*Number(document.querySelector('#pr'+pid).textContent);
+        document.querySelector('#p'+pid).innerHTML = quantity===0?document.querySelector("#tr"+pid).innerHTML = '' : quantity;
+        $.ajax({
+            url: 'ShoppingCartCL',
+            type: 'POST',
+            data: {
+                id: pid,
+                quantity: quantity,
+                action: action
+            },
+            success: function(response) {
+                var res = JSON.parse(response);
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Thay Đổi Giỏ Hàng Thành Công!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                const badge = document.getElementById("badge");
+                badge.innerHTML = res.totalItems;
+            }
+        });
+    }
 </script>
 
 
