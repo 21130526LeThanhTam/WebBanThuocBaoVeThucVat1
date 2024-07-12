@@ -15,7 +15,7 @@ public class Products implements Serializable {
     private int price;
     private String des;
     private int status;
-
+    private int inventory_quantity;
 
     private Date update_at;
 
@@ -23,7 +23,12 @@ public class Products implements Serializable {
 
     //SELECT id , product_name ,picture, price, id_category, quanitity, status, specifications,pro_desc FROM product
 
-
+    public int getInventory_quantity() {
+        return this.inventory_quantity;
+    }
+    public void setInventory_quantity(int inventory_quantity) {
+        this.inventory_quantity = inventory_quantity;
+    }
     public int getId() {
         return id;
     }

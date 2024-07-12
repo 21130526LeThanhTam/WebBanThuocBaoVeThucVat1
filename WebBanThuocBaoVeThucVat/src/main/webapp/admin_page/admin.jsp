@@ -37,6 +37,7 @@
     <script src="/admin_page/js/adminJS/custom.js"></script>
 </head>
 <body>
+
 <div class="wrapper">
     <!-- Sidebar -->
     <nav id="sidebar" class="bg-light">
@@ -151,7 +152,18 @@
 <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
 <%--    Excel--%>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
-
+<%
+    String redirectPage = (String) request.getAttribute("page");
+    if (redirectPage != null && redirectPage.equals("./maProduct")) {
+%>
+<script type="text/javascript">
+    $(document).ready(function () {
+        loadContent($('#productManagementLink'));
+    });
+</script>
+<%
+    }
+%>
 <script type="text/javascript">
     $(document).ready(function () {
         // Toggle sidebar

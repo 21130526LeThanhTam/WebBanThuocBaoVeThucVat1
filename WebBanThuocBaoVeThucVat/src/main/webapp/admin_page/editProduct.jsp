@@ -9,7 +9,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Chỉnh sửa người dùng</title>
+  <title>Chỉnh sửa sản phẩm</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <style type="text/css">
@@ -20,7 +20,8 @@
   </style>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="//cdn.ckeditor.com/4.6.0/full/ckeditor.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.18.0/ckeditor.js"></script>
+
   <script>
     function chooseFile(fileInput){
       if(fileInput.files && fileInput.files[0]){
@@ -66,28 +67,24 @@ if(products==null) products=new Products();%>
                                 <input class="form-control" id="productName" type="text" name="productName" value="<%=products.getProduct_name()%>">
                               </div>
                               <div class="form-group">
-                                <label for="productCate">Doanh mục</label>
+                                <label for="productCate">Danh mục</label>
                                 <select class="form-control" id="productCate" name="productCate">
-                                  <option value="<%=products.getId_category()%>"><%=products.cateOfProduct()%></option>
-                                  <% for(Category a : cb.getListCategory()){%>
-
-                                  <option value="<%=a.getId()%>"></option>
+                                  <% for(Category a : cb.getListCategory()) { %>
+                                  <option value="<%= a.getId() %>" <%= (a.getId() == products.getId_category()) ? "selected" : "" %>><%= a.getNameCategory() %></option>
                                   <% } %>
                                 </select>
                               </div>
-                              <div class="form-group">
-                                <label>Số lượng trong kho</label>
-<%--                                <%=products.getquantity()%>--%>
-                                <input class="form-control" id="productNum" type="number" name="productNum" value="">
-                              </div>
+                                <div class="form-group">
+                                    <label>Số lượng trong kho</label>
+                                    <input class="form-control" id="inventory_quantity" type="number" name="inventory" value="<%= products.getInventory_quantity() %>">
+                                </div>
                             </div>
                             <div class="col">
-                              <div class="form-group">
-                                <label>Ảnh</label>
-<%--                                <%=products.getPicture()%>--%>
-                                <img id="image" src="" alt="" style="width: 302px; height: 200px; border-style: dashed; border-width: 0.1mm">
-                                <input type="file" name="imageFile" id="imageFile"  onchange="chooseFile(this)" accept="image/jpg , image/jpeg, image/png">
-                              </div>
+                                <div class="form-group">
+                                    <label>Ảnh</label>
+                                    <img id="image" src="<%= products.getImage() != null ? products.getImage() : "" %>" alt="" style="width: 302px; height: 200px; border-style: dashed; border-width: 0.1mm">
+                                    <input type="file" name="imageFile" id="imageFile" onchange="chooseFile(this)" accept="image/jpg, image/jpeg, image/png">
+                                </div>
                             </div>
                           </div>
 
@@ -108,30 +105,21 @@ if(products==null) products=new Products();%>
                           <div class="row">
                             <div class="col mb-3"></div>
                           </div>
-                          <div class="row">
-                            <div class="col">
-                              <div class="form-group">
-                                <label>Quy cách</label>
-                                <%--  <input class="form-control ckeditor" id="role" type="text" name="role" placeholder="">--%>
-<%--                                <%=products.getSpecifications()%>--%>
-                                <textarea class="form-control ckeditor" id="cktext" placeholder="" name="specifications" rows="3"></textarea>
-                              </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label>Mô tả</label>
+                                        <textarea class="form-control ckeditor" id="cktext1" placeholder="" name="proDesc" rows="3"><%= products.getDes() %></textarea>
+                                    </div>
+                                </div>
                             </div>
-                          </div>
-                          <div class="row">
-                            <div class="col">
-                              <div class="form-group">
-                                <label>Mô tả</label>
-<%--                                <%=products.getSpecifications()%> placeholder--%>
-                                <textarea class="form-control ckeditor" id="cktext1" placeholder="" name="proDesc" rows="3"></textarea>
-                              </div>
-                            </div>
-                          </div>
+
                         </div>
                       </div>
                       <div class="row">
                         <div class="col d-flex justify-content-start">
-                          <button class="btn btn-primary" type="submit" style="background-color: #7fad39; border: #7fad39;" >Save Changes</button>
+                          <button class="btn btn-primary" type="submit" style="background-color: #7fad39; border: #7fad39;">Save Changes</button>
                         </div>
                       </div>
                     </form>
@@ -147,7 +135,7 @@ if(products==null) products=new Products();%>
               <div class="px-xl-3">
                 <button class="btn btn-block btn-secondary" style="background-color: #7fad39; border: #7fad39;">
                   <i class="fa fa-sign-out"></i>
-                  <span><a href="HomePageController" style="text-decoration: none; text-underline: none; color: white;">Trang chủ</a></span>
+                  <span><a href="./admin_dashboard" style="text-decoration: none; text-underline: none; color: white;">Quay lại</a></span>
                 </button>
               </div>
             </div>
