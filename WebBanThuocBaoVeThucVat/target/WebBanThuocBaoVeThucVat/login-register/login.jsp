@@ -132,8 +132,15 @@
                 <div class="form-link mb-3">
                     <a href="PasswordForgot" class="forgot-pass">Quên mật khẩu?</a>
                 </div>
+<<<<<<< HEAD
+                <div class="field button-field">
+                    <div class="container-capcha" style="margin-left:32px">
+                        <div class="g-recaptcha" data-sitekey="6LeWqNkpAAAAANkqcg0zDmNz90pyG4FOLP4QiDQv"></div>
+                    </div>
+=======
                 <div class="mb-3">
                     <div class="g-recaptcha d-flex justify-content-center" data-sitekey="6LeWqNkpAAAAANkqcg0zDmNz90pyG4FOLP4QiDQv"></div>
+>>>>>>> origin/main
                     <span class="text-danger" id="errorLogin"></span><br>
                     <input type="submit" value="Đăng nhập" id="btnLogin" class="btn btn-warning w-100 custom-btn ">
                 </div>

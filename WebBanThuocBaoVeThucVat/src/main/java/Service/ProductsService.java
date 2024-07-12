@@ -14,6 +14,7 @@ public class ProductsService {
     }
     private final IProductsDao productDAO = new ProductsDao();
 
+
     public List<Products> findAll1(String name){
         return productDAO.findAll1(name);
     }
@@ -43,11 +44,32 @@ public class ProductsService {
         ProductsDao.editProduct(name, image, price, idCategory, status, proDesc, id);
     }
     public List<Products> numOfPro(){return ProductsDao.numOfPro();}
+
+    public List<Products> searchByName(String productName){
+        return productDAO.searchByName(productName);
+    }
+
+    public List<Products> searchByPrice(String productPrice){
+        return productDAO.searchByPrice(productPrice);
+    }
+
+    public List<Products> searchByDescription(String productDes) {
+        return productDAO.searchByDescription(productDes);
+    }
+
+    public int getTotalPages() {
+        return productDAO.getTotalPages();
+    }
+
+    public List<Products> getProductsPerPage(int currentPage) {
+        return productDAO.getProductsPerPage(currentPage);
+    }
+
+    public int getProductsPerPageConstant() {
+        return productDAO.getProductsPerPageConstant();
+    }
     public static void main(String[] args) {
         System.out.println(ProductsService.getInstance().numOfPro());
 //        System.out.println(ProductsService.getInstance().getProductById(1));
     }
-
-
-
 }

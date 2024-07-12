@@ -6,6 +6,7 @@ import db.JDBIConnector;
 import org.jdbi.v3.core.Jdbi;
 
 import java.sql.Connection;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -92,15 +93,15 @@ public class ProductDAO implements IProductDAO {
     }
 
     @Override
-    public List<Products> findByPriceMax(String id) {
-        Jdbi jdbi = JDBIConnector.getJdbi();
-        List<Products> products = jdbi.withHandle(handle -> {
-            String sql = "SELECT id, product_name, image, price, id_category, status, des, create_at FROM products\n" +
-                    "where id_category like ? " + // Added space here
-                    "order by price desc";
-            return handle.createQuery(sql).bind(0, "%" + id + "%").mapToBean(Products.class).list();
+    public void sortByPrice(List<Products> products, boolean isAscending) {
+        Collections.sort(products, (o1, o2) -> {
+            if (isAscending) {
+                return Integer.compare(o1.getPrice(), o2.getPrice());
+            } else {
+                return Integer.compare(o2.getPrice(), o1.getPrice());
+            }
         });
-        return products;
+
     }
 
     @Override

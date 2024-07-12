@@ -2,15 +2,15 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <title>Quan ly don hang</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/admin/bootstrap.min.admin.css">
-    <!----css3---->
-    <link rel="stylesheet" href="css/admin/custom.css">
+    <link rel="stylesheet" href="admin_page/css/bootstrap.min.admin.css">
+    <link rel="stylesheet" href="admin_page/css/custom.css">
+
+
     <!--google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -261,7 +261,7 @@
                             <tr>
                                 <th><span class="custom-checkbox">
 							 <input type="checkbox" id="selectAll">
-							 <label for="selectAll"></label></span></th>
+                                    <label for="selectAll"></label></span></th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Address</th>
@@ -274,7 +274,7 @@
                             <tr>
                                 <th><span class="custom-checkbox">
 							 <input type="checkbox" id="checkbox1" name="option[]" value="1">
-							 <label for="checkbox1"></label></span></th>
+                                    <label for="checkbox1"></label></span></th>
                                 <th>Thomas Hardy</th>
                                 <th>ThomasHardy@gmail.com</th>
                                 <th>90r parkdground poland Usa.</th>
@@ -293,7 +293,7 @@
                             <tr>
                                 <th><span class="custom-checkbox">
 							 <input type="checkbox" id="checkbox2" name="option[]" value="1">
-							 <label for="checkbox2"></label></span></th>
+                                    <label for="checkbox2"></label></span></th>
                                 <th>Dominique Perrier</th>
                                 <th>dominiquePerrier@gmail.com</th>
                                 <th>90r ser57, Berlin poland Bermany.</th>
@@ -312,7 +312,7 @@
                             <tr>
                                 <th><span class="custom-checkbox">
 							 <input type="checkbox" id="checkbox3" name="option[]" value="1">
-							 <label for="checkbox3"></label></span></th>
+                                    <label for="checkbox3"></label></span></th>
                                 <th>Marai Andres</th>
                                 <th>MarariAndres@gmail.com</th>
                                 <th>90r ser57, Berlin poland Bermany.</th>
@@ -330,7 +330,7 @@
                             <tr>
                                 <th><span class="custom-checkbox">
 							 <input type="checkbox" id="checkbox4" name="option[]" value="1">
-							 <label for="checkbox4"></label></span></th>
+                                    <label for="checkbox4"></label></span></th>
                                 <th>Vishweb Design</th>
                                 <th>vishwebdesign@gmail.com</th>
                                 <th> B-2 ser57 Nodia East Delhi,India.</th>
@@ -348,7 +348,7 @@
                             <tr>
                                 <th><span class="custom-checkbox">
 							 <input type="checkbox" id="checkbox5" name="option[]" value="1">
-							 <label for="checkbox5"></label></span></th>
+                                    <label for="checkbox5"></label></span></th>
                                 <th>Vishwajeet Kumar</th>
                                 <th>vishkumar234@gmail.com</th>
                                 <th> B-2 ser57 Nodia East Delhi,India.</th>

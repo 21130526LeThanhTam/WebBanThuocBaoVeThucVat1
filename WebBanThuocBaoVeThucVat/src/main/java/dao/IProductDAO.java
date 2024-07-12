@@ -21,7 +21,8 @@ public interface IProductDAO {
 
     List<Products> findById(int id);
 
-    List<Products> findByPriceMax(String id);
+    void sortByPrice(List<Products> products, boolean isAscending);
+
 
     List<Products> findByPriceMin(String id);
 
