@@ -59,8 +59,9 @@
     <table id="quanlyTable" class="table table-striped table-bordered" style="width:100%">
         <thead>
         <tr>
-            <th>Mã</th>
+            <th style="width: 50px">Mã</th>
             <th>Tên danh mục</th>
+            <th style="width:100px">Hoạt Động</th>
             <th style="width:100px">Tính Năng</th>
         </tr>
         </thead>
@@ -69,29 +70,33 @@
         <tr>
             <th style="text-align: center; width: 20px"><%= a.getId() %></th>
             <th style="width:150px;"><%= a.getNameCategory() %></th>
+            <th><%= a.getStatus() == 1 ? "Đang Hoạt động" : "Vô Hiệu Hóa" %></th>
             <th>
                 <a href="#editCategoryModal<%= a.getId() %>" class="btn btn-primary" data-toggle="modal">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </a>
-                <a href="#deleteCategoryModal<%= a.getId() %>" class="btn btn-danger" data-toggle="modal">
-                    <i class="fa-solid fa-trash"></i>
-                </a>
+                <button class="btn <%= a.getStatus() == 1 ? "btn-warning" : "btn-success" %>" data-toggle="modal" data-target="#toggleDisableModal<%=a.getId()%>">
+                    <i class="fas <%= a.getStatus() == 1 ? "fa-ban" : "fa-check" %>"></i>
+                </button>
             </th>
         </tr>
-<%--        xóa danh mục--%>
-        <div class="modal fade" id="deleteCategoryModal<%= a.getId() %>" tabindex="-1" role="dialog" aria-labelledby="deleteCategoryModalLabel" aria-hidden="true">
+<%--     vô hiệu hóa    danh mục--%>
+        <div class="modal fade" id="toggleDisableModal<%=a.getId()%>" tabindex="-1" role="dialog" aria-labelledby="disableModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="deleteCategoryModalLabel">Xóa danh mục</h5>
+                        <h5 class="modal-title"><%= a.getStatus() == 1 ? "Xác nhận vô hiệu hóa" : "Xác nhận kích hoạt lại" %></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <div class="modal-body">
-                        <p>Bạn có chắc muốn xóa <%= a.getNameCategory() %>?</p>
-                        <p class="text-warning"><small>Bấm "hủy" để dừng lại</small></p>
+                        <p>Bạn có chắc chắn muốn <%= a.getStatus() == 1 ? "vô hiệu hóa" : "kích hoạt lại" %> danh mục <%=a.getNameCategory()%>?</p>
+                        <p class="text-warning"><small>Bấm "Hủy" để dừng lại</small></p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                        <button type="button" class="btn btn-success" onclick="deleteCategory(<%=a.getId()%>)">Xóa</button>
+                        <button type="button" class="btn <%= a.getStatus() == 1 ? "btn-danger" : "btn-success" %>" onclick="toggleDisableProduct(<%=a.getId()%>, <%=a.getStatus()%>)"><%= a.getStatus() == 1 ? "Vô hiệu hóa" : "Kích hoạt lại" %></button>
                     </div>
                 </div>
             </div>
@@ -156,25 +161,22 @@
         var wb = XLSX.utils.table_to_book(table, {sheet: "Sheet1"});
         XLSX.writeFile(wb, 'category.xlsx');
     });
-    //xóa danh mục
-    function deleteCategory(cateID) {
+    //logic disable product
+    window.toggleDisableProduct = function(categoryID, currentState) {
+        var action = currentState == 1 ? 'disableCategory' : 'cancelDisableCategory';
         $.ajax({
+            url: '/' + action,
             type: "POST",
-            url: "./deleteCate",
-            data: { cateID: cateID },
+            data: { 'categoryID': categoryID },
             success: function(data) {
-                if (data.status === "success") {
-                    alert(data.message);
-                    loadContent($('#categoryManagementLink'));
-                } else {
-                    alert(data.message);
-                }
+                alert(currentState == 1 ? 'Danh mục đã được vô hiệu hóa!' : 'Danh mục đã được kích hoạt lại!');
+                loadContent($('#categoryManagementLink'));
             },
             error: function(xhr, error) {
-                alert('Lỗi xảy ra khi xóa danh mục! Lỗi: ' + xhr.responseText);
+                alert('Lỗi xảy ra khi ' + (currentState == 1 ? 'vô hiệu hóa' : 'kích hoạt lại') + ' Danh mục! Lỗi: ' + xhr.responseText);
             }
         });
-    }
+    };
     // chỉnh sửa danh mục
     function submitEditForm(cateID) {
         var categoryName = $('#editCategoryName' + cateID).val();

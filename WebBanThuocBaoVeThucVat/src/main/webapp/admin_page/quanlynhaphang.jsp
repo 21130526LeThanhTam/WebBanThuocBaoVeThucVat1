@@ -81,7 +81,6 @@
             <td><%= order.getStatus() %></td>
             <td>
                 <button class="btn btn-primary update-btn" data-toggle="modal" data-target="#updateModal" data-order-id="<%= order.getId() %>"><i class="fa-solid fa-pen-to-square"></i></button>
-                <button class="btn btn-danger delete-btn" data-toggle="modal" data-target="#deleteModal" data-order-id="<%= order.getId() %>"><i class="fa-solid fa-trash"></i></button>
             </td>
         </tr>
         <%
@@ -148,28 +147,6 @@
         </div>
     </div>
 </div>
-<!-- Modal Xóa -->
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form id="deleteOrderForm" action="/importManagement" method="post">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa</h5>
-                </div>
-                <div class="modal-body">
-                    <input type="hidden" name="action" value="delete">
-                    <input type="hidden" name="orderId" id="deleteOrderId">
-                    <p>Bạn có chắc chắn muốn xóa đơn hàng này không?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                    <button type="submit" class="btn btn-danger">Xóa</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
 
 <script>
     $(document).ready(function() {
@@ -179,11 +156,7 @@
             $('#updateOrderId').val(orderId);
         });
 
-        // Xử lý khi nhấn vào nút "Xóa"
-        $(document).on('click', '.delete-btn', function() {
-            var orderId = $(this).data('order-id');
-            $('#deleteOrderId').val(orderId);
-        });
+
         // Xử lý khi nhấn vào nút "Tạo mới"
         $('#createOrderForm').on('submit', function(e) {
             e.preventDefault();
@@ -216,24 +189,6 @@
                 },
                 error: function(xhr, error) {
                     alert('Lỗi xảy ra khi cập nhật tình trạng đơn hàng! Lỗi: ' + xhr.responseText);
-                }
-            });
-        });
-
-        // Xử lý khi nhấn vào nút "Xóa"
-        $('#deleteOrderForm').on('submit', function(e) {
-            e.preventDefault();
-            $.ajax({
-                type: "POST",
-                url: "/importManagement",
-                data: $(this).serialize(),
-                success: function(data) {
-                    alert('Đơn hàng đã được xóa!');
-                    $('#deleteModal').modal('hide');
-                    loadContent($('#importManagementLink'));
-                },
-                error: function(xhr, error) {
-                    alert('Lỗi xảy ra khi xóa đơn hàng! Lỗi: ' + xhr.responseText);
                 }
             });
         });

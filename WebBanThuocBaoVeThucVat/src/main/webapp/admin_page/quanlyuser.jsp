@@ -85,32 +85,9 @@
                     <button class="btn <%= a.getActive() == 1 ? "btn-warning" : "btn-success" %>" data-toggle="modal" data-target="#toggleDisableModal<%=a.getId()%>">
                         <i class="fas <%= a.getActive() == 1 ? "fa-ban" : "fa-check" %>"></i>
                     </button>
-                    <button class="btn btn-danger delete-btn" data-toggle="modal" data-target="#deleteEmployeeModal<%=a.getId()%>">
-                        <i class="fa-solid fa-trash"></i></button>
-                    </button>
                 </th>
             </tr>
-            <!-- Xóa người dùng -->
-            <div class="modal fade" id="deleteEmployeeModal<%=a.getId()%>" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Xác nhận xóa</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p>Bạn có chắc chắn muốn xóa <%=a.getUsername()%> ra khỏi danh sách?</p>
-                            <p class="text-warning"><small>Bấm "hủy" để dừng lại</small></p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                            <button type="button" class="btn btn-danger" onclick="deleteUser(<%=a.getId()%>)">Xóa</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             <!-- vô hiệu hóa, kích hoạt lại người dùng-->
             <div class="modal fade" id="toggleDisableModal<%=a.getId()%>" tabindex="-1" role="dialog" aria-labelledby="disableModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -222,23 +199,7 @@
             });
         });
 
-        //xóa người dùng
-        window.deleteUser = function(userID) {
-            $.ajax({
-                url: "/deleteUser",
-                type: "POST",
-                data: { 'userID': userID },
-                success: function(data) {
-                    alert('Người dùng đã được xóa thành công!');
-                    $("#row_user_" + userID).remove();
-                    // Đóng hộp thoại sau khi xóa thành công
-                    $('#deleteEmployeeModal' + userID).modal('hide');
-                },
-                error: function(xhr, error) {
-                    alert('Lỗi xảy ra khi xóa người dùng! Lỗi: ' + xhr.responseText);
-                }
-            });
-        };
+
         // logic toggle disable user
         window.toggleDisableUser = function(userID, currentState) {
             var action = currentState == 1 ? 'disableUser' : 'cancelDisableUser';

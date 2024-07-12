@@ -26,8 +26,12 @@ public class CategoryService {
     public boolean updateCategory(String categoryName,int idCategory){
        return CategoryDAO.updateCategory(categoryName, idCategory);
     }
-
+    public boolean toggleCategoryStatus(int id, boolean disable) {
+        return CategoryDAO.toggleCategoryStatus(id, disable);
+    }
     public static void main(String[] args) {
         System.out.println(CategoryService.getInstance().listCategory("",0));
     }
+
+
 }

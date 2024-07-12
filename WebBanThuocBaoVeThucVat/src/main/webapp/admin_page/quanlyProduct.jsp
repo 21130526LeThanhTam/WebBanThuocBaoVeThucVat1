@@ -104,7 +104,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Bạn có chắc chắn muốn <%= a.getStatus() == 1 ? "vô hiệu hóa" : "kích hoạt lại" %> sản phẩm <%=a.getStatus()%>?</p>
+                        <p>Bạn có chắc chắn muốn <%= a.getStatus() == 1 ? "vô hiệu hóa" : "kích hoạt lại" %> sản phẩm <%=a.getProduct_name()%>?</p>
                         <p class="text-warning"><small>Bấm "Hủy" để dừng lại</small></p>
                     </div>
                     <div class="modal-footer">
