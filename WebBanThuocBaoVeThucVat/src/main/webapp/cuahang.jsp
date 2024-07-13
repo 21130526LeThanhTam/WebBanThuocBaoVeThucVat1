@@ -214,7 +214,8 @@
                             <div class="product__item__pic set-bg" data-setbg="<%=a.getImage()%>">
                                 <ul class="product__item__pic__hover">
                                     <li><a href="ProductInfor?id_product=<%= a.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a  href="ShoppingCartCL?action=post&id=<%=a.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>
+                                    <li><a href="javascript:void(0)" onclick="addCart(this, '<%=a.getId()%>')"><i class="fa fa-shopping-cart"></i></a></li>
+<%--                                    <li><a  href="ShoppingCartCL?action=post&id=<%=a.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>--%>
                                 </ul>
                             </div>
                             <div class="product__item__text">
@@ -322,12 +323,39 @@
 <script src="assets/js/mixitup.min.js"></script>
 <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     document.getElementById('selectOrder').addEventListener('change', function() {
         var selectedOption = this.options[this.selectedIndex];
         var href = selectedOption.getAttribute('data-href');
         window.location.href = href;
     });
+</script>
+<script>
+    function addCart(btn, id) {
+        $.ajax({
+            url: "ShoppingCartCL",
+            method: "POST",
+            data: {
+                id: id,
+                action: "add",
+                type: 0
+            },
+            success: function (response) {
+                var res = JSON.parse(response);
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Thêm Sản Phẩm Vào Giỏ Hàng Thành Công!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                const badge = document.getElementById("badge");
+                badge.innerHTML = res.totalItems;
+            }
+        });
+    }
 </script>
 </body>
 </html>
