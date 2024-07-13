@@ -6,7 +6,14 @@ import lombok.Data;
 public class Category {
     private int id;
     private String nameCategory;
+    private int status;
 
+    public int getStatus() {
+        return status;
+    }
+    public void setStatus(int status) {
+        this.status = status;
+    }
     public int getId() {
         return id;
     }

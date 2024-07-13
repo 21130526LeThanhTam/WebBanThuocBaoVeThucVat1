@@ -27,8 +27,11 @@ public class AdminController extends HttpServlet {
 //        System.out.println(dsProduct);
         int numOfGuest= dsUser.size();
         int numOfPro=dsProduct.size();
+        String page =  req.getParameter("page");
+        req.setAttribute("page", page);
         req.setAttribute("numUser",numOfGuest);
         req.setAttribute("numPro",numOfPro);
+        System.out.println(page);
         req.getRequestDispatcher("admin_page/admin.jsp").forward(req,resp);
     }
 }

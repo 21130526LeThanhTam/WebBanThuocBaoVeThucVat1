@@ -211,15 +211,17 @@ public class AccountDAO extends AbstractDao<User> {
 
 
     public static void main(String[] args) {
-        System.out.println(AccountDAO.getInstance().getLoginFail("21130526@st.hcmuaf.edu.vn"));
-        System.out.println(AccountDAO.getInstance().updateLoginFail("21130526@st.hcmuaf.edu.vn", 1));
+        //System.out.println(AccountDAO.getInstance().getLoginFail("21130526@st.hcmuaf.edu.vn"));
+//        System.out.println(AccountDAO.getInstance().updateLoginFail("21130526@st.hcmuaf.edu.vn", 1));
         String email= "hiho@gmail.com";
         String pass= "4297f44b13955235245b2497399d7a93";
         User a = new User();
         a.setEmail(email);
         a.setPassword(pass);
         User b =new User(1,1,"Son","4297f44b13955235245b2497399d7a93","0123456789","Son@gmail.com","Son","dsf");
-        AccountDAO.getInstance().signUp(email,pass, "hihoo","hihoo","hihoo","hihoo","hihoo","hihoo", 1, "hihoo");
+
+        System.out.println( AccountDAO.getInstance().loginAccount(b,"00999",1,"asgdhg"));
+//        AccountDAO.getInstance().signUp(email,pass, "hihoo","hihoo","hihoo","hihoo","hihoo","hihoo", 1, "hihoo");
     }
 
 
