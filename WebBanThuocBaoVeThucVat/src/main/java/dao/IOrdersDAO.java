@@ -18,4 +18,8 @@ public interface IOrdersDAO {
 	 List<OrderDetailTable> getOrderDetailsByOrderId(int orderId);
 
 	OrderTable getOrderById(int orderId);
+
+	void updateOrderStatus(int orderId, int orderStatus);
+
+	void updatePaymentStatus(int orderId, String paymentStatus);
 }

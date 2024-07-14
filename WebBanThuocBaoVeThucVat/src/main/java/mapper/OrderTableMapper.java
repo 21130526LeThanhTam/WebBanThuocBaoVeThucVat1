@@ -19,7 +19,7 @@ public class OrderTableMapper implements RowMapper<OrderTable> {
         orderTable.setPhone_number(rs.getString("phone_number"));
         orderTable.setCreateAt(rs.getTimestamp("create_at"));
         orderTable.setPayment_status(rs.getString("payment_status"));
-        orderTable.setOrder_status(rs.getString("order_status"));
+        orderTable.setOrder_status(rs.getInt("order_status"));
         return orderTable;}
         catch (SQLException e) {
             return null;

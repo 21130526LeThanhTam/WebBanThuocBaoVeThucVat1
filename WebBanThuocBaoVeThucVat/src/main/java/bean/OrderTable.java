@@ -19,5 +19,6 @@ public class OrderTable {
     private List<OrderDetailTable> listDetails;
     private Timestamp createAt;
     private String payment_status;
-    private String order_status;
+    private int order_status;
+
 }

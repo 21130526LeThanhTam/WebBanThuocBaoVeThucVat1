@@ -61,6 +61,51 @@ public class OrderController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doGet(req, resp);
+        req.setCharacterEncoding("UTF-8");
+        resp.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/html; charset=UTF-8");
+        String action = req.getParameter("action");
+        if ("updatePayment".equals(action)) {
+            updatePaymentStatus(req, resp);
+        } else if ("updateOrder".equals(action)) {
+            updateOrderStatus(req, resp);
+        } else {
+            doGet(req, resp);
+        }
     }
-}
+
+    private void updatePaymentStatus(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int orderId = Integer.parseInt(req.getParameter("orderId"));
+        String paymentStatus = req.getParameter("paymentStatus");
+        orderDao.updatePaymentStatus(orderId, paymentStatus);
+        resp.getWriter().write("Success");
+    }
+
+
+    private void updateOrderStatus(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int orderId = Integer.parseInt(req.getParameter("orderId"));
+        int newOrderStatus = Integer.parseInt(req.getParameter("orderStatus"));
+        OrderTable order = orderDao.getOrderById(orderId);
+        int currentOrderStatus = order.getOrder_status();
+
+        String errorMessage = null;
+
+        if (currentOrderStatus == 0 || currentOrderStatus == 4) {
+            errorMessage = "Không thể cập nhật khi đã hủy hoặc đã giao";
+        } else if (currentOrderStatus == 1 && (newOrderStatus != 2 && newOrderStatus != 3)) {
+            errorMessage = "Lỗi ràng buộc, không thể cập nhật";
+        } else if (currentOrderStatus == 2 && newOrderStatus == 1) {
+            errorMessage = "Lỗi ràng buộc, không thể cập nhật";
+        } else if (currentOrderStatus == 3 && (newOrderStatus == 1 || newOrderStatus == 2)) {
+            errorMessage = "Lỗi ràng buộc, không thể cập nhật";
+        }
+
+        if (errorMessage != null) {
+            resp.getWriter().write(errorMessage);
+        } else {
+            orderDao.updateOrderStatus(orderId, newOrderStatus);
+            resp.getWriter().write("Success");
+        }
+    }
+    }
+

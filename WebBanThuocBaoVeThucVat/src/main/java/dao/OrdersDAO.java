@@ -54,6 +54,19 @@ public class OrdersDAO extends AbstractDAO<Orders> implements IOrdersDAO {
 				"WHERE o.id = ?";
 		return query(sql, new OrderTableMapper(), orderId).get(0);
 	}
+//update trạng thái đơn hàng
+	@Override
+	public void updateOrderStatus(int orderId, int orderStatus) {
+		String sql = "UPDATE orders SET order_status = ? WHERE id = ?";
+		update(sql, orderStatus, orderId);
+	}
+
+// Update trạng thái thanh toán
+	@Override
+	public void updatePaymentStatus(int orderId, String paymentStatus) {
+		String sql = "UPDATE orders SET payment_status = ? WHERE id = ?";
+		update(sql, paymentStatus, orderId);
+	}
 
 	@Override
 	public List<Orders> getOrdersByUser(User user) {
@@ -88,6 +101,7 @@ public class OrdersDAO extends AbstractDAO<Orders> implements IOrdersDAO {
 	public static void main(String[] args) {
 		IOrdersDAO order = new OrdersDAO();
 		//System.out.println(order.getOrderforAdmin());
-		System.out.println(order.getOrderDetailsByOrderId(8));
+		System.out.println(order.getOrderById(1	));
+
 	}
 }
