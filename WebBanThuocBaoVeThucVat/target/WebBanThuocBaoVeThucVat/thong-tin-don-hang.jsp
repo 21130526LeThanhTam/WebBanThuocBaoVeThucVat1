@@ -162,11 +162,11 @@
                                 <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
                                     aria-selected="false">Đánh giá <span>(<%=comments.size() %>)</span></a>
                             </li>
-<%--                        <li class="nav-item">--%>
-<%--                            <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab" aria-selected="false">--%>
-<%--                                Viết đánh giá của bạn--%>
-<%--                            </a>--%>
-<%--                        </li>--%>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab" aria-selected="false">
+                                Binh luan
+                            </a>
+                        </li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
@@ -204,40 +204,13 @@
                                 </ul>
                             </div>
                         </div>
-<%--                        <div class="tab-pane" id="tabs-2" role="tabpanel">--%>
-<%--                            <div class="product__details__tab__desc">--%>
-<%--                                <h6>tên người dùng</h6>--%>
-<%--                                <p>--%>
-<%--                                    Ngoi sao cua nguoi dung ve san pham--%>
-<%--                                </p>--%>
-<%--                                <p>--%>
-<%--                                   Visible comment of user : co con mua nao doi minh chia xa--%>
-<%--                                </p>--%>
-
-
-
-<%--                                <p>--%>
-<%--                                    Cây trồng cao su - Dịch hại nấm hồng--%>
-<%--                                    Liều lượng: 0.15 – 0.20%--%>
-<%--                                    PHI: 14--%>
-<%--                                    Cách dùng: Phun ướt đều cây trồng khi tỷ lệ bệnh khoảng 5-10%--%>
-<%--                                </p>--%>
-
-<%--                                <p>--%>
-<%--                                    Cây trồng cao su - Dịch hại vàng rụng lá--%>
-<%--                                    Liều lượng: 0.15 – 0.20%--%>
-<%--                                    PHI: 14--%>
-<%--                                    Cách dùng: Phun ướt đều cây trồng khi tỷ lệ bệnh khoảng 5-10%--%>
-<%--                                </p>--%>
-
-<%--                                <p>--%>
-<%--                                    Cây trồng lúa - Dịch hại khô vằn--%>
-<%--                                    Liều lượng: 0.5 – 0.7 lít/ha--%>
-<%--                                    PHI: 14--%>
-<%--                                    Cách dùng: Lượng nước phun 500 lít/ha. Phun thuốc khi tỷ lệ bệnh khoảng 15%--%>
-<%--                                </p>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
+                        <div class="tab-pane" id="tabs-2" role="tabpanel">
+                            <div class="fb-comments"
+                                 style="border: 1px solid #ccc; margin-top: 12px"
+                                 data-href="thong-tin-don-hang.jsp?productID=<%=request.getParameter("id_product")%>" data-width="1100"
+                                 data-numposts="5">
+                            </div>
+                        </div>
 
                         <div class="tab-pane" id="tabs-3" role="tabpanel">
                             <div class="product__details__tab__desc">
@@ -364,6 +337,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 </section>
 <!-- Related Product Section End -->
@@ -449,6 +423,9 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v20.0&appId=1072330460766904" nonce="9nNhsvob"></script>
 <script>
     function addCart(btn, id) {
         var quantity = $('#quantityInput').val();
