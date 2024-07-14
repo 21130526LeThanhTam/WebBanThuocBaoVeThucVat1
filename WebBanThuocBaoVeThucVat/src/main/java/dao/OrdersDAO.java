@@ -1,7 +1,9 @@
 package dao;
 
 import bean.*;
+import db.JDBIConnector;
 import mapper.*;
+import org.jdbi.v3.core.Jdbi;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -73,11 +75,32 @@ public class OrdersDAO extends AbstractDAO<Orders> implements IOrdersDAO {
 		String sql = "select * from orders where id_user =?";
 		return query(sql, new OrderMapper(), user.getId());
 	}
-
+	//khi insert một order details sẽ thay đổi quantity trong product
 	@Override
 	public  Integer insertOrdersDetail(OrderDetail od) {
-		String sql="insert into order_details(id_order, id_product, quantity) values(?,?,?)";
-		return insert(sql, od.getOrder_id(), od.getProduct_id(), od.getQuantity());
+		String insertOrderDetailSql="insert into order_details(id_order, id_product, quantity) values(?,?,?)";
+		String updateProductSql = "UPDATE products SET inventory_quantity = inventory_quantity - ? WHERE id = ?";
+		Jdbi jdbi = JDBIConnector.getJdbi();
+		return jdbi.inTransaction(handle -> {
+			int rowsAffected = handle.createUpdate(insertOrderDetailSql)
+					.bind(0, od.getOrder_id())
+					.bind(1, od.getProduct_id())
+					.bind(2, od.getQuantity())
+					.execute();
+
+			if (rowsAffected > 0) {
+				int updateRows = handle.createUpdate(updateProductSql)
+						.bind(0, od.getQuantity())
+						.bind(1, od.getProduct_id())
+						.execute();
+
+				if (updateRows > 0) {
+					return rowsAffected;
+				}
+			}
+
+			return 0;
+		});
 	}
 
 	@Override
@@ -99,9 +122,14 @@ public class OrdersDAO extends AbstractDAO<Orders> implements IOrdersDAO {
 	}
 
 	public static void main(String[] args) {
+
 		IOrdersDAO order = new OrdersDAO();
+		OrderDetail orderDetail = new OrderDetail();
+		orderDetail.setOrder_id(2);
+		orderDetail.setProduct_id(6);
+		orderDetail.setQuantity(10);
 		//System.out.println(order.getOrderforAdmin());
-		System.out.println(order.getOrderById(1	));
+		System.out.println(order.insertOrdersDetail(orderDetail));
 
 	}
 }

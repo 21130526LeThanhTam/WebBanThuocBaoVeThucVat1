@@ -44,6 +44,9 @@
         .btn {
             margin-right: 5px;
         }
+        .low-inventory {
+            background-color: #ffcccc !important;
+        }
     </style>
 </head>
 <%List<Products> allProducts = (List<Products>) request.getAttribute("allProducts");%>
@@ -61,21 +64,19 @@
     <table id="quanlyTable" class="table table-striped table-bordered" style="width:100%">
         <thead>
         <tr>
-
-            <th style="width: 20px">ID</th>
-            <th style="width: 200px;">Tên</th>
-            <th style="width:175px">Loại sản phẩm</th>
-            <th>Ảnh</th>
-            <th>Giá</th>
-            <th>Tồn Kho</th>
-            <th style="width:100px">Trạng Thái</th>
-            <th style="width: 150px;">Tính Năng</th>
+            <th style="width: 20px;font-weight: bold">ID</th>
+            <th style="width: 200px;font-weight: bold">Tên</th>
+            <th style="width:175px;font-weight: bold">Loại sản phẩm</th>
+            <th style="font-weight: bold">Ảnh</th>
+            <th style="font-weight: bold">Giá</th>
+            <th style="font-weight: bold">Tồn Kho</th>
+            <th style="width:100px;font-weight: bold">Trạng Thái</th>
+            <th style="width: 150px;font-weight: bold">Tính Năng</th>
         </tr>
         </thead>
         <tbody>
         <%for (Products a : allProducts) {%>
-        <tr>
-
+        <tr class="<%= a.getInventory_quantity() <= 10 ? "low-inventory" : "" %>">
             <th><%= a.getId()%></th>
             <th><%= a.getProduct_name() %></th>
             <th><%= a.cateOfProduct() %></th>

@@ -20,16 +20,27 @@ public class ImportDao {
 
     // Thêm đơn nhập hàng
     public static boolean insertImport(Import order) {
-        String sql = "INSERT INTO imports (id_product, quantity, price, status) VALUES (?,?,?,'Chưa Giao')";
+        String insertImportSql  = "INSERT INTO imports (id_product, quantity, price, status) VALUES (?,?,?,'Chưa Giao')";
+        String updateProductSql = "UPDATE products SET inventory_quantity = inventory_quantity + ? WHERE id = ?";
         Jdbi jdbi = JDBIConnector.getJdbi();
-        int rowsAffected = jdbi.withHandle(handle ->
-                handle.createUpdate(sql)
-                        .bind(0, order.getId_product())
-                        .bind(1, order.getQuantity())
-                        .bind(2, order.getPrice())
-                        .execute()
-        );
-        return rowsAffected > 0;
+        return jdbi.inTransaction(handle -> {
+            int rowsAffected = handle.createUpdate(insertImportSql)
+                    .bind(0, order.getId_product())
+                    .bind(1, order.getQuantity())
+                    .bind(2, order.getPrice())
+                    .execute();
+
+            if (rowsAffected > 0) {
+                int updateRows = handle.createUpdate(updateProductSql)
+                        .bind(0, order.getQuantity())
+                        .bind(1, order.getId_product())
+                        .execute();
+
+                return updateRows > 0;
+            }
+
+            return false;
+        });
     }
 
     // Xóa đơn nhập hàng
@@ -62,7 +73,7 @@ public class ImportDao {
 //        ImportDao.updateImport(1,"Đã Giao");
 //        ImportDao.deleteImport(1);
         Import i1 = new Import();
-        i1.setId_product(1);
+        i1.setId_product(3);
         i1.setQuantity(20);
         i1.setPrice(5000);
         ImportDao.insertImport(i1);

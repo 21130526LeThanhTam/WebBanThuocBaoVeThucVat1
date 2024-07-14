@@ -64,12 +64,12 @@
             <thead>
             <tr>
                 <th>Mã</th>
-                <th style="width: 100px">Tên</th>
-                <th style="width: 100px">Email</th>
-                <th style="width: 100px">Số điện thoại</th>
-                <th style="width: 100px">Vai trò</th>
-                <th style="width: 100px">Trạng Thái</th>
-                <th style="width: 150px">Tính Năng</th>
+                <th style="width: 100px;font-weight: bold">Tên</th>
+                <th style="width: 100px;font-weight: bold ">Email</th>
+                <th style="width: 100px;font-weight: bold">Số điện thoại</th>
+                <th style="width: 100px;font-weight: bold">Vai trò</th>
+                <th style="width: 100px;font-weight: bold">Trạng Thái</th>
+                <th style="width: 150px;font-weight: bold">Tính Năng</th>
             </tr>
             </thead>
             <tbody>

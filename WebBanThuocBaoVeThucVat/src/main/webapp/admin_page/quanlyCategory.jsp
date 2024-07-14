@@ -59,10 +59,10 @@
     <table id="quanlyTable" class="table table-striped table-bordered" style="width:100%">
         <thead>
         <tr>
-            <th style="width: 50px">Mã</th>
-            <th>Tên danh mục</th>
-            <th style="width:100px">Hoạt Động</th>
-            <th style="width:100px">Tính Năng</th>
+            <th style="width: 50px;font-weight: bold">Mã</th>
+            <th style="font-weight: bold">Tên danh mục</th>
+            <th style="width:100px;font-weight: bold">Hoạt Động</th>
+            <th style="width:100px;font-weight: bold">Tính Năng</th>
         </tr>
         </thead>
         <tbody>

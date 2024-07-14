@@ -42,6 +42,9 @@
         table.table td:last-child{
             font-size:14px;
         }
+        thead tr th{
+            font-weight: bold!important;
+        }
     </style>
 </head>
 <body>
