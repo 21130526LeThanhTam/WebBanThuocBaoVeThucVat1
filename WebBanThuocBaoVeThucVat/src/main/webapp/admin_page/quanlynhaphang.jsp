@@ -197,7 +197,7 @@
         $('#exportButton').on('click', function() {
             var tableElement = document.getElementById('quanlyTable');
             var wb = XLSX.utils.table_to_book(tableElement, {sheet: "Sheet1"});
-            XLSX.writeFile(wb, 'OrderDetails.xlsx');
+            XLSX.writeFile(wb, 'ImportDetails.xlsx');
         });
     });
 

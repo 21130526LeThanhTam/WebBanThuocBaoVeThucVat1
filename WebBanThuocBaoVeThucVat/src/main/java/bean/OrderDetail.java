@@ -1,11 +1,16 @@
 package bean;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+
 public class OrderDetail {
     private int id;
     private int order_id;
     private int product_id;
     private int quantity;
-
     public OrderDetail(int order_id, int product_id, int quantity) {
         this.order_id = order_id;
         this.product_id = product_id;
