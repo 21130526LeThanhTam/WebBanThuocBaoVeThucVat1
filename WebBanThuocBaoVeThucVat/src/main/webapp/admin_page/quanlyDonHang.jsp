@@ -274,7 +274,7 @@
                         orderDetailsHtml += '<td>' + detail.product_name + '</td>';
                         orderDetailsHtml += '<td><img src="' + detail.img + '" alt="' + detail.product_name + '" style="width: 50px; height: 50px;"></td>';
                         orderDetailsHtml += '<td>' + detail.quantity + '</td>';
-                        orderDetailsHtml += '<td>' + detail.priceDetails + '</td>';
+                        orderDetailsHtml += '<td>' + parseInt(detail.priceDetails).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }) + '</td>';
                         orderDetailsHtml += '</tr>';
                     });
                     $('#orderDetailsContent').html(orderDetailsHtml);

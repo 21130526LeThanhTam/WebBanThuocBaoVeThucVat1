@@ -224,6 +224,7 @@ public class ProductsDao implements IProductsDao{
     public static void main(String[] args) {
         ProductsDao dao = new ProductsDao();
         System.out.println(dao.getProductsPerPage(1));
+        System.out.println(ProductsDao.getAllProducts());
 
     }
 }

@@ -1,11 +1,12 @@
 package bean;
 
 import dao.ProductsDao;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.Date;
-
+@Data
 public class Products implements Serializable {
     private int id;
     private int id_category;
@@ -18,7 +19,7 @@ public class Products implements Serializable {
     private int inventory_quantity;
 
     private Date update_at;
-
+    private int total_sold;
 
 
     //SELECT id , product_name ,picture, price, id_category, quanitity, status, specifications,pro_desc FROM product
