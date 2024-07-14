@@ -68,7 +68,7 @@
                         </a>
                     </li>
                     <li class="submenu-item">
-                        <a href="#" data-url="./logAdmin" class="load-content">
+                        <a href="#" data-url="./logAdmin" class="load-content" id="logManagementLink">
                             <i class="fas fa-history"></i> Lịch sử hoạt động
                         </a>
                     </li>

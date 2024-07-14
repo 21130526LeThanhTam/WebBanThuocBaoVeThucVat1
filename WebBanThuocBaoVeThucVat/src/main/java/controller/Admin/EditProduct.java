@@ -3,6 +3,7 @@ package controller.Admin;
 import CKeditor.HtmlUtils;
 import Service.ProductsService;
 import bean.Products;
+import dao.LogDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -110,6 +111,16 @@ public class EditProduct extends HttpServlet {
         //        ProductsDao.editProduct(name, picture, price, idCategory, quantity, status, specifications, proDesc, id);
         //    }
         ProductsService.getInstance().editProduct(productName,imagePath,priceInt,idCategoryInt,activeInt,proDesc,inventoryInt,proIDOld);
+        Products newProducts = new Products();
+        newProducts.setId(proIDOld);
+        newProducts.setProduct_name(productName);
+        newProducts.setImage(imagePath);
+        newProducts.setPrice(priceInt);
+        newProducts.setId_category(idCategoryInt);
+        newProducts.setStatus(activeInt);
+        newProducts.setDes(proDesc);
+        newProducts.setInventory_quantity(inventoryInt);
+        LogDao.getInstance().updateModel(oldPro,newProducts,"",1,"");
         resp.sendRedirect("./admin_dashboard?page=./maProduct");
     }
 }

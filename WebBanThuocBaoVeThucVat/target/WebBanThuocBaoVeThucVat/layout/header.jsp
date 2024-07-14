@@ -140,7 +140,7 @@
                 <nav class="header__menu">
                     <ul>
                         <li><a href="HomePageController">Trang chủ</a></li>
-                        <li><a href="ProductController">Cửa hàng</a></li>
+                        <li><a href="StoreProductHome">Cửa hàng</a></li>
                         <li><a href="blog-details.jsp">Các bài viết</a></li>
                         <li><a href="lien-he.jsp">Liên hệ</a></li>
                     </ul>
@@ -215,7 +215,7 @@
                     <p style="width: 100%; text-align: center; cursor: pointer;" class="a" onclick="setSearchType('price')">By Price</p>
                 </div>
             </div>
-
+            <input type="hidden" name="order" value="<%=session.getAttribute("order")%>">
             <!-- Submit button -->
             <button type="submit" class="site-btn"><i class="fa fa-search"></i></button>
         </form>
