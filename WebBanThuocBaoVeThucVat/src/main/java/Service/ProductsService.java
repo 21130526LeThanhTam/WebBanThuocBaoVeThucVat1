@@ -76,6 +76,6 @@ public class ProductsService {
     }
     public static void main(String[] args) {
         System.out.println(ProductsService.getInstance().numOfPro());
-//        System.out.println(ProductsService.getInstance().getProductById(1));
+        ProductsService.getInstance().insertProduct("RỪ BỆNH ENDICO 5SC","dsfsd",3423,1,1,60,"dsfsd");
     }
 }

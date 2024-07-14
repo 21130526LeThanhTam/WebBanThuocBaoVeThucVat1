@@ -31,8 +31,9 @@
                 var surname = $('#surname').val();
                 var lastname = $('#lastname').val();
                 var phone = $('#phone').val();
-                var pass = $('#pass').val();
-                var rePass = $('#rePass').val();
+                var pass = $('#password').val();
+                var rePass = $('#rePassword').val();
+
 
                 $.ajax({
                     type: 'POST',
@@ -77,7 +78,7 @@
     <div class="form signup">
         <div class="form-content">
             <header>Signup</header>
-            <form id="form">
+            <form action="signup" method="post">
                 <% String error = (String) session.getAttribute("errorRegis"); %>
                 <% if(error != null){ %>
                 <p class="text-danger"><%= error %></p>
@@ -137,7 +138,6 @@
             this.classList.toggle('fa-eye-slash');
         });
     };
-
     togglePasswordVisibility('togglePassword', 'password');
     togglePasswordVisibility('reTogglePassword', 'rePassword');
 </script>

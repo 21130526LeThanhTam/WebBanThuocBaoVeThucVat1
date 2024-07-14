@@ -247,13 +247,13 @@
     <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/main.js"></script>
 <script>
-    document.getElementById("button2").addEventListener("click", function() {
-        // Simulate a click on the first hidden button ("button1") for each item
-        const hiddenButtons = document.querySelectorAll(".button");
-        hiddenButtons.forEach(function(button) {
-            button.click();
-        });
-    });
+    // document.getElementById("button2").addEventListener("click", function() {
+    //     // Simulate a click on the first hidden button ("button1") for each item
+    //     const hiddenButtons = document.querySelectorAll(".button");
+    //     hiddenButtons.forEach(function(button) {
+    //         button.click();
+    //     });
+    // });
     function changeStatus(pid, quantity, action) {
         console.log(pid, quantity, action)
         document.querySelector('#t'+pid).innerHTML = Number(quantity)*Number(document.querySelector('#pr'+pid).textContent);

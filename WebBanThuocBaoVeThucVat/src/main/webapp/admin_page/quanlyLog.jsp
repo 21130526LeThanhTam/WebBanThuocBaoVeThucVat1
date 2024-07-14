@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <title>Quản lý danh mục</title>
+    <title>Quản lý hoạt động</title>
     <style>
         .dataTables_wrapper .dataTables_paginate .paginate_button {
             padding: 0.5rem 0.75rem;
@@ -50,19 +50,20 @@
 <body>
 <div class="container my-5">
     <div class="text-center">
-        <h3 class="page-title" style="color:black; font-weight: bold; margin-top: 30px; margin-bottom: 40px">Quản Lý Danh Mục</h3>
+        <h3 class="page-title" style="color:black; font-weight: bold; margin-top: 30px; margin-bottom: 40px">Quản Lý Hoạt Động</h3>
     </div>
     <div class="mb-5 d-flex align-items-center">
-        <button class="btn btn-success" data-toggle="modal" data-target="#addCategoryModal">+ Thêm mới danh mục</button>
+<%--        <button class="btn btn-success" data-toggle="modal" data-target="#addCategoryModal">+ Thêm mới danh mục</button>--%>
         <button class="btn btn-info ml-3" id="exportButton">=> Xuất file</button>
     </div>
     <table id="quanlyTable" class="table table-striped table-bordered" style="width:100%">
         <thead>
         <tr>
             <th style="width: 50px">Mã</th>
-            <th>Tên danh mục</th>
-            <th style="width:100px">Hoạt Động</th>
-            <th style="width:100px">Tính Năng</th>
+            <th>Địa chỉ IP</th>
+            <th>Mức độ</th>
+            <th style="width:100px">Hành Động</th>
+            <th style="width:100px">Thời gian </th>
         </tr>
         </thead>
         <tbody>

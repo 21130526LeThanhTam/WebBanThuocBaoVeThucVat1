@@ -26,8 +26,8 @@ public abstract class AbstractDao<T extends IModel> implements IDao {
         return true;
     }
     @Override
-    public boolean updateModel(AbsModel model,String ip, int level, String address) {
-        LogDao.getInstance().updateModel(model,ip,level,address);
+    public boolean updateModel(AbsModel modelBf,AbsModel modelAt, String ip, int level, String address) {
+        LogDao.getInstance().updateModel(modelBf,modelAt,ip,level,address);
         return true;
     }
 

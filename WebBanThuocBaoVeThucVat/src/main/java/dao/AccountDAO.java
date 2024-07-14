@@ -59,7 +59,7 @@ public class AccountDAO extends AbstractDao<User> {
         } else {
             u = users.get(0);
             if(PasswordUtils.verifyPassword(user.getPassword(), u.getPassword())){
-                super.login(user,"Login success!",ip,level,address);
+                super.login(u,"Login success!",ip,level,address);
             } else {
                 super.login(user,"Login failed!",ip,level,address);
                 u = null;
@@ -109,7 +109,7 @@ public class AccountDAO extends AbstractDao<User> {
             ps.setString(7, hash);
             int i = ps.executeUpdate();
             if(i != 0){
-                super.signUp(email, "insert user success!", ip, level, address);
+                super.signUp(email, "insert user success !", ip, level, address);
                 return "success";
             }
         } catch (SQLException e) {
