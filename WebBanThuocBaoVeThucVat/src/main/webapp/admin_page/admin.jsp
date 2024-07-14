@@ -85,6 +85,11 @@
                 </a>
             </li>
             <li>
+                <a href="#" id="orderManagementLink" data-url="./orderManagement" class="load-content">
+                    <i class="fas fa-clipboard-list"></i> Quản lý Đơn Hàng
+                </a>
+            </li>
+            <li>
                 <a href="#" id="importManagementLink" data-url="./importManagement" class="load-content">
                     <i class="fas fa-truck-loading"></i> Quản lý Nhập Hàng
                 </a>
