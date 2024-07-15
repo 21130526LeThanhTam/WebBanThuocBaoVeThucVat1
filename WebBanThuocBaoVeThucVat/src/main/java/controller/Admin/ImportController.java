@@ -1,6 +1,7 @@
 package controller.Admin;
 
 import bean.Import;
+import dao.LogDao;
 import dao.admin.ImportDao;
 import com.google.gson.Gson;
 
@@ -44,6 +45,7 @@ public class ImportController extends HttpServlet {
                     newOrder.setQuantity(Integer.parseInt(req.getParameter("quantity")));
                     newOrder.setPrice(Double.parseDouble(req.getParameter("price")));
                     boolean insertSuccess = ImportDao.insertImport(newOrder);
+                    LogDao.getInstance().insertModel(newOrder,"",1,"");
                     result.put("status", insertSuccess ? "success" : "error");
                     break;
                 case "delete":
@@ -53,8 +55,11 @@ public class ImportController extends HttpServlet {
                     break;
                 case "update":
                     int orderIdToUpdate = Integer.parseInt(req.getParameter("orderId"));
+                    Import oldIpo = ImportDao.getImportById(orderIdToUpdate);
                     String status = req.getParameter("status");
                     boolean updateSuccess = ImportDao.updateImport(orderIdToUpdate, status);
+                    Import newIpo = ImportDao.getImportById(orderIdToUpdate);
+                    LogDao.getInstance().updateModel(oldIpo,newIpo,"",1,"");
                     result.put("status", updateSuccess ? "success" : "error");
                     break;
             }}

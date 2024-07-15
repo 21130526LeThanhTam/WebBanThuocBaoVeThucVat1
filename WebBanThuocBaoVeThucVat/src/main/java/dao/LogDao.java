@@ -22,21 +22,7 @@ public class LogDao implements IDao{
     }
 
     public <T extends IModel> void selectModel() {}
-//
-//    public <T extends IModel> void insertModel(T model,String ip, int level, String address) {
-//
-//    }
-//
-//    public <T extends IModel> void deleteModel(T model,String ip, int level, String address) {
-//
-//    }
-//
-//    public <T extends IModel> void updateModel(T model,String ip, int level, String address) {
-//        String action ="Update"+model.getTable();
-//    }
-//    public <T extends IModel> void login(T model, String action, String ip, int level, String address) {
-//
-//    }
+
     public boolean printLog(String action, AbsModel model, String ip, int level, String address) {
         Integer i = JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createUpdate("INSERT INTO log(ip,action,level,address,previousValue,currentValue,create_at,update_at) VALUES (?,?,?,?,?,?,?,?)")
@@ -60,13 +46,13 @@ public class LogDao implements IDao{
 
     @Override
     public boolean insertModel(AbsModel model, String ip, int level, String address) {
-        String action ="Insert "+model.getTable();
+        String action ="Thêm "+model.getTable();
         return printLog(action,model,ip,level,address);
     }
 
     @Override
     public boolean deleteModel(AbsModel model, String ip, int level, String address) {
-        String action ="Delete "+model.getTable();
+        String action ="Xóa "+model.getTable();
         return printLog(action,model,ip,level,address);
     }
 
@@ -108,7 +94,6 @@ public class LogDao implements IDao{
         );
         return i == 1;
     }
-
 
 
     public static void main(String[] args) {

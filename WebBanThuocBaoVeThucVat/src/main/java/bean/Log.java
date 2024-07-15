@@ -117,5 +117,6 @@ public class Log implements IModel {
     public String afterData() {
         return null;
     }
+    
 
 }

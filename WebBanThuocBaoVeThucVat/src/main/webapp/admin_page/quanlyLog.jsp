@@ -60,9 +60,9 @@
         <thead>
         <tr>
             <th style="width: 50px">Mã</th>
-            <th>Địa chỉ IP</th>
-            <th>Mức độ</th>
             <th style="width:100px">Hành Động</th>
+            <th>Mức độ</th>
+            <th>Địa chỉ</th>
             <th style="width:100px">Thời gian </th>
         </tr>
         </thead>

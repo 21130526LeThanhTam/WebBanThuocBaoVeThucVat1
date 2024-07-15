@@ -2,6 +2,8 @@ package controller.Admin;
 
 import Service.ProductsService;
 import Service.UserService;
+import bean.Products;
+import dao.LogDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +17,7 @@ public class ToggleProductStatusServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String productID = request.getParameter("productID");
         String action = request.getRequestURI().substring(request.getContextPath().length());
+        String actionDescription = action.equals("/disableProduct") ? "vô hiệu hóa sản phẩm" : "kích hoạt sản phẩm";
         boolean disable = action.equals("/disableProduct");
         if (productID != null) {
             try {
@@ -23,6 +26,8 @@ public class ToggleProductStatusServlet extends HttpServlet {
                 boolean result =  ProductsService.getInstance().toggleProductStatus(id,disable);
 
                 if (result) {
+                    Products aa= ProductsService.getInstance().getProductById(id);
+                    LogDao.getInstance().printLog(actionDescription,aa,"",1,"");
                     response.setStatus(HttpServletResponse.SC_OK);
                     response.getWriter().write("Success");
                 } else {

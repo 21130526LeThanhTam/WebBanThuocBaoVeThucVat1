@@ -1,7 +1,10 @@
 package controller.Admin;
 
 import Service.CategoryService;
+import bean.Category;
 import com.google.gson.Gson;
+import dao.CategoryDAO;
+import dao.LogDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,9 +38,11 @@ public class EditCategory extends HttpServlet {
             if (categoryId != null && !categoryId.isEmpty()) {
                 intCategoryId = Integer.parseInt(categoryId);
             }
+            Category oldCategory = CategoryDAO.getCategoryById(intCategoryId);
             boolean updateSuccess = CategoryService.getInstance().updateCategory(categoryName, intCategoryId);
-
+            Category newCategory = new Category(intCategoryId,categoryName);
             if (updateSuccess) {
+                LogDao.getInstance().updateModel(oldCategory,newCategory,"",1,"");
                 response.put("status", "success");
                 response.put("message", "Chỉnh sửa danh mục thành công!");
             } else {

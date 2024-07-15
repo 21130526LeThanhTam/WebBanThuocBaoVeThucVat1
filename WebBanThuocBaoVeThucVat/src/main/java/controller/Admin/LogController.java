@@ -5,9 +5,7 @@ import com.maxmind.geoip2.DatabaseReader;
 import com.maxmind.geoip2.exception.AddressNotFoundException;
 import com.maxmind.geoip2.exception.GeoIp2Exception;
 import com.maxmind.geoip2.model.CityResponse;
-import com.maxmind.geoip2.record.City;
-import com.maxmind.geoip2.record.Country;
-import com.maxmind.geoip2.record.Location;
+import com.maxmind.geoip2.record.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,24 +34,28 @@ public class LogController extends HttpServlet {
 //        String json = gson.toJson();
 
         try(DatabaseReader reader = new DatabaseReader.Builder(file).build()) {
-            InetAddress ipAddress = InetAddress.getByName("113.161.77.154");
+            InetAddress ipAddress = InetAddress.getByName("115.74.192.50");
+            String ipaddress = InetAddress.getLocalHost().getHostAddress();
 
             // Perform the lookup
             CityResponse response = reader.city(ipAddress);
 
             // Get the country details
             Country country = response.getCountry();
+            out.println("Country ISO Code: " + ipaddress);
             out.println("Country ISO Code: " + country.getIsoCode());
             out.println("Country Name: " + country.getName());
+            out.println("IP: " + req.getHeader("X-FORWARDED-FOR"));
 
             // Get the city details
             City city = response.getCity();
             out.println("City Name: " + city.getName());
 
             // Get the location details
-            Location location = response.getLocation();
-            out.println("Latitude: " + location.getLatitude());
-            out.println("Longitude: " + location.getLongitude());
+            Subdivision subdivision = response.getMostSpecificSubdivision();
+            out.println("subdivision Name: " + subdivision.getName());
+            out.println("subdivision IsoCode: " + subdivision.getIsoCode());
+
 
         } catch (AddressNotFoundException e) {
             System.out.println("The address was not found in the database.");

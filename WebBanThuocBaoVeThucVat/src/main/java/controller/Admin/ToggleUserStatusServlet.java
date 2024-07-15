@@ -1,6 +1,7 @@
 package controller.Admin;
 
 import Service.UserService;
+import dao.LogDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +15,7 @@ public class ToggleUserStatusServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String userID = request.getParameter("userID");
         String action = request.getRequestURI().substring(request.getContextPath().length());
+        String actionDescription = action.equals("/disableUser") ? "vô hiệu hóa tài khoản" : "kích hoạt tài khoản";
         boolean disable = action.equals("/disableUser");
 
         if (userID != null) {
@@ -23,9 +25,11 @@ public class ToggleUserStatusServlet extends HttpServlet {
                 boolean result = UserService.getInstance().toggleUserStatus(id, disable);
 
                 if (result) {
+                    LogDao.getInstance().printLog(actionDescription,UserService.getInstance().selectUser(id),"",1,"");
                     response.setStatus(HttpServletResponse.SC_OK);
                     response.getWriter().write("Success");
                 } else {
+                    LogDao.getInstance().printLog("Thay đổi trạng thái thất bại",UserService.getInstance().selectUser(id),"",1,"");
                     response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
                     response.getWriter().write("Failed to update user status.");
                 }
