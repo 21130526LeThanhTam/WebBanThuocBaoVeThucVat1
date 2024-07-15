@@ -17,8 +17,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,7 +24,6 @@ import java.util.logging.Logger;
 @MultipartConfig
 public class UserChangeAvatar extends HttpServlet {
     private static final Logger LOGGER = Logger.getLogger(UserChangeAvatar.class.getName());
-    private static final ExecutorService executorService = Executors.newFixedThreadPool(5);
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Part filePart = request.getPart("profilePic");
@@ -38,6 +35,10 @@ public class UserChangeAvatar extends HttpServlet {
                  ByteArrayOutputStream buffer = new ByteArrayOutputStream()) {
 
                 BufferedImage image = ImageIO.read(fileContent);
+                if (image == null) {
+                    throw new IOException("Cannot read the uploaded image. ImageIO.read returned null.");
+                }
+
                 ImageIO.write(image, "jpg", buffer);  // Nén ảnh sang định dạng JPG
                 byte[] bytes = buffer.toByteArray();
 
@@ -45,23 +46,23 @@ public class UserChangeAvatar extends HttpServlet {
                 User user = (User) session.getAttribute("user");
 
                 if (user != null) {
-                    // Tải ảnh lên Cloudinary trong một luồng riêng
-                    executorService.submit(() -> {
-                        try {
-                            Cloudinary cloudinary = CloudinaryConfig.getCloudinary();
-                            Map uploadResult = cloudinary.uploader().upload(bytes, ObjectUtils.emptyMap());
-                            String imageUrl = (String) uploadResult.get("secure_url");
-                            LOGGER.info("Uploaded to Cloudinary: " + imageUrl);
+                    try {
+                        Cloudinary cloudinary = CloudinaryConfig.getCloudinary();
+                        Map uploadResult = cloudinary.uploader().upload(bytes, ObjectUtils.emptyMap());
+                        String imageUrl = (String) uploadResult.get("secure_url");
+                        LOGGER.info("Uploaded to Cloudinary: " + imageUrl);
 
-                            // Lưu URL vào cơ sở dữ liệu
-                            saveFilePathToDatabase(imageUrl, user.getId());
-                            user.setPicture(imageUrl);
-                            session.setAttribute("user", user);
-                            LOGGER.info("Saved URL to database and updated user session.");
-                        } catch (Exception e) {
-                            LOGGER.log(Level.SEVERE, "File upload failed during Cloudinary upload.", e);
-                        }
-                    });
+                        // Lưu URL vào cơ sở dữ liệu
+                        saveFilePathToDatabase(imageUrl, user.getId());
+                        user.setPicture(imageUrl);
+                        session.setAttribute("user", user);
+                        LOGGER.info("Saved URL to database and updated user session.");
+
+                    } catch (Exception e) {
+                        LOGGER.log(Level.SEVERE, "File upload failed during Cloudinary upload.", e);
+                        response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "File upload failed.");
+                        return;
+                    }
                 }
             } catch (Exception e) {
                 LOGGER.log(Level.SEVERE, "File processing failed.", e);
