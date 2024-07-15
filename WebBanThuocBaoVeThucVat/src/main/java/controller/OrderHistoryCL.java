@@ -24,6 +24,7 @@ public class OrderHistoryCL extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private IOrdersDAO dao;
     private static final Logger LOGGER = Logger.getLogger(OrderHistoryCL.class.getName());
+
     @Override
     public void init() throws ServletException {
         super.init();
@@ -43,15 +44,15 @@ public class OrderHistoryCL extends HttpServlet {
         }else{
             String action = request.getParameter("action");
             if (action == null || action.isEmpty()) {
-                listOrders(request, response,user);
+                listOrders(request, response, user);
             } else if ("view".equals(action)) {
                 viewOrderDetails(request, response);
+            } else if ("filter".equals(action)) {
+                filterOrdersByStatus(request, response, user);
             }
         }
 
     }
-
-
 
     private void listOrders(HttpServletRequest req, HttpServletResponse resp, User user) throws ServletException, IOException {
         List<OrderTable> listOrder = dao.getOrdersByUser(user);
@@ -73,6 +74,27 @@ public class OrderHistoryCL extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
         resp.getWriter().write(json);
     }
+
+    private void filterOrdersByStatus(HttpServletRequest req, HttpServletResponse resp, User user) throws ServletException, IOException {
+        int status = Integer.parseInt(req.getParameter("status"));
+        List<OrderTable> listOrder;
+        if(status == 5) {
+            listOrder = dao.getOrdersByUser(user);
+        } else {
+            listOrder = dao.getOrdersByUserAndStatus(user, status);
+        }
+        // Chuyển đổi trạng thái đơn hàng thành văn bản
+        for (OrderTable order : listOrder) {
+            order.setOrderStatusText();
+        }
+        Gson gson = new Gson();
+        String json = gson.toJson(listOrder);
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        resp.getWriter().write(json);
+    }
+
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
@@ -105,5 +127,4 @@ public class OrderHistoryCL extends HttpServlet {
             resp.getWriter().write("Success");
         }
     }
-    }
-
+}

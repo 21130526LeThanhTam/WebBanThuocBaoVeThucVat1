@@ -136,12 +136,12 @@
         <h2 class="mb-4">Lịch sử mua hàng</h2>
         <div class="navbar" style="margin-bottom:25px">
             <ul>
-                <li><a class="active" href="#">Tất cả</a></li>
-                <li><a href="#">Chờ thanh toán</a></li>
-                <li><a href="#">Vận chuyển</a></li>
-                <li><a href="#">Chờ giao hàng</a></li>
-                <li><a href="#">Hoàn thành</a></li>
-                <li><a href="#">Đã hủy</a></li>
+                <li><a class="active" href="#" data-status="5">Tất cả</a></li>
+                <li><a href="#" data-status="1">Chờ Xét Duyệt</a></li>
+                <li><a href="#" data-status="2">Đang Đóng Gói</a></li>
+                <li><a href="#" data-status="3">Đang Vận Chuyển</a></li>
+                <li><a href="#" data-status="4">Đã Giao</a></li>
+                <li><a href="#" data-status="0">Đã hủy</a></li>
             </ul>
         </div>
         <table id="orderDetailsTable" class="table table-striped table-bordered" style="width:100%">
@@ -190,14 +190,14 @@
     <!-- Modal Chi tiết đơn hàng -->
     <div class="modal fade " id="orderDetailModal" tabindex="-1" role="dialog" aria-labelledby="orderDetailModalLabel" aria-hidden="true">
         <div class="modal-dialog " role="document">
-            <div class="modal-content" style="width:max-content">
+            <div class="modal-content" style="width:max-content;margin-top:100px">
                 <div class="modal-header">
                     <h5 class="modal-title" id="orderDetailModalLabel">Chi tiết đơn hàng</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
                 <div class="modal-body">
-                    <!-- Nội dung chi tiết đơn hàng sẽ được cập nhật tại đây -->
+                    <%-- Nội dung chi tiết đơn hàng sẽ được cập nhật tại đây --%>
                     <table class="table table-bordered table-hover">
                         <thead>
                         <tr>
@@ -209,7 +209,7 @@
                         </tr>
                         </thead>
                         <tbody id="orderDetailsContent">
-                        <!-- Nội dung sẽ được thêm vào đây qua AJAX -->
+                        <%-- Nội dung sẽ được thêm vào đây qua AJAX --%>
                         </tbody>
                     </table>
                 </div>
@@ -219,7 +219,7 @@
             </div>
         </div>
     </div>
-    <!-- Modal Hủy đơn hàng -->
+    <%-- Modal Hủy đơn hàng --%>
     <div class="modal fade" id="cancelOrderModal" tabindex="-1" role="dialog" aria-labelledby="cancelOrderModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content" style="margin-top:150px">
@@ -239,7 +239,8 @@
             </div>
         </div>
     </div>
-    <!-- Modal Thông Báo Lỗi -->
+
+    <%-- Modal Thông Báo Lỗi --%>
     <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true" style="top:150px">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -250,7 +251,7 @@
                     </button>
                 </div>
                 <div class="modal-body" id="errorMessage">
-                    <!-- Nội dung thông báo lỗi sẽ được thêm vào đây qua AJAX -->
+                    <%-- Nội dung thông báo lỗi sẽ được thêm vào đây qua AJAX --%>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
@@ -258,7 +259,6 @@
             </div>
         </div>
     </div>
-
 </main>
 <jsp:include page="layout/footer.jsp"/>
 <!-- jQuery -->
@@ -274,17 +274,15 @@
 <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#orderDetailsTable').DataTable({
+        var table = $('#orderDetailsTable').DataTable({
             language: {
                 sProcessing: "Đang xử lý...",
                 sLengthMenu: "Xem _MENU_ mục",
-                sZeroRecords: "Không tìm thấy dòng nào phù hợp",
+                sZeroRecords: "Không có đơn hàng",
                 sInfo: "Đang xem _START_ đến _END_ trong tổng số _TOTAL_ mục",
                 sInfoEmpty: "Đang xem 0 đến 0 trong tổng số 0 mục",
                 sInfoFiltered: "(được lọc từ _MAX_ mục)",
-                sInfoPostFix: "",
                 sSearch: "Tìm Kiếm:",
-                sUrl: "",
                 oPaginate: {
                     sFirst: "Đầu",
                     sPrevious: "Trước",
@@ -294,8 +292,47 @@
             }
         });
 
+        $('.navbar ul li a').on('click', function(e) {
+            e.preventDefault();
+            var status = $(this).data('status');
+            $('.navbar ul li a').removeClass('active');
+            $(this).addClass('active');
+            $.ajax({
+                type: 'GET',
+                url: 'OrderHistoryCL',
+                data: { action: 'filter', status: status },
+                success: function(response) {
+                    var orderDetailsHtml = '';
+                    response.forEach(function(order) {
+                        orderDetailsHtml += '<tr>';
+                        orderDetailsHtml += '<td>' + order.id + '</td>';
+                        orderDetailsHtml += '<td>' + order.username + '</td>';
+                        orderDetailsHtml += '<td>' + order.address + '</td>';
+                        orderDetailsHtml += '<td>' + order.phone_number + '</td>';
+                        orderDetailsHtml += '<td>' + parseInt(order.total_price).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }) + '</td>';
+                        orderDetailsHtml += '<td>' + order.createAt + '</td>';
+                        orderDetailsHtml += '<td>' + order.payment_status + '</td>';
+                        orderDetailsHtml += '<td>' + order.orderStatusText  + '</td>';
+                        orderDetailsHtml += '<td>';
+                        orderDetailsHtml += '<button class="btn btn-view view" data-toggle="modal" data-target="#orderDetailModal" data-id="' + order.id + '">';
+                        orderDetailsHtml += '<i class="fas fa-eye" data-toggle="tooltip" title="Xem chi tiết"></i>';
+                        orderDetailsHtml += '</button>';
+                        orderDetailsHtml += '<button class="btn btn-danger cancel-btn" data-toggle="modal" data-target="#cancelOrderModal" data-order-id="' + order.id + '">';
+                        orderDetailsHtml += '<i class="fa-solid fa-ban"></i>';
+                        orderDetailsHtml += '</button>';
+                        orderDetailsHtml += '</td>';
+                        orderDetailsHtml += '</tr>';
+                    });
+                    table.clear().draw();
+                    table.rows.add($(orderDetailsHtml)).draw();
+                },
+                error: function() {
+                    alert('Có lỗi xảy ra khi lọc đơn hàng');
+                }
+            });
+        });
         // Hiển thị chi tiết đơn hàng trong modal
-        $('.view').on('click', function() {
+        $(document).on('click', '.view', function() {
             var orderId = $(this).data('id');
             $.ajax({
                 type: 'GET',
@@ -320,34 +357,33 @@
                 }
             });
         });
-        $(document).ready(function() {
-            // Hiển thị modal hủy đơn hàng với đúng orderId
-            $('.cancel-btn').on('click', function() {
-                var orderId = $(this).data('order-id');
-                $('#confirmCancelOrder').data('order-id', orderId);
-            });
 
-            // Xử lý việc hủy đơn hàng
-            $('#confirmCancelOrder').on('click', function() {
-                var orderId = $(this).data('order-id');
-                $.ajax({
-                    type: 'POST',
-                    url: 'OrderHistoryCL',
-                    data: { action: 'cancelOrder', orderId: orderId },
-                    success: function(response) {
-                        if (response === 'Success'){
+        // Hiển thị modal hủy đơn hàng với đúng orderId
+        $(document).on('click', '.cancel-btn', function() {
+            var orderId = $(this).data('order-id');
+            $('#confirmCancelOrder').data('order-id', orderId);
+        });
+
+        // Xử lý việc hủy đơn hàng
+        $('#confirmCancelOrder').on('click', function() {
+            var orderId = $(this).data('order-id');
+            $.ajax({
+                type: 'POST',
+                url: 'OrderHistoryCL',
+                data: { action: 'cancelOrder', orderId: orderId },
+                success: function(response) {
+                    if (response === 'Success') {
                         alert('Đơn hàng đã được hủy thành công');
-                        location.reload();}
-                        else {
-                            $('#errorMessage').text(response);
-                            $('#cancelOrderModal').modal('hide');
-                            $('#errorModal').modal('show');
-                        }
-                    },
-                    error: function() {
-                        alert('Có lỗi xảy ra khi hủy đơn hàng');
+                        location.reload();
+                    } else {
+                        $('#errorMessage').text(response);
+                        $('#cancelOrderModal').modal('hide');
+                        $('#errorModal').modal('show');
                     }
-                });
+                },
+                error: function() {
+                    alert('Có lỗi xảy ra khi hủy đơn hàng');
+                }
             });
         });
     });

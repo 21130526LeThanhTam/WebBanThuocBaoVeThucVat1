@@ -22,4 +22,6 @@ public interface IOrdersDAO {
 	void updateOrderStatus(int orderId, int orderStatus);
 
 	void updatePaymentStatus(int orderId, String paymentStatus);
+
+	List<OrderTable> getOrdersByUserAndStatus(User user, int status);
 }
