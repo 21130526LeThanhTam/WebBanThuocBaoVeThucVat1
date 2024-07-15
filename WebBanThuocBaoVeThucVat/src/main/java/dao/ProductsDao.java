@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class ProductsDao implements IProductsDao{
+public class ProductsDao implements IProductsDao {
 
     public static boolean toggleProductStatus(int id, boolean disable) {
         String query = "UPDATE products SET status = ? WHERE id = ?";
@@ -164,6 +164,7 @@ public class ProductsDao implements IProductsDao{
         return cateName != null ? cateName : "";
     }
     public static void insertProduct(String name, String image, int price, int category, int status, int inventory_quantity,String desc) {
+        Products products = new Products(name,image,price,category,status,inventory_quantity,desc);
         try {
             JDBIConnector.getJdbi().useHandle(handle ->
                     handle.createUpdate("INSERT INTO products(product_name, image, price, id_category, status,inventory_quantity, des) " +
@@ -176,6 +177,7 @@ public class ProductsDao implements IProductsDao{
                             .bind(5,inventory_quantity)
                             .bind(6, desc)
                             .execute());
+            LogDao.getInstance().insertModel(products,"",1,"");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -222,9 +224,12 @@ public class ProductsDao implements IProductsDao{
     }
 
     public static void main(String[] args) {
-        ProductsDao dao = new ProductsDao();
-        System.out.println(dao.getProductsPerPage(1));
-        System.out.println(ProductsDao.getAllProducts());
+
+//        ProductsDao dao = new ProductsDao();
+//        System.out.println(dao.getProductsPerPage(1));
+//        System.out.println(ProductsDao.getAllProducts());
+        Products dao = new Products("RỪ BỆNH ENDICO 5SC","dsfsd",3423,1,1,60,"dsfsd");
+        ProductsDao.insertProduct("RỪ BỆNH ENDICO 5SC","dsfsd",3423,1,1,60,"dsfsd");
 
     }
 }

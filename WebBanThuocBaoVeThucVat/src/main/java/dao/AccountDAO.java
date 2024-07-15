@@ -54,12 +54,14 @@ public class AccountDAO extends AbstractDao<User> {
         List<User> users = JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createQuery(sql).bind(0, user.getEmail()).mapToBean(User.class).stream().collect(Collectors.toList())
         );
+        System.out.println("Number of users found: " + users.size()); // Log số lượng người dùng tìm thấy
         if (users.size() != 1) {
             super.login(user, "Login failed!", ip, level, address);
         } else {
             u = users.get(0);
+            System.out.println(u);
             if(PasswordUtils.verifyPassword(user.getPassword(), u.getPassword())){
-                super.login(user,"Login success!",ip,level,address);
+                super.login(u,"Login success!",ip,level,address);
             } else {
                 super.login(user,"Login failed!",ip,level,address);
                 u = null;
@@ -109,7 +111,7 @@ public class AccountDAO extends AbstractDao<User> {
             ps.setString(7, hash);
             int i = ps.executeUpdate();
             if(i != 0){
-                super.signUp(email, "insert user success!", ip, level, address);
+                super.signUp(email, "insert user success !", ip, level, address);
                 return "success";
             }
         } catch (SQLException e) {
@@ -149,7 +151,6 @@ public class AccountDAO extends AbstractDao<User> {
     public String activeAccount(String email, String hash){
         Connection con = DBContext.getConnection();
         try {
-
             PreparedStatement ps = con.prepareStatement("select email, hash, active from users where email = ? and hash = ? and active = 0 and login_by = 0");
             ps.setString(1, email);
             ps.setString(2, hash);
@@ -213,14 +214,14 @@ public class AccountDAO extends AbstractDao<User> {
     public static void main(String[] args) {
         //System.out.println(AccountDAO.getInstance().getLoginFail("21130526@st.hcmuaf.edu.vn"));
 //        System.out.println(AccountDAO.getInstance().updateLoginFail("21130526@st.hcmuaf.edu.vn", 1));
-        String email= "hiho@gmail.com";
-        String pass= "4297f44b13955235245b2497399d7a93";
+        String email= "21130514@st.hcmuaf.edu.vn";
+        String pass= "123123";
         User a = new User();
         a.setEmail(email);
         a.setPassword(pass);
         User b =new User(1,1,"Son","4297f44b13955235245b2497399d7a93","0123456789","Son@gmail.com","Son","dsf");
 
-        System.out.println( AccountDAO.getInstance().loginAccount(b,"00999",1,"asgdhg"));
+        System.out.println( AccountDAO.getInstance().loginAccount(a,"00999",1,"asgdhg"));
 //        AccountDAO.getInstance().signUp(email,pass, "hihoo","hihoo","hihoo","hihoo","hihoo","hihoo", 1, "hihoo");
     }
 

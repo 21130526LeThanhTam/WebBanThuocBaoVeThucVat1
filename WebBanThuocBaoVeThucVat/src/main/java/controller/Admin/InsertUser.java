@@ -31,6 +31,7 @@ public class InsertUser extends HttpServlet {
         String pass= req.getParameter("pass");
         String newPass= DigestUtils.md5DigestAsHex(pass.getBytes());
         String phone= req.getParameter("phone");
+        User b = new User(1,1,username,newPass,phone,email,surname,lastname,"");
         User a = UserDAO.getUserByEmail(email);
         System.out.println(a);
         if(a != null){
@@ -41,7 +42,7 @@ public class InsertUser extends HttpServlet {
             out.println("window.location.href='./maUser';");  // Điều hướng về trang form
             out.println("</script>");
         } else {
-            UserService.getInstance().insertUser(email,newPass,username,1,surname,lastname,phone,"",1);
+            UserDAO.getInstance().insertModel(b,"0:0:0:0:0:0:0:1",0,"0:0:0:0:0:0:0:1");
             resp.sendRedirect("./maUser?roleID=1&uid=1");
         }
     }

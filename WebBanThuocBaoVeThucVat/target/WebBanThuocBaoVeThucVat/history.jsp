@@ -38,6 +38,43 @@
         a{
             text-decoration: none !important;
         }
+        .navbar {
+            background-color: #fff;
+            border-bottom: 1px solid #ccc;
+            width: 100%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding:0;
+            width: 100%;
+        }
+
+        .navbar ul li {
+            flex:1;
+            border-right:1px solid white ;
+        }
+        .navbar ul li a {
+            text-decoration: none;
+            color: #000;
+            padding: 10px;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        .navbar a.active {
+            background-color: #7fad39;
+            color: white;
+        }
+        .navbar li:hover {
+            background-color: #7fad39;
+        }
     </style>
 </head>
 <body>
@@ -45,6 +82,17 @@
 <main>
     <div class="container mt-5">
         <h2 class="mb-4">Lịch sử mua hàng</h2>
+        <div class="navbar">
+            <ul>
+                <li><a class="active" href="#">Tất cả</a></li>
+                <li><a href="#">Chờ thanh toán</a></li>
+                <li><a href="#">Vận chuyển</a></li>
+                <li><a href="#">Chờ giao hàng</a></li>
+                <li><a href="#">Hoàn thành</a></li>
+                <li><a href="#">Đã hủy</a></li>
+                <li><a href="#">Trả hàng/Hoàn tiền</a></li>
+            </ul>
+        </div>
         <table id="orderDetailsTable" class="table table-striped table-bordered" style="width:100%">
             <thead>
             <tr>

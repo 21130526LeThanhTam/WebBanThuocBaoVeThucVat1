@@ -28,11 +28,14 @@
                 event.preventDefault();
                 var email = $('#email').val();
                 var password = $('#password').val();
+                var rememberMe = $('#remember-me').is(':checked'); // Get the checkbox status
+                // Proceed with AJAX call first
                 $.ajax({
                     type: 'POST',
                     data: {
                         email: email,
-                        password: password
+                        password: password,
+                        rememberMe: rememberMe
                     },
                     url: 'login',
                     success: function (result) {
@@ -40,6 +43,7 @@
                             var data = JSON.parse(result);
                             if (data.error) {
                                 $('#errorLogin').html(data.error);
+                                $('#checkNull').html("");
                             } else {
                                 var response = grecaptcha.getResponse();
                                 if (response.length === 0) {
@@ -57,7 +61,6 @@
                             $('#errorLogin').html("Lỗi trong quá trình tải request,Vui lòng thử lại");
                         }
                     },
-
                     error: function() {
                         $('#errorLogin').html("Lỗi kết nối. Hãy kiểm tra mạng của bạn và thử lại!");
                     }
@@ -109,38 +112,31 @@
     <div class="form login">
         <div class="form-content">
             <header>Login</header>
-            <form id="form" class="shadow p-3 mb-2 bg-white rounded">
-                <% String error = (String) session.getAttribute("errorlogin"); %>
-                <% if(error != null){ %>
-                <span class="text-danger"><%= error %></span>
+            <form id="form">
+                <% String passF = (String) session.getAttribute("action"); %>
+                <% if(passF != null) { %>
+                    <p class="text-success" id="checkNull"><%= passF %></p>
                 <% } %>
-                <% String passF = (String) session.getAttribute("passF"); %>
-                <% if(passF != null){ %>
-                <p class="text-success"><%= passF %></p>
-                <% } %>
-                <% String reg = (String) session.getAttribute("errorRegis"); %>
-                <% if(reg != null){ %>
-                <p class="text-success"><%= reg %></p>
-                <% } %>
-                <div class="mb-3">
-                    <input name="email" type="email" placeholder="Email" class="form-control" id="email">
+                <div class="field input-field">
+                    <% String emailCookie = ((String) request.getAttribute("email"))==null?"":((String) request.getAttribute("email"));%>
+                    <input name="email" type="email" placeholder="Email" class="input" id="email" value="<%=emailCookie%>">
                 </div>
-                <div class="mb-3" style="position: relative">
-                    <input name="password" type="password" placeholder="Mật khẩu" class="form-control" id="password">
-                    <i class='fas fa-eye eye-icon' id="togglePassword"></i>
+                <div class="field input-field">
+                    <% String passCookie = ((String) request.getAttribute("password"))==null?"":((String) request.getAttribute("password"));%>
+                    <input name="password" type="password" placeholder="Mật khẩu" class="password" id="password" value="<%=passCookie%>">
+                    <i class='bx bx-hide eye-icon'></i>
                 </div>
-                <div class="form-link mb-3">
+                <div class="col-md-12">
+                    <input type="checkbox" id="remember-me" name="remember-me">
+                    <label for="remember-me">Remember-me</label>
+                </div>
+                <div class="form-link">
                     <a href="PasswordForgot" class="forgot-pass">Quên mật khẩu?</a>
                 </div>
-<<<<<<< HEAD
                 <div class="field button-field">
                     <div class="container-capcha" style="margin-left:32px">
                         <div class="g-recaptcha" data-sitekey="6LeWqNkpAAAAANkqcg0zDmNz90pyG4FOLP4QiDQv"></div>
                     </div>
-=======
-                <div class="mb-3">
-                    <div class="g-recaptcha d-flex justify-content-center" data-sitekey="6LeWqNkpAAAAANkqcg0zDmNz90pyG4FOLP4QiDQv"></div>
->>>>>>> origin/main
                     <span class="text-danger" id="errorLogin"></span><br>
                     <input type="submit" value="Đăng nhập" id="btnLogin" class="btn btn-warning w-100 custom-btn ">
                 </div>
@@ -207,17 +203,50 @@
         return true; // Allow form submission
     }
 </script>
-<script>
-    const togglePassword = document.getElementById('togglePassword');
-    const password = document.getElementById('password');
+<%--<bỏ phần thừa phía dưới đi--%>
+<%--<script>--%>
+<%--    const togglePassword = document.getElementById('togglePassword');--%>
+<%--    const password = document.getElementById('password');--%>
 
-    togglePassword.addEventListener('click', function (e) {
-        // toggle the type attribute
-        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-        password.setAttribute('type', type);
-        // toggle the eye icon
-        this.classList.toggle('fa-eye');
-        this.classList.toggle('fa-eye-slash');
+<%--    togglePassword.addEventListener('click', function (e) {--%>
+<%--        // toggle the type attribute--%>
+<%--        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';--%>
+<%--        password.setAttribute('type', type);--%>
+<%--        // toggle the eye icon--%>
+<%--        this.classList.toggle('fa-eye');--%>
+<%--        this.classList.toggle('fa-eye-slash');--%>
+<%--    });--%>
+<%--</script>--%>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let ipFor;
+        fetch('http://ip-api.com/json/?fields=61439')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                ipFor = data;
+                console.log('Fetched data:', data);
+                // Gửi dữ liệu tới trang /login bằng Ajax
+                $.ajax({
+                    url: '/login',
+                    method: 'POST',
+                    data: JSON.stringify(ipFor),
+                    contentType: 'application/json; charset=utf-8',
+                    success: function() {
+                        console.log('Data sent successfully');
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Ajax error:', xhr, status, error);
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+            });
     });
 </script>
 </body>

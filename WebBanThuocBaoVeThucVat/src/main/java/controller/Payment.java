@@ -30,9 +30,6 @@ public class Payment extends HttpServlet {
         HttpSession session = req.getSession(true);
         User user = (User) session.getAttribute("user");
         ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
-        if ( shoppingCart == null) {
-            System.out.println("dsdfdsfds");
-        }
         String address = (String) session.getAttribute("address");
         String txt_inv_customer = (String) session.getAttribute("txt_inv_customer");
         String txt_billing_mobile = (String) session.getAttribute("txt_billing_mobile");
