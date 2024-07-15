@@ -11,7 +11,7 @@ public interface IOrdersDAO {
 	Integer insertOrdersDetail(OrderDetail od);
 	List<Orders> getOrder();
 
-	List<Orders> getOrdersByUser(User user);
+	List<OrderTable> getOrdersByUser(User user);
 
 	List<OrderDetail> getDetailsByOrder(List<Integer> ordersId);
 	 List<OrderTable> getOrderforAdmin();
