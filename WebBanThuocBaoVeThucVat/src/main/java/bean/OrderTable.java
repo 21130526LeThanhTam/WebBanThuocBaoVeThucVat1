@@ -20,5 +20,8 @@ public class OrderTable {
     private Timestamp createAt;
     private String payment_status;
     private int order_status;
-
+    private String orderStatusText;
+    public void setOrderStatusText() {
+        this.orderStatusText = Utility.getOrderStatus(this.order_status);
+    }
 }
