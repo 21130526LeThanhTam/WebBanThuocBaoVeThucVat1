@@ -1,12 +1,11 @@
 package controller;
 
+import Service.DiscountService;
 import Service.IProductService;
 import Service.ProductService;
-import bean.CartItem;
-import bean.Products;
-import bean.ShoppingCart;
-import bean.User;
+import bean.*;
 import com.google.gson.Gson;
+import utils.Utils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,14 +38,48 @@ public class ShoppingCartCL extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
         ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
         if (shoppingCart == null) {
             shoppingCart = new ShoppingCart();
             session.setAttribute("cart", shoppingCart);
         }
+        int re = 0;
+        double retain;
+        Discount discount;
         String action = request.getParameter("action");
         switch (action) {
+            case "check":
+                String code = request.getParameter("discount");
+                for(CartItem i : shoppingCart.getCartItemList()) {
+                    Products product = productService.findById(i.getProduct().getId());
+                    re += i.getQuantity() * product.getPrice();
+                }
+                if (code != null && !code.isEmpty()) {
+                    discount = DiscountService.getInstance().getCouponByCode(code);
+                    if (discount == null) {
+                        out.write("{ \"state\": \"notfound\", \"error\": \"Mã giảm giá không tồn tại!\", \"rect\": \""+ Utils.formatCurrency(0)+"\", \"result\": \""+Utils.formatCurrency(re)+"\" }");
+                        out.close();
+                        return;
+                    }
+//                else if (discount.getStartDate()> Timestamp.valueOf(n))
+                    // Kiem tra ma giam gia co het han khong, hay chua den han, hay het luot su dung, hay khong ap dung cho gio hang chua san pham do.
+                } else {
+                    out.write("{ \"state\": \"notempty\", \"error\": \"\", \"rect\": \""+Utils.formatCurrency(0)+"\", \"result\": \""+Utils.formatCurrency(re)+"\" }");
+                    session.removeAttribute("discount");
+                    session.removeAttribute("retain");
+                    out.close();
+                    return;
+                }
+                session.setAttribute("discount", discount);
+                retain = re - discount.getSalePercent() * re;
+                session.setAttribute("result", Utils.formatCurrency(retain));
+                session.setAttribute("retain", Utils.formatCurrency(re * discount.getSalePercent()));
+                out.write("{\"result\": \""+Utils.formatCurrency(retain)+"\", \"rect\": \"" + Utils.formatCurrency(re * discount.getSalePercent()) +"\"}");
+                out.flush();
+                out.close();
+                break;
         case "get": request.getRequestDispatcher("gio-hang.jsp").forward(request, response);
             break;
         case "delete": Delete(request, response);

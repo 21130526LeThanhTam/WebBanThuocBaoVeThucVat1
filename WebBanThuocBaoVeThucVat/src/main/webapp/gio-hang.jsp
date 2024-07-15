@@ -149,8 +149,9 @@
                     <div class="shoping__discount">
                         <h5>Mã giảm giá</h5>
                         <form action="#">
-                            <input type="text" placeholder="Điền mã của bạn vào">
-                            <button type="submit" class="site-btn">Áp dụng mã</button>
+                            <span id="errorDiscount" style="color: red;"></span>
+                            <input type="text" placeholder="Điền mã của bạn vào" id="discount">
+                            <button type="submit" class="site-btn" id="btnDiscount">Áp dụng mã</button>
                         </form>
                     </div>
                 </div>
@@ -213,7 +214,7 @@
                 <div class="footer__widget">
                     <h6>Tham gia với chúng tôi</h6>
                     <p>Cập nhật thông tin mới nhất và các ưu đãi về cửa hàng thông qua email.</p>
-                    <form action="#">
+                    <form>
                         <input type="text" placeholder="Nhập địa chỉ email">
                         <button type="submit" class="site-btn">ĐĂNG KÝ</button>
                     </form>
@@ -281,8 +282,42 @@
         });
     }
 </script>
-
-
+<script>
+    var context = "${pageContext.request.contextPath}";
+    $(document).ready(function() {
+        $('#btnDiscount').click(function (event) {
+            event.preventDefault();
+            var discountName = $('#discount').val();
+            console.log(discountName)
+            $.ajax({
+                type: 'POST',
+                data: {
+                    discount: discountName,
+                    action: "check"
+                },
+                url: 'ShoppingCartCL',
+                success: function (response) {
+                    console.log(response)
+                    // const retain = document.getElementById("retain");
+                    // const result = document.getElementById("result");
+                    if (response.state === "notfound" || response.state === "notempty") {
+                        $('#errorDiscount').html(response.error);
+                    } else {
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "Thêm Sản Phẩm Vào Giỏ Hàng Thành Công!",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        $('#errorDiscount').html("");
+                    }
+                    // result.innerHTML = response.result + "VND";
+                    // retain.innerHTML = response.rect + "VND"
+                }
+            });
+        });
+    });
+</script>
 </body>
-
 </html>

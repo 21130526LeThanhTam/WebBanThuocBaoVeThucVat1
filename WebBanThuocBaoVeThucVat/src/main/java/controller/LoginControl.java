@@ -44,9 +44,11 @@ public class LoginControl extends HttpServlet {
         } else {
             if(!Utils.isValidEmail(email)) {
                 out.println("{\"error\":\"Email sai format\"}");
-            } else if(!Utils.isStrongPassword(pass)) {
-                out.println("{\"error\":\"Độ dài ít nhất 8 ký tự, chứa số, chữ hoa, chữ thường và ký tự đặc biệt\"}");
-            } else {
+            }
+//            else if(!Utils.isStrongPassword(pass)) {
+//                out.println("{\"error\":\"Độ dài ít nhất 8 ký tự, chứa số, chữ hoa, chữ thường và ký tự đặc biệt\"}");
+//            }
+            else {
                 User user = AccountDAO.login(email, DigestUtils.md5DigestAsHex(pass.getBytes()));
                 if (user == null) {
                     count++;
