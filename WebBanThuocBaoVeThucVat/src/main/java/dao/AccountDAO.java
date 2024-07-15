@@ -50,7 +50,7 @@ public class AccountDAO extends AbstractDao<User> {
     public User loginAccount(AbsModel model, String ip, int level, String address) {
         User user = (User) model;
         User u = null;
-        String sql = "SELECT id, role, user_name, password, phone, email, sur_name, last_name, hash, active FROM users WHERE email = ? AND active = 1";
+        String sql = "SELECT id, role, user_name, password, phone, email, sur_name, last_name, hash, active,picture FROM users WHERE email = ? AND active = 1";
         List<User> users = JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createQuery(sql).bind(0, user.getEmail()).mapToBean(User.class).stream().collect(Collectors.toList())
         );

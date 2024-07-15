@@ -40,7 +40,7 @@
                                     <div class="mx-auto" style="width: 140px;">
                                         <!--ảnh profile-->
                                         <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
-                                            <img src="./upload/Screenshot%202024-04-07%20144746.png" alt="Profile Picture" style="width: 140px; height: 140px; object-fit: cover;">
+                                            <img src="<%= user.getPicture()%>" alt="Profile Picture" style="width: 140px; height: 140px; object-fit: cover;">
                                         </div>
                                     </div>
                                 </div>
