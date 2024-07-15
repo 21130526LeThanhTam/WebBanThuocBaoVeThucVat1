@@ -1,8 +1,11 @@
 <%@ page import="bean.User" %>
 <%@ page import="org.jdbi.v3.core.Jdbi" %>
 <%@ page import="db.JDBIConnector" %>
+<%@ page import="java.time.LocalDateTime" %>
+<%@ page import="java.time.temporal.ChronoUnit" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,10 +22,23 @@
 </head>
 <%
     User user = (User) session.getAttribute("user");
-//    Jdbi jdbi= JDBIConnector.getJdbi();
-//    String picture = jdbi.withHandle(handle -> handle.createQuery("select picture from users where id = ?")
-//    .bind(0, user.getId()).mapTo(String.class).one());
-//    picture=picture==null ? "": picture;
+    LocalDateTime now = LocalDateTime.now();
+    LocalDateTime lastActiveTime = user.getLastActiveTime();
+    String lastSeenMessage = "Last seen time not available";
+    //tính toán thời gian seen, tính lại khi đăng nhập lại
+    if (lastActiveTime != null) {
+        long minutesAgo = ChronoUnit.MINUTES.between(lastActiveTime, now);
+        long hoursAgo = ChronoUnit.HOURS.between(lastActiveTime, now);
+        long daysAgo = ChronoUnit.DAYS.between(lastActiveTime, now);
+
+        if (daysAgo > 0) {
+            lastSeenMessage = "Last seen " + daysAgo + " days ago";
+        } else if (hoursAgo > 0) {
+            lastSeenMessage = "Last seen " + hoursAgo + " hours ago";
+        } else {
+            lastSeenMessage = "Last seen " + minutesAgo + " minutes ago";
+        }
+    }
 %>
 <body>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -47,8 +63,8 @@
                                 <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                                     <div class="text-center text-sm-left mb-2 mb-sm-0">
                                         <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap"></h4>
-                                        <p class="mb-0">@<%= user.getEmail() %></p>
-                                        <div class="text-muted"><small>Last seen 2 hours ago</small></div>
+                                        <p class="mb-0"><%= user.getEmail() %></p>
+                                        <div class="text-muted"><small><%= lastSeenMessage %></small></div>
                                         <div class="mt-2">
                                             <form action="upload" method="post" enctype="multipart/form-data">
                                                 <input type="file" name="profilePic" accept="image/*" style="display: none;" id="fileInput">
@@ -67,7 +83,8 @@
                                         </script>
                                     </div>
                                     <div class="text-center text-sm-right">
-                                        <div class="text-muted"><small>Joined 09 Dec 2017</small></div>
+                                        <div class="text-muted"><small>Joined <fmt:formatDate value="<%=user.getCreateAt()%>" pattern="yyyy-MM-dd"/></small></div>
+
                                     </div>
                                 </div>
                             </div>
@@ -189,7 +206,7 @@
                     <div class="px-xl-3">
                         <button class="btn btn-block btn-secondary" style="background-color: #7fad39; border: #7fad39;">
                         <i class="fa fa-sign-out"></i>
-                        <span><a href="HomePageController" style="text-decoration: none; text-underline: none; color: white;">Trang chủ</a></span>
+                        <a href="HomePageController" style="text-decoration: none; text-underline: none; color: white;">Trang chủ</a>
                         </button>
                     </div>
                 </div>

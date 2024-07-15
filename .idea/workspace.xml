@@ -10,8 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4b7277f-3123-43a3-8334-fad619072ac6" name="Changes" comment="Login with facebook">
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/UserChangeAvatar.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/UserChangeAvatar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/UserChangeAvatar.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/UserChangeAvatar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/LoginControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/LoginControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/UserEditControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/UserEditControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/AccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/AccountDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/user-profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/user-profile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/AccountDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/AccountDAO.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -618,7 +623,7 @@
       <workItem from="1720972202875" duration="1300000" />
       <workItem from="1721013137766" duration="6792000" />
       <workItem from="1721022985770" duration="343000" />
-      <workItem from="1721023351806" duration="15593000" />
+      <workItem from="1721023351806" duration="24243000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
