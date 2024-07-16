@@ -5,6 +5,7 @@ import db.JDBIConnector;
 import mapper.*;
 import org.jdbi.v3.core.Jdbi;
 
+import javax.persistence.criteria.Order;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,8 +18,8 @@ public class OrdersDAO extends AbstractDAO<Orders> implements IOrdersDAO {
 
 	@Override
 	public Integer insertOrder(Orders o) {
-		String sql = "insert into orders(id_user, total_price, shipping_fee, address, phone_number) values(?,?,?,?,?)";
-		return insert(sql, o.getIdUser(), o.getTotalPrice(), o.getShippingFee(), o.getAddress(), o.getPhoneNumber());
+		String sql = "insert into orders(id_user, total_price, shipping_fee, address, phone_number,payment_status,order_status) values(?,?,?,?,?,?,1)";
+		return insert(sql, o.getIdUser(), o.getTotalPrice(), o.getShippingFee(), o.getAddress(), o.getPhoneNumber(),o.getPayment_status());
 	}
 
 	@Override
@@ -156,14 +157,16 @@ public class OrdersDAO extends AbstractDAO<Orders> implements IOrdersDAO {
 
 	public static void main(String[] args) {
 		IOrdersDAO order = new OrdersDAO();
-		OrderDetail orderDetail = new OrderDetail();
-		orderDetail.setOrder_id(2);
-		orderDetail.setProduct_id(6);
-		orderDetail.setQuantity(10);
-		//System.out.println(order.getOrderforAdmin())
-		User user = new User();
-		user.setId(11);
-		System.out.println(order.getOrdersByUserAndStatus(user,0));
+//		OrderDetail orderDetail = new OrderDetail();
+//		orderDetail.setOrder_id(2);
+//		orderDetail.setProduct_id(6);
+//		orderDetail.setQuantity(10);
+//		//System.out.println(order.getOrderforAdmin())
+//		User user = new User();
+//		user.setId(11);
+//		System.out.println(order.getOrdersByUserAndStatus(user,0));
+		Orders orders = new Orders(1,5,20,"158/d","0987817240","Chưa Thanh Toán");
+		System.out.println(	order.insertOrder(orders));
 
 
 	}
