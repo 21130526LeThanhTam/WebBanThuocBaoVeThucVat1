@@ -297,8 +297,9 @@
                 },
                 url: 'ShoppingCartCL',
                 success: function (response) {
-                    const retain = document.getElementById("retain");
-                    const result = document.getElementById("result");
+                    console.log(response)
+                    // const retain = document.getElementById("retain");
+                    // const result = document.getElementById("result");
                     if (response.state === "notfound" || response.state === "notempty") {
                         $('#errorDiscount').html(response.error);
                     } else {
@@ -311,14 +312,12 @@
                         });
                         $('#errorDiscount').html("");
                     }
-                    result.innerHTML = response.result + "VND";
-                    retain.innerHTML = response.rect + "VND"
+                    // result.innerHTML = response.result + "VND";
+                    // retain.innerHTML = response.rect + "VND"
                 }
             });
         });
     });
 </script>
-
 </body>
-
 </html>

@@ -52,12 +52,14 @@ public class ShoppingCartCL extends HttpServlet {
         switch (action) {
             case "check":
                 String code = request.getParameter("discount");
+                System.out.println(code);
                 for(CartItem i : shoppingCart.getCartItemList()) {
                     Products product = productService.findById(i.getProduct().getId());
                     re += i.getQuantity() * product.getPrice();
                 }
                 if (code != null && !code.isEmpty()) {
                     discount = DiscountService.getInstance().getCouponByCode(code);
+                    System.out.println(discount);
                     if (discount == null) {
                         out.write("{ \"state\": \"notfound\", \"error\": \"Mã giảm giá không tồn tại!\", \"rect\": \""+ Utils.formatCurrency(0)+"\", \"result\": \""+Utils.formatCurrency(re)+"\" }");
                         out.close();
@@ -76,6 +78,8 @@ public class ShoppingCartCL extends HttpServlet {
                 retain = re - discount.getSalePercent() * re;
                 session.setAttribute("result", Utils.formatCurrency(retain));
                 session.setAttribute("retain", Utils.formatCurrency(re * discount.getSalePercent()));
+                System.out.println(Utils.formatCurrency(retain));
+                System.out.println(Utils.formatCurrency(re * discount.getSalePercent()));
                 out.write("{\"result\": \""+Utils.formatCurrency(retain)+"\", \"rect\": \"" + Utils.formatCurrency(re * discount.getSalePercent()) +"\"}");
                 out.flush();
                 out.close();
