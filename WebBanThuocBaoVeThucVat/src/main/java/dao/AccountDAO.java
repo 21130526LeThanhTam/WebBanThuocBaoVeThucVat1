@@ -221,8 +221,8 @@ public class AccountDAO extends AbstractDao<User> {
         a.setPassword(pass);
         User b =new User(1,1,"Son","4297f44b13955235245b2497399d7a93","0123456789","Son@gmail.com","Son","dsf");
 
-        System.out.println( AccountDAO.getInstance().loginAccount(a,"00999",1,"asgdhg"));
-//        AccountDAO.getInstance().signUp(email,pass, "hihoo","hihoo","hihoo","hihoo","hihoo","hihoo", 1, "hihoo");
+//        System.out.println( AccountDAO.getInstance().loginAccount(a,"00999",1,"asgdhg"));
+//        AccountDAO.getInstance().signUp2(email,pass, "hihoo","hihoo","hihoo","hihoo","hihodsfo",1 );
     }
 
 

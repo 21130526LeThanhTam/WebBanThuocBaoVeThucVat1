@@ -1,11 +1,13 @@
 package controller.Admin;
 
+import bean.Log;
 import com.google.gson.Gson;
 import com.maxmind.geoip2.DatabaseReader;
 import com.maxmind.geoip2.exception.AddressNotFoundException;
 import com.maxmind.geoip2.exception.GeoIp2Exception;
 import com.maxmind.geoip2.model.CityResponse;
 import com.maxmind.geoip2.record.*;
+import dao.LogDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,6 +24,8 @@ import java.util.List;
 public class LogController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<Log>listLog=LogDao.getInstance().getList();
+        req.setAttribute("listLog",listLog);
         req.getRequestDispatcher("admin_page/quanlyLog.jsp").forward(req, resp);
     }
 

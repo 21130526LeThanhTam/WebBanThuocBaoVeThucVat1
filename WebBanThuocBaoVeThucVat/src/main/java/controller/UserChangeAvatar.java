@@ -56,13 +56,13 @@ public class UserChangeAvatar extends HttpServlet {
 //        saveFilePathToDatabase(relativePath, id_user);
 //        response.sendRedirect("user-profile.jsp");
     }
-    private void saveFilePathToDatabase(String filePath,int idUser) {
-        Jdbi jdbi = JDBIConnector.getJdbi();
-        // Thay đổi kết nối cơ sở dữ liệu và câu lệnh SQL phù hợp với cơ sở dữ liệu của bạn
-        String sql = "UPDATE users SET picture = ? WHERE id = ?";
-        jdbi.withHandle(handle -> handle.createUpdate(sql)
-                .bind(0,filePath)
-                .bind(1,idUser)
-                .execute());
-    }
+//    private void saveFilePathToDatabase(String filePath,int idUser) {
+//        Jdbi jdbi = JDBIConnector.getJdbi();
+//        // Thay đổi kết nối cơ sở dữ liệu và câu lệnh SQL phù hợp với cơ sở dữ liệu của bạn
+//        String sql = "UPDATE users SET picture = ? WHERE id = ?";
+//        jdbi.withHandle(handle -> handle.createUpdate(sql)
+//                .bind(0,filePath)
+//                .bind(1,idUser)
+//                .execute());
+//    }
 }

@@ -32,6 +32,7 @@
         body.modal-open {
             padding-right: 0 !important;
         }
+
     </style>
     <!-- Script - custom -->
     <script src="/admin_page/js/adminJS/custom.js"></script>

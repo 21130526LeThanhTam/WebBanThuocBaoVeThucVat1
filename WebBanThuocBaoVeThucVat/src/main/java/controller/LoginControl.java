@@ -3,6 +3,7 @@ package controller;
 import bean.ShoppingCart;
 import bean.User;
 import dao.AccountDAO;
+import dao.LogDao;
 import dao.OrdersDAO;
 import dao.UserDAO;
 import debug.LoggingConfig;
@@ -68,9 +69,13 @@ public class LoginControl extends HttpServlet {
                     AccountDAO.getInstance().updateLoginFail(email, loginFail + 1);
                     if((loginFail+1)==5) {
                         UserDAO.getInstance().LockUser(email);
+                        LogDao.getInstance().login(userLogin,"Đăng nhập sai 5 lần",ipAddress,3,ipAddress);
                         out.println("{\"error\":\"chúng tôi đã khóa tài khoản "+ email + ".\"}");
                         return;
                     } else {
+                        if((loginFail+1)==3){
+                            LogDao.getInstance().login(userLogin,"Đăng nhập sai 3 lần",ipAddress,2,ipAddress);
+                        }
                         out.println("{\"error\":\"Bạn đã còn "+ (5 - (loginFail+1)) +" lần đăng nhập.\"}");
                     }
                 } else {

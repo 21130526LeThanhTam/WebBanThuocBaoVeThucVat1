@@ -1,9 +1,11 @@
 package controller.Admin;
 
+import bean.Log;
 import bean.OrderDetailTable;
 import bean.OrderTable;
 import com.google.gson.Gson;
 import dao.IOrdersDAO;
+import dao.LogDao;
 import dao.OrdersDAO;
 
 import javax.servlet.ServletException;
@@ -77,7 +79,10 @@ public class OrderController extends HttpServlet {
     private void updatePaymentStatus(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int orderId = Integer.parseInt(req.getParameter("orderId"));
         String paymentStatus = req.getParameter("paymentStatus");
+        OrderTable oldOrder = orderDao.getOrderById(orderId);
         orderDao.updatePaymentStatus(orderId, paymentStatus);
+        OrderTable newOrder = orderDao.getOrderById(orderId);
+        LogDao.getInstance().toggleStatus("Thay đổi trạng thái thanh toàn đơn hàng mã "+orderId,oldOrder.getPayment_status(),newOrder.getPayment_status(),"",1,"");
         resp.getWriter().write("Success");
     }
 
@@ -104,6 +109,8 @@ public class OrderController extends HttpServlet {
             resp.getWriter().write(errorMessage);
         } else {
             orderDao.updateOrderStatus(orderId, newOrderStatus);
+            OrderTable newOrder = orderDao.getOrderById(orderId);
+            LogDao.getInstance().toggleStatus("Thay đổi trạng thái giao của đơn mã"+orderId,order.strOrder_status(),newOrder.strOrder_status(),"",1,"");
             resp.getWriter().write("Success");
         }
     }

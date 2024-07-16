@@ -130,6 +130,7 @@ public class OrdersDAO extends AbstractDAO<Orders> implements IOrdersDAO {
 		orderDetail.setQuantity(10);
 		//System.out.println(order.getOrderforAdmin());
 		System.out.println(order.insertOrdersDetail(orderDetail));
+		System.out.println();
 
 	}
 }
