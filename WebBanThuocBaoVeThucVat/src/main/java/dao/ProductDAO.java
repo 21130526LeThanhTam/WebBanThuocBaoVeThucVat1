@@ -86,7 +86,7 @@ public class ProductDAO implements IProductDAO {
     public List<Products> findById(int id) {
         Jdbi jdbi = JDBIConnector.getJdbi();
         List<Products> products = jdbi.withHandle(handle -> {
-            String sql = "SELECT id, product_name, image, price, id_category, status, des, create_at FROM products where id=?";
+            String sql = "SELECT id, product_name, image, price, id_category, status, des, create_at,inventory_quantity FROM products where id=?";
             return handle.createQuery(sql).bind(0, id).mapToBean(Products.class).stream().collect(Collectors.toList());
         });
         return products;

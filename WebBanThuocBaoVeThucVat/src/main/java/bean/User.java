@@ -3,15 +3,17 @@ package bean;
 
 import log.AbsModel;
 import log.IModel;
+import lombok.Data;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
-
+@Data
 public class User extends AbsModel implements Serializable {
     private int id, role,active ,loginBy, loginTimes;;
     private String username, password, phone, email, surname, lastname,hash,picture;
     private Date createAt,updateAt;
-
+    private LocalDateTime lastActiveTime;
     public int getLoginBy() {
         return loginBy;
     }

@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
 import java.util.logging.Logger;
 
 @WebServlet(urlPatterns = {"/login"})
@@ -96,6 +97,7 @@ public class LoginControl extends HttpServlet {
                 resp.addCookie(u);
                 resp.addCookie(p);
                 if (user.getRole() == 0) {
+                    user.setLastActiveTime(LocalDateTime.now());
                     session.setAttribute("user", user);
                     ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
                     if (cart == null) {
