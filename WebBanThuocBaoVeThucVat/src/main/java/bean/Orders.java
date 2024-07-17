@@ -1,9 +1,11 @@
 package bean;
 
+import lombok.Data;
+
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
-
+@Data
 public class Orders {
     private int id;
     private int idUser;
@@ -12,7 +14,8 @@ public class Orders {
     private String address;
     private String phoneNumber;
     private Timestamp createAt;
-
+    private String payment_status;
+    private int order_status;
     private List<CartItem> lp;
 
 
@@ -40,12 +43,13 @@ public class Orders {
 
     }
 
-    public Orders(int idUser, float totalPrice, float shippingFee, String address, String phoneNumber) {
+    public Orders(int idUser, float totalPrice, float shippingFee, String address, String phoneNumber,String payment_status) {
         this.idUser = idUser;
         this.totalPrice = totalPrice;
         this.shippingFee = shippingFee;
         this.address = address;
         this.phoneNumber = phoneNumber;
+        this.payment_status=payment_status;
     }
 
     public List<CartItem> getLp() {

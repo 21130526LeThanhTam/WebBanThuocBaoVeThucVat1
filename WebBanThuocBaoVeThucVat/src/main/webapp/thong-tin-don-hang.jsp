@@ -3,7 +3,10 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
 <%@ page import="bean.Products" %>
+<%@ page import="bean.ProductReview" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
+<%--chức năng cho người dùng đánh giá sản phẩm đang ở dạng comment--%>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -110,13 +113,15 @@
             margin-left: 10px;
             color: #6f6f6f;
         }
+
         .qtybtn{
             display:none!important;
         }
+
     </style>
 </head>
 <%
-    List<Comment> comments = (List<Comment>) request.getAttribute("comments");
+    List<ProductReview> productReviews = (List<ProductReview>) request.getAttribute("productReviews");
     Products proID = (Products) request.getAttribute("proID");
 %>
 <body>
@@ -206,13 +211,12 @@
                                aria-selected="true">Mô tả</a>
                         </li>
                             <li class="nav-item">
-
                                 <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
-                                    aria-selected="false">Đánh giá <span>(<%=comments.size() %>)</span></a>
+                                    aria-selected="false" id="commentPreview">Đánh giá <span>(<%=productReviews.size() %>)</span></a>
                             </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab" aria-selected="false">
-                                Binh luan
+                                Bình luận bằng Facebook
                             </a>
                         </li>
                     </ul>
@@ -264,39 +268,39 @@
                             <div class="product__details__tab__desc">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h2 class="mb-4">Đánh Giá Sản Phẩm</h2>
+                                        <h2 class="mb-4" style="font-size:25px">Đánh Giá Sản Phẩm</h2>
                                         <div class="d-flex align-items-center mb-4">
                                             <div class="mr-3">
-                                                <span class="review-rating">4.8</span> trên 5
+                                                <span class="review-rating" style="font-size:20px;color:black"><%= String.format("%.1f", (Double) request.getAttribute("averageRating")) %> trên 5</span>
                                             </div>
-                                            <div>
+                                            <div style="font-size:20px">
                                                 <span class="text-warning">★★★★★</span>
-                                                <span>(120 đánh giá)</span>
                                             </div>
                                         </div>
                                         <div class="filter-buttons mb-4">
-                                            <button class="btn btn-outline-secondary p-2">Tất Cả</button>
-                                            <button class="btn btn-outline-secondary p-2">5 Sao (112)</button>
-                                            <button class="btn btn-outline-secondary p-2">4 Sao (10)</button>
-                                            <button class="btn btn-outline-secondary p-2">3 Sao (5)</button>
-                                            <button class="btn btn-outline-secondary p-2">2 Sao (0)</button>
-                                            <button class="btn btn-outline-secondary p-2">1 Sao (3)</button>
-                                            <button class="btn btn-outline-secondary p-2">Có Bình Luận (73)</button>
-                                            <button class="btn btn-outline-secondary p-2">Có Hình Ảnh / Video (41)</button>
+                                            <button class="btn btn-outline-secondary p-2 active" onclick="loadComments('all', this)">Tất Cả</button>
+                                            <button class="btn btn-outline-secondary p-2" onclick="loadComments(5, this)">5 Sao</button>
+                                            <button class="btn btn-outline-secondary p-2" onclick="loadComments(4, this)">4 Sao</button>
+                                            <button class="btn btn-outline-secondary p-2" onclick="loadComments(3, this)">3 Sao</button>
+                                            <button class="btn btn-outline-secondary p-2" onclick="loadComments(2, this)">2 Sao</button>
+                                            <button class="btn btn-outline-secondary p-2" onclick="loadComments(1, this)">1 Sao</button>
                                         </div>
-                                        <div class="review">
-                                            <div class="d-flex align-items-center">
-                                                <img src="https://via.placeholder.com/50" class="rounded-circle mr-3" alt="User Image">
-                                                <div>
-                                                    <span class="review-user">h****n</span>
-                                                    <span class="text-muted">2024-07-04 16:38 | Phân loại hàng: màu nữ</span>
-                                                </div>
-                                            </div>
-                                            <div class="review-content mt-3">
-                                                <p>Chất liệu: nhựa<br>Chất lượng sản phẩm: tốt<br>Đúng với mô tả: đúng mô tả của shop</p>
-                                                <p>Giao hàng nhanh chóng, đóng gói cẩn thận, rất đáng mua bạn.</p>
-                                            </div>
+                                        <div id="commentsSection">
+                                            <!-- Comments will be loaded here -->
                                         </div>
+<%--                                        <div class="review">--%>
+<%--                                            <div class="d-flex align-items-center">--%>
+<%--                                                <img src="https://via.placeholder.com/50" class="rounded-circle mr-3" alt="User Image">--%>
+<%--                                                <div>--%>
+<%--                                                    <span class="review-user">h****n</span>--%>
+<%--                                                    <span class="text-muted">2024-07-04 16:38 | Phân loại hàng: màu nữ</span>--%>
+<%--                                                </div>--%>
+<%--                                            </div>--%>
+<%--                                            <div class="review-content mt-3">--%>
+<%--                                                <p>Chất liệu: nhựa<br>Chất lượng sản phẩm: tốt<br>Đúng với mô tả: đúng mô tả của shop</p>--%>
+<%--                                                <p>Giao hàng nhanh chóng, đóng gói cẩn thận, rất đáng mua bạn.</p>--%>
+<%--                                            </div>--%>
+<%--                                        </div>--%>
                                         <hr>
                                         <!-- Repeat the .review block for more reviews -->
                                     </div>
@@ -407,10 +411,17 @@
 <script async defer crossorigin="anonymous"
         src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v20.0&appId=1072330460766904" nonce="9nNhsvob"></script>
 <script>
+
     let quantityInput = document.getElementById("quantity");
     let btnAddCart = document.getElementById("add_cart");
     let increase = document.getElementById("increase");
     let decrease = document.getElementById("decrease");
+
+    document.addEventListener('DOMContentLoaded', function() {
+        loadComments('all', document.querySelector('.filter-buttons .btn.active'));
+    });
+
+
     function addCart(btn, id) {
         var quantity = $('#quantity').val();
         const input = document.getElementById('quantity');
@@ -452,6 +463,27 @@
                 }
             }
         });
+    }
+    //script loadcomments
+    function loadComments(rating, element) {
+        var productId = '<%=proID.getId()%>';
+        var url = "LoadComments?productId=" + productId + "&rating=" + rating;
+        $.ajax({
+            url: url,
+            method: "GET",
+            success: function (response) {
+                $("#commentsSection").html(response);
+                setActiveButton(element);
+            }
+        });
+    }
+
+    function setActiveButton(element) {
+        var buttons = document.querySelectorAll('.filter-buttons .btn');
+        buttons.forEach(function(button) {
+            button.classList.remove('active');
+        });
+        element.classList.add('active');
     }
 </script>
 <script>

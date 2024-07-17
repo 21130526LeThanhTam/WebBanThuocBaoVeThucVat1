@@ -43,9 +43,9 @@
         ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
         CategoryBO cb = new CategoryBO();
 
-//        if(shoppingCart==null){
-//            shoppingCart = new ShoppingCart();
-//        }
+        if(shoppingCart==null){
+            shoppingCart = new ShoppingCart();
+        }
     %>
 
     <%--    <link rel="stylesheet" href="css/Log_Regis.css">--%>

@@ -65,11 +65,12 @@ public class ThanhToanCL extends HttpServlet {
             String district = request.getParameter("district");
             String homeNumber = request.getParameter("homeNumber");
             String phone = request.getParameter("phone");
+
             User user = (User) session.getAttribute("user");
             String address = homeNumber + ", " + district + ", " + city;
             List<CartItem> products = c.getCartItemList();
             Orders order = new Orders(user.getId(), (float) c.getTotalPrice(),
-                    0, address, phone);
+                    0, address, phone,"Chưa Thanh Toán");
             order.setLp(products);
             this.orderService.insertOrderDetail(order);
             double total = c.getTotalPrice();
