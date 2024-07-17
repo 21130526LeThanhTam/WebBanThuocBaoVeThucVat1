@@ -114,6 +114,10 @@
             color: #6f6f6f;
         }
 
+        .qtybtn{
+            display:none!important;
+        }
+
     </style>
 </head>
 <%
@@ -123,9 +127,6 @@
 <body>
 
 <jsp:include page="layout/header.jsp"/>
-
-
-
 <!-- Breadcrumb Section Begin -->
 <section class="breadcrumb-section set-bg" data-setbg="assets/img/breadcrumb.jpg">
     <div class="container">
@@ -176,17 +177,20 @@
                     <p><%= proID.getDes() %></p>
                     <div class="quantity-container">
                         <span class="quantity-label">Số Lượng</span>
-                        <div class="product__details__quantity mr-3">
+                        <div class="product__details__quantity">
                             <div class="quantity">
                                 <div class="pro-qty">
-                                    <input type="text" name="quantity" id="quantityInput" value="1">
+                                    <button id="decrease" class="btn-decrease">-</button>
+                                    <input type="number" id="quantity" class="input-number" value="1" min="1" max="${requestScope.remain}" />
+                                    <button id="increase" class="btn-increase">+</button>
+                                    <span style="color: red; margin: 10px" id="error"></span>
                                 </div>
                             </div>
                         </div>
                         <span class="available-quantity"><%= proID.getInventory_quantity() %> sản phẩm có sẵn</span>
                     </div>
                     <div class="d-flex align-items-center mt-3">
-                        <a class="add-to-cart"
+                        <a class="add-to-cart" id="add_cart"
                            href="javascript:void(0)"
                            data-id="<%=proID.getId()%>"
                            onclick="addCart(this, '<%=proID.getId()%>')" style="color:#7fad39;background-color:#fff; border: 2px solid #7fad39;">
@@ -259,6 +263,7 @@
                                  data-numposts="5">
                             </div>
                         </div>
+
                         <div class="tab-pane" id="tabs-3" role="tabpanel">
                             <div class="product__details__tab__desc">
                                 <div class="row">
@@ -384,80 +389,13 @@
                 </div>
             </div>
         </div>
+
     </div>
 </section>
 <!-- Related Product Section End -->
 
 <!-- Footer Section Begin -->
 <jsp:include page="layout/footer.jsp"/>
-<!-- Footer Section End -->
-<%--<div class="blur-bg-overlay"></div>--%>
-<%--<div class="form-popup">--%>
-<%--    <span class="close-btn material-symbols-rounded"><svg xmlns="http://www.w3.org/2000/svg" height="1em"--%>
-<%--                                                          viewBox="0 0 384 512"><path--%>
-<%--            d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/></svg></span>--%>
-<%--    <div class="form-box login">--%>
-<%--        <div class="form-details">--%>
-<%--            <h2>Chào mừng quý khách quay lại</h2>--%>
-<%--            <p>Hãy điền địa chỉ email và mật khẩu vào các ô bên phải</p>--%>
-<%--        </div>--%>
-<%--        <div class="form-content">--%>
-<%--            <h2>ĐĂNG NHẬP</h2>--%>
-<%--            <form action="#">--%>
-<%--                <div class="input-field">--%>
-<%--                    <input type="text" name="name" required>--%>
-<%--                    <label>Email</label>--%>
-<%--                </div>--%>
-<%--                <div class="input-field">--%>
-<%--                    <input type="password" name="password" required>--%>
-<%--                    <label>Password</label>--%>
-<%--                </div>--%>
-<%--                <a href="#" class="forgot-pw">Quên mật khẩu?</a>--%>
-<%--                <button type="submit">Login</button>--%>
-<%--            </form>--%>
-<%--            <div class="bottom-link">--%>
-<%--                Chưa có tài khoản--%>
-<%--                <a href="#" id="signup-link">Đăng ký</a>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--    <!--ĐĂNG KÝ-->--%>
-<%--    <div class="form-box signup">--%>
-<%--        <div class="form-details">--%>
-<%--            <h2>Tạo tài khoản</h2>--%>
-<%--            <p>Điền thông tin theo yêu cầu bên phải</p>--%>
-<%--        </div>--%>
-<%--        <div class="form-content">--%>
-<%--            <h2>ĐĂNG KÝ</h2>--%>
-<%--            <form action="#">--%>
-<%--                <div class="input-field">--%>
-<%--                    <input type="text" name="name" required>--%>
-<%--                    <label>Nhập email</label>--%>
-<%--                </div>--%>
-<%--                <div class="input-field">--%>
-<%--                    <input type="password" name="password" required>--%>
-<%--                    <label>Tạo Password</label>--%>
-<%--                </div>--%>
-<%--                <div class="policy-text">--%>
-<%--                    <input type="checkbox" id="policy">--%>
-<%--                    <label for="policy">--%>
-<%--                        Tôi đồng ý với--%>
-<%--                        <a href="">Điều khoản</a>--%>
-<%--                    </label>--%>
-
-<%--                </div>--%>
-<%--                <button type="submit">Register</button>--%>
-<%--            </form>--%>
-<%--            <div class="bottom-link">--%>
-<%--                Đã có sẵn tài khoản?--%>
-<%--                <a href="#" id="login-link">Login</a>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
-<!-- Back top end-->
-
-<!-- Js Plugins -->
 <script src="assets/js/jquery-3.3.1.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/jquery.nice-select.min.js"></script>
@@ -473,12 +411,21 @@
 <script async defer crossorigin="anonymous"
         src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v20.0&appId=1072330460766904" nonce="9nNhsvob"></script>
 <script>
+
+    let quantityInput = document.getElementById("quantity");
+    let btnAddCart = document.getElementById("add_cart");
+    let increase = document.getElementById("increase");
+    let decrease = document.getElementById("decrease");
+
     document.addEventListener('DOMContentLoaded', function() {
         loadComments('all', document.querySelector('.filter-buttons .btn.active'));
     });
 
+
     function addCart(btn, id) {
-        var quantity = $('#quantityInput').val();
+        var quantity = $('#quantity').val();
+        const input = document.getElementById('quantity');
+        const max = parseInt(input.max, 10);
         $.ajax({
             url: "ShoppingCartCL",
             method: "POST",
@@ -486,19 +433,34 @@
                 id: id,
                 action: "add",
                 type: 1,
-                quantity: quantity
+                quantity: quantity,
+                contain: max
             },
             success: function (response) {
-                var res = JSON.parse(response);
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "Thêm Sản Phẩm Vào Giỏ Hàng Thành Công!",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                const badge = document.getElementById("badge");
-                badge.innerHTML = res.totalItems;
+                if (response.status === "failed") {
+                    window.location.href = 'login';
+                } else if (response.status === "empty" || response.status === "out" || response.status === "bigger") {
+                    console.log(response.error);
+                    $('#error').html(response.error);
+                } else if (response.status === "stock") {
+                    $('#error').html(response.error);
+                    quantityInput.style.display = "none";
+                    btnAddCart.style.display = "none";
+                    increase.style.display = "none";
+                    decrease.style.display = "none";
+                } else {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Thêm Sản Phẩm Vào Giỏ Hàng Thành Công!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    const badge = document.getElementById("badge");
+                    badge.innerHTML = response.total;
+                    $('#quantity').attr('max', response.prefix);
+                    $('#error').html("");
+                }
             }
         });
     }
@@ -527,16 +489,49 @@
 <script>
     document.getElementById('buyNowBtn').addEventListener('click', function() {
         // Lấy giá trị đã nhập từ input
-        var quantity = document.getElementById('quantityInput').value;
-
+        var quantity = document.getElementById('quantity').value;
         // Tạo URL mới với giá trị đã nhập từ input
         var url = "ShoppingCartCL?action=post&id=<%=proID.getId()%>&type=1&quantity=" + encodeURIComponent(quantity);
-
         // Chuyển hướng đến URL mới
         window.location.href = url;
     });
-</script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const input = document.getElementById('quantity');
+        const increaseBtn = document.getElementById('increase');
+        const decreaseBtn = document.getElementById('decrease');
 
+        // Kiểm tra và giới hạn giá trị nhập vào input
+        input.addEventListener('input', function() {
+            const min = parseInt(input.min, 10);
+            const max = parseInt(input.max, 10);
+            let value = parseInt(input.value, 10);
+
+            if (value > max) {
+                input.value = max;
+            } else if (value < min) {
+                input.value = min;
+            }
+        });
+
+        // Tăng số lượng
+        increaseBtn.addEventListener('click', function() {
+            const max = parseInt(input.max, 10);
+            let value = parseInt(input.value, 10);
+            if (value < max) {
+                input.value = value + 1;
+            }
+        });
+
+        // Giảm số lượng
+        decreaseBtn.addEventListener('click', function() {
+            const min = parseInt(input.min, 10);
+            let value = parseInt(input.value, 10);
+            if (value > min) {
+                input.value = value - 1;
+            }
+        });
+    });
+</script>
 <%--<script>--%>
 <%--    document.getElementById('addToCartBtn').addEventListener('click', function() {--%>
 <%--        // Lấy giá trị đã nhập từ input--%>

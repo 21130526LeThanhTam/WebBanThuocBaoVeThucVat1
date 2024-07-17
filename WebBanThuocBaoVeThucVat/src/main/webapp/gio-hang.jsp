@@ -3,10 +3,14 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.NumberFormat" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="bean.Products" %>
+<%@ page import="Service.IProductService" %>
+<%@ page import="Service.ProductService" %>
+<%@ page import="bean.Discount" %>
+<%@ page import="utils.Utils" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="zxx">
-
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
@@ -15,7 +19,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/x-icon" href="assets/img/logo.png">
     <title>Vườn phố</title>
-
     <!-- Google Font -->
 <%--    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">--%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -34,32 +37,27 @@
     <link rel="stylesheet" href="assets/css/Log_Regis.css">
     <script src="js/log_reg.js" defer></script>
 </head>
-
 <body>
-<%
-    ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
+<%--<%--%>
+<%--    ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");--%>
+<%--    if (shoppingCart == null) {--%>
+<%--        // Nếu giỏ hàng chưa tồn tại, tạo mới và đặt vào session--%>
+<%--        shoppingCart = new ShoppingCart();--%>
+<%--        session.setAttribute("cart", shoppingCart);--%>
+<%--    }--%>
 
-    if (shoppingCart == null) {
-        // Nếu giỏ hàng chưa tồn tại, tạo mới và đặt vào session
-        shoppingCart = new ShoppingCart();
-        session.setAttribute("cart", shoppingCart);
-    }
+<%--    List<CartItem> cartItems = shoppingCart.getCartItemList();--%>
+<%--    if (cartItems == null) {--%>
+<%--        cartItems = new ArrayList<>(); // Tạo danh sách sản phẩm nếu chưa có--%>
+<%--    }--%>
 
-    List<CartItem> cartItems = shoppingCart.getCartItemList();
-    if (cartItems == null) {
-        cartItems = new ArrayList<>(); // Tạo danh sách sản phẩm nếu chưa có
-    }
-
-    NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
-    String e = (String) request.getAttribute("error");
-    if (e == null) {
-        e = ""; // Đặt giá trị mặc định là chuỗi trống nếu e là null
-    }
-%>
-
-
+<%--    NumberFormat numberFormat = NumberFormat.getCurrencyInstance();--%>
+<%--    String e = (String) request.getAttribute("error");--%>
+<%--    if (e == null) {--%>
+<%--        e = ""; // Đặt giá trị mặc định là chuỗi trống nếu e là null--%>
+<%--    }--%>
+<%--%>--%>
 <jsp:include page="layout/header.jsp"/>
-
 <!-- Breadcrumb Section Begin -->
 <section class="breadcrumb-section set-bg" data-setbg="assets/img/breadcrumb.jpg">
     <div class="container">
@@ -80,10 +78,25 @@
 
 <!-- Shoping Cart Section Begin -->
 <section class="shoping-cart spad">
-    <div class="container">
+    <%
+        ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
+        if (shoppingCart != null) {
+            if (shoppingCart.getCartItemList().isEmpty()) {
+    %>
+    <h1 style="text-align: center">Vui lòng mua sắm</h1>
+    <%
+    } else {
+        double result = (double) session.getAttribute("result");
+        if(result==0.0) {
+    %>
+    <h1 id="please" style="text-align: center"></h1>
+    <%
+        }
+    %>
+    <h1 id="please" style="text-align: center"></h1>
+    <div class="container" id="container">
         <div class="row">
             <div class="col-lg-12">
-                <%if(!cartItems.isEmpty()){ %>
                 <div class="shoping__cart__table">
                     <table>
                         <thead>
@@ -97,23 +110,32 @@
                         </thead>
                         <tbody>
                         <%
-                            int count = 0;
-                            for(CartItem cartItem : cartItems) {
+                            String ip = request.getHeader("X-FORWARDED-FOR");
+                            if (ip == null) ip = request.getRemoteAddr();
+                            IProductService productService = new ProductService();
+
+                            for (CartItem item : shoppingCart.getCartItemList()) {
+                                Products product = productService.findById(item.getProduct().getId());
+                                int total = item.getQuantity()*product.getPrice();
                         %>
-                        <tr id="tr<%=cartItem.getProduct().getId()%>">
+                        <tr id="tr<%=item.getProduct().getId()%>">
                             <td class="shoping__cart__item">
-                                <img class="product-image" src="<%=cartItem.getProduct().getImage()%>" alt="Vegetable's Package">
-                                <h5><%=cartItem.getProduct().getProduct_name()%></h5>
+                                <img class="product-image" src="<%=product.getImage()%>" alt="Vegetable's Package">
+                                <h5><%=product.getProduct_name()%></h5>
                             </td>
-                            <td class="shoping__cart__price" id="pr<%=cartItem.getProduct().getId()%>">
-                                <%=cartItem.getProduct().getPrice()%>
+                            <td class="shoping__cart__price" id="pr<%=product.getId()%>">
+                                <%= Utils.formatCurrency(product.getPrice())%> VND
                             </td>
-                            <td class="shoping__cart__total" id="t<%=cartItem.getProduct().getId()%>">
-                                <%=numberFormat.format(cartItem.getTotalPrice())%>
+                            <td class="shoping__cart__total" id="t<%=product.getId()%>">
+                                <%=Utils.formatCurrency(total)%> VND
                             </td>
-                            <td class="shoping__cart__quantity">
-                                <input class="w-25" type="number" min="0" id="p<%=cartItem.getProduct().getId()%>" value="<%=cartItem.getQuantity()%>">
-                                <button class="btn btn-success" onClick="changeStatus(<%=cartItem.getProduct().getId()%>, Number(document.querySelector('#p<%=cartItem.getProduct().getId()%>').value), 'put')">Cập nhật</button>
+                            <td style="margin-top: 52px;padding: 0;" class="shoping__cart__quantity pro-qty">
+                                <button style=" width: 32px;
+    border: 1px solid;" id="decrease" class="btn-decrease">-</button>
+                                <input style="height: 50px;" type="number" id="p<%=product.getId()%>" class="input-number"
+                                       value="<%=item.getQuantity()%>" min="0" max="<%=product.getInventory_quantity()%>" />
+                                <button style=" width: 32px;
+    border: 1px solid;" id="increase" class="btn-increase">+</button>
                             </td>
                             <td class="shoping__cart__item__close">
 <%--                                <form action="ShoppingCartCL" method="get">--%>
@@ -121,16 +143,17 @@
 <%--                                    <input type="hidden" name="id" value="<%= cartItem.getProduct().getId() %>">--%>
 <%--                                    <button type="submit" class="icon_close"></button>--%>
 <%--                                </form>--%>
-                                <button class="btn btn-success" onClick="changeStatus(<%=cartItem.getProduct().getId()%>, 0, 'delete')">Xoá</button>
+                                <button class="btn btn-success" onClick="changeStatus(<%=product.getId()%>, 0, 'delete')">Xoá</button>
                             </td>
-                            <% }%>
+                            <%
+                                        }
+                                    }
+                                }
+                            %>>
                         </tr>
                         </tbody>
                     </table>
                 </div>
-                <%}else{%>
-                <h2 class="text-xl-center">Bạn chưa thêm sản phẩm nào vào giỏ hàng</h2>
-                <% }%>
             </div>
         </div>
         <div class="row">
@@ -148,9 +171,10 @@
                 <div class="shoping__continue">
                     <div class="shoping__discount">
                         <h5>Mã giảm giá</h5>
+                        <span id="errorDiscount" style="color: red;"></span>
                         <form action="#">
-                            <input type="text" placeholder="Điền mã của bạn vào">
-                            <button type="submit" class="site-btn">Áp dụng mã</button>
+                            <input type="text" placeholder="Điền mã của bạn vào" id="discount" value="<%=session.getAttribute("discount")==null?"":((Discount)session.getAttribute("discount")).getCode()%>">
+                            <button type="submit" class="site-btn" id="btnDiscount">Áp dụng mã</button>
                         </form>
                     </div>
                 </div>
@@ -159,12 +183,12 @@
                 <form action="ThanhToanCL" method="get" class="shoping__checkout">
                     <h5>Số tiền cần thanh toán</h5>
                     <ul>
-                        <li>Tạm tính <span><%=shoppingCart.getTotalPrice()%></span></li>
-                        <li>Tổng <span><%=shoppingCart.getTotalPrice()%></span></li>
+                        <li>Giảm: <span  id="retain"><%=session.getAttribute("retain")==null?0.0:Utils.formatCurrency((double)session.getAttribute("retain"))%>VND</span></li>
+                        <li >Tổng: <span id="result"><%=session.getAttribute("result")==null?0.0:Utils.formatCurrency((double)session.getAttribute("result"))%>VND</span></li>
                     </ul>
                     <input type="hidden" name="action" value="checkout">
                     <%--                    <a href="thanh-toan.jsp" class="primary-btn">TIẾN HÀNH THANH TOÁN</a>--%>
-                    <%if(!cartItems.isEmpty()){ %>
+                    <%if(!shoppingCart.getCartItemList().isEmpty()){ %>
                     <input class="btn btn-success" type="submit" value="TIẾN HÀNH THANH TOÁN">
                     <%}%>
                 </form>
@@ -213,7 +237,7 @@
                 <div class="footer__widget">
                     <h6>Tham gia với chúng tôi</h6>
                     <p>Cập nhật thông tin mới nhất và các ưu đãi về cửa hàng thông qua email.</p>
-                    <form action="#">
+                    <form>
                         <input type="text" placeholder="Nhập địa chỉ email">
                         <button type="submit" class="site-btn">ĐĂNG KÝ</button>
                     </form>
@@ -244,22 +268,100 @@
 <script src="assets/js/jquery-ui.min.js"></script>
 <script src="assets/js/jquery.slicknav.js"></script>
 <script src="assets/js/mixitup.min.js"><d/script>
-    <script src="assets/js/owl.carousel.min.js"></script>
+<script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/main.js"></script>
 <script>
-    // document.getElementById("button2").addEventListener("click", function() {
-    //     // Simulate a click on the first hidden button ("button1") for each item
-    //     const hiddenButtons = document.querySelectorAll(".button");
-    //     hiddenButtons.forEach(function(button) {
-    //         button.click();
-    //     });
-    // });
+    var context = "${pageContext.request.contextPath}";
+    $(document).ready(function() {
+        $('#btnDiscount').click(function (event) {
+            event.preventDefault();
+            var discountName = $('#discount').val();
+            console.log(discountName)
+            $.ajax({
+                type: 'POST',
+                data: {
+                    discount: discountName,
+                    action: "check"
+                },
+                url: 'ShoppingCartCL',
+                success: function (response) {
+                    const retain = document.getElementById("retain");
+                    const result = document.getElementById("result");
+                    if (response.state === "notfound" || response.state === "notempty") {
+                        $('#errorDiscount').html(response.error);
+                    } else {
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "Thêm Mã Giảm giá Thành Công!",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        $('#errorDiscount').html("");
+                    }
+                    result.innerHTML = new Intl.NumberFormat('vi-VN', { style: 'decimal', maximumFractionDigits: 0 }).format(response.result) + ' VND';
+                    retain.innerHTML = new Intl.NumberFormat('vi-VN', { style: 'decimal', maximumFractionDigits: 0 }).format(response.rect) + ' VND';
+                }
+            });
+        });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.pro-qty').forEach(function(proQty) {
+            const input = proQty.querySelector('.input-number');
+            const btnIncrease = proQty.querySelector('.btn-increase');
+            const btnDecrease = proQty.querySelector('.btn-decrease');
+
+            input.addEventListener('input', function() {
+                const min = parseInt(input.min, 10);
+                const max = parseInt(input.max, 10);
+                let value = parseInt(input.value, 10);
+
+                if (value > max) {
+                    input.value = max;
+                } else if (value < min) {
+                    input.value = min;
+                }
+            });
+
+            btnIncrease.addEventListener('click', function() {
+                const max = parseInt(input.max, 10);
+                let value = parseInt(input.value, 10);
+                if (value < max) {
+                    input.value = value + 1;
+                    changeStatus(input.id.slice(1), value + 1, 'put');
+                }
+            });
+
+            btnDecrease.addEventListener('click', function() {
+                const min = parseInt(input.min, 10);
+                let value = parseInt(input.value, 10);
+                if (value > min) {
+                    input.value = value - 1;
+                    changeStatus(input.id.slice(1), value - 1, 'put');
+                }
+            });
+        });
+    });
+</script>
+<script>
     function changeStatus(pid, quantity, action) {
-        console.log(pid, quantity, action)
-        document.querySelector('#t'+pid).innerHTML = Number(quantity)*Number(document.querySelector('#pr'+pid).textContent);
-        document.querySelector('#p'+pid).innerHTML = quantity===0?document.querySelector("#tr"+pid).innerHTML = '' : quantity;
+        // Lấy giá tiền từng sản phẩm và loại bỏ các ký tự không phải số (VND và dấu phẩy)
+        const priceText = document.querySelector('#pr' + pid).textContent.replace(/[^0-9]/g, '');
+        const price = parseInt(priceText, 10);
+        // Tính toán tổng tiền mới
+        const total = price * quantity;
+        // Cập nhật DOM cho tổng tiền của sản phẩm
+        document.querySelector('#t' + pid).textContent = total.toLocaleString('vi-VN') + ' VND';
+        // Cập nhật số lượng trong DOM, nếu số lượng là 0, xóa hàng
+        if (quantity === 0) {
+            document.querySelector("#tr" + pid).remove();
+        } else {
+            document.querySelector('#p' + pid).textContent = quantity;
+        }
         $.ajax({
-            url: 'ShoppingCartCL',
+            url: "ShoppingCartCL",
             type: 'POST',
             data: {
                 id: pid,
@@ -267,7 +369,7 @@
                 action: action
             },
             success: function(response) {
-                var res = JSON.parse(response);
+                console.log(response)
                 Swal.fire({
                     position: "center",
                     icon: "success",
@@ -276,13 +378,24 @@
                     timer: 1500
                 });
                 const badge = document.getElementById("badge");
-                badge.innerHTML = res.totalItems;
+                const result = document.getElementById("result");
+                const please = document.getElementById("please");
+                const container = document.getElementById("container");
+                const retain = document.getElementById("retain");
+                badge.innerHTML = response.total;
+                if (response.state === "zero") {
+                    please.style.display = "block";
+                    please.innerHTML = "Vui lòng mua sắm";
+                    container.style.display = "none";
+                } else {
+// Assuming response.result and response.rect are numbers
+                    result.innerHTML = new Intl.NumberFormat('vi-VN', { style: 'decimal', maximumFractionDigits: 0 }).format(response.result) + ' VND';
+                    retain.innerHTML = new Intl.NumberFormat('vi-VN', { style: 'decimal', maximumFractionDigits: 0 }).format(response.rect) + ' VND';
+                    please.style.display = "none";
+                }
             }
         });
     }
 </script>
-
-
 </body>
-
 </html>

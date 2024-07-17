@@ -133,7 +133,7 @@ public class OrdersDAO extends AbstractDAO<Orders> implements IOrdersDAO {
 	//khi insert một order details sẽ thay đổi quantity trong product
 	@Override
 	public  Integer insertOrdersDetail(OrderDetail od) {
-		String insertOrderDetailSql="insert into order_details(id_order, id_product, quantity) values(?,?,?)";
+		String insertOrderDetailSql="insert into order_details(id_order, id_product, quantity,review_status) values(?,?,?,0)";
 		String updateProductSql = "UPDATE products SET inventory_quantity = inventory_quantity - ? WHERE id = ?";
 		Jdbi jdbi = JDBIConnector.getJdbi();
 		return jdbi.inTransaction(handle -> {

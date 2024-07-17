@@ -69,6 +69,20 @@
         });
     </script>
     <style>
+        .power-container {
+            background-color: gainsboro;
+            width: 80%;
+            height: 5px;
+            border-radius: 3px;
+        }
+
+        .power-container #power-point {
+            background-color: #D73F40;
+            width: 1%;
+            height: 100%;
+            border-radius: 3px;
+            transition: 0.2s;
+        }
         .social-login {
             text-align: center;
             display:flex;
@@ -121,6 +135,17 @@
                     <% String emailCookie = ((String) request.getAttribute("email"))==null?"":((String) request.getAttribute("email"));%>
                     <input name="email" type="email" placeholder="Email" class="input" id="email" value="<%=emailCookie%>">
                 </div>
+<%--<<<<<<< HEAD--%>
+<%--                <div class="mb-3" style="position: relative">--%>
+<%--                    <input name="password" type="password" placeholder="Mật khẩu"--%>
+<%--                           class="form-control" id="password" oninput="getPower(this.value)">--%>
+<%--                    <i class='fas fa-eye eye-icon' id="togglePassword"></i>--%>
+<%--                    <label for="password">Power password</label>--%>
+<%--                    <div class="power-container">--%>
+<%--                        <div id="power-point"></div>--%>
+<%--                    </div>--%>
+<%--                    <span id="color-status"></span>--%>
+<%--=======--%>
                 <div class="field input-field">
                     <% String passCookie = ((String) request.getAttribute("password"))==null?"":((String) request.getAttribute("password"));%>
                     <input name="password" type="password" placeholder="Mật khẩu" class="password" id="password" value="<%=passCookie%>">
@@ -151,6 +176,8 @@
                             <i class="fab fa-discord"></i> Discord
                         </div>
                     </a>
+
+
                     <a href="https://www.facebook.com/v19.0/dialog/oauth?fields=id,name,first_name,last_name,email,picture&client_id=487765543790855&redirect_uri=http://localhost:8081/loginByFacebook" class="d-block">
                         <div class="btn btn-facebook custom-btn">
                             <i class="fab fa-facebook"></i> Facebook
@@ -165,6 +192,7 @@
                             </div>
                         </a>
                     </div>
+
                     <div class="text-center mt-3">
                         <a href="https://github.com/login/oauth/authorize?client_id=Ov23li6js9Ba8yvQj3aA">
                             <div class="btn btn-github custom-btn">
@@ -196,8 +224,8 @@
     function validatePassword() {
         var passwordInput = document.getElementById("password");
         var password = passwordInput.value;
-        if (password.length < 6) {
-            alert("Password must be at least 6 characters long.");
+        if (password.length < 8) {
+            alert("Password must be at least 8 characters long.");
             return false; // Prevent form submission
         }
         return true; // Allow form submission
@@ -248,6 +276,26 @@
                 console.error('Fetch error:', error);
             });
     });
+</script>
+<script>
+    // function getPower(password) {
+    //     let point = 0;
+    //     let colorPower = ['#D73F40', '#DC6551', '#F2B84F', '#BDE952', '#30CEC7'];
+    //     let stringColor = ['', 'weak', 'medium', 'strong', 'very strong'];
+    //     let power = document.getElementById('power-point');
+    //     let widthPower = ['1%', '25%', '50%', '75%', '100%'];
+    //     if (password.length >= 8) {
+    //         let arrayTest = [/[0-9]/, /[a-z]/, /[A-Z]/, /[^0-9a-zA-Z]/];
+    //         arrayTest.forEach(item => {
+    //             if(item.test(password)) {
+    //                 point += 1;
+    //             }
+    //         });
+    //     }
+    //     power.style.width = widthPower[point];
+    //     power.style.backgroundColor = colorPower[point];
+    //     document.getElementById('color-status').innerHTML = stringColor[point];
+    // }
 </script>
 </body>
 </html>

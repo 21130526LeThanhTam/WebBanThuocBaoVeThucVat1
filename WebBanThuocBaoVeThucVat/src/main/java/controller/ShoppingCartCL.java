@@ -1,14 +1,9 @@
 package controller;
 
+import Service.DiscountService;
 import Service.IProductService;
 import Service.ProductService;
-import bean.CartItem;
-import bean.Products;
-import bean.ShoppingCart;
-import bean.User;
-
-import com.google.gson.Gson;
-
+import bean.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,8 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.PrintWriter;
 
 @WebServlet(name = "ShoppingCartCL", value = "/ShoppingCartCL")
 public class ShoppingCartCL extends HttpServlet {
@@ -28,107 +22,215 @@ public class ShoppingCartCL extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        ShoppingCart shoppingCart;
         HttpSession session = request.getSession(true);
-        shoppingCart = (ShoppingCart) session.getAttribute("cart");
-        if (shoppingCart == null) {
-            shoppingCart = new ShoppingCart();
+        User user = (User) session.getAttribute("user");
+        if (user == null) getServletContext().getRequestDispatcher("/login-register/login.jsp").forward(request, response);
+        else {
+            String ip = request.getHeader("X-FORWARDED-FOR");
+            if (ip == null) ip = request.getRemoteAddr();
+
+            Discount discount = (Discount) session.getAttribute("discount");
+            ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
+            if (!shoppingCart.getCartItemList().isEmpty()) {
+                double re = 0.0;
+                for(CartItem i : shoppingCart.getCartItemList()) {
+                    Products product = productService.findById(i.getProduct().getId());
+                    re += product.getPrice() * i.getQuantity();
+                }
+                if (discount != null) {
+                    double result = re - re * discount.getSalePercent();
+                    session.setAttribute("result", result);
+                    session.setAttribute("retain", (re * discount.getSalePercent()));
+                } else {
+                    session.setAttribute("result", re);
+                }
+            }
+            request.getRequestDispatcher("gio-hang.jsp").forward(request, response);
         }
-        session.setAttribute("cart", shoppingCart);
-        request.getRequestDispatcher("gio-hang.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
-        if (shoppingCart == null) {
-            shoppingCart = new ShoppingCart();
-            session.setAttribute("cart", shoppingCart);
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json");
+        PrintWriter out = response.getWriter();
+
+        HttpSession session = request.getSession(true);
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            out.write("{\"status\": \"failed\"}");
+            out.close();
+            return;
         }
+
+        ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
+
+        Products product;
+        CartItem cartItem = null;
+        int id, quantity = 0;
+        double retain, re = 0.0;
+
+        Discount discount = (Discount) session.getAttribute("discount");
+        if (discount == null) {
+            discount = new Discount();
+            discount.setSalePercent(0.0);
+        }
+
+        String ip = request.getHeader("X-FORWARDED-FOR");
+        if (ip == null) ip = request.getRemoteAddr();
+
         String action = request.getParameter("action");
         switch (action) {
-        case "get": request.getRequestDispatcher("gio-hang.jsp").forward(request, response);
-            break;
-        case "delete": Delete(request, response);
-            break;
-        case "put": Put(request, response);
-            break;
-        case "add":
-            int id = Integer.parseInt(request.getParameter("id"));
-            int type = Integer.parseInt(request.getParameter("type"));
-            Products product = productService.findById(id);
-            CartItem cartItem = null;
-            if (type == 0) {
-                cartItem = new CartItem(product, 1);
-            } else if (type == 1) {
-                int quantity = Integer.parseInt(request.getParameter("quantity"));
-                cartItem = new CartItem(product, quantity);
-            }
-            shoppingCart.add(cartItem);
-            session.setAttribute("cart", shoppingCart);
-            // Tạo một Map để chứa dữ liệu phản hồi
-            Map<String, Object> responseData = new HashMap<>();
+            case "check":
+                String code = request.getParameter("discount");
+                re = 0.0;
+                for(CartItem i : shoppingCart.getCartItemList()) {
+                    product = productService.findById(i.getProduct().getId());
+                    re += i.getQuantity() * product.getPrice();
+                }
+                if (code != null && !code.isEmpty()) {
+                    discount = DiscountService.getInstance().getCouponByCode(code);
+                    if (discount == null) {
+                        session.removeAttribute("discount");
+                        session.removeAttribute("retain");
+                        out.write("{ \"state\": \"notfound\", \"error\": \"Mã giảm giá không tồn tại!\", \"rect\": \""+0.0+"\", \"result\": \""+re+"\" }");
+                        out.close();
+                        return;
+                    }
+//                else if (discount.getStartDate()> Timestamp.valueOf(n))
+                    // Kiem tra ma giam gia co het han khong, hay chua den han, hay het luot su dung, hay khong ap dung cho gio hang chua san pham do.
+                } else {
+                    out.write("{ \"state\": \"notempty\", \"error\": \"\", \"rect\": \""+ 0.0 +"\", \"result\": \""+re+"\" }");
+                    session.removeAttribute("discount");
+                    session.removeAttribute("retain");
+                    out.close();
+                    return;
+                }
+                session.setAttribute("discount", discount);
+                retain = re - discount.getSalePercent() * re;
+                session.setAttribute("result", retain);
+                session.setAttribute("retain", re * discount.getSalePercent());
+                out.write("{\"result\": \""+retain+"\", \"rect\": \"" + re * discount.getSalePercent() +"\"}");
+                out.flush();
+                out.close();
+                break;
+            case "delete":
+                id = Integer.parseInt(request.getParameter("id"));
+                shoppingCart.remove(id);
+                session.setAttribute("cart", shoppingCart);
+                re = 0.0;
+                for(CartItem i : shoppingCart.getCartItemList()) {
+                    product = productService.findById(i.getProduct().getId());
+                    re += i.getQuantity() * product.getPrice();
+                }
+                retain = re - discount.getSalePercent() * re;
 
-            responseData.put("totalItems", shoppingCart.getCartItemList().size());
-            responseData.put("items", shoppingCart.getCartItemList());
+                if (re==0) {
+                    out.write("{ \"state\": \"zero\", \"total\": \""+shoppingCart.getCartItemList().size()+"\", \"items\": \""+shoppingCart.getCartItemList()+"\" , \"result\": \""+retain+"\" }");
+                } else {
+                    out.write("{ \"total\": \""+shoppingCart.getCartItemList().size()+"\", \"items\": \""+shoppingCart.getCartItemList()+"\" , \"result\": \""+retain+"\", \"rect\": \"" + re * discount.getSalePercent() +"\"}");
+                }
+                session.setAttribute("total", shoppingCart.getCartItemList().size());
+                session.setAttribute("result", retain);
+                session.setAttribute("retain", re * discount.getSalePercent());
+                out.flush();
+                out.close();
+                break;
+            case "put":
+                id = Integer.parseInt(request.getParameter("id"));
+                quantity = Integer.parseInt(request.getParameter("quantity"));
+                product = productService.findById(id);
 
-            // Chuyển đổi Map responseData thành chuỗi JSON
-            String jsonResponse = new Gson().toJson(responseData);
+                if (quantity > 0) {
+                    shoppingCart.update(product, quantity);
+                } else if (quantity == 0) {
+                    shoppingCart.remove(product.getId());
+                }
+                session.setAttribute("cart", shoppingCart);
+                re = 0.0;
+                for(CartItem i: shoppingCart.getCartItemList()) {
+                    Products p = productService.findById(id);
+                    re += i.getQuantity()* p.getPrice();
+                }
+                System.out.println(re);
+                retain = re - discount.getSalePercent() * re;
+                System.out.println(retain);
+                System.out.println(discount.getSalePercent());
+                if (re==0) {
+                    out.write("{ \"state\": \"zero\", \"total\": \""+shoppingCart.getCartItemList().size()+"\", \"items\": \""+shoppingCart.getCartItemList()+"\" , \"result\": \""+retain+"\" }");
+                } else {
+                    out.write("{ \"total\": \""+shoppingCart.getCartItemList().size()+
+                            "\", \"items\": \""+shoppingCart.getCartItemList()+"\" , \"result\": \""+retain+"\", " +
+                            "\"rect\": \"" + re * discount.getSalePercent() +"\"}");
+                }
+                session.setAttribute("total", shoppingCart.getCartItemList().size());
+                session.setAttribute("result", retain);
+                session.setAttribute("retain", re * discount.getSalePercent());
+                out.flush();
+                out.close();
+                break;
+            case "add":
+                id = Integer.parseInt(request.getParameter("id"));
+                int type = Integer.parseInt(request.getParameter("type"));
+                String input = request.getParameter("quantity");
 
-            // Ghi chuỗi JSON vào response để gửi về client
-            response.getWriter().write(jsonResponse);
-            session.setAttribute("totalItems", shoppingCart.getCartItemList().size());
-            break;
+                product = productService.findById(id);
+                if (type == 0) {
+                    cartItem = new CartItem(product, 1);
+                } else if (type == 1) {
+                    if (input == null || input.isEmpty()) {
+                        out.write("{\"status\": \"empty\", \"error\": \"The input do not empty!\"}");
+                        out.close();
+                        return;
+                    }
+                    quantity = Integer.parseInt(input);
+                    if (quantity==0) {
+                        out.write("{\"status\": \"bigger\", \"error\": \"Bạn chỉ được phép thêm số lượng sản phẩm khác 0!\"}");
+                        out.close();
+                        return;
+                    }
+                    cartItem = new CartItem(product, quantity);
+                }
+                int remain = product.getInventory_quantity();
+                int count = 0;
+                if (shoppingCart.getCartItemList().isEmpty()) {
+                    remain = product.getInventory_quantity()- quantity;
+                } else {
+                    for (CartItem item : shoppingCart.getCartItemList()) {
+                        if (item.getProduct().getId() == product.getId()) {
+                            remain = product.getInventory_quantity() - item.getQuantity() - quantity;
+                            count++;
+                            break;
+                        }
+                    }
+                }
+                if (count == 0) remain = product.getInventory_quantity() - quantity;
+                int contain = Integer.parseInt(request.getParameter("contain"));
+                if (remain < 0) {
+                    if (contain > 0) {
+                        out.write("{\"status\": \"out\", \"error\": \"Số lượng thêm không được lớn hơn số lượng còn lại!\"}");
+                    } else {
+                        out.write("{\"status\": \"stock\", \"error\": \"Bạn đã thêm số lượng sản phẩm tối đa vào giỏ!\"}");
+                    }
+                    out.close();
+                    return;
+                }
+                shoppingCart.add(cartItem);
+                session.setAttribute("cart", shoppingCart);
+                re = 0.0;
+                for(CartItem i: shoppingCart.getCartItemList()) {
+                    product = productService.findById(id);
+                    re += i.getQuantity()*product.getPrice();
+                }
+                retain = re - discount.getSalePercent() * re;
+                out.write("{ \"total\": \""+shoppingCart.getCartItemList().size()+"\", \"items\": \""+shoppingCart.getCartItemList()+"\" , \"prefix\": \""+remain+"\", \"rect\": \""+ re * discount.getSalePercent()+ "\"}");
+                session.setAttribute("total", shoppingCart.getCartItemList().size());
+                session.setAttribute("result", retain);
+                session.setAttribute("retain", re * discount.getSalePercent());
+                out.flush();
+                out.close();
+                break;
         }
-    }
-
-    protected void Put(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ShoppingCart shoppingCart;
-        HttpSession session = req.getSession(true);
-        shoppingCart = (ShoppingCart) session.getAttribute("cart");
-        int id = Integer.parseInt(req.getParameter("id"));
-        Products p = productService.findById(id);
-        int quantity = Integer.parseInt(req.getParameter("quantity"));
-        if (quantity > 0) {
-            shoppingCart.update(p, quantity);
-        } else if (quantity == 0) {
-            shoppingCart.remove(id);
-        }
-        session.setAttribute("cart", shoppingCart);
-        // Tạo một Map để chứa dữ liệu phản hồi
-        Map<String, Object> responseData = new HashMap<>();
-
-        responseData.put("totalItems", shoppingCart.getCartItemList().size());
-        responseData.put("items", shoppingCart.getCartItemList());
-
-        // Chuyển đổi Map responseData thành chuỗi JSON
-        String jsonResponse = new Gson().toJson(responseData);
-
-        // Ghi chuỗi JSON vào response để gửi về client
-        resp.getWriter().write(jsonResponse);
-        session.setAttribute("totalItems", shoppingCart.getCartItemList().size());
-    }
-
-
-    protected void Delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ShoppingCart shoppingCart;
-        HttpSession session = req.getSession();
-        shoppingCart = (ShoppingCart) session.getAttribute("cart");
-        int id = Integer.parseInt(req.getParameter("id"));
-        shoppingCart.remove(id);
-        session.setAttribute("cart", shoppingCart);
-        // Tạo một Map để chứa dữ liệu phản hồi
-        Map<String, Object> responseData = new HashMap<>();
-
-        responseData.put("totalItems", shoppingCart.getCartItemList().size());
-        responseData.put("items", shoppingCart.getCartItemList());
-
-        // Chuyển đổi Map responseData thành chuỗi JSON
-        String jsonResponse = new Gson().toJson(responseData);
-
-        // Ghi chuỗi JSON vào response để gửi về client
-        resp.getWriter().write(jsonResponse);
-        session.setAttribute("totalItems", shoppingCart.getCartItemList().size());
     }
 }

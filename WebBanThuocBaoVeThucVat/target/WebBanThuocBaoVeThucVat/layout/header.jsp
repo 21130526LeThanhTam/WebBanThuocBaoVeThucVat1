@@ -5,6 +5,7 @@
 <%@ page import="bean.ShoppingCart" %>
 <%@ page import="bean.Product" %>
 <%@ page import="bo.CategoryBO" %>
+<%@ page import="java.util.ArrayList" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
@@ -236,22 +237,19 @@
     </div>
 </section>
 <!-- Hero Section End -->
-<% Integer total= (Integer) session.getAttribute("totalItems");
-    ShoppingCart c = (ShoppingCart) session.getAttribute("cart");
-    if (!c.getCartItemList().isEmpty()) {
-        if(total==null) total = 0;
+<%
+    Integer totalItems = (Integer) session.getAttribute("total");
+    ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
+    if (cart != null) {
+        if (cart.getCartItemList().isEmpty()) totalItems = 0;
     } else {
-        total = 0;
+        session.setAttribute("cart", new ArrayList<>());
+        if(totalItems == null) totalItems = 0;
     }
-
 %>
 <script>
-    const badge = document.getElementById("badge");
-    const totalItems = '<%=total%>';
-
-    if (badge.innerHTML === '') {
-        badge.innerHTML = totalItems;
-    }
+    const badge = document.getElementById('badge');
+    if (badge.innerHTML === '') badge.innerHTML = '<%=totalItems%>';
 </script>
 </body>
 <script>
@@ -290,5 +288,4 @@
         }
     }
 </script>
-
 </html>

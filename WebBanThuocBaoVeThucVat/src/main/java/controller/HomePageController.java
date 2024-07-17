@@ -2,10 +2,7 @@ package controller;
 
 import Service.IProductService;
 import Service.ProductService;
-import bean.Category;
-import bean.Product;
-import bean.Products;
-import bean.ShoppingCart;
+import bean.*;
 import dao.CategoryDAO;
 import dao.IProductDAO;
 import dao.ProductDAO;
@@ -24,6 +21,21 @@ public class HomePageController extends HttpServlet {
         IProductService productService = new ProductService();
         IProductDAO proDAO = new ProductDAO();
         HttpSession session = request.getSession();
+//        User user = (User) session.getAttribute("user");
+//        if (user != null) {
+//            Integer flag = (Integer) session.getAttribute("flag");
+//            ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
+//            if (flag == 0) {
+//                cart = CartService.getInstance().getCartByUser(user);
+//                flag++;
+//                session.setAttribute("flag", flag);
+//                session.setAttribute("cart", cart);
+//                session.setAttribute("total", cart.size());
+//                double result = CartService.getInstance().getTotalPrice(user);
+//                result += 0.0;
+//                session.setAttribute("result", result);
+//            }
+//        }
         ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
         if(shoppingCart == null){
             shoppingCart = new ShoppingCart();

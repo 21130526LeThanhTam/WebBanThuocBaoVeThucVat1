@@ -9,18 +9,47 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4b7277f-3123-43a3-8334-fad619072ac6" name="Changes" comment="Login with facebook">
+    <list default="true" id="b4b7277f-3123-43a3-8334-fad619072ac6" name="Changes" comment="xu ly form ajax voi discount trong cart">
+      <change afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/LoadComments.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/productReviews.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/review.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/LoadComments.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/Service/OrdersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/Service/OrdersService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/OrderDetailTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/OrderDetailTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/Orders.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/Orders.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/ProductReview.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/ProductReview.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/Util.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/OrderHistoryCL.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/OrderHistoryCL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/Payment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/ProductInfor.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/ProductInfor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/ThanhToanCL.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/ThanhToanCL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/AccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/AccountDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/IOrdersDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/IOrdersDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/OrdersDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/OrdersDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/ProductReviewDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/ProductReviewDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/mapper/OrderDetailTableMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/mapper/OrderDetailTableMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/history.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/history.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/login-register/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/login-register/register.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/thanh-toan.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/thanh-toan.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/thong-tin-don-hang.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/thong-tin-don-hang.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/Service/OrdersService.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/Service/OrdersService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/bean/OrderDetailTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/bean/OrderDetailTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/bean/Orders.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/bean/Orders.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/bean/ProductReview.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/bean/ProductReview.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/bean/Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/bean/Util.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/LoginControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/LoginControl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/OrderHistoryCL.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/OrderHistoryCL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/Payment.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/Payment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/ProductInfor.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/ProductInfor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/ThanhToanCL.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/controller/ThanhToanCL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/AccountDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/AccountDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/IOrdersDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/IOrdersDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/OrdersDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/OrdersDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/ProductReviewDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/ProductReviewDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/mapper/OrderDetailTableMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/mapper/OrderDetailTableMapper.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,12 +61,12 @@
       <list>
         <option value="HTML File" />
         <option value="CSS File" />
-        <option value="Servlet" />
-        <option value="Interface" />
-        <option value="package-info" />
         <option value="JavaScript File" />
-        <option value="Class" />
+        <option value="Servlet" />
+        <option value="package-info" />
         <option value="Jsp File" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -70,39 +99,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.CategoryDAO.executor": "Run",
-    "Application.DBContext.executor": "Run",
-    "Application.JDBIConnector.executor": "Run",
-    "Application.ProductDAO.executor": "Run",
-    "Application.Products.executor": "Run",
-    "Application.ProductsDao.executor": "Run",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "JavaScript Debug.index.jsp.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Tomcat Server.Tomcat 9.0.81.executor": "Run",
-    "Tomcat Server.Tomcat 9.0.executor": "Run",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "21130514__VuTranThaiSon",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/website/WebBanThuocBaoVeThucVat",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.29388815",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "configurable.group.appearance",
-    "spring.configuration.checksum": "160df4a56551aad3a8a3e031b462e798",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.AccountDAO.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CategoryDAO.executor&quot;: &quot;Run&quot;,
+    &quot;Application.DBContext.executor&quot;: &quot;Run&quot;,
+    &quot;Application.DiscountDAO.executor&quot;: &quot;Run&quot;,
+    &quot;Application.JDBIConnector.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ProductDAO.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Products.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ProductsDao.executor&quot;: &quot;Run&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JavaScript Debug.index.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.WebBanThuocBaoVeThucVat [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.WebBanThuocBaoVeThucVat [install].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Smart Tomcat.Smart Tomcat.executor&quot;: &quot;Run&quot;,
+    &quot;Tomcat Server.Tomcat 9.0.81.executor&quot;: &quot;Run&quot;,
+    &quot;Tomcat Server.Tomcat 9.0.executor&quot;: &quot;Run&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Merging 21130091__DoanNhatLinh&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/84828/.SmartTomcat/WebBanThuocBaoVeThucVat1/WebBanThuocBaoVeThucVat&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.29388815&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;160df4a56551aad3a8a3e031b462e798&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="dao" />
@@ -115,11 +148,11 @@
       <recent name="C:\Users\Admin1\Documents\GitHub\WebBanThuocBaoVeThucVat\js\adminJS" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Study\Third_year\ThucTapLTW(Long)\website-main\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main\webapp" />
       <recent name="C:\website\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main\webapp\admin_page" />
       <recent name="C:\website\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main\webapp" />
       <recent name="D:\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main\webapp\css" />
       <recent name="D:\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main\webapp\css\signup_signin" />
+      <recent name="D:\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main\webapp" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="controller.Product" />
@@ -147,12 +180,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DashBoardDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="dao.admin.DashBoardDAO" />
+    <configuration name="DiscountDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dao.DiscountDAO" />
       <module name="WebBanThuocBaoVeThucVat" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dao.admin.*" />
+          <option name="PATTERN" value="dao.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -173,12 +206,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProductReviewDao" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="dao.ProductReviewDao" />
+    <configuration name="Products" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="bean.Products" />
       <module name="WebBanThuocBaoVeThucVat" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dao.*" />
+          <option name="PATTERN" value="bean.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -392,16 +425,16 @@
       <predefined_log_file id="Tomcat Catalina Log" />
       <predefined_log_file id="Tomcat Manager Log" />
       <predefined_log_file id="Tomcat Host Manager Log" />
-      <option name="catalinaBase" value="C:\Users\uyent\.SmartTomcat\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat" />
+      <option name="catalinaBase" value="C:\Users\84828\.SmartTomcat\WebBanThuocBaoVeThucVat1\WebBanThuocBaoVeThucVat" />
       <option name="contextPath" value="/" />
       <option name="docBase" value="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp" />
       <option name="extraClassPath" value="" />
       <option name="port" value="8081" />
       <option name="tomcatInfo">
         <TomcatInfo>
-          <option name="name" value="Apache Tomcat/9.0.81" />
-          <option name="path" value="$PROJECT_DIR$/../../../../apache-tomcat-9.0.81" />
-          <option name="version" value="9.0.81.0" />
+          <option name="name" value="Apache Tomcat/9.0.91" />
+          <option name="path" value="$PROJECT_DIR$/../CNPM/apache-tomcat-9.0.91" />
+          <option name="version" value="9.0.91.0" />
         </TomcatInfo>
       </option>
       <option name="vmOptions" value="" />
@@ -411,23 +444,23 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.UserDao" />
       <item itemvalue="Application.Unnamed" />
+      <item itemvalue="Application.UserDao" />
       <item itemvalue="Application.importDao" />
-      <item itemvalue="Application.ProductReviewDao" />
-      <item itemvalue="Application.DashBoardDAO" />
-      <item itemvalue="Application.ProductsDao" />
       <item itemvalue="Application.AccountDAO" />
+      <item itemvalue="Application.DiscountDAO" />
       <item itemvalue="Application.OrdersDAO" />
+      <item itemvalue="Application.ProductsDao" />
+      <item itemvalue="Application.Products" />
       <item itemvalue="Smart Tomcat.Smart Tomcat" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.81" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ProductReviewDao" />
-        <item itemvalue="Application.OrdersDAO" />
         <item itemvalue="Application.AccountDAO" />
-        <item itemvalue="Application.DashBoardDAO" />
+        <item itemvalue="Application.DiscountDAO" />
+        <item itemvalue="Application.OrdersDAO" />
+        <item itemvalue="Application.Products" />
         <item itemvalue="Application.ProductsDao" />
       </list>
     </recent_temporary>
@@ -435,7 +468,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-18.0.2-corretto-18.0.2-3183f394aec4-38982a12" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
       </set>
     </attachedChunks>
   </component>
@@ -622,14 +656,22 @@
       <workItem from="1720315063448" duration="5010000" />
       <workItem from="1720328354150" duration="16234000" />
       <workItem from="1720498969540" duration="7365000" />
-      <workItem from="1720586214231" duration="14386000" />
-      <workItem from="1720618099585" duration="50143000" />
-      <workItem from="1720856702663" duration="39272000" />
-      <workItem from="1720972202875" duration="1300000" />
-      <workItem from="1721013137766" duration="6792000" />
-      <workItem from="1721022985770" duration="343000" />
-      <workItem from="1721023351806" duration="26613000" />
-      <workItem from="1721094558089" duration="49999000" />
+      <workItem from="1720586214231" duration="5305000" />
+      <workItem from="1720608665322" duration="5875000" />
+      <workItem from="1720707333475" duration="692000" />
+      <workItem from="1720744154318" duration="4016000" />
+      <workItem from="1720754914629" duration="2456000" />
+      <workItem from="1720773087639" duration="7348000" />
+      <workItem from="1720940295264" duration="3948000" />
+      <workItem from="1720946955299" duration="4134000" />
+      <workItem from="1721021138893" duration="8853000" />
+      <workItem from="1721096204768" duration="633000" />
+      <workItem from="1721101796182" duration="6158000" />
+      <workItem from="1721117448595" duration="2823000" />
+      <workItem from="1721137006200" duration="3000" />
+      <workItem from="1721185563527" duration="10000" />
+      <workItem from="1721198604923" duration="27090000" />
+      <workItem from="1721229242004" duration="301000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -767,7 +809,39 @@
       <option name="project" value="LOCAL" />
       <updated>1719562198649</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="strong power password">
+      <option name="closed" value="true" />
+      <created>1720947350961</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1720947350961</updated>
+    </task>
+    <task id="LOCAL-00019" summary="validate form login with valid email &amp; strong password">
+      <option name="closed" value="true" />
+      <created>1720948252826</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1720948252826</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Comment fb api">
+      <option name="closed" value="true" />
+      <created>1720951894818</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1720951894818</updated>
+    </task>
+    <task id="LOCAL-00021" summary="xu ly form ajax voi discount trong cart">
+      <option name="closed" value="true" />
+      <created>1721033650922</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1721033650922</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -795,15 +869,28 @@
     <MESSAGE value="Login with discord" />
     <MESSAGE value="Login with discord 2" />
     <MESSAGE value="Login with facebook" />
-    <option name="LAST_COMMIT_MESSAGE" value="Login with facebook" />
+    <MESSAGE value="strong power password" />
+    <MESSAGE value="validate form login with valid email &amp; strong password" />
+    <MESSAGE value="Comment fb api" />
+    <MESSAGE value="xu ly form ajax voi discount trong cart" />
+    <option name="LAST_COMMIT_MESSAGE" value="xu ly form ajax voi discount trong cart" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/thong-tin-don-hang.jsp</url>
-          <line>47</line>
-          <option name="timeStamp" value="4" />
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/DiscountDAO.java</url>
+          <line>62</line>
+          <properties class="dao.DiscountDAO" method="main">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/assets/js/main.js</url>
+          <line>223</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
