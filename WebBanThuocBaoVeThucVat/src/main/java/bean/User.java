@@ -1,14 +1,52 @@
 package bean;
 
 
+import log.AbsModel;
 import log.IModel;
+import lombok.Data;
 
+import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
-
-public class User implements IModel {
-    private int id, role,active,loginBy, loginTimes;
+@Data
+public class User extends AbsModel implements Serializable {
+    private int id, role,active ,loginBy, loginTimes;;
     private String username, password, phone, email, surname, lastname,hash,picture;
     private Date createAt,updateAt;
+    private LocalDateTime lastActiveTime;
+    public int getLoginBy() {
+        return loginBy;
+    }
+
+    public void setLoginBy(int loginBy) {
+        this.loginBy = loginBy;
+    }
+
+    public int getLoginTimes() {
+        return loginTimes;
+    }
+
+    public void setLoginTimes(int loginTimes) {
+        this.loginTimes = loginTimes;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+
 
     public User() {
     }
@@ -23,9 +61,22 @@ public class User implements IModel {
         this.surname = surname;
         this.lastname = lastname;
     }
-    //id, role,user_name, password, phone, email, sur_name, last_name, hash, active.
+    //email, password, user_name, role, sur_name, last_name, phone, hash, active
 
-    public User(int id, int role,  String username, String password, String phone, String email, String surname, String lastname, String hash,int active) {
+
+    public User(int role, int active, String username, String password, String phone, String email, String surname, String lastname, String hash) {
+        this.role = role;
+        this.active = active;
+        this.username = username;
+        this.password = password;
+        this.phone = phone;
+        this.email = email;
+        this.surname = surname;
+        this.lastname = lastname;
+        this.hash = hash;
+    }
+
+    public User(int id, int role, String username, String password, String phone, String email, String surname, String lastname, String hash, int active) {
         this.id = id;
         this.role = role;
         this.active = active;
@@ -51,6 +102,7 @@ public class User implements IModel {
         this.hash = hash;
         this.active = active;
     }
+    //email, password, user_name, role, sur_name, last_name, phone, hash, active
 
     public int getId() {
         return id;
@@ -158,37 +210,6 @@ public class User implements IModel {
         this.picture = picture;
     }
 
-    public int getLoginBy() {
-        return loginBy;
-    }
-
-    public void setLoginBy(int loginBy) {
-        this.loginBy = loginBy;
-    }
-
-    public int getLoginTimes() {
-        return loginTimes;
-    }
-
-    public void setLoginTimes(int loginTimes) {
-        this.loginTimes = loginTimes;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
 
     // Phương thức dưới để xác định vai trò của người theo role
     public String roleString(){
@@ -229,11 +250,6 @@ public class User implements IModel {
                 '}';
     }
 
-
-    public static void main(String[] args) {
-
-    }
-
     @Override
     public String getTable() {
         return "User";
@@ -249,4 +265,12 @@ public class User implements IModel {
         return this.toString();
     }
 
+    public static void main(String[] args) {
+        String email= "hiho@gmail.com";
+        String pass= "4297f44b13955235245b2497399d7a93";
+        User a = new User();
+        a.setEmail(email);
+        a.setPassword(pass);
+        System.out.println(a);
+    }
 }

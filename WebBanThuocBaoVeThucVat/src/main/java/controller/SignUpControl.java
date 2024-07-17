@@ -4,6 +4,7 @@ import Service.SendingEmail;
 import bean.User;
 import dao.AccountDAO;
 import org.springframework.util.DigestUtils;
+import utils.PasswordUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,6 +38,11 @@ public class SignUpControl extends HttpServlet {
         String pass = req.getParameter("pass");
         String rePass = req.getParameter("rePass");
         //============================================
+        String ipAddress = req.getHeader("X-FORWARDED-FOR");
+        if (ipAddress == null) {
+            ipAddress = req.getRemoteAddr();
+        }
+
 
         // Mã hóa mật khẩu sang md5
         String hashpass = DigestUtils.md5DigestAsHex(pass.getBytes());
@@ -51,24 +57,28 @@ public class SignUpControl extends HttpServlet {
         User user;
         // Kiểm tra user có tồn tại trước đó hay không
         AccountDAO acc = new AccountDAO();
-        user = acc.checkAccountExist(email, 0);
+        user = acc.checkAccountExist(email);
 
         // Nếu user khác null thì đăng kí, không thì sẽ chuyền về là tài khoản đã đăng kí
         if(user == null){
             if(username.length() <= 3 || !(Character.isLetter(username.charAt(0)))){
+
                 out.println("{\"error\":\"Tên tài khoản phải trên 3 kí tự và Kí tự đầu tiên phải là chữ cái.\"}");
             } else if(phone.length() != 10) {
                 out.println("{\"error\":\"Số điện thoại phải là 10 chữ số\"}");
             } else if (!pass.equals(rePass)) {
                 out.println("{\"error\":\"Mật khẩu không trùng khớp\"}");
             } else {
-                String str = acc.signUp(email, hashpass, username, surname, lastname, phone, myHash);
+
+                String str = acc.signUp(email, hashpass, username, surname, lastname, phone, myHash,ipAddress,1,ipAddress);
                 if(str.equals("success")){
                     SendingEmail se = new SendingEmail(email, myHash);
                     se.sendMail();
+
                     out.println("{\"success\":\"true\"}");
                 } else {
                     out.println("{\"error\":\"Đã có lỗi xảy ra trong quá trình đăng ký\"}");
+
                 }
             }
         } else {

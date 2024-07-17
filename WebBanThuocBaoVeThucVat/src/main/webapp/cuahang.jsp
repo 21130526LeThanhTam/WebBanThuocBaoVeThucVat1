@@ -1,11 +1,12 @@
-<%@ page import="bean.Product" %>
 <%@ page import="java.util.List" %>
-<%@ page import="bean.ShoppingCart" %>
-<%@ page import="bean.Products" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="bean.Category" %>
 <%@ page import="bo.CategoryBO" %>
+<%@ page import="bean.*" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -34,8 +35,29 @@
     <%--    <link rel="stylesheet" href="assets/css/Log_Regis.css">--%>
     <%--    <script src="js/log_reg.js" defer></script>--%>
     <%
-        List<Products> products= (List<Products>) request.getAttribute("products");
+        List<Products> products = (List<Products>) session.getAttribute("Product");
+        List<Products> list = (List<Products>) session.getAttribute("listProducts");
         CategoryBO cb = new CategoryBO();
+        int totalPages = (Integer) session.getAttribute("totalPage");
+        int currentPage = (Integer) session.getAttribute("currentPage");
+        int startPage = (Integer) session.getAttribute("startPage");
+        int endPage = (Integer) session.getAttribute("endPage");
+        int products_per_page = (Integer) session.getAttribute("products_per_page");
+        String action = (String) session.getAttribute("action");
+        String name = (String) session.getAttribute("name");
+        String idCate = (String) session.getAttribute("idCate");
+        String order = (String) session.getAttribute("order");
+        String page1 = request.getParameter("page");
+        String pattern;
+        if(page1!= null) {
+            pattern = "ProductController?action=" + action + "&search=" + name + "&";
+        } else {
+            if(idCate== null || idCate.equals("")) {
+                pattern = "ProductController?";
+            } else {
+                pattern = "ProductController?id_category=" + idCate + "&";
+            }
+        }
     %>
 </head>
 
@@ -69,9 +91,9 @@
                     <div class="sidebar__item">
                         <h4>Danh mục sản phẩm</h4>
                         <ul>
-                            <li><a href="StoreProductHome">Tất cả sản phẩm</a></li>
+                            <li><a href="ProductController?order=<%=order%>">Tất cả sản phẩm</a></li>
                             <% for(Category cate : cb.getListCategory()) {%>
-                            <li><a href="ProductController?id_category=<%=cate.getId()%>"><%= cate.getNameCategory() %></a></li>
+                                <li><a href="ProductController?id_category=<%=cate.getId()%>&order=<%=order%>"><%=cate.getNameCategory()%></a></li>
                             <% } %>
                         </ul>
                     </div>
@@ -161,16 +183,16 @@
                             <div class="filter__sort">
                                 <span>Sắp xếp : </span>
                                 <select id="selectOrder">
-                                    <option value="0">Thứ tự mặc định</option>
-                                    <option value="1">Thứ tự theo mức độ phổ biến</option>
-                                    <option value="2">Thứ tự theo giá: thấp đến cao</option>
-                                    <option value="3">Thứ tự theo giá: cao xuống thấp</option>
+                                    <option value="0" data-href="<%= pattern %>order=0&" <%= "0".equals(order) ? "selected" : "" %>>Thứ tự mặc định</option>
+                                    <option value="1" data-href="<%= pattern %>order=1&" <%= "1".equals(order) ? "selected" : "" %>>Thứ tự theo mức độ phổ biến</option>
+                                    <option value="2" data-href="<%= pattern %>order=2&" <%= "2".equals(order) ? "selected" : "" %>>Thứ tự theo giá: thấp đến cao</option>
+                                    <option value="3" data-href="<%= pattern %>order=3&" <%= "3".equals(order) ? "selected" : "" %>>Thứ tự theo giá: cao xuống thấp</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4">
                             <div class="filter__found">
-                                <h6><span><%= products.size() %></span> sản phẩm được tìm thấy</h6>
+                                <h6><span><%=list.size() %></span> sản phẩm được tìm thấy</h6>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-3">
@@ -181,29 +203,62 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
-                    <%for(Products a : products){%>
+                    <%
+                        ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
+                        for(Products p : products) {
+                            int remain = p.getInventory_quantity();
+                            if (shoppingCart != null) {
+                                for (CartItem item : shoppingCart.getCartItemList()) {
+                                    if (item.getProduct().getId()==p.getId()) {
+                                        remain = p.getInventory_quantity() - item.getQuantity();
+                                    }
+                                }
+                            }
+                    %>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div id="" class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="<%=a.getImage()%>">
+                            <div class="product__item__pic set-bg" data-setbg="<%=p.getImage()%>">
                                 <ul class="product__item__pic__hover">
-                                    <li><a href="ProductInfor?id_product=<%= a.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="ShoppingCartCL?action=post&id=<%=a.getId()%>"><i class="fa fa-shopping-cart"></i></a></li>
+                                    <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
+                                    <li><a href="javascript:void(0)" onclick="addCart(this, '<%=p.getId()%>', '<%=remain%>')"><i class="fa fa-shopping-cart"></i></a></li>
+<%--                                    <li><a  href="ShoppingCartCL?action=post&id=<%=a.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>--%>
                                 </ul>
                             </div>
                             <div class="product__item__text">
-                                <h6><a href="ProductInfor?id_product=<%= a.getId() %>"><%=a.getProduct_name()%></a></h6>
-                                <h5><%=a.formatPrice()%>₫</h5>
+                                <h6><a href="ProductInfor?id_product=<%= p.getId() %>"><%=p.getProduct_name()%></a></h6>
+                                <h5><%=p.formatPrice()%>₫</h5>
                             </div>
                         </div>
                     </div>
-                    <%}%>
+                    <% } %>
                 </div>
+
                 <div class="product__pagination">
-                    <a href="#">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#"><i class="fa fa-long-arrow-right"></i></a>
+                    <% if(currentPage > 1) {%>
+                        <a href="<%=pattern%>order=<%=order%>&currentPage=<%=currentPage - 1%>">Trước</a>
+                    <%}%>
+                    <% if(startPage > 2) {%>
+                        <a href="<%=pattern%>order=<%=order%>&currentPage=1">1</a>
+                        <span>..</span>
+                    <%}%>
+                    <% for (int i = startPage; i <= endPage; i++) {
+                        if(i == currentPage) {%>
+                        <strong><%=i%></strong>
+                    <%  } else { %>
+                        <a href="<%=pattern%>order=<%=order%>&currentPage=<%=i%>"><%=i%></a>
+                    <%  }
+                    } %>
+
+                    <% if(endPage > totalPages) {%>
+                        <span>..</span>
+                        <a href="<%=pattern%>order=<%=order%>&currentPage=<%=totalPages%>"><%=totalPages%></a>
+                    <%}%>
+
+                    <% if(currentPage > totalPages) {%>
+                        <a href="<%=pattern%>order=<%=order%>&currentPage=<%=currentPage + 1%>">Next</a>
+                    <%}%>
                 </div>
             </div>
         </div>
@@ -276,15 +331,47 @@
 <script src="assets/js/mixitup.min.js"></script>
 <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    // Lắng nghe sự kiện thay đổi của thẻ select
     document.getElementById('selectOrder').addEventListener('change', function() {
-        // Lấy giá trị được chọn
-        var selectedValue = this.value;
-
-        // Chuyển hướng trình duyệt đến trang index với tham số là giá trị được chọn
-        window.location.href = 'ProductController?order=' + selectedValue;
+        var selectedOption = this.options[this.selectedIndex];
+        var href = selectedOption.getAttribute('data-href');
+        window.location.href = href;
     });
+</script>
+<script>
+    var context = "${pageContext.request.contextPath}";
+    function addCart(btn, id, remain) {
+        console.log(remain)
+        $.ajax({
+            url: 'ShoppingCartCL',
+            method: "POST",
+            data: {
+                id: id,
+                action: "add",
+                type: 0,
+                contain: remain
+            },
+            success: function (response) {
+                if (response.status === "failed") {
+                    window.location.href = 'login';
+                } else if(response.status === "stock") {
+                    alert(response.error)
+                } else {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Thêm Sản Phẩm Vào Giỏ Hàng Thành Công!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    const badge = document.getElementById("badge");
+                    badge.innerHTML = response.total;
+                }
+            }
+        });
+    }
 </script>
 </body>
 </html>

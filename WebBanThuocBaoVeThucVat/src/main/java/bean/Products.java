@@ -1,12 +1,14 @@
 package bean;
 
 import dao.ProductsDao;
-
+import lombok.Data;
+import log.AbsModel;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.Date;
 
-public class Products implements Serializable {
+@Data
+public class Products extends AbsModel implements Serializable {
     private int id;
     private int id_category;
     private int id_discount;
@@ -15,15 +17,19 @@ public class Products implements Serializable {
     private int price;
     private String des;
     private int status;
-
-
+    private int inventory_quantity;
     private Date update_at;
-
+    private int total_sold;
 
 
     //SELECT id , product_name ,picture, price, id_category, quanitity, status, specifications,pro_desc FROM product
 
-
+    public int getInventory_quantity() {
+        return this.inventory_quantity;
+    }
+    public void setInventory_quantity(int inventory_quantity) {
+        this.inventory_quantity = inventory_quantity;
+    }
     public int getId() {
         return id;
     }
@@ -99,7 +105,7 @@ public class Products implements Serializable {
         this.des = des;
         this.status = status;
     }
-    //SELECT id, product_name, image, price, id_category, status, des, create_at FROM products
+
     public Products(int id, int id_category, int id_discount, String product_name, String image, int price, String des) {
         this.id = id;
         this.id_category = id_category;
@@ -114,19 +120,16 @@ public class Products implements Serializable {
 
     public Products() {
     }
-//    id, product_name, image, price, id_category, status, des FROM products
 
-//    public Products(int id, String product_name) {
-//        this.id = id;
-//    }
-
-//    public Products(int id, String product_name, String picture, int price, int id_category) {
-//        this.id = id;
-//        this.product_name = product_name;
-//        this.picture = picture;
-//        this.price = price;
-//        this.id_category = id_category;
-//    }
+    public Products( String product_name, String image, int price,int id_category, int status, int inventory_quantity, String des) {
+        this.id_category = id_category;
+        this.product_name = product_name;
+        this.image = image;
+        this.price = price;
+        this.des = des;
+        this.status = status;
+        this.inventory_quantity = inventory_quantity;
+    }
 
     public Products(int price) {
         this.price = price;
@@ -164,8 +167,23 @@ public class Products implements Serializable {
     }
     public static void main(String[] args) {
         Products a=new Products(4000000);
-//        System.out.println(a.formatPrice());
+        System.out.println(a.afterData());
+    }
 
+
+    @Override
+    public String getTable() {
+        return "Sản phẩm";
+    }
+
+    @Override
+    public String beforeData() {
+        return this.toString();
+    }
+
+    @Override
+    public String afterData() {
+        return this.toString();
     }
 
 

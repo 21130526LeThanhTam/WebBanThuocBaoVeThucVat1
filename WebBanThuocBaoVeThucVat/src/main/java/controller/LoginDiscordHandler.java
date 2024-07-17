@@ -42,7 +42,7 @@ public class LoginDiscordHandler extends HttpServlet {
         HttpSession session = request.getSession();
         try {
             user= getUserInfo(accessToken);
-            userCheck= AccountDAO.getInstance().checkAccountExist(user.getEmail(), 2);
+            userCheck= AccountDAO.getInstance().checkAccountExist(user.getEmail());
             if(userCheck == null){
                 String str = AccountDAO.getInstance().signUp2(user.getEmail(), null, user.getUsername(), user.getSurName() ,user.getLastName() ,user.getPhone(), myHash, user.getLoginBy());
 
@@ -82,7 +82,7 @@ public class LoginDiscordHandler extends HttpServlet {
         User user = new User();
         user.setUsername(json.has("username") ? json.get("username").getAsString() : null);
         user.setEmail(json.has("email") ? json.get("email").getAsString() : null);
-        user.setLastname(json.has("global_name") ? json.get("global_name").getAsString() : null);
+        user.setLastName(json.has("global_name") ? json.get("global_name").getAsString() : null);
         user.setPicture(json.has("avatar") ? json.get("avatar").getAsString() : null);
         user.setLoginBy(2);
         return user;

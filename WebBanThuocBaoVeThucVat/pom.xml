@@ -71,6 +71,15 @@
       <version>1.15</version>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.30</version>
+      <scope>provided</scope>
+    </dependency>
+
+
     <!-- Java Activation Framework -->
     <dependency>
       <groupId>javax.activation</groupId>
@@ -154,6 +163,21 @@
       <version>1.18.30</version>
       <scope>provided</scope>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.maxmind.geoip2/geoip2 -->
+    <dependency>
+      <groupId>com.maxmind.geoip2</groupId>
+      <artifactId>geoip2</artifactId>
+      <version>4.2.0</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.cloudinary/cloudinary-http44 -->
+    <dependency>
+      <groupId>com.cloudinary</groupId>
+      <artifactId>cloudinary-http44</artifactId>
+      <version>1.38.0</version>
+    </dependency>
+
   </dependencies>
   <build>
     <finalName>WebBanThuocBaoVeThucVat</finalName>

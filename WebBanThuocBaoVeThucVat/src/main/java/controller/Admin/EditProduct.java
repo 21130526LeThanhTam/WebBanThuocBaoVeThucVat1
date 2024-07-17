@@ -3,6 +3,7 @@ package controller.Admin;
 import CKeditor.HtmlUtils;
 import Service.ProductsService;
 import bean.Products;
+import dao.LogDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -42,6 +43,12 @@ public class EditProduct extends HttpServlet {
         int proIDOld= oldPro.getId();
         String productName = req.getParameter("productName");// tên sp
         String idCategory = req.getParameter("productCate");// idCategory
+        String inventory_quantity = req.getParameter("inventory"); //   inventory quantity
+        int inventoryInt = 0;
+        if (inventory_quantity != null && !inventory_quantity.isEmpty()) {
+             inventoryInt = Integer.parseInt(inventory_quantity);
+        }
+
         int idCategoryInt = 0;
         if (idCategory != null && !idCategory.isEmpty()) {
             idCategoryInt = Integer.parseInt(idCategory);
@@ -52,10 +59,10 @@ public class EditProduct extends HttpServlet {
             num = Integer.parseInt(productNum);
         }
 
-        Part filePart = req.getPart("imageFile");// path ảnh
-        //xử lý ảnh
+        Part filePart = req.getPart("imageFile"); // path ảnh
+// Xử lý ảnh
         String fileName = filePart.getSubmittedFileName();
-        String root = getServletContext().getRealPath("/dataImagesEdit/");
+        String root = getServletContext().getRealPath("/assets/img/product/"); // Thay đổi đường dẫn lưu trữ ảnh tạm thời
         File check = new File(root);
         if (!check.exists()) {
             check.mkdirs();
@@ -64,7 +71,7 @@ public class EditProduct extends HttpServlet {
         String imagePath;
         if (filePart != null && fileName != null && !fileName.isEmpty()) {
             filePart.write(root + fileName);
-            imagePath = "dataImages/" + fileName;
+            imagePath = "assets/img/product/" + fileName; // Đường dẫn lưu trữ ảnh trong cơ sở dữ liệu
         } else {
             // Người dùng không chọn ảnh, sử dụng đường dẫn ảnh cũ
             imagePath = oldPro.getImage();
@@ -103,8 +110,17 @@ public class EditProduct extends HttpServlet {
         // public void editProduct(String name,String picture,int price,int idCategory,int quantity,int status,String specifications,String proDesc,int id){
         //        ProductsDao.editProduct(name, picture, price, idCategory, quantity, status, specifications, proDesc, id);
         //    }
-        ProductsService.getInstance().editProduct(productName,imagePath,priceInt,idCategoryInt,activeInt,proDesc,proIDOld);
-        resp.sendRedirect("./maProduct");
-
+        ProductsService.getInstance().editProduct(productName,imagePath,priceInt,idCategoryInt,activeInt,proDesc,inventoryInt,proIDOld);
+        Products newProducts = new Products();
+        newProducts.setId(proIDOld);
+        newProducts.setProduct_name(productName);
+        newProducts.setImage(imagePath);
+        newProducts.setPrice(priceInt);
+        newProducts.setId_category(idCategoryInt);
+        newProducts.setStatus(activeInt);
+        newProducts.setDes(proDesc);
+        newProducts.setInventory_quantity(inventoryInt);
+        LogDao.getInstance().updateModel(oldPro,newProducts,"",1,"");
+        resp.sendRedirect("./admin_dashboard?page=./maProduct");
     }
 }

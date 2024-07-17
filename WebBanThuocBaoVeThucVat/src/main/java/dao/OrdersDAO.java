@@ -1,12 +1,9 @@
 package dao;
 
-import bean.OrderDetail;
-import bean.Orders;
-import bean.Products;
-import bean.User;
-import mapper.OrderDetailMapper;
-import mapper.OrderMapper;
-import mapper.ProductMapper;
+import bean.*;
+import db.JDBIConnector;
+import mapper.*;
+import org.jdbi.v3.core.Jdbi;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,21 +27,118 @@ public class OrdersDAO extends AbstractDAO<Orders> implements IOrdersDAO {
 		return query(sql, new OrderMapper());
 	}
 
-	@Override
-	public List<Orders> getOrdersByUser(User user) {
-		String sql = "select * from orders where id_user =?";
-		return query(sql, new OrderMapper(), user.getId());
+	public List<OrderTable> getOrderforAdmin() {
+		String sql = "SELECT o.id AS id, u.user_name AS username, o.create_at AS create_at, " +
+				"o.total_price AS total_price, o.shipping_fee AS shipping_fee, " +
+				"o.address AS address, o.phone_number AS phone_number, " +
+				"o.payment_status AS payment_status, o.order_status AS order_status " +
+				"FROM orders o " +
+				"JOIN users u ON o.id_user = u.id";
+		return query(sql, new OrderTableMapper());
+	}
+
+	public List<OrderDetailTable> getOrderDetailsByOrderId(int orderId) {
+		String sql = "SELECT od.id as id, p.product_name AS product_name,p.image as img, od.quantity as quantity, (od.quantity * p.price) AS priceDetails " +
+				"FROM order_details od " +
+				"JOIN products p ON od.id_product = p.id " +
+				"WHERE od.id_order = ?";
+		return query(sql, new OrderDetailTableMapper(), orderId);
 	}
 
 	@Override
-	public Integer insertOrdersDetail(OrderDetail od) {
-		String sql="insert into order_details(id_order, id_product, quantity) values(?,?,?)";
-		return insert(sql, od.getOrder_id(), od.getProduct_id(), od.getQuantity());
+	public OrderTable getOrderById(int orderId) {
+		String sql = "SELECT o.id AS id, u.user_name AS username, o.create_at AS create_at, " +
+				"o.total_price AS total_price, o.shipping_fee AS shipping_fee, " +
+				"o.address AS address, o.phone_number AS phone_number, " +
+				"o.payment_status AS payment_status, o.order_status AS order_status " +
+				"FROM orders o " +
+				"JOIN users u ON o.id_user = u.id " +
+				"WHERE o.id = ?";
+		return query(sql, new OrderTableMapper(), orderId).get(0);
+	}
+//update trạng thái đơn hàng
+	@Override
+	public void updateOrderStatus(int orderId, int orderStatus) {
+		String sqlUpdateStatus = "UPDATE orders SET order_status = ? WHERE id = ?";
+		update(sqlUpdateStatus, orderStatus, orderId);
+		//cập nhật lại sản phẩm khi orderstatus = 0
+		if (orderStatus == 0) { // Đã hủy đơn hàng
+			String sqlGetOrderDetails = "SELECT id_product as product_id, quantity FROM order_details WHERE id_order  = ?";
+			List<OrderDetail> orderDetails = JDBIConnector.getJdbi().withHandle(handle ->
+					handle.createQuery(sqlGetOrderDetails)
+							.bind(0, orderId)
+							.mapToBean(OrderDetail.class)
+							.list()
+			);
+			for (OrderDetail detail : orderDetails) {
+				String sqlUpdateInventory = "UPDATE products SET inventory_quantity = inventory_quantity + ? WHERE id = ?";
+				this.update(sqlUpdateInventory, detail.getQuantity(), detail.getProduct_id());
+			}
+		}
+	}
+
+// Update trạng thái thanh toán
+	@Override
+	public void updatePaymentStatus(int orderId, String paymentStatus) {
+		String sql = "UPDATE orders SET payment_status = ? WHERE id = ?";
+		update(sql, paymentStatus, orderId);
+	}
+
+	@Override
+	public List<OrderTable> getOrdersByUserAndStatus(User user, int status) {
+		String sql = "SELECT o.id AS id, u.user_name AS username, o.create_at AS create_at, " +
+				"o.total_price AS total_price, o.shipping_fee AS shipping_fee, " +
+				"o.address AS address, o.phone_number AS phone_number, " +
+				"o.payment_status AS payment_status, o.order_status AS order_status " +
+				"FROM orders o " +
+				"JOIN users u ON o.id_user = u.id " +
+				"WHERE o.id_user = ? AND o.order_status = ?";
+		return query(sql, new OrderTableMapper(), user.getId(), status);
+	}
+
+
+	@Override
+	public List<OrderTable> getOrdersByUser(User user) {
+		String sql = "SELECT o.id AS id, u.user_name AS username, o.create_at AS create_at, " +
+				"o.total_price AS total_price, o.shipping_fee AS shipping_fee, " +
+				"o.address AS address, o.phone_number AS phone_number, " +
+				"o.payment_status AS payment_status, o.order_status AS order_status " +
+				"FROM orders o " +
+				"JOIN users u ON o.id_user = u.id " +
+				"WHERE o.id_user = ?";
+		return query(sql, new OrderTableMapper(), user.getId());
+	}
+
+	//khi insert một order details sẽ thay đổi quantity trong product
+	@Override
+	public  Integer insertOrdersDetail(OrderDetail od) {
+		String insertOrderDetailSql="insert into order_details(id_order, id_product, quantity) values(?,?,?)";
+		String updateProductSql = "UPDATE products SET inventory_quantity = inventory_quantity - ? WHERE id = ?";
+		Jdbi jdbi = JDBIConnector.getJdbi();
+		return jdbi.inTransaction(handle -> {
+			int rowsAffected = handle.createUpdate(insertOrderDetailSql)
+					.bind(0, od.getOrder_id())
+					.bind(1, od.getProduct_id())
+					.bind(2, od.getQuantity())
+					.execute();
+
+			if (rowsAffected > 0) {
+				int updateRows = handle.createUpdate(updateProductSql)
+						.bind(0, od.getQuantity())
+						.bind(1, od.getProduct_id())
+						.execute();
+
+				if (updateRows > 0) {
+					return rowsAffected;
+				}
+			}
+
+			return 0;
+		});
 	}
 
 	@Override
 	public List<OrderDetail> getDetailsByOrder(List<Integer> ordersId) {
-
 		// Tạo chuỗi các tham số
 		String params = ordersId.stream()
 				.map(Object::toString)
@@ -61,9 +155,16 @@ public class OrdersDAO extends AbstractDAO<Orders> implements IOrdersDAO {
 	}
 
 	public static void main(String[] args) {
-		Orders o = new Orders(1,5,5,"158","240");
 		IOrdersDAO order = new OrdersDAO();
-		System.out.println(order.insertOrder(o));
+		OrderDetail orderDetail = new OrderDetail();
+		orderDetail.setOrder_id(2);
+		orderDetail.setProduct_id(6);
+		orderDetail.setQuantity(10);
+		//System.out.println(order.getOrderforAdmin())
+		User user = new User();
+		user.setId(11);
+		System.out.println(order.getOrdersByUserAndStatus(user,0));
+
 
 	}
 }

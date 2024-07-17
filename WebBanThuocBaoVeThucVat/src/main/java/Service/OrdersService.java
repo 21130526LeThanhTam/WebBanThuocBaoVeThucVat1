@@ -12,7 +12,7 @@ import Service.IOrdersService;
 
 public class OrdersService implements IOrdersService {
 	private final IOrdersDAO ordersDAO;
-	
+
 	public OrdersService() {
 		this.ordersDAO = new OrdersDAO();
 	}

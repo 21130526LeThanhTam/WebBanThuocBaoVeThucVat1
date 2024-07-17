@@ -33,7 +33,7 @@ public class CommentDAO {
     public List<Comment> getAllComments() {
         List<Comment> comments = new ArrayList<>();
         Connection conn = DBContext.getConnection();
-        String sql = "SELECT  FROM comments";
+        String sql = "SELECT * FROM `comments`";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet resultSet = ps.executeQuery();

@@ -9,4 +9,5 @@ public interface IProductService {
     List<Products> findAll1();
     List<Product> findAll2();
     Products findById(int id);
+
 }

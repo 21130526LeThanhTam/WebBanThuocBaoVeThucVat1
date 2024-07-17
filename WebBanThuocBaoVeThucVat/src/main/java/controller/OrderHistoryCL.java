@@ -1,9 +1,8 @@
 package controller;
 
 import Service.IOrdersService;
-import bean.OrderDetail;
-import bean.Orders;
-import bean.User;
+import bean.*;
+import com.google.gson.Gson;
 import dao.IOrdersDAO;
 import dao.OrdersDAO;
 import debug.LoggingConfig;
@@ -22,8 +21,10 @@ import java.util.logging.Logger;
 
 @WebServlet(name = "OrderHistoryCL", value = "/OrderHistoryCL")
 public class OrderHistoryCL extends HttpServlet {
+    private static final long serialVersionUID = 1L;
     private IOrdersDAO dao;
     private static final Logger LOGGER = Logger.getLogger(OrderHistoryCL.class.getName());
+
     @Override
     public void init() throws ServletException {
         super.init();
@@ -41,18 +42,89 @@ public class OrderHistoryCL extends HttpServlet {
         if(user == null){
             request.getRequestDispatcher("/login").forward(request, response);
         }else{
-            List<Orders> orders = this.dao.getOrdersByUser(user);
-            List<Integer> ordersId = new ArrayList<Integer>();
-            for (Orders o : orders) {
-                ordersId.add(o.getId());
+            String action = request.getParameter("action");
+            if (action == null || action.isEmpty()) {
+                listOrders(request, response, user);
+            } else if ("view".equals(action)) {
+                viewOrderDetails(request, response);
+            } else if ("filter".equals(action)) {
+                filterOrdersByStatus(request, response, user);
             }
-            LOGGER.warning(session.getAttribute("details")+"");
-            List<OrderDetail> details = this.dao.getDetailsByOrder(ordersId);
-            session.setAttribute("details", details);
-            LOGGER.warning(session.getAttribute("details")+"");
-            request.getRequestDispatcher("history.jsp").forward(request, response);
-
         }
 
+    }
+
+    private void listOrders(HttpServletRequest req, HttpServletResponse resp, User user) throws ServletException, IOException {
+        List<OrderTable> listOrder = dao.getOrdersByUser(user);
+        for (OrderTable order : listOrder) {
+            List<OrderDetailTable> listOrderDetail = dao.getOrderDetailsByOrderId(order.getId());
+            order.setListDetails(listOrderDetail);
+        }
+        req.setAttribute("listOrder", listOrder);
+        req.getRequestDispatcher("history.jsp").forward(req, resp);
+    }
+
+    private void viewOrderDetails(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int orderId = Integer.parseInt(req.getParameter("orderId")); // lấy ra orderID khi click vào
+        List<OrderDetailTable> listOrderDetail = dao.getOrderDetailsByOrderId(orderId);
+        // Trả về JSON của chi tiết đơn hàng
+        Gson gson = new Gson();
+        String json = gson.toJson(listOrderDetail);
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        resp.getWriter().write(json);
+    }
+
+    private void filterOrdersByStatus(HttpServletRequest req, HttpServletResponse resp, User user) throws ServletException, IOException {
+        int status = Integer.parseInt(req.getParameter("status"));
+        List<OrderTable> listOrder;
+        if(status == 5) {
+            listOrder = dao.getOrdersByUser(user);
+        } else {
+            listOrder = dao.getOrdersByUserAndStatus(user, status);
+        }
+        // Chuyển đổi trạng thái đơn hàng thành văn bản
+        for (OrderTable order : listOrder) {
+            order.setOrderStatusText();
+        }
+        Gson gson = new Gson();
+        String json = gson.toJson(listOrder);
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        resp.getWriter().write(json);
+    }
+
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+        resp.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/html; charset=UTF-8");
+        String action = req.getParameter("action");
+        if ("cancelOrder".equals(action)) {
+            cancelOrder(req, resp);
+        } else {
+            doGet(req, resp);
+        }
+    }
+
+    private void cancelOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int orderId = Integer.parseInt(req.getParameter("orderId"));
+        // Logic để kiểm tra và cập nhật trạng thái đơn hàng là 1 hoặc 2
+        OrderTable order = dao.getOrderById(orderId);
+        int currentOrderStatus = order.getOrder_status();
+        String errorMessage = null;
+        if (currentOrderStatus == 0) {
+            errorMessage = "Đơn hàng này đã bị hủy trước đó";
+        } else if (currentOrderStatus == 4) {
+            errorMessage = "Đã giao thành công, không thể hủy đơn hàng";
+        }
+
+        if (errorMessage != null) {
+            resp.getWriter().write(errorMessage);
+        } else {
+            dao.updateOrderStatus(orderId, 0);
+            resp.getWriter().write("Success");
+        }
     }
 }

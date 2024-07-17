@@ -45,6 +45,74 @@
         .filter-buttons button {
             margin-right: 5px;
         }
+        .product__details__text {
+            margin-bottom: 30px;
+        }
+        .product__details__price {
+            color: #e53637;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .product__details__text p {
+            color: #6f6f6f;
+            margin-bottom: 20px;
+        }
+        .product-quantity {
+            color: #ff0000;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .product__details__quantity .quantity input {
+            width: 50px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid #e5e5e5;
+            border-radius: 5px;
+        }
+        .add-to-cart {
+            background-color: #fff;
+            border: 2px solid #7fad39;
+            padding: 10px 20px;
+            color: #7fad39;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 5px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .add-to-cart:hover {
+            background-color: #7fad39;
+            border-color: #f8d7da;
+        }
+        .primary-btn {
+            background-color: #7fad39;
+            border: none;
+            padding: 10px 20px;
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 5px;
+        }
+        .primary-btn:hover {
+            background-color: #5a9e1b;
+        }
+        .quantity-container {
+            display: flex;
+            align-items: center;
+        }
+        .quantity-label {
+            margin-right: 10px;
+            font-weight: bold;
+            color: #6f6f6f;
+        }
+        .available-quantity {
+            margin-left: 10px;
+            color: #6f6f6f;
+        }
+        .qtybtn{
+            display:none!important;
+        }
     </style>
 </head>
 <%
@@ -54,9 +122,6 @@
 <body>
 
 <jsp:include page="layout/header.jsp"/>
-
-
-
 <!-- Breadcrumb Section Begin -->
 <section class="breadcrumb-section set-bg" data-setbg="assets/img/breadcrumb.jpg">
     <div class="container">
@@ -102,51 +167,34 @@
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="product__details__text">
-                    <h3><%= proID.getProduct_name()%></h3>
-                    <!-- <div class="product__details__rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-half-o"></i>
-                        <span>(18 reviews)</span>
-                    </div> -->
-
+                    <h3><%= proID.getProduct_name() %></h3>
                     <div class="product__details__price"><%= proID.formatPrice() %>₫</div>
                     <p><%= proID.getDes() %></p>
-
-
-                        <div class="d-flex align-items-center">
-                            <div class="product__details__quantity mr-3">
-                                <div class="quantity">
-                                    <div class="pro-qty">
-                                        <input type="text" name="quantity" id="quantityInput" value="1">
-                                    </div>
+                    <div class="quantity-container">
+                        <span class="quantity-label">Số Lượng</span>
+                        <div class="product__details__quantity">
+                            <div class="quantity">
+                                <div class="pro-qty">
+                                    <button id="decrease" class="btn-decrease">-</button>
+                                    <input type="number" id="quantity" class="input-number" value="1" min="1" max="${requestScope.remain}" />
+                                    <button id="increase" class="btn-increase">+</button>
+                                    <span style="color: red; margin: 10px" id="error"></span>
                                 </div>
                             </div>
-                            <a class="d-flex btn btn-success add-to-cart align-items-center justify-content-center"
-                               href="javascript:void(0)"
-                               data-id="<%=proID.getId()%>"
-                               onclick="addCart(this, '<%=proID.getId()%>')">
-                                THÊM VÀO GIỎ HÀNG
-                            </a>
                         </div>
-<%--                        <a href="ShoppingCartCL?action=post&id=<%=proID.getId()%>&type=0" id="addToCartBtn" class="primary-btn"><i class="fa-solid fa-cart-plus"></i>THÊM VÀO GIỎ HÀNG</a>--%>
-                        <a href="javascript:void(0);" id="buyNowBtn" class="primary-btn">MUA NGAY</a>
-
-
-
+                        <span class="available-quantity"><%= proID.getInventory_quantity() %> sản phẩm có sẵn</span>
+                    </div>
+                    <div class="d-flex align-items-center mt-3">
+                        <a class="add-to-cart" id="add_cart"
+                           href="javascript:void(0)"
+                           data-id="<%=proID.getId()%>"
+                           onclick="addCart(this, '<%=proID.getId()%>')" style="color:#7fad39;background-color:#fff; border: 2px solid #7fad39;">
+                            <i class="fa fa-shopping-cart"></i> Thêm Vào Giỏ Hàng
+                        </a>
+                        <a href="javascript:void(0);" id="buyNowBtn" class="primary-btn">Mua Ngay</a>
+                    </div>
                     <ul>
-                        <!-- <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li> -->
-                        <!-- <li><b>Thành phần</b> : </li> <span>Azoxystrobin, Hexaconazole, Phụ gia</span> -->
-                        <!-- <li><b>Share on</b>
-                            <div class="share">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa fa-pinterest"></i></a>
-                            </div>
-                        </li> -->
+                        <!-- Các phần tử khác -->
                     </ul>
                 </div>
             </div>
@@ -427,8 +475,14 @@
 <script async defer crossorigin="anonymous"
         src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v20.0&appId=1072330460766904" nonce="9nNhsvob"></script>
 <script>
+    let quantityInput = document.getElementById("quantity");
+    let btnAddCart = document.getElementById("add_cart");
+    let increase = document.getElementById("increase");
+    let decrease = document.getElementById("decrease");
     function addCart(btn, id) {
-        var quantity = $('#quantityInput').val();
+        var quantity = $('#quantity').val();
+        const input = document.getElementById('quantity');
+        const max = parseInt(input.max, 10);
         $.ajax({
             url: "ShoppingCartCL",
             method: "POST",
@@ -436,19 +490,34 @@
                 id: id,
                 action: "add",
                 type: 1,
-                quantity: quantity
+                quantity: quantity,
+                contain: max
             },
             success: function (response) {
-                var res = JSON.parse(response);
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "Thêm Sản Phẩm Vào Giỏ Hàng Thành Công!",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                const badge = document.getElementById("badge");
-                badge.innerHTML = res.totalItems;
+                if (response.status === "failed") {
+                    window.location.href = 'login';
+                } else if (response.status === "empty" || response.status === "out" || response.status === "bigger") {
+                    console.log(response.error);
+                    $('#error').html(response.error);
+                } else if (response.status === "stock") {
+                    $('#error').html(response.error);
+                    quantityInput.style.display = "none";
+                    btnAddCart.style.display = "none";
+                    increase.style.display = "none";
+                    decrease.style.display = "none";
+                } else {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Thêm Sản Phẩm Vào Giỏ Hàng Thành Công!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    const badge = document.getElementById("badge");
+                    badge.innerHTML = response.total;
+                    $('#quantity').attr('max', response.prefix);
+                    $('#error').html("");
+                }
             }
         });
     }
@@ -456,16 +525,49 @@
 <script>
     document.getElementById('buyNowBtn').addEventListener('click', function() {
         // Lấy giá trị đã nhập từ input
-        var quantity = document.getElementById('quantityInput').value;
-
+        var quantity = document.getElementById('quantity').value;
         // Tạo URL mới với giá trị đã nhập từ input
         var url = "ShoppingCartCL?action=post&id=<%=proID.getId()%>&type=1&quantity=" + encodeURIComponent(quantity);
-
         // Chuyển hướng đến URL mới
         window.location.href = url;
     });
-</script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const input = document.getElementById('quantity');
+        const increaseBtn = document.getElementById('increase');
+        const decreaseBtn = document.getElementById('decrease');
 
+        // Kiểm tra và giới hạn giá trị nhập vào input
+        input.addEventListener('input', function() {
+            const min = parseInt(input.min, 10);
+            const max = parseInt(input.max, 10);
+            let value = parseInt(input.value, 10);
+
+            if (value > max) {
+                input.value = max;
+            } else if (value < min) {
+                input.value = min;
+            }
+        });
+
+        // Tăng số lượng
+        increaseBtn.addEventListener('click', function() {
+            const max = parseInt(input.max, 10);
+            let value = parseInt(input.value, 10);
+            if (value < max) {
+                input.value = value + 1;
+            }
+        });
+
+        // Giảm số lượng
+        decreaseBtn.addEventListener('click', function() {
+            const min = parseInt(input.min, 10);
+            let value = parseInt(input.value, 10);
+            if (value > min) {
+                input.value = value - 1;
+            }
+        });
+    });
+</script>
 <%--<script>--%>
 <%--    document.getElementById('addToCartBtn').addEventListener('click', function() {--%>
 <%--        // Lấy giá trị đã nhập từ input--%>

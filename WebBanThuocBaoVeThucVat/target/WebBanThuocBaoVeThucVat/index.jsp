@@ -1,15 +1,10 @@
 <%@ page import="java.util.List" %>
 <%@ page import="bo.CategoryBO" %>
 <%@ page import="bean.*" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%--
-
-  Created by IntelliJ IDEA.
-  User: Windows 10
-  Date: 16-12-2023
-  Time: 9:56 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -47,10 +42,10 @@
 
         ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
         CategoryBO cb = new CategoryBO();
-        System.out.println("linh"+cb);
-        if(shoppingCart==null){
-            shoppingCart = new ShoppingCart();
-        }
+
+//        if(shoppingCart==null){
+//            shoppingCart = new ShoppingCart();
+//        }
     %>
 
     <%--    <link rel="stylesheet" href="css/Log_Regis.css">--%>
@@ -81,7 +76,18 @@
         </div>
         <div class="row">
             <div class="categories__slider owl-carousel">
-                <% for(Products p : products){%>
+                <!-- Các sản phẩm nổi bật  -->
+                <%
+                    for(Products p : products) {
+                        int remain = p.getInventory_quantity();
+                        if (shoppingCart != null) {
+                            for (CartItem item : shoppingCart.getCartItemList()) {
+                                if (item.getProduct().getId()==p.getId()) {
+                                    remain = p.getInventory_quantity() - item.getQuantity();
+                                }
+                            }
+                        }
+                %>
                 <div class="col-lg-3 col-md-4 col-sm-6 mix a">
                     <div class="featured__item">
                         <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
@@ -92,7 +98,7 @@
                                     <a class="d-flex add-to-cart align-items-center justify-content-center"
                                        href="javascript:void(0)"
                                        data-id="<%=p.getId()%>"
-                                       onclick="addCart(this, '<%=p.getId()%>')">
+                                       onclick="addCart(this, '<%=p.getId()%>', '<%=remain%>')">
                                         <i class="fa fa-shopping-cart"></i>
                                     </a>
                                 </li>
@@ -104,7 +110,6 @@
                         </div>
                     </div>
                 </div>
-
                 <% } %>
             </div>
         </div>
@@ -144,8 +149,18 @@
             </div>
         </div>
         <div class="row featured__filter">
-            <% for(Products p : products) {%>
-            <% if(p.getId_category() == 1) {%>
+            <%
+                for(Products p : products) {
+                    int remain = p.getInventory_quantity();
+                    if (shoppingCart != null) {
+                        for (CartItem item : shoppingCart.getCartItemList()) {
+                            if (item.getProduct().getId()==p.getId()) {
+                                remain = p.getInventory_quantity() - item.getQuantity();
+                            }
+                        }
+                    }
+                    if(p.getId_category() == 1) {
+            %>
             <div class="col-lg-3 col-md-4 col-sm-6 mix a">
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
@@ -155,7 +170,7 @@
                                 <a class="d-flex add-to-cart align-items-center justify-content-center"
                                    href="javascript:void(0)"
                                    data-id="<%=p.getId()%>"
-                                   onclick="addCart(this, '<%=p.getId()%>')">
+                                   onclick="addCart(this, '<%=p.getId()%>', '<%=remain%>')">
                                     <i class="fa fa-shopping-cart"></i>
                                 </a>
                             </li>
@@ -169,7 +184,7 @@
                 </div>
             </div>
             <% } %>
-            <% if(p.getId_category() == 2) {%>
+            <% if(p.getId_category() == 2) { %>
             <div class="col-lg-3 col-md-4 col-sm-6 mix b">
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
@@ -180,7 +195,7 @@
                                 <a class="d-flex add-to-cart align-items-center justify-content-center"
                                    href="javascript:void(0)"
                                    data-id="<%=p.getId()%>"
-                                   onclick="addCart(this, '<%=p.getId()%>')">
+                                   onclick="addCart(this, '<%=p.getId()%>', '<%=remain%>')">
                                     <i class="fa fa-shopping-cart"></i>
                                 </a>
                             </li>
@@ -205,7 +220,7 @@
                                 <a class="d-flex add-to-cart align-items-center justify-content-center"
                                    href="javascript:void(0)"
                                    data-id="<%=p.getId()%>"
-                                   onclick="addCart(this, '<%=p.getId()%>')">
+                                   onclick="addCart(this, '<%=p.getId()%>', '<%=remain%>')">
                                     <i class="fa fa-shopping-cart"></i>
                                 </a>
                             </li>
@@ -230,7 +245,7 @@
                                 <a class="d-flex add-to-cart align-items-center justify-content-center"
                                    href="javascript:void(0)"
                                    data-id="<%=p.getId()%>"
-                                   onclick="addCart(this, '<%=p.getId()%>')">
+                                   onclick="addCart(this, '<%=p.getId()%>', '<%=remain%>')">
                                     <i class="fa fa-shopping-cart"></i>
                                 </a>
                             </li>
@@ -243,10 +258,8 @@
                     </div>
                 </div>
             </div>
-            <% } %>
-            <% } %>
+            <% } }%>
         </div>
-
     </div>
 </section>
 <!-- Featured Section End -->
@@ -400,9 +413,6 @@
         </div>
     </div>
 </footer>
-
-
-
 <!-- Js Plugins -->
 <script src="assets/js/jquery-3.3.1.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
@@ -415,26 +425,34 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    function addCart(btn, id) {
+    var context = "${pageContext.request.contextPath}";
+    function addCart(btn, id, remain) {
+        console.log(remain)
         $.ajax({
-            url: "ShoppingCartCL",
+            url: 'ShoppingCartCL',
             method: "POST",
             data: {
                 id: id,
                 action: "add",
-                type: 0
+                type: 0,
+                contain: remain
             },
             success: function (response) {
-                var res = JSON.parse(response);
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "Thêm Sản Phẩm Vào Giỏ Hàng Thành Công!",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                const badge = document.getElementById("badge");
-                badge.innerHTML = res.totalItems;
+                if (response.status === "failed") {
+                    window.location.href = 'login';
+                } else if(response.status === "stock") {
+                    alert(response.error)
+                } else {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Thêm Sản Phẩm Vào Giỏ Hàng Thành Công!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    const badge = document.getElementById("badge");
+                    badge.innerHTML = response.total;
+                }
             }
         });
     }

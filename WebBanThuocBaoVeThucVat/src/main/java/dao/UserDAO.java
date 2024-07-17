@@ -4,6 +4,7 @@ import Service.UserService;
 import bean.User;
 import db.DBContext;
 import db.JDBIConnector;
+import log.AbsModel;
 import log.AbstractDao;
 
 import java.sql.Connection;
@@ -23,6 +24,7 @@ public class UserDAO extends AbstractDao<User> {
 
     public static boolean toggleUserStatus(int userID, boolean disable) {
         String query = "UPDATE users SET active = ? WHERE id = ?";
+        String action ="";
         int status = disable ? 0 : 1;
         int rowsUpdated = JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createUpdate(query)
@@ -143,6 +145,13 @@ public class UserDAO extends AbstractDao<User> {
                         .execute()
         );
     }
+    public void LockUser(String email) {
+        JDBIConnector.getJdbi().useHandle(handle ->
+                handle.createUpdate("UPDATE users SET active=2 WHERE email=?")
+                        .bind(0, email)
+                        .execute()
+        );
+    }
 
     //// kiểm tra người dùng tồn tại.nếu người dùng ko tồn tại false và ngc lại
     public boolean isUserExists(String email) {
@@ -205,25 +214,28 @@ public class UserDAO extends AbstractDao<User> {
     @Override
     public boolean selectModel(int id) {
         super.selectModel(id);
-
         return true;
     }
+    //INSERT INTO users(email, password, user_name, role, sur_name, last_name, phone, hash, active) VALUES (?,?,?,?,?,?,?,?,?)
 
     @Override
-    public boolean insertModel(User model, String ip, int level, String address) {
+    public boolean insertModel(AbsModel model, String ip, int level, String address) {
+        User user= (User) model;
         Integer i =JDBIConnector.getJdbi().withHandle(handle ->
-                handle.createUpdate("INSERT INTO users(role, user_name, phone,email, sur_name, last_name, active,password) VALUES (?,?,?,?,?,?,?,?)")
-                        .bind(0,model.getRole())
-                        .bind(1,model.getUsername())
-                        .bind(2,model.getPhone())
-                        .bind(3,model.getEmail())
-                        .bind(4,model.getSurName())
-                        .bind(5,model.getLastName())
-                        .bind(6,model.getActive())
-                        .bind(7,model.getPassword())
+                handle.createUpdate("INSERT INTO users(email, password, user_name, role, sur_name, last_name, phone, hash, active) VALUES (?,?,?,?,?,?,?,?,?)")
+                        .bind(0,user.getEmail())
+                        .bind(1,user.getPassword())
+                        .bind(2,user.getUsername())
+                        .bind(3,user.getRole())
+                        .bind(4,user.getSurName())
+                        .bind(5,user.getLastName())
+                        .bind(6,user.getPhone())
+                        .bind(7,user.getHash())
+                        .bind(8,user.getActive())
                         .execute()
         );
-        super.insertModel(model,ip,level,address);
+        User newUser = UserDAO.getUserByEmail(user.getEmail());
+        super.insertModel(newUser,ip,level,address);
         if(i==1){
             return true;
         }
@@ -231,30 +243,32 @@ public class UserDAO extends AbstractDao<User> {
     }
 
     @Override
-    public boolean deleteModel(User model, String ip, int level, String address) {
-
+    public boolean deleteModel(AbsModel model, String ip, int level, String address) {
         super.deleteModel(model,ip,level,address);
         return true;
     }
     @Override
-    public boolean updateModel(User model, String ip, int level, String address) {
+    public boolean updateModel(AbsModel modelBf,AbsModel modelAt, String ip, int level, String address) {
+        User user= (User) modelBf;
         Integer i = JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createUpdate("UPDATE users SET sur_name=?,last_name=?,user_name=?,phone=?,active=? WHERE id=?")
-                        .bind(0,model.getSurName())
-                        .bind(1,model.getLastName())
-                        .bind(2,model.getUsername())
-                        .bind(3,model.getPhone())
-                        .bind(4,model.getActive())
-                        .bind(5,model.getId())
+                        .bind(0,user.getSurName())
+                        .bind(1,user.getLastName())
+                        .bind(2,user.getUsername())
+                        .bind(3,user.getPhone())
+                        .bind(4,user.getActive())
+                        .bind(5,user.getId())
                         .execute()
         );
-
-        super.updateModel(model,ip,level,address);
+        super.updateModel(modelBf,modelAt,ip,level,address);
         if(i==1) return true;
-        return false;
+        return true;
     }
 
     //int id, int active, String username, String phone, String surname, String lastname
     public static void main(String[] args) {
+    //"INSERT INTO users(email, password, user_name, role, sur_name, last_name, phone, hash, active) VALUES (?,?,?,?,?,?,?,?,?)"
+        User a = new User(1,1,"dfgd","123123","0182989283","hiho@gmail.com","dfshdj","dfjgsdh");
+        UserDAO.getInstance().insertModel(a,"010001",1,"1");
     }
 }

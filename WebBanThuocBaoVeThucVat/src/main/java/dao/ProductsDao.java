@@ -8,17 +8,40 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class ProductsDao implements IProductsDao{
+public class ProductsDao implements IProductsDao {
+
+    public static boolean toggleProductStatus(int id, boolean disable) {
+        String query = "UPDATE products SET status = ? WHERE id = ?";
+        int status = disable ? 0 : 1;
+        int rowsUpdated = JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createUpdate(query)
+                        .bind(0, status)
+                        .bind(1, id)
+                        .execute()
+        );
+        return rowsUpdated > 0;
+    }
+
+
+    private static final int PRODUCTS_PER_PAGE = 3;
+
     // lấy ra ds sp đc active.
     @Override
     public List<Products> findAll1(String name) {
         List<Products> products=JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createQuery("SELECT id,product_name,image,price,id_category FROM products WHERE status=1 AND product_name LIKE ?")
-                        .bind(0,"%"+name+"%")
+                        .bind(0,"%"+ name + "%")
                         .mapToBean(Products.class).collect(Collectors.toList()));
         return products;
     }
 
+    public static List<Products> getAllProducts() {
+        List<Products> products = JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT id, product_name, image, price, id_category,status,inventory_quantity FROM products")
+                        .mapToBean(Products.class)
+                        .collect(Collectors.toList()));
+        return products;
+    }
     @Override
     public List<Products> findByCategory(int idCate, String name) {
         List<Products> products = JDBIConnector.getJdbi().withHandle(handle ->
@@ -31,6 +54,54 @@ public class ProductsDao implements IProductsDao{
                         .list());
         return products;
     }
+
+    @Override
+    public List<Products> searchByName(String productName) {
+        String sql = "SELECT id,product_name,image,price,id_category FROM products where LOWER(product_name) like LOWER(?) AND status = 1";
+        return JDBIConnector.getJdbi().withHandle(handle -> handle.createQuery(sql)
+                .bind(0, "%" + productName + "%").
+                mapToBean(Products.class).stream().collect(Collectors.toList()));
+    }
+
+    @Override
+    public List<Products> searchByPrice(String productPrice) {
+        String sql = "SELECT id,product_name,image,price,id_category FROM products where price <= ? AND status = 1";
+        return JDBIConnector.getJdbi().withHandle(handle -> handle.createQuery(sql)
+                .bind(0, productPrice).
+                mapToBean(Products.class).stream().collect(Collectors.toList()));
+    }
+
+    @Override
+    public List<Products> searchByDescription(String productDes) {
+        String sql = "SELECT id,product_name,image,price,id_category FROM products where LOWER(des) like LOWER(?) AND status = 1";
+        return JDBIConnector.getJdbi().withHandle(handle -> handle.createQuery(sql)
+                .bind(0, "%" + productDes + "%").
+                mapToBean(Products.class).stream().collect(Collectors.toList()));
+    }
+
+    @Override
+    public int getTotalPages() {
+        String sql = "select count(*) as count from products WHERE status = 1";
+        int totalProducts = JDBIConnector.getJdbi().withHandle(handle -> handle.createQuery(sql).mapTo(Integer.class).one());
+        return (int) Math.ceil((double) totalProducts / getProductsPerPageConstant());
+    }
+
+    @Override
+    public List<Products> getProductsPerPage(int currentPage) {
+        int offset = (currentPage - 1) * getProductsPerPageConstant();
+        String sql = "SELECT id, product_name, image, price, id_category FROM products WHERE status = 1 LIMIT ?, ?";
+        return JDBIConnector.getJdbi().withHandle(handle -> handle.createQuery(sql)
+                .bind(0, offset)
+                .bind(1, getProductsPerPageConstant())
+                .mapToBean(Products.class)
+                .stream().collect(Collectors.toList()));
+    }
+
+    @Override
+    public int getProductsPerPageConstant() {
+        return PRODUCTS_PER_PAGE;
+    }
+
     // lấy ra số lượng của toàn bộ loại sản phẩm.
     public static int numOfProduct(String search){
         Integer integer = JDBIConnector.getJdbi().withHandle(handle ->
@@ -92,19 +163,21 @@ public class ProductsDao implements IProductsDao{
 
         return cateName != null ? cateName : "";
     }
-    public static void insertProduct(String name, String image, int price, int category, int status, String desc) {
+    public static void insertProduct(String name, String image, int price, int category, int status, int inventory_quantity,String desc) {
+        Products products = new Products(name,image,price,category,status,inventory_quantity,desc);
         try {
             JDBIConnector.getJdbi().useHandle(handle ->
-                    handle.createUpdate("INSERT INTO products(product_name, image, price, id_category, status, des) " +
+                    handle.createUpdate("INSERT INTO products(product_name, image, price, id_category, status,inventory_quantity, des) " +
                                     "VALUES(?,?,?,?,?,?,?)")
                             .bind(0, name)
                             .bind(1, image)
                             .bind(2, price)
                             .bind(3, category)
-
                             .bind(4, status)
-                            .bind(5, desc)
+                            .bind(5,inventory_quantity)
+                            .bind(6, desc)
                             .execute());
+            LogDao.getInstance().insertModel(products,"",1,"");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -117,7 +190,7 @@ public class ProductsDao implements IProductsDao{
     }
     public static Products getProductById(int proID){
         Optional<Products> products = JDBIConnector.getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT products.id, products.product_name, products.image, products.price, products.id_category, products.status, products.des\n" +
+                handle.createQuery("SELECT products.id, products.product_name, products.image, products.price, products.id_category, products.status, products.des,products.inventory_quantity\n" +
                                 "FROM products\n" +
                                 "WHERE products.id=?")
                         .bind(0, proID)
@@ -126,16 +199,17 @@ public class ProductsDao implements IProductsDao{
     }
 
     //UPDATE product SET product_name="dfsd",image="fdsfs",price=5090,id_category=1,quantity=78,status=0,specifications="dfdsf",des="dfsdf" WHERE id=46
-    public static void editProduct(String name,String image,int price,int idCategory,int status,String proDesc,int id){
+    public static void editProduct(String name,String image,int price,int idCategory,int status,String proDesc,int inventory_quantity,int id){
         JDBIConnector.getJdbi().useHandle(handle ->
-                handle.createUpdate("UPDATE products SET product_name=?,image=?,price=?,id_category=?,status=?,des=? WHERE id=?")
+                handle.createUpdate("UPDATE products SET product_name=?,image=?,price=?,id_category=?,status=?,des=?,inventory_quantity=? WHERE id=?")
                         .bind(0,name)
                         .bind(1,image)
                         .bind(2,price)
                         .bind(3,idCategory)
                         .bind(4,status)
                         .bind(5,proDesc)
-                        .bind(6,id)
+                        .bind(6,inventory_quantity)
+                        .bind(7,id)
                         .execute()
         );
     }
@@ -149,11 +223,13 @@ public class ProductsDao implements IProductsDao{
         return findNewPro2;
     }
 
-
     public static void main(String[] args) {
 
-//        ProductsDao.insertProduct("zxc", "img/product/product-2.jpg", 123, 1, 123,1,"432", "123123");
-        System.out.println(ProductsDao.numOfPro());
+//        ProductsDao dao = new ProductsDao();
+//        System.out.println(dao.getProductsPerPage(1));
+//        System.out.println(ProductsDao.getAllProducts());
+        Products dao = new Products("RỪ BỆNH ENDICO 5SC","dsfsd",3423,1,1,60,"dsfsd");
+        ProductsDao.insertProduct("RỪ BỆNH ENDICO 5SC","dsfsd",3423,1,1,60,"dsfsd");
 
     }
 }
