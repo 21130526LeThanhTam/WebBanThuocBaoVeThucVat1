@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class ProductReviewDao {
     // Lấy ra danh sách các comment thuộc về sản phẩm nào đó.
-    public List<ProductReview> getListReview(int productId) {
+    public static List<ProductReview> getListReview(int productId) {
         String sql = "SELECT product_reviews.id, product_reviews.id_product, product_reviews.id_user, users.user_name as user_name,users.picture as picture, product_reviews.rating, product_reviews.content, product_reviews.create_at " +
                 "FROM product_reviews " +
                 "JOIN users ON product_reviews.id_user = users.id " +
@@ -77,6 +77,7 @@ public class ProductReviewDao {
                         .mapToBean(ProductReview.class)
                         .collect(Collectors.toList()));
     }
+
     public static void main(String[] args) {
         ProductReviewDao dao = new ProductReviewDao();
 //        ProductReview review = new ProductReview();

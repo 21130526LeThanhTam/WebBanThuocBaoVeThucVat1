@@ -5,6 +5,7 @@ import bean.*;
 import com.google.gson.Gson;
 import dao.IOrdersDAO;
 import dao.OrdersDAO;
+import dao.ProductReviewDao;
 import debug.LoggingConfig;
 
 import javax.persistence.criteria.Order;
@@ -49,6 +50,19 @@ public class OrderHistoryCL extends HttpServlet {
                 viewOrderDetails(request, response);
             } else if ("filter".equals(action)) {
                 filterOrdersByStatus(request, response, user);
+            }
+            else if("review".equals(action)) {
+                List<OrderTable> orderDetails = dao.getOrdersByUserAndStatus(user,4);
+                List<OrderDetailTable> orderDetailTableList = new ArrayList<>();
+                List<OrderDetailTable> temp;
+                for (OrderTable order : orderDetails) {
+                    temp = dao.getOrderDetailsByOrderIdAndReviewStatus(order.getId());
+                    if(temp!=null){
+                        orderDetailTableList.addAll(temp);
+                    }
+                }
+                request.setAttribute("orderDetails", orderDetailTableList);
+                request.getRequestDispatcher("review.jsp").forward(request, response);
             }
         }
 
@@ -118,6 +132,8 @@ public class OrderHistoryCL extends HttpServlet {
             errorMessage = "Đơn hàng này đã bị hủy trước đó";
         } else if (currentOrderStatus == 4) {
             errorMessage = "Đã giao thành công, không thể hủy đơn hàng";
+        }else if(currentOrderStatus==3){
+            errorMessage = "Đơn hàng đang trong quá trình vận chuyển, bạn không thể hủy";
         }
 
         if (errorMessage != null) {

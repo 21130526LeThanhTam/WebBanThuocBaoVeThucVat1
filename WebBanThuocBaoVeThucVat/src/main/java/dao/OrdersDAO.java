@@ -39,13 +39,33 @@ public class OrdersDAO extends AbstractDAO<Orders> implements IOrdersDAO {
 	}
 
 	public List<OrderDetailTable> getOrderDetailsByOrderId(int orderId) {
-		String sql = "SELECT od.id as id, p.product_name AS product_name,p.image as img, od.quantity as quantity, (od.quantity * p.price) AS priceDetails " +
+		String sql = "SELECT od.id as id, od.id_product as id_product,od.review_status as review_status, p.product_name AS product_name, p.image as img, od.quantity as quantity, " +
+				"(od.quantity * p.price) AS priceDetails, o.create_at as create_at " +
 				"FROM order_details od " +
 				"JOIN products p ON od.id_product = p.id " +
+				"JOIN orders o ON od.id_order = o.id " +
 				"WHERE od.id_order = ?";
 		return query(sql, new OrderDetailTableMapper(), orderId);
 	}
-
+// phương thức lấy ra tất cả orderdetails chưa bình luận
+	public List<OrderDetailTable> getOrderDetailsByOrderIdAndReviewStatus(int orderId) {
+		String sql = "SELECT od.id as id, od.id_product as id_product, od.review_status as review_status, p.product_name AS product_name, p.image as img, od.quantity as quantity, " +
+				"(od.quantity * p.price) AS priceDetails, o.create_at as create_at " +
+				"FROM order_details od " +
+				"JOIN products p ON od.id_product = p.id " +
+				"JOIN orders o ON od.id_order = o.id " +
+				"WHERE od.id_order = ? AND od.review_status = 0";
+		return query(sql, new OrderDetailTableMapper(), orderId);
+	}
+	// phương thức này được gọi khi comment
+	public void updateReviewStatus(int orderDetailId) {
+		String sql = "UPDATE order_details SET review_status = 1 WHERE id = ?";
+		JDBIConnector.getJdbi().useHandle(handle ->
+				handle.createUpdate(sql)
+						.bind(0, orderDetailId)
+						.execute()
+		);
+	}
 	@Override
 	public OrderTable getOrderById(int orderId) {
 		String sql = "SELECT o.id AS id, u.user_name AS username, o.create_at AS create_at, " +

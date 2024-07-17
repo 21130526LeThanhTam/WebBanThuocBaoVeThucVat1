@@ -113,52 +113,6 @@
             margin-left: 10px;
             color: #6f6f6f;
         }
-        /**Chức năng cho người dùng đánh giá sản phẩm
-        /*.rating {*/
-        /*    display: flex;*/
-        /*    flex-direction: row-reverse;*/
-        /*    justify-content: flex-end;*/
-        /*    margin-bottom:60px;*/
-        /*}*/
-
-        /*.rating input {*/
-        /*    display: none;*/
-        /*}*/
-
-        /*.rating label {*/
-        /*    position: relative;*/
-        /*    width: 1em;*/
-        /*    color: #FFF;*/
-        /*    cursor: pointer;*/
-        /*    font-size: 2em; !* Adjust as needed *!*/
-        /*    margin-bottom:0;*/
-        /*}*/
-
-        /*.rating label::before {*/
-        /*    content: "★";*/
-        /*    position: absolute;*/
-        /*    opacity: 1;*/
-        /*    color: black; !* Star color *!*/
-        /*    border: none; !* Remove border when hovered *!*/
-        /*}*/
-
-        /*.rating label:hover:before,*/
-        /*.rating label:hover ~ label:before {*/
-        /*    color: #FFD700; !* Yellow star color on hover *!*/
-        /*    border: none; !* Remove border on hover *!*/
-        /*}*/
-
-        /*.rating input:checked ~ label:before {*/
-        /*    color: #FFD700; !* Yellow star color when selected *!*/
-        /*    border: none; !* Remove border when selected *!*/
-        /*}*/
-
-        /*.rating input:checked + label:hover:before,*/
-        /*.rating input:checked + label:hover ~ label:before,*/
-        /*.rating input:checked ~ label:hover:before,*/
-        /*.rating input:checked ~ label:hover ~ label:before {*/
-        /*    opacity: 1; !* Ensure opacity is 1 on hover when selected *!*/
-        /*}*/
 
     </style>
 </head>
@@ -316,30 +270,8 @@
                                             </div>
                                             <div style="font-size:20px">
                                                 <span class="text-warning">★★★★★</span>
-                                              
                                             </div>
                                         </div>
-<%--                                        không nên cho người dùng đánh giá sản phẩm tùy tiện--%>
-<%--                                        <div class="review-form">--%>
-<%--                                            <form id="commentForm" method="post" action="ProductInfor"  accept-charset="UTF-8">--%>
-<%--                                                <input type="hidden" name="productId" value="<%=proID.getId()%>">--%>
-<%--                                                <div class="form-group" style="margin-bottom:2rem">--%>
-<%--                                                    <label>Chọn số sao:</label>--%>
-<%--                                                    <div class="rating">--%>
-<%--                                                        <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rất tốt"></label>--%>
-<%--                                                        <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Tốt"></label>--%>
-<%--                                                        <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Khá"></label>--%>
-<%--                                                        <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Tạm"></label>--%>
-<%--                                                        <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Tệ"></label>--%>
-<%--                                                    </div>--%>
-<%--                                                </div>--%>
-<%--                                                <div class="form-group">--%>
-<%--                                                    <label for="commentText">Bình luận của bạn:</label>--%>
-<%--                                                    <textarea class="form-control" id="commentText" name="commentText" rows="3" required></textarea>--%>
-<%--                                                </div>--%>
-<%--                                                <button type="submit" class="btn btn-primary" style="padding:10px">Gửi bình luận</button>--%>
-<%--                                            </form>--%>
-<%--                                        </div>--%>
                                         <div class="filter-buttons mb-4">
                                             <button class="btn btn-outline-secondary p-2 active" onclick="loadComments('all', this)">Tất Cả</button>
                                             <button class="btn btn-outline-secondary p-2" onclick="loadComments(5, this)">5 Sao</button>

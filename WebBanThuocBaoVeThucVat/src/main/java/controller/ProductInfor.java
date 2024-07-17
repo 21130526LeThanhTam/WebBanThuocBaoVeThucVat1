@@ -10,6 +10,7 @@ import bean.ProductReview;
 import bean.Products;
 import bean.User;
 import dao.CommentDAO;
+import dao.OrdersDAO;
 import dao.ProductReviewDao;
 
 import javax.servlet.ServletException;
@@ -54,33 +55,33 @@ public class ProductInfor extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //chức năng cho người dùng đánh giá sản phẩm ở dạng comment
-//        request.setCharacterEncoding("UTF-8");
-//        response.setCharacterEncoding("UTF-8");
-//        String commentText = request.getParameter("commentText");
-//        int rating = Integer.parseInt(request.getParameter("rating"));
-//        HttpSession session = request.getSession();
-//        User user = (User) session.getAttribute("user");
-//        String id_product = request.getParameter("productId");
-//        System.out.println(id_product);
-//        int productId = Integer.parseInt(id_product);
-//
-//        if (user != null) {
-//            ProductReview review = new ProductReview();
-//            review.setUser_name(user.getUsername());
-//            review.setContent(commentText);
-//            review.setRating(rating);
-//            review.setId_user(user.getId());
-//            review.setId_product(productId);
-//
-//            ProductReviewDao dao = new ProductReviewDao();
-//            dao.insertProductReview(review);
-//
-//            response.sendRedirect(request.getContextPath() + "/ProductInfor?id_product=" + productId);
-//        } else {
-//            response.sendRedirect(request.getContextPath() + "/login");
-//        }
-        doGet(request,response);
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        String commentText = request.getParameter("content");
+        int rating = Integer.parseInt(request.getParameter("rating"));
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        String id_product = request.getParameter("productId");
+        System.out.println(id_product);
+        int productId = Integer.parseInt(id_product);
+        int orderDetailID = Integer.parseInt(request.getParameter("orderDetailID"));
+        System.out.println(orderDetailID);
+        if (user != null) {
+            ProductReview review = new ProductReview();
+            review.setUser_name(user.getUsername());
+            review.setContent(commentText);
+            review.setRating(rating);
+            review.setId_user(user.getId());
+            review.setId_product(productId);
+
+            ProductReviewDao dao = new ProductReviewDao();
+            dao.insertProductReview(review);
+            OrdersDAO ordersDao = new OrdersDAO();
+            ordersDao.updateReviewStatus(orderDetailID);
+            response.sendRedirect(request.getContextPath() + "/ProductInfor?id_product=" + productId);
+        } else {
+            response.sendRedirect(request.getContextPath() + "/login");
+        }
     }
 
 }
