@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Data
@@ -16,5 +17,7 @@ public class ProductReview {
     String user_name; //chứa user_name của người dùng
     int rating; //rating từ 1-5
     String content;
-    Date create_at;
+    Integer parent_id;
+    String picture;
+    Timestamp create_at;
 }

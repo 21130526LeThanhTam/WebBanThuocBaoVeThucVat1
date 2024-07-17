@@ -71,7 +71,19 @@
         #btn_register:hover{
             opacity:0.8;
         }
-
+        .power-container {
+            background-color: gainsboro;
+            width: 80%;
+            height: 5px;
+            border-radius: 3px;
+        }
+        .power-container #power-point {
+            background-color: #D73F40;
+            width: 1%;
+            height: 100%;
+            border-radius: 3px;
+            transition: 0.2s;
+        }
     </style>
 </head>
 <body class="bg-success d-flex align-items-center justify-content-center" style="height: 1000px;background-color:#7fad39 !important;">
@@ -102,10 +114,20 @@
                 <div class="field input-field">
                     <input name="phone" id="phone" type="tel" placeholder="Số điện thoại" class="input form-control">
                 </div>
+
+                <%--                check pass mạnh hay yếu--%>
+                <label for="password" style="font-size:12px;margin-top:10px">Power password</label>
+                <div class="power-container">
+                    <div id="power-point"></div>
+                </div>
+                <span id="color-status"></span>
+
                 <div class="field input-field">
-                    <input name="pass" type="password" id="password" placeholder="Nhập mật khẩu" class="password form-control">
+                    <input name="pass" type="password" id="password" placeholder="Nhập mật khẩu" class="password form-control" oninput="getPower(this.value)">
                     <i class='fas fa-eye eye-icon' id="togglePassword"></i>
                 </div>
+
+
                 <div class="field input-field">
                     <input name="rePass" type="password" id="rePassword" placeholder="Nhập lại mật khẩu" class="password form-control">
                     <i class='fas fa-eye eye-icon' id="reTogglePassword"></i>
@@ -140,5 +162,24 @@
     };
     togglePasswordVisibility('togglePassword', 'password');
     togglePasswordVisibility('reTogglePassword', 'rePassword');
+    //check mk mạnh hay yếu
+    function getPower(password) {
+        let point = 0;
+        let colorPower = ['#D73F40', '#DC6551', '#F2B84F', '#BDE952', '#30CEC7'];
+        let stringColor = ['', 'weak', 'medium', 'strong', 'very strong'];
+        let power = document.getElementById('power-point');
+        let widthPower = ['1%', '25%', '50%', '75%', '100%'];
+        if (password.length >= 8) {
+            let arrayTest = [/[0-9]/, /[a-z]/, /[A-Z]/, /[^0-9a-zA-Z]/];
+            arrayTest.forEach(item => {
+                if(item.test(password)) {
+                    point += 1;
+                }
+            });
+        }
+        power.style.width = widthPower[point];
+        power.style.backgroundColor = colorPower[point];
+        document.getElementById('color-status').innerHTML = stringColor[point];
+    }
 </script>
 </html>

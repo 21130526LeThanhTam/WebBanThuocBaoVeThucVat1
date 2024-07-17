@@ -5,6 +5,7 @@ import db.JDBIConnector;
 import mapper.*;
 import org.jdbi.v3.core.Jdbi;
 
+import javax.persistence.criteria.Order;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,8 +18,8 @@ public class OrdersDAO extends AbstractDAO<Orders> implements IOrdersDAO {
 
 	@Override
 	public Integer insertOrder(Orders o) {
-		String sql = "insert into orders(id_user, total_price, shipping_fee, address, phone_number) values(?,?,?,?,?)";
-		return insert(sql, o.getIdUser(), o.getTotalPrice(), o.getShippingFee(), o.getAddress(), o.getPhoneNumber());
+		String sql = "insert into orders(id_user, total_price, shipping_fee, address, phone_number,payment_status,order_status) values(?,?,?,?,?,?,1)";
+		return insert(sql, o.getIdUser(), o.getTotalPrice(), o.getShippingFee(), o.getAddress(), o.getPhoneNumber(),o.getPayment_status());
 	}
 
 	@Override
@@ -38,13 +39,33 @@ public class OrdersDAO extends AbstractDAO<Orders> implements IOrdersDAO {
 	}
 
 	public List<OrderDetailTable> getOrderDetailsByOrderId(int orderId) {
-		String sql = "SELECT od.id as id, p.product_name AS product_name,p.image as img, od.quantity as quantity, (od.quantity * p.price) AS priceDetails " +
+		String sql = "SELECT od.id as id, od.id_product as id_product,od.review_status as review_status, p.product_name AS product_name, p.image as img, od.quantity as quantity, " +
+				"(od.quantity * p.price) AS priceDetails, o.create_at as create_at " +
 				"FROM order_details od " +
 				"JOIN products p ON od.id_product = p.id " +
+				"JOIN orders o ON od.id_order = o.id " +
 				"WHERE od.id_order = ?";
 		return query(sql, new OrderDetailTableMapper(), orderId);
 	}
-
+// phương thức lấy ra tất cả orderdetails chưa bình luận
+	public List<OrderDetailTable> getOrderDetailsByOrderIdAndReviewStatus(int orderId) {
+		String sql = "SELECT od.id as id, od.id_product as id_product, od.review_status as review_status, p.product_name AS product_name, p.image as img, od.quantity as quantity, " +
+				"(od.quantity * p.price) AS priceDetails, o.create_at as create_at " +
+				"FROM order_details od " +
+				"JOIN products p ON od.id_product = p.id " +
+				"JOIN orders o ON od.id_order = o.id " +
+				"WHERE od.id_order = ? AND od.review_status = 0";
+		return query(sql, new OrderDetailTableMapper(), orderId);
+	}
+	// phương thức này được gọi khi comment
+	public void updateReviewStatus(int orderDetailId) {
+		String sql = "UPDATE order_details SET review_status = 1 WHERE id = ?";
+		JDBIConnector.getJdbi().useHandle(handle ->
+				handle.createUpdate(sql)
+						.bind(0, orderDetailId)
+						.execute()
+		);
+	}
 	@Override
 	public OrderTable getOrderById(int orderId) {
 		String sql = "SELECT o.id AS id, u.user_name AS username, o.create_at AS create_at, " +
@@ -156,14 +177,16 @@ public class OrdersDAO extends AbstractDAO<Orders> implements IOrdersDAO {
 
 	public static void main(String[] args) {
 		IOrdersDAO order = new OrdersDAO();
-		OrderDetail orderDetail = new OrderDetail();
-		orderDetail.setOrder_id(2);
-		orderDetail.setProduct_id(6);
-		orderDetail.setQuantity(10);
-		//System.out.println(order.getOrderforAdmin())
-		User user = new User();
-		user.setId(11);
-		System.out.println(order.getOrdersByUserAndStatus(user,0));
+//		OrderDetail orderDetail = new OrderDetail();
+//		orderDetail.setOrder_id(2);
+//		orderDetail.setProduct_id(6);
+//		orderDetail.setQuantity(10);
+//		//System.out.println(order.getOrderforAdmin())
+//		User user = new User();
+//		user.setId(11);
+//		System.out.println(order.getOrdersByUserAndStatus(user,0));
+		Orders orders = new Orders(1,5,20,"158/d","0987817240","Chưa Thanh Toán");
+		System.out.println(	order.insertOrder(orders));
 
 
 	}

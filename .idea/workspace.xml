@@ -11,8 +11,16 @@
   <component name="ChangeListManager">
     <list default="true" id="b4b7277f-3123-43a3-8334-fad619072ac6" name="Changes" comment="Login with facebook">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/ProductReview.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/ProductReview.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/OrderDetailTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/bean/OrderDetailTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/OrderHistoryCL.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/OrderHistoryCL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/ProductInfor.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/ProductInfor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/IOrdersDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/IOrdersDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/OrdersDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/OrdersDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/ProductReviewDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/ProductReviewDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/mapper/OrderDetailTableMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/mapper/OrderDetailTableMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/history.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/history.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/thong-tin-don-hang.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/thong-tin-don-hang.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/OrdersDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/dao/OrdersDAO.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +36,8 @@
         <option value="Interface" />
         <option value="package-info" />
         <option value="JavaScript File" />
-        <option value="Jsp File" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -62,38 +70,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.CategoryDAO.executor&quot;: &quot;Run&quot;,
-    &quot;Application.DBContext.executor&quot;: &quot;Run&quot;,
-    &quot;Application.JDBIConnector.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ProductDAO.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Products.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ProductsDao.executor&quot;: &quot;Run&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;JavaScript Debug.index.jsp.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Tomcat Server.Tomcat 9.0.81.executor&quot;: &quot;Run&quot;,
-    &quot;Tomcat Server.Tomcat 9.0.executor&quot;: &quot;Run&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;21130514__VuTranThaiSon&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/website/WebBanThuocBaoVeThucVat&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.29388815&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;160df4a56551aad3a8a3e031b462e798&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.CategoryDAO.executor": "Run",
+    "Application.DBContext.executor": "Run",
+    "Application.JDBIConnector.executor": "Run",
+    "Application.ProductDAO.executor": "Run",
+    "Application.Products.executor": "Run",
+    "Application.ProductsDao.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JavaScript Debug.index.jsp.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Tomcat Server.Tomcat 9.0.81.executor": "Run",
+    "Tomcat Server.Tomcat 9.0.executor": "Run",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "21130514__VuTranThaiSon",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/website/WebBanThuocBaoVeThucVat",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.29388815",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "configurable.group.appearance",
+    "spring.configuration.checksum": "160df4a56551aad3a8a3e031b462e798",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="dao" />
@@ -106,11 +115,11 @@
       <recent name="C:\Users\Admin1\Documents\GitHub\WebBanThuocBaoVeThucVat\js\adminJS" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Study\Third_year\ThucTapLTW(Long)\website-main\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main\webapp" />
       <recent name="C:\website\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main\webapp\admin_page" />
       <recent name="C:\website\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main\webapp" />
       <recent name="D:\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main\webapp\css" />
       <recent name="D:\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main\webapp\css\signup_signin" />
-      <recent name="D:\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat\src\main\webapp" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="controller.Product" />
@@ -151,12 +160,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="JDBIConnector" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="db.JDBIConnector" />
+    <configuration name="OrdersDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dao.OrdersDAO" />
       <module name="WebBanThuocBaoVeThucVat" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="db.*" />
+          <option name="PATTERN" value="dao.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -164,8 +173,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrdersDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="dao.OrdersDAO" />
+    <configuration name="ProductReviewDao" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dao.ProductReviewDao" />
       <module name="WebBanThuocBaoVeThucVat" />
       <extension name="coverage">
         <pattern>
@@ -405,21 +414,21 @@
       <item itemvalue="Application.UserDao" />
       <item itemvalue="Application.Unnamed" />
       <item itemvalue="Application.importDao" />
+      <item itemvalue="Application.ProductReviewDao" />
       <item itemvalue="Application.DashBoardDAO" />
       <item itemvalue="Application.ProductsDao" />
       <item itemvalue="Application.AccountDAO" />
-      <item itemvalue="Application.JDBIConnector" />
       <item itemvalue="Application.OrdersDAO" />
       <item itemvalue="Smart Tomcat.Smart Tomcat" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.81" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ProductReviewDao" />
         <item itemvalue="Application.OrdersDAO" />
         <item itemvalue="Application.AccountDAO" />
         <item itemvalue="Application.DashBoardDAO" />
         <item itemvalue="Application.ProductsDao" />
-        <item itemvalue="Application.JDBIConnector" />
       </list>
     </recent_temporary>
   </component>
@@ -620,7 +629,7 @@
       <workItem from="1721013137766" duration="6792000" />
       <workItem from="1721022985770" duration="343000" />
       <workItem from="1721023351806" duration="26613000" />
-      <workItem from="1721094558089" duration="1763000" />
+      <workItem from="1721094558089" duration="49999000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -791,18 +800,9 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/OrdersDAO.java</url>
-          <line>156</line>
-          <properties class="dao.OrdersDAO" method="main">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/thong-tin-don-hang.jsp</url>
-          <line>44</line>
+          <line>47</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
