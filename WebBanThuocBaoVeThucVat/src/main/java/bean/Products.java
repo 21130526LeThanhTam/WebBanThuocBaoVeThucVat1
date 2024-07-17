@@ -18,7 +18,6 @@ public class Products extends AbsModel implements Serializable {
     private String des;
     private int status;
     private int inventory_quantity;
-
     private Date update_at;
     private int total_sold;
 

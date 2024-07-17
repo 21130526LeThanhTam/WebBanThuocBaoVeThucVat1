@@ -21,6 +21,8 @@ public class OrderTable extends AbsModel {
     private Timestamp createAt;
     private String payment_status;
     private int order_status;
+    private String orderStatusText;
+
 
     @Override
     public String getTable() {
@@ -36,8 +38,8 @@ public class OrderTable extends AbsModel {
     public String afterData() {
         return this.toString();
     }
-    public String strOrder_status(){
-        int order_status= this.getOrder_status();
+    public String strOrder_status() {
+        int order_status = this.getOrder_status();
         switch (order_status) {
             case 0:
                 return "đã hủy";
@@ -52,6 +54,12 @@ public class OrderTable extends AbsModel {
             default:
                 return "trạng thái không xác định";
         }
+    }
+
+
+
+    public void setOrderStatusText() {
+        this.orderStatusText = Utility.getOrderStatus(this.order_status);
 
     }
 }

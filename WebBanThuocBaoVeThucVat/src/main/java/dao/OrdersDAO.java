@@ -59,8 +59,22 @@ public class OrdersDAO extends AbstractDAO<Orders> implements IOrdersDAO {
 //update trạng thái đơn hàng
 	@Override
 	public void updateOrderStatus(int orderId, int orderStatus) {
-		String sql = "UPDATE orders SET order_status = ? WHERE id = ?";
-		update(sql, orderStatus, orderId);
+		String sqlUpdateStatus = "UPDATE orders SET order_status = ? WHERE id = ?";
+		update(sqlUpdateStatus, orderStatus, orderId);
+		//cập nhật lại sản phẩm khi orderstatus = 0
+		if (orderStatus == 0) { // Đã hủy đơn hàng
+			String sqlGetOrderDetails = "SELECT id_product as product_id, quantity FROM order_details WHERE id_order  = ?";
+			List<OrderDetail> orderDetails = JDBIConnector.getJdbi().withHandle(handle ->
+					handle.createQuery(sqlGetOrderDetails)
+							.bind(0, orderId)
+							.mapToBean(OrderDetail.class)
+							.list()
+			);
+			for (OrderDetail detail : orderDetails) {
+				String sqlUpdateInventory = "UPDATE products SET inventory_quantity = inventory_quantity + ? WHERE id = ?";
+				this.update(sqlUpdateInventory, detail.getQuantity(), detail.getProduct_id());
+			}
+		}
 	}
 
 // Update trạng thái thanh toán
@@ -71,10 +85,30 @@ public class OrdersDAO extends AbstractDAO<Orders> implements IOrdersDAO {
 	}
 
 	@Override
-	public List<Orders> getOrdersByUser(User user) {
-		String sql = "select * from orders where id_user =?";
-		return query(sql, new OrderMapper(), user.getId());
+	public List<OrderTable> getOrdersByUserAndStatus(User user, int status) {
+		String sql = "SELECT o.id AS id, u.user_name AS username, o.create_at AS create_at, " +
+				"o.total_price AS total_price, o.shipping_fee AS shipping_fee, " +
+				"o.address AS address, o.phone_number AS phone_number, " +
+				"o.payment_status AS payment_status, o.order_status AS order_status " +
+				"FROM orders o " +
+				"JOIN users u ON o.id_user = u.id " +
+				"WHERE o.id_user = ? AND o.order_status = ?";
+		return query(sql, new OrderTableMapper(), user.getId(), status);
 	}
+
+
+	@Override
+	public List<OrderTable> getOrdersByUser(User user) {
+		String sql = "SELECT o.id AS id, u.user_name AS username, o.create_at AS create_at, " +
+				"o.total_price AS total_price, o.shipping_fee AS shipping_fee, " +
+				"o.address AS address, o.phone_number AS phone_number, " +
+				"o.payment_status AS payment_status, o.order_status AS order_status " +
+				"FROM orders o " +
+				"JOIN users u ON o.id_user = u.id " +
+				"WHERE o.id_user = ?";
+		return query(sql, new OrderTableMapper(), user.getId());
+	}
+
 	//khi insert một order details sẽ thay đổi quantity trong product
 	@Override
 	public  Integer insertOrdersDetail(OrderDetail od) {
@@ -105,7 +139,6 @@ public class OrdersDAO extends AbstractDAO<Orders> implements IOrdersDAO {
 
 	@Override
 	public List<OrderDetail> getDetailsByOrder(List<Integer> ordersId) {
-
 		// Tạo chuỗi các tham số
 		String params = ordersId.stream()
 				.map(Object::toString)
@@ -122,14 +155,16 @@ public class OrdersDAO extends AbstractDAO<Orders> implements IOrdersDAO {
 	}
 
 	public static void main(String[] args) {
-
 		IOrdersDAO order = new OrdersDAO();
 		OrderDetail orderDetail = new OrderDetail();
 		orderDetail.setOrder_id(2);
 		orderDetail.setProduct_id(6);
 		orderDetail.setQuantity(10);
-		//System.out.println(order.getOrderforAdmin());
-		System.out.println(order.insertOrdersDetail(orderDetail));
+		//System.out.println(order.getOrderforAdmin())
+		User user = new User();
+		user.setId(11);
+		System.out.println(order.getOrdersByUserAndStatus(user,0));
+
 
 	}
 }
