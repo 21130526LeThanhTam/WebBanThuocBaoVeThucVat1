@@ -98,7 +98,7 @@ public class AccountDAO extends AbstractDao<User> {
     }
 
     public String signUp(String email,String pass,String username,String surname,String lastname,String phone,String hash,String ip, int level, String address) {
-        String sql = "insert into users(user_name, password, phone, email, sur_name, last_name, hash, role, active) values (?,?,?,?,?,?,?,0,0)";
+        String sql = "insert into users(user_name, password, phone, email, sur_name, last_name, hash, role, active,login_by) values (?,?,?,?,?,?,?,0,0,0)";
         Connection conn = DBContext.getConnection();
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -223,6 +223,8 @@ public class AccountDAO extends AbstractDao<User> {
 
 //        System.out.println( AccountDAO.getInstance().loginAccount(a,"00999",1,"asgdhg"));
 //        AccountDAO.getInstance().signUp2(email,pass, "hihoo","hihoo","hihoo","hihoo","hihodsfo",1 );
+
+        System.out.println( AccountDAO.getInstance().activeAccount("21130526@st.hcmuaf.edu.vn","399c59d7969e572156e23a7a3799b270"));
     }
 
 
