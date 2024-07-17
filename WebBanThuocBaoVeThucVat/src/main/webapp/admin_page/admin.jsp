@@ -117,7 +117,7 @@
                                 <i class="material-icons">person</i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="admin_page/editUser.jsp">
                                     <i class="material-icons">person_outline</i> Profile
                                 </a>
                                 <a class="dropdown-item" href="#">
