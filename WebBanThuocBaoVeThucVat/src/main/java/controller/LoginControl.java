@@ -104,6 +104,7 @@ public class LoginControl extends HttpServlet {
                 if (user.getRole() == 0) {
                     user.setLastActiveTime(LocalDateTime.now());
                     session.setAttribute("user", user);
+                    session.setAttribute("flag", 0);
                     ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
                     if (cart == null) {
                         cart = new ShoppingCart();

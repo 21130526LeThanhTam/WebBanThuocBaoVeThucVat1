@@ -127,13 +127,28 @@
         body{
             padding-right: 0!important;
         }
+        .btn-review {
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .btn-review:hover {
+    background-color:#cc7900;
+        }
     </style>
 </head>
 <body>
 <jsp:include page="layout/header.jsp"/>
 <main>
     <div class="container mt-5">
-        <h2 class="mb-4">Lịch sử mua hàng</h2>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0">Lịch sử mua hàng</h2>
+            <button id="review" class="btn-review">Đánh Giá Sản Phẩm</button>
+        </div>
         <div class="navbar" style="margin-bottom:25px">
             <ul>
                 <li><a class="active" href="#" data-status="5">Tất cả</a></li>
@@ -169,7 +184,7 @@
                 <td><%= order.getAddress() %></td>
                 <td><%= order.getPhone_number() %></td>
                 <td><fmt:formatNumber value="<%= order.getTotal_price() %>" pattern="#,##0 VND"/></td>
-                <td><fmt:formatDate value="<%= order.getCreateAt() %>" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+                <td><%=Util.formatTimestampToString(order.getCreateAt())%></td>
                 <td><%= order.getPayment_status() %></td>
                 <td><%= Utility.getOrderStatus(order.getOrder_status()) %></td>
                 <td>
@@ -383,6 +398,21 @@
                 },
                 error: function() {
                     alert('Có lỗi xảy ra khi hủy đơn hàng');
+                }
+            });
+        });
+        // Xử lý sự kiện click vào nút "Đánh Giá Sản Phẩm"
+        $('#review').on('click', function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: 'OrderHistoryCL',
+                method: 'GET',
+                data: { action: 'review' },
+                success: function(response) {
+                    $('#orderDetailsTable_wrapper').html(response);
+                },
+                error: function() {
+                    alert('Có lỗi xảy ra khi tải trang đánh giá');
                 }
             });
         });

@@ -185,7 +185,9 @@
                                 %>
                             </ul>
                             <!-- <div class="checkout__order__subtotal">Thuế <span>0₫</span></div> -->
-                            <div class="checkout__order__total">Tổng cộng: <%=shoppingCart.getTotalPrice()%></div>
+                            <div class="checkout__order__total">Tổng giá: <%=shoppingCart.getTotalPrice()%> VND</div>
+                            <div class="checkout__order__total">Gía giảm: <%=session.getAttribute("retain")==null?0.0:session.getAttribute("retain")%> VND</div>
+                            <div class="checkout__order__total">Tổng cộng: <%=session.getAttribute("result")%> VND</div>
 <%--                            <div class="checkout__input__checkbox">--%>
 <%--                                <label for="acc-or">--%>
 <%--                                    Tạo tài khoản mới?--%>
@@ -209,7 +211,7 @@
 <%--                                </label>--%>
 <%--                            </div>--%>
                             <input id="hidden" type="hidden" name="action" value="order">
-                            <button type="submit" class="site-btn">Đặt hàng</button>
+                            <button type="submit" class="site-btn" >Đặt hàng</button>
                             <button type="button" class="site-btn" id="payButton">Thanh toán ngay</button>
                         </div>
                     </div>

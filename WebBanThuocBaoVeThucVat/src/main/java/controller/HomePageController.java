@@ -2,10 +2,7 @@ package controller;
 
 import Service.IProductService;
 import Service.ProductService;
-import bean.Category;
-import bean.Product;
-import bean.Products;
-import bean.ShoppingCart;
+import bean.*;
 import dao.CategoryDAO;
 import dao.IProductDAO;
 import dao.ProductDAO;
@@ -24,6 +21,28 @@ public class HomePageController extends HttpServlet {
         IProductService productService = new ProductService();
         IProductDAO proDAO = new ProductDAO();
         HttpSession session = request.getSession();
+//        User user = (User) session.getAttribute("user");
+//        if (user != null) {
+//            Integer flag = (Integer) session.getAttribute("flag");
+//            ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
+//            if (flag == 0) {
+//                cart = CartService.getInstance().getCartByUser(user);
+//                flag++;
+//                session.setAttribute("flag", flag);
+//                session.setAttribute("cart", cart);
+//                session.setAttribute("total", cart.size());
+//                double result = CartService.getInstance().getTotalPrice(user);
+//                result += 0.0;
+//                session.setAttribute("result", result);
+//            }
+//        }
+        Integer flag = (Integer) session.getAttribute("flag");
+        if(flag==null || flag==0) {
+            session.removeAttribute("cart");
+            if (flag==null) flag = 0;
+            flag++;
+            session.setAttribute("flag", flag);
+        }
         ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
         if(shoppingCart == null){
             shoppingCart = new ShoppingCart();
@@ -42,10 +61,9 @@ public class HomePageController extends HttpServlet {
         request.setAttribute("productsNew2", productsNew2);
         request.setAttribute("findDiscountPro1", findDiscountPro1);
         request.setAttribute("findDiscountPro2", findDiscountPro2);
-        String url = "index.jsp";
 
         //request deparcher nó có thể là forward hoặc inclue nó
-        request.getRequestDispatcher(url).forward(request, response); // dùng getRequestDipascher để chuyển hướng sang jsp
+        request.getRequestDispatcher("index.jsp").forward(request, response); // dùng getRequestDipascher để chuyển hướng sang jsp
 
     }
 

@@ -1,10 +1,7 @@
-<%@ page import="bean.Product" %>
 <%@ page import="java.util.List" %>
-<%@ page import="bean.ShoppingCart" %>
-<%@ page import="bean.Products" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="bean.Category" %>
 <%@ page import="bo.CategoryBO" %>
+<%@ page import="bean.*" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -195,7 +192,7 @@
                         </div>
                         <div class="col-lg-4 col-md-4">
                             <div class="filter__found">
-                                <h6><span><%= list.size() %></span> sản phẩm được tìm thấy</h6>
+                                <h6><span><%=list.size() %></span> sản phẩm được tìm thấy</h6>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-3">
@@ -208,19 +205,31 @@
                 </div>
 
                 <div class="row">
-                    <% for(Products a : products){ %>
+                    <%
+                        ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
+                        for(Products p : products) {
+                            int remain = p.getInventory_quantity();
+                            if (shoppingCart != null) {
+                                for (CartItem item : shoppingCart.getCartItemList()) {
+                                    if (item.getProduct().getId()==p.getId()) {
+                                        remain = p.getInventory_quantity() - item.getQuantity();
+                                    }
+                                }
+                            }
+                    %>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div id="" class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="<%=a.getImage()%>">
+                            <div class="product__item__pic set-bg" data-setbg="<%=p.getImage()%>">
                                 <ul class="product__item__pic__hover">
-                                    <li><a href="ProductInfor?id_product=<%= a.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="javascript:void(0)" onclick="addCart(this, '<%=a.getId()%>')"><i class="fa fa-shopping-cart"></i></a></li>
+                                    <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                    <li><a href="javascript:void(0)" onclick="addCart(this, '<%=p.getId()%>', '<%=remain%>')"><i class="fa fa-shopping-cart"></i></a></li>
 <%--                                    <li><a  href="ShoppingCartCL?action=post&id=<%=a.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>--%>
                                 </ul>
                             </div>
                             <div class="product__item__text">
-                                <h6><a href="ProductInfor?id_product=<%= a.getId() %>"><%=a.getProduct_name()%></a></h6>
-                                <h5><%=a.formatPrice()%>₫</h5>
+                                <h6><a href="ProductInfor?id_product=<%= p.getId() %>"><%=p.getProduct_name()%></a></h6>
+                                <h5><%=p.formatPrice()%>₫</h5>
                             </div>
                         </div>
                     </div>
@@ -333,26 +342,34 @@
     });
 </script>
 <script>
-    function addCart(btn, id) {
+    var context = "${pageContext.request.contextPath}";
+    function addCart(btn, id, remain) {
+        console.log(remain)
         $.ajax({
-            url: "ShoppingCartCL",
+            url: 'ShoppingCartCL',
             method: "POST",
             data: {
                 id: id,
                 action: "add",
-                type: 0
+                type: 0,
+                contain: remain
             },
             success: function (response) {
-                var res = JSON.parse(response);
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "Thêm Sản Phẩm Vào Giỏ Hàng Thành Công!",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                const badge = document.getElementById("badge");
-                badge.innerHTML = res.totalItems;
+                if (response.status === "failed") {
+                    window.location.href = 'login';
+                } else if(response.status === "stock") {
+                    alert(response.error)
+                } else {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Thêm Sản Phẩm Vào Giỏ Hàng Thành Công!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    const badge = document.getElementById("badge");
+                    badge.innerHTML = response.total;
+                }
             }
         });
     }

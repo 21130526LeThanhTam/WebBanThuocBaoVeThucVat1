@@ -61,6 +61,8 @@ public class AccountDAO extends AbstractDao<User> {
             u = users.get(0);
             System.out.println(u);
             if(PasswordUtils.verifyPassword(user.getPassword(), u.getPassword())){
+                System.out.println("success!");
+
                 super.login(u,"Login success!",ip,level,address);
             } else {
                 super.login(user,"Login failed!",ip,level,address);

@@ -35,8 +35,9 @@ public class Payment extends HttpServlet {
         String txt_billing_mobile = (String) session.getAttribute("txt_billing_mobile");
         List<CartItem> products = shoppingCart.getCartItemList();
         Orders order = new Orders(user.getId(), (float) shoppingCart.getTotalPrice(),
-                0, address, txt_billing_mobile);
+                0, address, txt_billing_mobile,"Đã Thanh Toán");
         order.setLp(products);
+        System.out.println(order);
         this.orderService.insertOrderDetail(order);
         double total = shoppingCart.getTotalPrice();
         session.setAttribute("total", total);
