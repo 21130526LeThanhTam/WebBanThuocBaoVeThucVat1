@@ -97,10 +97,19 @@ CategoryDAO {
             return rowsUpdatedCategory > 0 && rowsUpdatedProducts > 0;
         });
     }
+    // lấy danh mục sản phẩm theo id.
+    public static Category getCategoryById(int id) {
+        return JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT id, name_category, status FROM categories WHERE id =?")
+                       .bind(0, id)
+                       .mapToBean(Category.class)
+                       .one()
+        );
+    }
 
     public static void main(String[] args) {
 
-        System.out.println(CategoryDAO.getList());
+//        System.out.println(CategoryDAO.getList());
 
     }
 

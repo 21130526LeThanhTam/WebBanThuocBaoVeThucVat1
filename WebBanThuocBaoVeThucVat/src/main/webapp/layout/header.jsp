@@ -1,11 +1,8 @@
-<%@ page import="bean.User" %>
-<%@ page import="bean.Category" %>
 <%@ page import="dao.CategoryDAO" %>
 <%@ page import="java.util.List" %>
-<%@ page import="bean.ShoppingCart" %>
-<%@ page import="bean.Product" %>
 <%@ page import="bo.CategoryBO" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="bean.*" %>
 <%@page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
@@ -238,12 +235,13 @@
 </section>
 <!-- Hero Section End -->
 <%
-    Integer totalItems = (Integer) session.getAttribute("total");
+    Integer totalItems = (Integer) session.getAttribute("totalItems");
     ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
     if (cart != null) {
         if (cart.getCartItemList().isEmpty()) totalItems = 0;
     } else {
-        session.setAttribute("cart", new ArrayList<>());
+        cart = new ShoppingCart();
+        session.setAttribute("cart", cart);
         if(totalItems == null) totalItems = 0;
     }
 %>

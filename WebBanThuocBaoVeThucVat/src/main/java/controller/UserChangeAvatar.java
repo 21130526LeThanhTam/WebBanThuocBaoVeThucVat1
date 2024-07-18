@@ -76,6 +76,7 @@ public class UserChangeAvatar extends HttpServlet {
         }
     }
 
+
     private void saveFilePathToDatabase(String filePath, int idUser) {
         Jdbi jdbi = JDBIConnector.getJdbi();
         String sql = "UPDATE users SET picture = ? WHERE id = ?";
@@ -85,4 +86,5 @@ public class UserChangeAvatar extends HttpServlet {
                 .execute());
         LOGGER.info("Saved file path to database for user ID: " + idUser);
     }
+
 }

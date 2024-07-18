@@ -1,6 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="bean.Category" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="bean.Log" %>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!doctype html>
 <html lang="en">
@@ -43,9 +44,28 @@
         .btn {
             margin-right: 5px;
         }
+        .warningLevel1 {
+            background-color: whitesmoke !important;
+
+        }
+        .warningLevel2 {
+            background-color: #fffa90 !important;
+
+        }
+        .warningLevel3 {
+            background-color:#ff8282 !important;
+        }
+        .warningLevel4 {
+
+
+        }
+        .warningLevel0 {
+
+        }
+
     </style>
 </head>
-<% List<Category> listCategory = (List<Category>) request.getAttribute("listCategory");
+<% List<Log> listCategory = (List<Log>) request.getAttribute("listLog");
     if (listCategory == null) listCategory = new ArrayList<>();%>
 <body>
 <div class="container my-5">
@@ -60,44 +80,38 @@
         <thead>
         <tr>
             <th style="width: 50px">Mã</th>
-            <th>Địa chỉ IP</th>
-            <th>Mức độ</th>
             <th style="width:100px">Hành Động</th>
+            <th>Mức độ</th>
+            <th>Địa chỉ</th>
             <th style="width:100px">Thời gian </th>
         </tr>
         </thead>
         <tbody>
-        <% for (Category a : listCategory) { %>
-        <tr>
+        <% for (Log a : listCategory) { %>
+        <tr class="warningLevel<%=a.getLevel()%>">
             <th style="text-align: center; width: 20px"><%= a.getId() %></th>
-            <th style="width:150px;"><%= a.getNameCategory() %></th>
-            <th><%= a.getStatus() == 1 ? "Đang Hoạt động" : "Vô Hiệu Hóa" %></th>
-            <th>
-                <a href="#editCategoryModal<%= a.getId() %>" class="btn btn-primary" data-toggle="modal">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                </a>
-                <button class="btn <%= a.getStatus() == 1 ? "btn-warning" : "btn-success" %>" data-toggle="modal" data-target="#toggleDisableModal<%=a.getId()%>">
-                    <i class="fas <%= a.getStatus() == 1 ? "fa-ban" : "fa-check" %>"></i>
-                </button>
-            </th>
+            <th style="width:150px;"><%= a.getAction() %></th>
+            <th><%= a.getLevel()%></th>
+            <th><%=a.getAddress()%></th>
+            <th><%=a.getCreate_at()%></th>
         </tr>
         <%--     vô hiệu hóa    danh mục--%>
         <div class="modal fade" id="toggleDisableModal<%=a.getId()%>" tabindex="-1" role="dialog" aria-labelledby="disableModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title"><%= a.getStatus() == 1 ? "Xác nhận vô hiệu hóa" : "Xác nhận kích hoạt lại" %></h5>
+                        <h5 class="modal-title"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Bạn có chắc chắn muốn <%= a.getStatus() == 1 ? "vô hiệu hóa" : "kích hoạt lại" %> danh mục <%=a.getNameCategory()%>?</p>
+                        <p>Bạn có chắc chắn muốn  danh mục ?</p>
                         <p class="text-warning"><small>Bấm "Hủy" để dừng lại</small></p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                        <button type="button" class="btn <%= a.getStatus() == 1 ? "btn-danger" : "btn-success" %>" onclick="toggleDisableProduct(<%=a.getId()%>, <%=a.getStatus()%>)"><%= a.getStatus() == 1 ? "Vô hiệu hóa" : "Kích hoạt lại" %></button>
+                        <button type="button" class="btn " onclick=""></button>
                     </div>
                 </div>
             </div>
@@ -226,6 +240,10 @@
             });
         });
     });
+</script>
+<script>
+
+
 </script>
 </body>
 </html>

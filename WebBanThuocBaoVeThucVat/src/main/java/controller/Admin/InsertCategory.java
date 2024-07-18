@@ -9,8 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+
+import bean.Category;
 import com.google.gson.Gson;
+import dao.CategoryDAO;
+import dao.LogDao;
+
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @WebServlet(name = "InsertCategory", value = "/insertCate")
@@ -26,12 +32,16 @@ public class InsertCategory extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json");
+        List<Category> listCategories = CategoryService.getInstance().getList();
+        int index = listCategories.size()+1;
 
         String nameCate = req.getParameter("nameCate");
+        Category a = new Category(index,nameCate);
         boolean success = CategoryService.getInstance().insertCategory(nameCate);
 
         Map<String, String> result = new HashMap<>();
         if (success) {
+            LogDao.getInstance().insertModel(a,"",1,"");
             result.put("status", "success");
             result.put("message", "Danh mục mới đã được thêm thành công!");
         } else {

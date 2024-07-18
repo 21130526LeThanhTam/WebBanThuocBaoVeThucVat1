@@ -181,7 +181,7 @@
                             <div class="quantity">
                                 <div class="pro-qty">
                                     <button id="decrease" class="btn-decrease">-</button>
-                                    <input type="number" id="quantity" class="input-number" value="1" min="1" max="${requestScope.remain}" />
+                                    <input type="number" id="quantity" class="input-number" value="1" min="1" max="<%=request.getAttribute("remain")%>" />
                                     <button id="increase" class="btn-increase">+</button>
                                     <span style="color: red; margin: 10px" id="error"></span>
                                 </div>

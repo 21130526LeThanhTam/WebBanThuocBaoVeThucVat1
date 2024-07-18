@@ -360,6 +360,7 @@
         } else {
             document.querySelector('#p' + pid).textContent = quantity;
         }
+        console.log(pid, quantity, action)
         $.ajax({
             url: "ShoppingCartCL",
             type: 'POST',

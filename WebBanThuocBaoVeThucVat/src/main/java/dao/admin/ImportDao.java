@@ -65,18 +65,30 @@ public class ImportDao {
         );
         return rowsAffected > 0;
     }
+    // lấy import bằng id
+    public static Import getImportById(int importId) {
+        Jdbi jdbi = JDBIConnector.getJdbi();
+        return jdbi.withHandle(handle ->
+                handle.createQuery("SELECT imports.id,imports.id_product,imports.quantity,products.product_name,imports.price,imports.date_import,imports.status FROM imports join " +
+                        "products on imports.id_product = products.id WHERE imports.id =?")
+                       .bind(0, importId)
+                       .mapToBean(Import.class)
+                       .one()
+        );
+    }
 
     public static void main(String[] args) {
 
 
-        System.out.println(ImportDao.getList());
-//        ImportDao.updateImport(1,"Đã Giao");
-//        ImportDao.deleteImport(1);
-        Import i1 = new Import();
-        i1.setId_product(3);
-        i1.setQuantity(20);
-        i1.setPrice(5000);
-        ImportDao.insertImport(i1);
+//        System.out.println(ImportDao.getList());
+////        ImportDao.updateImport(1,"Đã Giao");
+////        ImportDao.deleteImport(1);
+//        Import i1 = new Import();
+//        i1.setId_product(3);
+//        i1.setQuantity(20);
+//        i1.setPrice(5000);
+//        ImportDao.insertImport(i1);
+        System.out.println(ImportDao.getImportById(2));;
     }
 }
 

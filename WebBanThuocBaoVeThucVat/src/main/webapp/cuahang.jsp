@@ -222,6 +222,7 @@
                             <div class="product__item__pic set-bg" data-setbg="<%=p.getImage()%>">
                                 <ul class="product__item__pic__hover">
                                     <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                     <li><a href="javascript:void(0)" onclick="addCart(this, '<%=p.getId()%>', '<%=remain%>')"><i class="fa fa-shopping-cart"></i></a></li>
 <%--                                    <li><a  href="ShoppingCartCL?action=post&id=<%=a.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>--%>
                                 </ul>
