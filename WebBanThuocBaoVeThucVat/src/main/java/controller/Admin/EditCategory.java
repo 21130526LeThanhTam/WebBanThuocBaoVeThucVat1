@@ -33,6 +33,10 @@ public class EditCategory extends HttpServlet {
         String categoryId = req.getParameter("cateID");
         int intCategoryId = 0;
         Map<String, String> response = new HashMap<>();
+        String ipAddress = req.getHeader("X-FORWARDED-FOR");
+        if (ipAddress == null) {
+            ipAddress = req.getRemoteAddr();
+        }
 
         try {
             if (categoryId != null && !categoryId.isEmpty()) {
@@ -42,7 +46,7 @@ public class EditCategory extends HttpServlet {
             boolean updateSuccess = CategoryService.getInstance().updateCategory(categoryName, intCategoryId);
             Category newCategory = new Category(intCategoryId,categoryName);
             if (updateSuccess) {
-                LogDao.getInstance().updateModel(oldCategory,newCategory,"",1,"");
+                LogDao.getInstance().updateModel(oldCategory,newCategory,ipAddress,1,"");
                 response.put("status", "success");
                 response.put("message", "Chỉnh sửa danh mục thành công!");
             } else {

@@ -19,6 +19,10 @@ public class ToggleProductStatusServlet extends HttpServlet {
         String action = request.getRequestURI().substring(request.getContextPath().length());
         String actionDescription = action.equals("/disableProduct") ? "vô hiệu hóa sản phẩm" : "kích hoạt sản phẩm";
         boolean disable = action.equals("/disableProduct");
+        String ipAddress = request.getHeader("X-FORWARDED-FOR");
+        if (ipAddress == null) {
+            ipAddress = request.getRemoteAddr();
+        }
         if (productID != null) {
             try {
                 int id = Integer.parseInt(productID);
@@ -27,7 +31,7 @@ public class ToggleProductStatusServlet extends HttpServlet {
 
                 if (result) {
                     Products aa= ProductsService.getInstance().getProductById(id);
-                    LogDao.getInstance().printLog(actionDescription,aa,"",1,"");
+                    LogDao.getInstance().printLog(actionDescription,aa,ipAddress,1,"");
                     response.setStatus(HttpServletResponse.SC_OK);
                     response.getWriter().write("Success");
                 } else {

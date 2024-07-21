@@ -178,7 +178,7 @@
                     </a>
 
 
-                    <a href="https://www.facebook.com/v19.0/dialog/oauth?fields=id,name,first_name,last_name,email,picture&client_id=487765543790855&redirect_uri=http://localhost:8081/loginByFacebook" class="d-block">
+                    <a href="https://www.facebook.com/v19.0/dialog/oauth?fields=id,name,first_name,email,picture&client_id=507670785164125&redirect_uri=http://localhost:8081/loginWithFacebook" class="d-block">
                         <div class="btn btn-facebook custom-btn">
                             <i class="fab fa-facebook"></i> Facebook
                         </div>
