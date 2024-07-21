@@ -59,6 +59,50 @@
             }
         }
     %>
+    <style>
+        .product__pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .product__pagination a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 5px;
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #007bff;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .product__pagination a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .product__pagination strong {
+            display: inline-block;
+            margin: 0 5px;
+            padding: 8px 16px;
+            border: 1px solid #007bff;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .product__pagination span {
+            margin: 0 5px;
+            color: #999;
+        }
+
+
+    </style>
 </head>
 
 <body>
@@ -237,30 +281,29 @@
                 </div>
 
                 <div class="product__pagination">
-                    <% if(currentPage > 1) {%>
-                        <a href="<%=pattern%>order=<%=order%>&currentPage=<%=currentPage - 1%>">Trước</a>
-                    <%}%>
-                    <% if(startPage > 2) {%>
-                        <a href="<%=pattern%>order=<%=order%>&currentPage=1">1</a>
-                        <span>..</span>
-                    <%}%>
-                    <% for (int i = startPage; i <= endPage; i++) {
-                        if(i == currentPage) {%>
-                        <strong><%=i%></strong>
-                    <%  } else { %>
-                        <a href="<%=pattern%>order=<%=order%>&currentPage=<%=i%>"><%=i%></a>
-                    <%  }
-                    } %>
-
-                    <% if(endPage > totalPages) {%>
-                        <span>..</span>
-                        <a href="<%=pattern%>order=<%=order%>&currentPage=<%=totalPages%>"><%=totalPages%></a>
-                    <%}%>
-
-                    <% if(currentPage > totalPages) {%>
-                        <a href="<%=pattern%>order=<%=order%>&currentPage=<%=currentPage + 1%>">Next</a>
-                    <%}%>
+                    <% if(currentPage > 1) { %>
+                    <a href="<%=pattern%>order=<%=order%>&currentPage=<%=currentPage - 1%>" style="width: 70px">Trước</a>
+                    <% } %>
+                    <% if(startPage > 2) { %>
+                    <a href="<%=pattern%>order=<%=order%>&currentPage=1">1</a>
+                    <span>..</span>
+                    <% } %>
+                    <% for (int i = startPage; i <= endPage; i++) { %>
+                    <% if(i == currentPage) { %>
+                    <strong><%=i%></strong>
+                    <% } else { %>
+                    <a href="<%=pattern%>order=<%=order%>&currentPage=<%=i%>"><%=i%></a>
+                    <% } %>
+                    <% } %>
+                    <% if(endPage < totalPages) { %>
+                    <span>..</span>
+                    <a href="<%=pattern%>order=<%=order%>&currentPage=<%=totalPages%>"><%=totalPages%></a>
+                    <% } %>
+                    <% if(currentPage < totalPages) { %>
+                    <a href="<%=pattern%>order=<%=order%>&currentPage=<%=currentPage + 1%>" style="width: 70px">Next</a>
+                    <% } %>
                 </div>
+
             </div>
         </div>
     </div>

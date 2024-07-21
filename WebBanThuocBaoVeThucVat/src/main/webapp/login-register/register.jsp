@@ -115,18 +115,17 @@
                     <input name="phone" id="phone" type="tel" placeholder="Số điện thoại" class="input form-control">
                 </div>
 
-                <%--                check pass mạnh hay yếu--%>
-                <label for="password" style="font-size:12px;margin-top:10px">Power password</label>
-                <div class="power-container">
-                    <div id="power-point"></div>
-                </div>
-                <span id="color-status"></span>
+
+
 
                 <div class="field input-field">
                     <input name="pass" type="password" id="password" placeholder="Nhập mật khẩu" class="password form-control" oninput="getPower(this.value)">
                     <i class='fas fa-eye eye-icon' id="togglePassword"></i>
                 </div>
-
+                <div class="power-container mt-2">
+                    <div id="power-point"></div>
+                </div>
+                <span id="color-status"></span>
 
                 <div class="field input-field">
                     <input name="rePass" type="password" id="rePassword" placeholder="Nhập lại mật khẩu" class="password form-control">
