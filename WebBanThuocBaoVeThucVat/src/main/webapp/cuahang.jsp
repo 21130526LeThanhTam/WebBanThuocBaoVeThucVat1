@@ -61,6 +61,58 @@
         }
     %>
     <style>
+        .product__pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .product__pagination a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 5px;
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #007bff;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .product__pagination a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .product__pagination strong {
+            display: inline-block;
+            margin: 0 5px;
+            padding: 8px 16px;
+            border: 1px solid #007bff;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .product__pagination span {
+            margin: 0 5px;
+            color: #999;
+        }
+        .filter__sort select {
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+        }
+        .filter__sort select:focus {
+            border-color: #66afe9;
+            outline: none;
+            box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
+        }
         .product__item__pic {
             position: relative;
         }
@@ -76,6 +128,7 @@
             font-size: 12px;
             font-weight: bold;
             z-index: 10;
+
         }
     </style>
 </head>
@@ -123,7 +176,6 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-5">
                             <div class="filter__sort">
-                                <span>Sắp xếp : </span>
                                 <select id="selectOrder">
                                     <option value="0" data-href="<%= pattern %>order=0&" <%= "0".equals(order) ? "selected" : "" %>>Thứ tự mặc định</option>
                                     <option value="1" data-href="<%= pattern %>order=1&" <%= "1".equals(order) ? "selected" : "" %>>Thứ tự theo mức độ phổ biến</option>
@@ -134,13 +186,7 @@
                         </div>
                         <div class="col-lg-4 col-md-4">
                             <div class="filter__found">
-                                <h6><span><%=list.size() %></span> sản phẩm được tìm thấy</h6>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-3">
-                            <div class="filter__option">
-                                <span class="icon_grid-2x2"></span>
-                                <span class="icon_ul"></span>
+                                <h6 style="font-size:18px"><span><%=list.size() %></span> sản phẩm được tìm thấy</h6>
                             </div>
                         </div>
                     </div>
@@ -200,30 +246,29 @@
                 </div>
 
                 <div class="product__pagination">
-                    <% if(currentPage > 1) {%>
-                        <a href="<%=pattern%>order=<%=order%>&currentPage=<%=currentPage - 1%>">Trước</a>
-                    <%}%>
-                    <% if(startPage > 2) {%>
-                        <a href="<%=pattern%>order=<%=order%>&currentPage=1">1</a>
-                        <span>..</span>
-                    <%}%>
-                    <% for (int i = startPage; i <= endPage; i++) {
-                        if(i == currentPage) {%>
-                        <strong><%=i%></strong>
-                    <%  } else { %>
-                        <a href="<%=pattern%>order=<%=order%>&currentPage=<%=i%>"><%=i%></a>
-                    <%  }
-                    } %>
-
-                    <% if(endPage > totalPages) {%>
-                        <span>..</span>
-                        <a href="<%=pattern%>order=<%=order%>&currentPage=<%=totalPages%>"><%=totalPages%></a>
-                    <%}%>
-
-                    <% if(currentPage > totalPages) {%>
-                        <a href="<%=pattern%>order=<%=order%>&currentPage=<%=currentPage + 1%>">Next</a>
-                    <%}%>
+                    <% if(currentPage > 1) { %>
+                    <a href="<%=pattern%>order=<%=order%>&currentPage=<%=currentPage - 1%>" style="width: 70px">Trước</a>
+                    <% } %>
+                    <% if(startPage > 2) { %>
+                    <a href="<%=pattern%>order=<%=order%>&currentPage=1">1</a>
+                    <span>..</span>
+                    <% } %>
+                    <% for (int i = startPage; i <= endPage; i++) { %>
+                    <% if(i == currentPage) { %>
+                    <strong><%=i%></strong>
+                    <% } else { %>
+                    <a href="<%=pattern%>order=<%=order%>&currentPage=<%=i%>"><%=i%></a>
+                    <% } %>
+                    <% } %>
+                    <% if(endPage < totalPages) { %>
+                    <span>..</span>
+                    <a href="<%=pattern%>order=<%=order%>&currentPage=<%=totalPages%>"><%=totalPages%></a>
+                    <% } %>
+                    <% if(currentPage < totalPages) { %>
+                    <a href="<%=pattern%>order=<%=order%>&currentPage=<%=currentPage + 1%>" style="width: 70px">Next</a>
+                    <% } %>
                 </div>
+
             </div>
         </div>
     </div>

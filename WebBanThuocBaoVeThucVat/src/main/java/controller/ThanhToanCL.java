@@ -9,6 +9,8 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -30,6 +32,8 @@ public class ThanhToanCL extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession(true);
         String action = request.getParameter("action");
         User user = (User) session.getAttribute("user");
@@ -55,6 +59,8 @@ public class ThanhToanCL extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession(true);
         ShoppingCart c = (ShoppingCart) session.getAttribute("cart");
         Float result = null;
@@ -65,30 +71,53 @@ public class ThanhToanCL extends HttpServlet {
 
         String action = request.getParameter("action");
         if(action!=null && action.equals("order")) {
-            String firstName = request.getParameter("firstname");
             String username = request.getParameter("username");
-            String city = request.getParameter("tinh");
-            String quan = request.getParameter("quan");
-            String district = request.getParameter("phuong");
-            String homeNumber = request.getParameter("homeNumber");
-            String phone = request.getParameter("phone");
 
-            User user = (User) session.getAttribute("user");
-            String address = homeNumber + ", " + district + ", " +quan+","+ city;
-            List<CartItem> products = c.getCartItemList();
-            Orders order = new Orders(user.getId(), (float) result,
-                    0, address, phone,"Chưa Thanh Toán");
-            order.setLp(products);
-            this.orderService.insertOrderDetail(order);
-            double total = c.getTotalPrice();
-            double re = 0.0;
-            Discount discount = (Discount) session.getAttribute("discount");
-            if(discount != null) re += total - (discount.getSalePercent()*total);
-            else re += total;
-            System.out.println(re);
-            session.setAttribute("total", re);
-            session.removeAttribute("cart");
-            response.sendRedirect("HomePageController");
+            String tinhFullName = request.getParameter("tinhFullName");
+            String quanFullName = request.getParameter("quanFullName");
+            String phuongFullName = request.getParameter("phuongFullName");
+            System.out.println(tinhFullName);
+            System.out.println(quanFullName);
+            System.out.println(phuongFullName);
+            try {
+                String decodedTinh = URLDecoder.decode(tinhFullName, StandardCharsets.UTF_8.name());
+                String decodedHuyen = URLDecoder.decode(quanFullName, StandardCharsets.UTF_8.name());
+                String decodedXa = URLDecoder.decode(phuongFullName, StandardCharsets.UTF_8.name());
+
+                System.out.println("Tỉnh: " + decodedTinh);
+                System.out.println("Huyện: " + decodedHuyen);
+                System.out.println("Xã: " + decodedXa);
+
+
+
+                String homeNumber = request.getParameter("homeNumber");
+                String phone = request.getParameter("phone");
+
+                User user = (User) session.getAttribute("user");
+
+                String address = homeNumber + ", " + decodedXa + ", " + decodedHuyen + ", " + decodedTinh;
+
+                List<CartItem> products = c.getCartItemList();
+                Orders order = new Orders(user.getId(), (float) result,
+                        0, address, phone,"Chưa Thanh Toán");
+                order.setLp(products);
+                this.orderService.insertOrderDetail(order);
+                double total = c.getTotalPrice();
+                double re = 0.0;
+                Discount discount = (Discount) session.getAttribute("discount");
+                if(discount != null) re += total - (discount.getSalePercent()*total);
+                else re += total;
+                System.out.println(re);
+                session.setAttribute("total", re);
+                session.removeAttribute("cart");
+                response.sendRedirect("HomePageController");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+
+
 
         }
     }

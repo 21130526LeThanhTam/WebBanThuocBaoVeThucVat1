@@ -199,20 +199,10 @@
     <div class="hero__search__form">
         <form style="display: flex; align-items: center; width: 100%; gap: 10px" action="ProductController" method="GET">
 
-            <input type="hidden" id="searchTypeValue" name="action" value="" />
+            <input type="hidden" id="searchTypeValue" name="action" value="By Name" />
 
             <input id="search-panel" style="flex: 1; border: none; padding-left: 12px; margin-right: 10px; outline: none; border-right: 1px solid #ccc"
                    type="text" name="search" placeholder="Bạn cần tìm thứ gì?" value="<%=words%>">
-
-            <!-- Search type dropdown -->
-            <div class="bc" style="position: relative; margin-right: 120px; cursor: pointer;">
-                <span id="searchType" onclick="toggleSearchTypeDropdown()">Theo loại</span>
-                <div id="dropdownMenu" class="de" style="position: absolute; display: block; z-index: 1000; top: 100%; left: 0; right: 0; background: #fff; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
-                    <p style="width: 100%; text-align: center; cursor: pointer;" class="a" onclick="setSearchType('name')">By Name</p>
-                    <p style="width: 100%; text-align: center; cursor: pointer;" class="a" onclick="setSearchType('description')">By Description</p>
-                    <p style="width: 100%; text-align: center; cursor: pointer;" class="a" onclick="setSearchType('price')">By Price</p>
-                </div>
-            </div>
             <input type="hidden" name="order" value="<%=session.getAttribute("order")%>">
             <!-- Submit button -->
             <button type="submit" class="site-btn"><i class="fa fa-search"></i></button>
@@ -250,40 +240,4 @@
     if (badge.innerHTML === '') badge.innerHTML = '<%=totalItems%>';
 </script>
 </body>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Toggle display of elements with class "de" when hovering over elements with class "bc"
-        var bcElement = document.querySelector('.bc');
-        var deElement = document.querySelector('.de');
-        if (bcElement && deElement) {
-            bcElement.addEventListener("mouseenter", function () {
-                deElement.style.display = 'block';
-            });
-            bcElement.addEventListener("mouseleave", function () {
-                deElement.style.display = 'none';
-            });
-        }
-
-        // Update search type display and hidden input value when a dropdown item is clicked
-        var searchTypeElement = document.getElementById('searchType');
-        var hiddenInputElement = document.getElementById('searchTypeValue');
-        if (searchTypeElement && hiddenInputElement) {
-            document.querySelectorAll('.de p').forEach(function (element) {
-                element.addEventListener('click', function () {
-                    var selectedValue = this.innerText; // Get the selected text
-                    searchTypeElement.innerHTML = selectedValue; // Update displayed search type
-                    hiddenInputElement.value = selectedValue; // Update hidden input value
-                    deElement.style.display = 'none'; // Hide the dropdown
-                });
-            });
-        }
-    });
-
-    function toggleSearchTypeDropdown() {
-        var deElement = document.querySelector('.de');
-        if (deElement) {
-            deElement.style.display = deElement.style.display === 'none' || deElement.style.display === '' ? 'block' : 'none';
-        }
-    }
-</script>
 </html>

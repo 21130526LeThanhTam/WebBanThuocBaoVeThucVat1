@@ -98,8 +98,6 @@ public class ShoppingCartCL extends HttpServlet {
                         out.close();
                         return;
                     }
-//                else if (discount.getStartDate()> Timestamp.valueOf(n))
-                    // Kiem tra ma giam gia co het han khong, hay chua den han, hay het luot su dung, hay khong ap dung cho gio hang chua san pham do.
                 } else {
                     out.write("{ \"state\": \"notempty\", \"error\": \"\", \"rect\": \""+ 0.0 +"\", \"result\": \""+re+"\" }");
                     session.removeAttribute("discount");

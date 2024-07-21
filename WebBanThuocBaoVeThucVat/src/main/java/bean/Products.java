@@ -185,7 +185,9 @@ public class Products extends AbsModel implements Serializable {
     public String afterData() {
         return this.toString();
     }
-
+    public String formatDescription(String description) {
+        return description.replace("-", "<br>-").replace("+", "<br>+");
+    }
 
 }
 

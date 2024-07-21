@@ -178,11 +178,11 @@
                 <td><img src="<%= order.getProducts().getImage()%>" alt="" style="width: 110px;height: 110px"></td>
                 <td><%= order.getProducts().getPrice()%></td>
                 <td style=" display: flex;justify-content: center;align-items: center; border: none">
-                    <button class="btn btn-view view" data-toggle="modal" style="margin: 0 5px;" onclick="window.location">
+                    <button class="btn btn-view view" data-toggle="modal" style="margin: 0 5px;" onclick="redirectToProductInfo(<%= order.getProducts().getId() %>)">
                         <i class="fas fa-eye" data-toggle="tooltip" title="Xem chi tiết"></i>
                     </button>
                     <button class="btn btn-danger cancel-btn" data-toggle="modal" style="margin: 0 5px;" onclick="deleteItemWishlist(<%=order.getProducts().getId()%>)">
-                        <i class="fa-solid fa-ban"></i>
+                        <i class="fa-solid fa-trash"></i>
                     </button>
                 </td>
             </tr>
@@ -295,7 +295,9 @@
             }
         });
     }
-
+    function redirectToProductInfo(productId) {
+        window.location.href = 'ProductInfor?id_product=' + productId;
+    }
 
 </script>
 </body>

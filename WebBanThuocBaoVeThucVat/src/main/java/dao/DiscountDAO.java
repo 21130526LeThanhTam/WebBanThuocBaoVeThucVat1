@@ -60,9 +60,10 @@ public class DiscountDAO implements IDiscountDAO {
         );
     }
 
+
+
     public static void main(String[] args) {
-        System.out.println(DiscountDAO.getInstance().getCouponByCode("TETNGUYENDAN"));
-        System.out.println(DiscountDAO.getInstance().getCouponByCode("NGUOIMOI"));
+        System.out.println(DiscountDAO.getInstance().getCouponByCode("30THANG4"));
     }
 
     /**

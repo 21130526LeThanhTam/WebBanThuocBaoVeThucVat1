@@ -206,7 +206,17 @@
                             <div class="px-xl-3">
                                 <button class="btn btn-block btn-secondary" style="background-color: #7fad39; border: #7fad39;">
                                     <i class="fa fa-sign-out"></i>
-                                    <a href="HomePageController" style="text-decoration: none; text-underline: none; color: white;">Trang chủ</a>
+                                    <%
+                                        if (user.getRole() == 1) {
+                                    %>
+                                    <a href="/admin_dashboard" style="text-decoration: none; text-underline: none; color: white;">Trang chủ</a>
+                                    <%
+                                    } else {
+                                    %>
+                                    <a href="/HomePageController" style="text-decoration: none; text-underline: none; color: white;">Trang chủ</a>
+                                    <%
+                                        }
+                                    %>
                                 </button>
                             </div>
                         </div>

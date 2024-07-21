@@ -24,4 +24,9 @@ public class ProductService implements IProductService {
         return productDAO.findById(id).stream().findFirst().get();
     }
 
+    @Override
+    public List<Products> getRelatedProducts(int categoryID, int id) {
+        return productDAO.getRelatedProducts(categoryID,id);
+    }
+
 }

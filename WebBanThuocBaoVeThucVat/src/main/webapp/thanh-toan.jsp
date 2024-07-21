@@ -210,6 +210,9 @@
 <%--                                    <span class="checkmark"></span>--%>
 <%--                                </label>--%>
 <%--                            </div>--%>
+                            <input type="hidden" id="tinhFullName" name="tinhFullName">
+                            <input type="hidden" id="quanFullName" name="quanFullName">
+                            <input type="hidden" id="phuongFullName" name="phuongFullName">
                             <input id="hidden" type="hidden" name="action" value="order">
                             <button type="submit" class="site-btn" >Đặt hàng</button>
                             <button type="button" class="site-btn" id="payButton">Thanh toán ngay</button>
@@ -238,6 +241,7 @@
 
 <script>
     document.getElementById("payButton").addEventListener("click",function () {
+        if(validateLocationFields()){
         const username = document.getElementById("username").value;
         const amount = Math.round(<%=session.getAttribute("result")%>);
         const tinhText = document.getElementById('tinh').options[document.getElementById('tinh').selectedIndex].text;
@@ -245,9 +249,7 @@
         const phuongText = document.getElementById('phuong').options[document.getElementById('phuong').selectedIndex].text;
         const homeNumber = document.getElementById("homeNumber").value;
         const phoneNumber = document.getElementById("phoneNumber").value;
-
-        console.log(username+"/"+amount+"/"+tinhText+"/"+quanText+"/"+phuongText+"/"+homeNumber+"/"+phoneNumber);
-
+            console.log(username+"/"+amount+"/"+tinhText+"/"+quanText+"/"+phuongText+"/"+homeNumber+"/"+phoneNumber);
         const data = {
             tinhText:tinhText,
             quanText: quanText,
@@ -285,11 +287,61 @@
                 } else {
                     alert("Error: " + response.message);
                 }
-            }
-        };
-        xhr.send(formBody);
-    })
+            }}
+            xhr.send(formBody);
+        }
+    });
+
+    document.querySelector('form.payAfterReceive').addEventListener('submit', function(event) {
+        if (!validateLocationFields()) {
+            event.preventDefault();
+        }  else {
+            const tinhSelect = document.getElementById('tinh');
+            const quanSelect = document.getElementById('quan');
+            const phuongSelect = document.getElementById('phuong');
+
+            const tinhText = tinhSelect.options[tinhSelect.selectedIndex].textContent.trim();
+            const quanText = quanSelect.options[quanSelect.selectedIndex].textContent.trim();
+            const phuongText = phuongSelect.options[phuongSelect.selectedIndex].textContent.trim();
+
+            console.log(`Tinh: ${tinhText}, Quan: ${quanText}, Phuong: ${phuongText} cccccc`); // Ghi lại để kiểm tra
+
+            document.getElementById('hiddenTinh').value = tinhText;
+            document.getElementById('hiddenQuan').value = quanText;
+            document.getElementById('hiddenPhuong').value = phuongText;
+        }
+    });
+
+
+    function validateLocationFields() {
+        const tinh = document.getElementById('tinh').value;
+        const quan = document.getElementById('quan').value;
+        const phuong = document.getElementById('phuong').value;
+
+        if (tinh === "0" || quan === "0" || phuong === "0") {
+            alert('Vui lòng chọn đầy đủ Tỉnh/Thành phố, Quận/Huyện, và Phường/Xã.');
+            return false;
+        }
+        return true;
+    }
 </script>
+<script>
+    document.querySelector('form.payAfterReceive').addEventListener('submit', function(event) {
+        var tinhId = document.getElementById("tinh").value;
+        var quanId = document.getElementById("quan").value;
+        var phuongId = document.getElementById("phuong").value;
+
+        var tinhText = tinhId === "0" ? "" : document.querySelector("#tinh option:checked").getAttribute('data-full-name');
+        var quanText = quanId === "0" ? "" : document.querySelector("#quan option:checked").getAttribute('data-full-name');
+        var phuongText = phuongId === "0" ? "" : document.querySelector("#phuong option:checked").getAttribute('data-full-name');
+
+        document.getElementById("tinhFullName").value = tinhText;
+        document.getElementById("quanFullName").value = quanText;
+        document.getElementById("phuongFullName").value = phuongText;
+    });
+</script>
+
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('datButton').addEventListener('click', function(event) {
@@ -320,40 +372,7 @@
 
 </script>
 
-<%--<script>--%>
-<%--    document.getElementById('datButton').addEventListener('click', function(event) {--%>
-<%--        event.preventDefault(); // Ngăn form gửi dữ liệu để kiểm tra--%>
 
-<%--        const tinh = document.getElementById('tinh').value;--%>
-<%--        const quan = document.getElementById('quan').value;--%>
-<%--        const phuong = document.getElementById('phuong').value;--%>
-<%--        const homeNumber = document.getElementById('homeNumber').value;--%>
-<%--        const phoneNumber = document.getElementById('phoneNumber').value;--%>
-
-<%--        console.log('Tỉnh / Thành phố:', tinh);--%>
-<%--        console.log('Quận / Huyện:', quan);--%>
-<%--        console.log('Phường / Xã:', phuong);--%>
-<%--        console.log('Số nhà:', homeNumber);--%>
-<%--        console.log('Số điện thoại:', phoneNumber);--%>
-
-<%--        // Tiếp tục gửi dữ liệu nếu cần--%>
-<%--        // document.getElementById('orderForm').submit();--%>
-<%--    });--%>
-<%--</script>--%>
-
-<%--<script>--%>
-<%--    document.getElementById("datButton").addEventListener("click",function () {--%>
-<%--        const username = document.getElementById("username").value;--%>
-<%--        const amount = Math.round(<%=session.getAttribute("result")%>);--%>
-<%--        const tinhText = document.getElementById('tinh').options[document.getElementById('tinh').selectedIndex].text;--%>
-<%--        const quanText= document.getElementById('quan').options[document.getElementById('quan').selectedIndex].text;--%>
-<%--        const phuongText = document.getElementById('phuong').options[document.getElementById('phuong').selectedIndex].text;--%>
-<%--        const homeNumber = document.getElementById("homeNumber").value;--%>
-<%--        const phoneNumber = document.getElementById("phoneNumber").value;--%>
-<%--        console.log(username+"/"+amount+"/"+tinhText+"/"+quanText+"/"+phuongText+"/"+homeNumber+"/"+phoneNumber);--%>
-
-<%--    })--%>
-<%--</script>--%>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -361,42 +380,36 @@
 <script>
     $(document).ready(function () {
         // Lấy tỉnh thành
-        $.getJSON('https://cors-anywhere.herokuapp.com/https://esgoo.net/api-tinhthanh/1/0.htm', function (data_tinh) {
-
+        $.getJSON('https://esgoo.net/api-tinhthanh/1/0.htm', function (data_tinh) {
             if (data_tinh.error == 0) {
                 $.each(data_tinh.data, function (key_tinh, val_tinh) {
-                    $("#tinh").append('<option value="' + val_tinh.id + '" data-full-name="' + val_tinh.full_name + '">' + val_tinh.full_name + '</option>');
-                    console.log(val_tinh.full_name)
+                    $("#tinh").append('<option value="' + val_tinh.id + '" data-full-name="' + encodeURIComponent(val_tinh.full_name) + '">' + val_tinh.full_name + '</option>');
                 });
-                console.log($("#tinh").value)
             }
         });
 
-
         $("#tinh").change(function (e) {
             var idtinh = $(this).val(); // lấy ID của tỉnh
-            var fullNameTinh = $("#tinh option:selected").data('full-name'); // lấy full name của tỉnh đã chọn
             // Lấy quận huyện
-            $.getJSON('https://cors-anywhere.herokuapp.com/https://esgoo.net/api-tinhthanh/2/' + idtinh + '.htm', function (data_quan) {
+            $.getJSON('https://esgoo.net/api-tinhthanh/2/' + idtinh + '.htm', function (data_quan) {
                 if (data_quan.error == 0) {
                     $("#quan").empty().append('<option value="0">--Chọn Quận Huyện--</option>');
                     $("#phuong").empty().append('<option value="0">--Chọn Phường/ Xã/ Thị trấn--</option>');
                     $.each(data_quan.data, function (key_quan, val_quan) {
-                        $("#quan").append('<option value="' + val_quan.id + '" data-full-name="' + val_quan.full_name + '">' + val_quan.full_name + '</option>');
+                        $("#quan").append('<option value="' + val_quan.id + '" data-full-name="' + encodeURIComponent(val_quan.full_name) + '">' + val_quan.full_name + '</option>');
                     });
                 }
             });
         });
-
+        // https://cors-anywhere.herokuapp.com/
         $("#quan").change(function (e) {
             var idquan = $(this).val(); // lấy ID của quận/huyện
-            var fullNameQuan = $("#quan option:selected").data('full-name'); // lấy full name của quận/huyện đã chọn
-            // Lấy phường xã
-            $.getJSON('https://cors-anywhere.herokuapp.com/https://esgoo.net/api-tinhthanh/3/' + idquan + '.htm', function (data_phuong) {
+            // Lấy phường xãhttp://localhost:8081/
+            $.getJSON('https://esgoo.net/api-tinhthanh/3/' + idquan + '.htm', function (data_phuong) {
                 if (data_phuong.error == 0) {
                     $("#phuong").empty().append('<option value="0">--Chọn Phường/ Xã/ Thị trấn--</option>');
                     $.each(data_phuong.data, function (key_phuong, val_phuong) {
-                        $("#phuong").append('<option value="' + val_phuong.id + '" data-full-name="' + val_phuong.full_name + '">' + val_phuong.full_name + '</option>');
+                        $("#phuong").append('<option value="' + val_phuong.id + '" data-full-name="' + encodeURIComponent(val_phuong.full_name) + '">' + val_phuong.full_name + '</option>');
                     });
                 }
             });

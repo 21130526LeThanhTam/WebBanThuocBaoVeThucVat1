@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="assets/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <%--    <link rel="stylesheet" href="assets/css/Log_Regis.css">--%>
     <%--    <script src="assets/js/log_reg.js" defer></script>--%>
     <style>
@@ -113,9 +114,16 @@
             margin-left: 10px;
             color: #6f6f6f;
         }
+        .qtybtn {
+            display: none !important;
+        }
+        .product__details__tab .nav-tabs:after {
+            width: 320px;
 
-        .qtybtn{
-            display:none!important;
+        }
+        .product__details__tab .nav-tabs:before {
+            width: 320px;
+
         }
 
     </style>
@@ -159,48 +167,52 @@
                              src="<%= proID.getImage() %>" alt="">
                     </div>
                     <div class="product__details__pic__slider owl-carousel">
-                        <img data-imgbigurl="assets/img/product/details/product-details-2.jpg"
-                             src="assets/img/product/details/thumb-1.jpg" alt="">
-                        <img data-imgbigurl="assets/img/product/details/product-details-3.jpg"
-                             src="assets/img/product/details/thumb-2.jpg" alt="">
-                        <img data-imgbigurl="assets/img/product/details/product-details-5.jpg"
-                             src="assets/img/product/details/thumb-3.jpg" alt="">
-                        <img data-imgbigurl="assets/img/product/details/product-details-4.jpg"
-                             src="assets/img/product/details/thumb-4.jpg" alt="">
+                        <img class="product__details__pic__item--large"
+                             src="<%= proID.getImage() %>" alt="">
                     </div>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="product__details__text">
                     <h3><%= proID.getProduct_name() %></h3>
-                    <div class="product__details__price"><%= proID.formatPrice() %>₫</div>
-                    <p><%= proID.getDes() %></p>
+                    <div class="product__details__price" style="margin-bottom: 0"><%= proID.formatPrice() %>₫</div>
+
                     <div class="quantity-container">
                         <span class="quantity-label">Số Lượng</span>
                         <div class="product__details__quantity">
                             <div class="quantity">
-                                <div class="pro-qty">
-                                    <button id="decrease" class="btn-decrease">-</button>
-                                    <input type="number" id="quantity" class="input-number" value="1" min="1" max="<%=request.getAttribute("remain")%>" />
-                                    <button id="increase" class="btn-increase">+</button>
-                                    <span style="color: red; margin: 10px" id="error"></span>
-                                </div>
+                                <div class="pro-qty" style="
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    margin-top: 30px;
+">
+
+                                    <input style="border: none" type="number" id="quantity" class="input-number" value="1" min="1" max="<%=request.getAttribute("remain")%>" />
+
+
+                                </div>    <span style="color: red; margin: 10px" id="error"></span>
+
                             </div>
                         </div>
                         <span class="available-quantity"><%= proID.getInventory_quantity() %> sản phẩm có sẵn</span>
                     </div>
-                    <div class="d-flex align-items-center mt-3">
+                    <div class="d-flex align-items-center">
                         <a class="add-to-cart" id="add_cart"
                            href="javascript:void(0)"
                            data-id="<%=proID.getId()%>"
                            onclick="addCart(this, '<%=proID.getId()%>')" style="color:#7fad39;background-color:#fff; border: 2px solid #7fad39;">
                             <i class="fa fa-shopping-cart"></i> Thêm Vào Giỏ Hàng
                         </a>
-                        <a href="javascript:void(0);" id="buyNowBtn" class="primary-btn">Mua Ngay</a>
+
                     </div>
-                    <ul>
-                        <!-- Các phần tử khác -->
-                    </ul>
+                  <div class="mt-3" style="font-size: 22px; display:flex; flex-direction: column;height:170px;justify-content: space-around;margin-top:30px !important;">
+                      <b>Chính sách của sản phẩm:</b>
+                      <p class="mt-2 mb-0" style="font-size: 20px;"> <i class="fa-solid fa-circle-check" style="color: green;font-size: 20px"></i> Bảo vệ người mua hàng</p>
+                      <p class="mb-0" style="font-size: 20px;"> <i class="fa-solid fa-circle-check" style="color: green;font-size: 20px"></i> Hoàn 100% hoá đơn nếu khách hàng không nhận được hàng</p>
+                      <p class="mb-0" style="font-size: 20px;"> <i class="fa-solid fa-circle-check" style="color: green;font-size: 20px"></i> Trả lại sản phẩm nếu như không giống với mô tả</p>
+                  </div>
                 </div>
             </div>
             <div class="col-lg-12">
@@ -224,36 +236,7 @@
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
                             <div class="product__details__tab__desc">
                                 <h6>Mô tả sản phẩm</h6>
-                                <p>
-                                    Camilo 150SC là thuốc trừ bệnh 2 hoạt chất Azoxystrobin và Hexaconazole có tác động
-                                    tiếp xúc, lưu dẫn, thấm sâu nhanh, chuyển vị mạnh trong cây, rất an toàn cho môi
-                                    trường và con người.
-                                </p>
-
-                                <p>Thành phần:</p>
-                                <ul>
-                                    <li>Azoxystrobin: 50g/lít</li>
-                                    <li>Hexaconazole: 100g/lít</li>
-                                    <li>Phụ gia</li>
-                                </ul>
-
-                                <p>Quy cách: Chai 100 ml</p>
-
-                                <p>Công dụng:</p>
-                                <ul>
-                                    <li>CAMILO 150SC – là thuốc chuyên trừ bệnh đốm vằn, vàng lá chín sớm trên lúa.</li>
-                                    <li>CAMILO 150SC – có tác động tiếp xúc, lưu dẫn, thấm sâu nhanh, chuyển vị mạnh
-                                        trong cây nên không sợ mưa rửa trôi sau vài giờ phun thuốc.
-                                    </li>
-                                    <li>CAMILO 150SC – làm khô nhanh vết bệnh chỉ sau 01 ngày phun thuốc. Nấm bệnh rất
-                                        khó hình thành tính kháng nhờ có cơ chế tác động kép Vừa ngăn cản sự tạo vách tế
-                                        bào nấm bệnh, vừa chặn đứng quá trình tạo năng lượng của tế bào nấm.
-                                    </li>
-                                    <li>CAMILO 150SC – giúp cây lúa sạch lá ủ (lá chân), nuôi dưỡng lá đòng xanh lâu,
-                                        bông lúa vàng sáng, chắc tới cậy.
-                                    </li>
-                                    <li>CAMILO 150SC – rất an toàn và thân thiện với môi trường.</li>
-                                </ul>
+                                <p><%= proID.formatDescription(proID.getDes()) %></p>
                             </div>
                         </div>
                         <div class="tab-pane" id="tabs-2" role="tabpanel">
@@ -327,69 +310,30 @@
             </div>
         </div>
         <div class="row">
+            <%
+                List<Products> relatedProducts = (List<Products>) request.getAttribute("relatedProducts");
+                if (relatedProducts != null) {
+                    for (Products product : relatedProducts) {
+            %>
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="assets/img/product/product-1.jpg">
+                    <div class="product__item__pic set-bg" data-setbg="<%= product.getImage() %>">
                         <ul class="product__item__pic__hover">
-
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li><a href="ProductInfor?id_product=<%= product.getId() %>"><i class="fa fa-retweet"></i></a></li>
+                            <li><a href="javascript:void(0)" onclick="toggleWishlist(this, '<%=product.getId()%>')"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
-                        <h6><a href="#">Giống cây bơ</a></h6>
-                        <h5>45.000₫</h5>
+                        <h6><a href="product-details.jsp?id=<%= product.getId() %>"><%= product.getProduct_name() %></a></h6>
+                        <h5><%= product.formatPrice() %>₫</h5>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="assets/img/product/product-2.jpg">
-                        <ul class="product__item__pic__hover">
-
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6><a href="#">Giống cây bưởi</a></h6>
-                        <h5>45.000₫</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="assets/img/product/product-3.jpg">
-                        <ul class="product__item__pic__hover">
-
-
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6><a href="#">Giống cây mít</a></h6>
-                        <h5>45.000₫</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="assets/img/product/product-7.jpg">
-                        <ul class="product__item__pic__hover">
-
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6><a href="#">Thuốc trừ sâu</a></h6>
-                        <h5>45.000₫</h5>
-                    </div>
-                </div>
-            </div>
+            <%
+                    }
+                }
+            %>
         </div>
-
     </div>
 </section>
 <!-- Related Product Section End -->
@@ -411,7 +355,6 @@
 <script async defer crossorigin="anonymous"
         src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v20.0&appId=1072330460766904" nonce="9nNhsvob"></script>
 <script>
-
     let quantityInput = document.getElementById("quantity");
     let btnAddCart = document.getElementById("add_cart");
     let increase = document.getElementById("increase");
@@ -532,20 +475,55 @@
         });
     });
 </script>
-<%--<script>--%>
-<%--    document.getElementById('addToCartBtn').addEventListener('click', function() {--%>
-<%--        // Lấy giá trị đã nhập từ input--%>
-<%--        var quantity = document.getElementById('quantityInput').value;--%>
+<script>
+    function toggleWishlist(element, productId) {
+        var icon = element.querySelector('i');
+        console.log("icon", icon);
+        console.log("productId", productId);
+        addToWishlist(productId);
+    }
 
-<%--        // Tạo URL mới với giá trị đã nhập từ input--%>
-<%--        var url = "ShoppingCartCL?action=post&id=<%=proID.getId()%>&quantity=" + encodeURIComponent(quantity);--%>
-
-<%--        // Chuyển hướng đến URL mới--%>
-<%--        window.location.href = url;--%>
-<%--    });--%>
-<%--</script>--%>
-
-
+    function addToWishlist(productId) {
+        $.ajax({
+            url: '/wishlistController',
+            method: "POST",
+            data: {
+                id: productId,  // Đảm bảo tham số này khớp với servlet
+                action: "add"
+            },
+            success: function (response) {
+                if (response.status === "success") {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Thêm Sản Phẩm Vào Danh Sách Yêu Thích Thành Công!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+                else if (response.status === "insertFailed") {
+                    Swal.fire({
+                        position: "center",
+                        icon: "error",
+                        title: "Thêm Sản Phẩm Vào Danh Sách Yêu Thích Không Thành Công!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                } else if(response.status === "isExists"){
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Xóa Sản Phẩm Ra Khỏi Sẵn Danh Sách Yêu Thích !",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                } else {
+                    window.location.href = '/login';
+                }
+            }
+        });
+    }
+</script>
 </body>
 
 </html>
