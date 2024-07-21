@@ -77,12 +77,16 @@ public class OrderController extends HttpServlet {
     }
 
     private void updatePaymentStatus(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String ipAddress = req.getHeader("X-FORWARDED-FOR");
+        if (ipAddress == null) {
+            ipAddress = req.getRemoteAddr();
+        }
         int orderId = Integer.parseInt(req.getParameter("orderId"));
         String paymentStatus = req.getParameter("paymentStatus");
         OrderTable oldOrder = orderDao.getOrderById(orderId);
         orderDao.updatePaymentStatus(orderId, paymentStatus);
         OrderTable newOrder = orderDao.getOrderById(orderId);
-        LogDao.getInstance().toggleStatus("Thay đổi trạng thái thanh toàn đơn hàng mã "+orderId,oldOrder.getPayment_status(),newOrder.getPayment_status(),"",1,"");
+        LogDao.getInstance().toggleStatus("Thay đổi trạng thái thanh toàn đơn hàng mã "+orderId,oldOrder.getPayment_status(),newOrder.getPayment_status(),ipAddress,1,"");
         resp.getWriter().write("Success");
     }
 
@@ -92,6 +96,10 @@ public class OrderController extends HttpServlet {
         int newOrderStatus = Integer.parseInt(req.getParameter("orderStatus"));
         OrderTable order = orderDao.getOrderById(orderId);
         int currentOrderStatus = order.getOrder_status();
+        String ipAddress = req.getHeader("X-FORWARDED-FOR");
+        if (ipAddress == null) {
+            ipAddress = req.getRemoteAddr();
+        }
 
         String errorMessage = null;
 
@@ -110,7 +118,7 @@ public class OrderController extends HttpServlet {
         } else {
             orderDao.updateOrderStatus(orderId, newOrderStatus);
             OrderTable newOrder = orderDao.getOrderById(orderId);
-            LogDao.getInstance().toggleStatus("Thay đổi trạng thái giao của đơn mã"+orderId,order.strOrder_status(),newOrder.strOrder_status(),"",1,"");
+            LogDao.getInstance().toggleStatus("Thay đổi trạng thái giao của đơn mã"+orderId,order.strOrder_status(),newOrder.strOrder_status(),ipAddress,1,"");
             resp.getWriter().write("Success");
         }
     }

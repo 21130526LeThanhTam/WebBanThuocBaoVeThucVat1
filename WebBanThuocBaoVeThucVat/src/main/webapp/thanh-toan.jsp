@@ -210,6 +210,9 @@
 <%--                                    <span class="checkmark"></span>--%>
 <%--                                </label>--%>
 <%--                            </div>--%>
+                            <input type="hidden" id="hiddenTinh" name="tinh">
+                            <input type="hidden" id="hiddenQuan" name="quan">
+                            <input type="hidden" id="hiddenPhuong" name="phuong">
                             <input id="hidden" type="hidden" name="action" value="order">
                             <button type="submit" class="site-btn" >Đặt hàng</button>
                             <button type="button" class="site-btn" id="payButton">Thanh toán ngay</button>
@@ -237,57 +240,55 @@
 <script src="assets/js/main.js"></script>
 
 <script>
-    document.getElementById("payButton").addEventListener("click", function() {
-        if (validateLocationFields()) {
-            const username = document.getElementById("username").value;
-            const amount = Math.round(<%= shoppingCart.getTotalPrice() %>);
-            const tinhText = document.getElementById('tinh').options[document.getElementById('tinh').selectedIndex].text;
-            const quanText= document.getElementById('quan').options[document.getElementById('quan').selectedIndex].text;
-            const phuongText = document.getElementById('phuong').options[document.getElementById('phuong').selectedIndex].text;
-            const homeNumber = document.getElementById("homeNumber").value;
-            const phoneNumber = document.getElementById("phoneNumber").value;
 
+    document.getElementById("payButton").addEventListener("click",function () {
+        if(validateLocationFields()){
+        const username = document.getElementById("username").value;
+        const amount = Math.round(<%=session.getAttribute("result")%>);
+        const tinhText = document.getElementById('tinh').options[document.getElementById('tinh').selectedIndex].text;
+        const quanText= document.getElementById('quan').options[document.getElementById('quan').selectedIndex].text;
+        const phuongText = document.getElementById('phuong').options[document.getElementById('phuong').selectedIndex].text;
+        const homeNumber = document.getElementById("homeNumber").value;
+        const phoneNumber = document.getElementById("phoneNumber").value;
             console.log(username+"/"+amount+"/"+tinhText+"/"+quanText+"/"+phuongText+"/"+homeNumber+"/"+phoneNumber);
-
-            const data = {
-                tinhText:tinhText,
-                quanText: quanText,
-                phuongText: phuongText,
-                vnp_OrderInfo: "Thanh toan don hang",
-                ordertype: "Sample order type",
-                amount: amount,
-                bankcode: "NCB",
-                language: "vn",
-                txt_billing_mobile: "0123456789",
-                txt_billing_email: "example@example.com",
-                txt_billing_fullname: "John Doe",
-                txt_inv_addr1: "123 Sample Street",
-                txt_bill_city: "Hanoi",
-                txt_bill_country: "Vietnam",
-                txt_bill_state: "HN",
-                txt_inv_mobile: "0123456789",
-                txt_inv_email: "example@example.com",
-                txt_inv_customer: "John Doe",
-                txt_inv_addr1: "123 Sample Street",
-                txt_inv_company: "Sample Company",
-                txt_inv_taxcode: "123456789",
-                cbo_inv_type: "I",
-            };
-            const formBody = Object.keys(data).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])).join('&');
-            const xhr = new XMLHttpRequest();
-            xhr.open("POST", "http://localhost:8081/payByVN", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    const response = JSON.parse(xhr.responseText);
-                    if (response.code === "00") {
-                        // Redirect to payment URL
-                        window.location.href = response.data;
-                    } else {
-                        alert("Error: " + response.message);
-                    }
+        const data = {
+            tinhText:tinhText,
+            quanText: quanText,
+            phuongText: phuongText,
+            vnp_OrderInfo: "Thanh toan don hang",
+            ordertype: "Sample order type",
+            amount: amount,
+            bankcode: "NCB",
+            language: "vn",
+            txt_billing_mobile: "0123456789",
+            txt_billing_email: "example@example.com",
+            txt_billing_fullname: "John Doe",
+            txt_inv_addr1: homeNumber,
+            txt_bill_city: "Hanoi",
+            txt_bill_country: "Vietnam",
+            txt_bill_state: "HN",
+            txt_inv_mobile: "0123456789",
+            txt_inv_email: "example@example.com",
+            txt_inv_customer: "John Doe",
+            txt_inv_addr1: homeNumber,
+            txt_inv_company: "Sample Company",
+            txt_inv_taxcode: "123456789",
+            cbo_inv_type: "I",
+        };
+        const formBody = Object.keys(data).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])).join('&');
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost:8081/payByVN", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText);
+                if (response.code === "00") {
+                    // Redirect to payment URL
+                    window.location.href = response.data;
+                } else {
+                    alert("Error: " + response.message);
                 }
-            };
+            }}
             xhr.send(formBody);
         }
     });
@@ -295,6 +296,20 @@
     document.querySelector('form.payAfterReceive').addEventListener('submit', function(event) {
         if (!validateLocationFields()) {
             event.preventDefault();
+        }  else {
+            const tinhSelect = document.getElementById('tinh');
+            const quanSelect = document.getElementById('quan');
+            const phuongSelect = document.getElementById('phuong');
+
+            const tinhText = tinhSelect.options[tinhSelect.selectedIndex].textContent.trim();
+            const quanText = quanSelect.options[quanSelect.selectedIndex].textContent.trim();
+            const phuongText = phuongSelect.options[phuongSelect.selectedIndex].textContent.trim();
+
+            console.log(`Tinh: ${tinhText}, Quan: ${quanText}, Phuong: ${phuongText}`); // Ghi lại để kiểm tra
+
+            document.getElementById('hiddenTinh').value = tinhText;
+            document.getElementById('hiddenQuan').value = quanText;
+            document.getElementById('hiddenPhuong').value = phuongText;
         }
     });
 

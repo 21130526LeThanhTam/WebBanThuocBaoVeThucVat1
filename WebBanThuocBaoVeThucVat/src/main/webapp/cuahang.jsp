@@ -35,6 +35,7 @@
     <%--    <link rel="stylesheet" href="assets/css/Log_Regis.css">--%>
     <%--    <script src="js/log_reg.js" defer></script>--%>
     <%
+        User auth = (User) session.getAttribute("user");
         List<Products> products = (List<Products>) session.getAttribute("Product");
         List<Products> list = (List<Products>) session.getAttribute("listProducts");
         CategoryBO cb = new CategoryBO();
@@ -112,6 +113,23 @@
             outline: none;
             box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
         }
+        .product__item__pic {
+            position: relative;
+        }
+
+        .wishlist-badge {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            background-color: #ff6347;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 10;
+
+        }
     </style>
 </head>
 
@@ -151,83 +169,6 @@
                             <% } %>
                         </ul>
                     </div>
-                    <%--                    <div class="sidebar__item">--%>
-                    <%--                        <h4>Khoảng giá</h4>--%>
-                    <%--                        <div class="price-range-wrap">--%>
-                    <%--                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"--%>
-                    <%--                                data-min="10000" data-max="10000000">--%>
-                    <%--                                <div class="ui-slider-range ui-corner-all ui-widget-header"></div>--%>
-                    <%--                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>--%>
-                    <%--                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>--%>
-                    <%--                            </div>--%>
-                    <%--                            <div class="range-slider">--%>
-                    <%--                                <div class="price-input">--%>
-                    <%--                                    <input name="priceMin" type="text" id="minamount">--%>
-                    <%--                                    <input name="priceMax" type="text" id="maxamount">--%>
-                    <%--                                </div>--%>
-                    <%--                            </div>--%>
-                    <%--                        </div>--%>
-                    <%--                    </div>--%>
-                    <%--                    <div class="sidebar__item">--%>
-                    <%--                        <h4>Popular Size</h4>--%>
-                    <%--                        <div class="sidebar__item__size">--%>
-                    <%--                            <label for="large">--%>
-                    <%--                                Large--%>
-                    <%--                                <input type="radio" id="large">--%>
-                    <%--                            </label>--%>
-                    <%--                        </div>--%>
-                    <%--                        <div class="sidebar__item__size">--%>
-                    <%--                            <label for="medium">--%>
-                    <%--                                Medium--%>
-                    <%--                                <input type="radio" id="medium">--%>
-                    <%--                            </label>--%>
-                    <%--                        </div>--%>
-                    <%--                        <div class="sidebar__item__size">--%>
-                    <%--                            <label for="small">--%>
-                    <%--                                Small--%>
-                    <%--                                <input type="radio" id="small">--%>
-                    <%--                            </label>--%>
-                    <%--                        </div>--%>
-                    <%--                        <div class="sidebar__item__size">--%>
-                    <%--                            <label for="tiny">--%>
-                    <%--                                Tiny--%>
-                    <%--                                <input type="radio" id="tiny">--%>
-                    <%--                            </label>--%>
-                    <%--                        </div>--%>
-                    <%--                    </div>--%>
-                    <%--                    <div class="sidebar__item">--%>
-                    <%--                        <div class="latest-product__text">--%>
-                    <%--                            <h4>Mới nhất</h4>--%>
-                    <%--                            <div class="latest-product__slider owl-carousel">--%>
-                    <%--                                <div class="latest-prdouct__slider__item">--%>
-                    <%--                             --%>
-                    <%--                                    <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">--%>
-                    <%--                                        <div class="latest-product__item__pic">--%>
-                    <%--                                            <img src="assets/<%=p.getPicture()%>" alt="">--%>
-                    <%--                                        </div>--%>
-                    <%--                                        <div class="latest-product__item__text">--%>
-                    <%--                                            <h6><%=p.getProduct_name()%></h6>--%>
-                    <%--                                            <span><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</span>--%>
-                    <%--                                        </div>--%>
-                    <%--                                    </a>--%>
-                    <%--                                    <% } %>--%>
-                    <%--                                </div>--%>
-                    <%--                                <div class="latest-prdouct__slider__item">--%>
-                    <%--                                    <% for(Products p : productNew2) {%>--%>
-                    <%--                                    <a href="ProductInfor?id_product=<%= p.getId() %>" class="latest-product__item">--%>
-                    <%--                                        <div class="latest-product__item__pic">--%>
-                    <%--                                            <img src="assets/<%=p.getPicture()%>" alt="">--%>
-                    <%--                                        </div>--%>
-                    <%--                                        <div class="latest-product__item__text">--%>
-                    <%--                                            <h6><%=p.getProduct_name()%></h6>--%>
-                    <%--                                            <span><fmt:formatNumber value="<%= p.getPrice() %>" type="currency" pattern="###,###"/>₫</span>--%>
-                    <%--                                        </div>--%>
-                    <%--                                    </a>--%>
-                    <%--                                    <% } %>--%>
-                    <%--                                </div>--%>
-                    <%--                            </div>--%>
-                    <%--                        </div>--%>
-                    <%--                    </div>--%>
                 </div>
             </div>
             <div class="col-lg-9 col-md-7">
@@ -267,9 +208,30 @@
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div id="" class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="<%=p.getImage()%>">
+                                <div class="favourite_pro<%=p.getId()%>">
+                                    <%
+                                        if(auth != null){
+                                            List<WishlistItem> wishlistItemList = (List<WishlistItem>) request.getAttribute("wishlistItemList");
+                                            boolean isLiked = false;
+                                            for(WishlistItem a : wishlistItemList){
+                                                if(a.getProducts().getId() == p.getId()){
+                                                    isLiked = true;
+                                                    break;
+                                                }
+                                            }
+                                            if(isLiked) {
+                                    %>
+                                    <div class="wishlist-badge">
+                                        <span>ĐÃ THÍCH</span>
+                                    </div>
+                                    <%
+                                            }
+                                        }
+                                    %>
+                                </div>
                                 <ul class="product__item__pic__hover">
                                     <li><a href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                    <li><a class="d-flex align-items-center justify-content-center" href="javascript:void(0)" onclick="toggleWishlist(this, '<%=p.getId()%>')"><i class="fa fa-heart "></i></a></li>
                                     <li><a href="javascript:void(0)" onclick="addCart(this, '<%=p.getId()%>', '<%=remain%>')"><i class="fa fa-shopping-cart"></i></a></li>
 <%--                                    <li><a  href="ShoppingCartCL?action=post&id=<%=a.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>--%>
                                 </ul>
@@ -380,6 +342,67 @@
 <script src="assets/js/main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function toggleWishlist(element, productId) {
+        const selector = '.favourite_pro' + productId;
+        const favourite_pro = document.querySelector(selector);
+        console.log("favourite_pro", favourite_pro);
+        console.log("productId", productId);
+        addToWishlist(productId, favourite_pro);
+    }
+
+    function addToWishlist(productId) {
+        const selector = '.favourite_pro' + productId;
+        const favourite_pro = document.querySelector(selector);
+        $.ajax({
+            url: '/wishlistController',
+            method: "POST",
+            data: {
+                id: productId,
+                action: "add"
+            },
+            success: function (response) {
+                if (response.status === "success") {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Thêm Sản Phẩm Vào Danh Sách Yêu Thích Thành Công!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    const newBadge = document.createElement("div");
+                    newBadge.className="wishlist-badge";
+                    newBadge.innerHTML="<span>ĐÃ THÍCH</span>";
+                    favourite_pro.appendChild(newBadge);
+
+                } else if (response.status === "insertFailed") {
+                    Swal.fire({
+                        position: "center",
+                        icon: "error",
+                        title: "Thêm Sản Phẩm Vào Danh Sách Yêu Thích Không Thành Công!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                } else if (response.status === "isExists") {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Xóa Sản Phẩm Ra Khỏi Sẵn Danh Sách Yêu Thích!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    const newBadge=favourite_pro.querySelector(".wishlist-badge");
+                    if(newBadge){
+                        newBadge.remove();
+                    }
+
+                } else {
+                    window.location.href = '/login';
+                }
+            }
+        });
+    }
+</script>
 <script>
     document.getElementById('selectOrder').addEventListener('change', function() {
         var selectedOption = this.options[this.selectedIndex];

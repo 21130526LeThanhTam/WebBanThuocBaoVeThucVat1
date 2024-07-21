@@ -25,6 +25,8 @@ public class PayByVN extends HttpServlet {
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
+            req.setCharacterEncoding("UTF-8");
+            resp.setCharacterEncoding("UTF-8");
             HttpSession session = req.getSession(true);
             String tinhText=req.getParameter("tinhText");
             String quanText=req.getParameter("quanText");

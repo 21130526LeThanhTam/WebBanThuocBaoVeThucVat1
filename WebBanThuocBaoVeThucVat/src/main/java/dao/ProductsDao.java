@@ -163,7 +163,7 @@ public class ProductsDao implements IProductsDao {
 
         return cateName != null ? cateName : "";
     }
-    public static void insertProduct(String name, String image, int price, int category, int status, int inventory_quantity,String desc) {
+    public static void insertProduct(String name, String image, int price, int category, int status, int inventory_quantity,String desc,String ip) {
         Products products = new Products(name,image,price,category,status,inventory_quantity,desc);
         try {
             JDBIConnector.getJdbi().useHandle(handle ->
@@ -177,7 +177,7 @@ public class ProductsDao implements IProductsDao {
                             .bind(5,inventory_quantity)
                             .bind(6, desc)
                             .execute());
-            LogDao.getInstance().insertModel(products,"",1,"");
+            LogDao.getInstance().insertModel(products,ip,1,"");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -226,11 +226,6 @@ public class ProductsDao implements IProductsDao {
     public static void main(String[] args) {
 
        ProductsDao dao = new ProductsDao();
-//        System.out.println(dao.getProductsPerPage(1));
-//        System.out.println(ProductsDao.getAllProducts());
-//        Products dao = new Products("RỪ BỆNH ENDICO 5SC","dsfsd",3423,1,1,60,"dsfsd");
-//        ProductsDao.insertProduct("RỪ BỆNH ENDICO 5SC","dsfsd",3423,1,1,60,"dsfsd");
-        System.out.println(dao.searchByName("cỏ"));
 
     }
 }

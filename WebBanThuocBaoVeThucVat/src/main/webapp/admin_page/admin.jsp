@@ -95,11 +95,6 @@
                     <i class="fas fa-truck-loading"></i> Quản lý Nhập Hàng
                 </a>
             </li>
-            <li>
-                <a href="#" data-url="./maDiscount" class="load-content">
-                    <i class="fas fa-tags"></i> Quản lý Mã Giảm Giá
-                </a>
-            </li>
         </ul>
     </nav>
     <!-- Page Content -->

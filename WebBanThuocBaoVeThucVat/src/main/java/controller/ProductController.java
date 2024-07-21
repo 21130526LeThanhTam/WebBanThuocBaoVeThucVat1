@@ -8,8 +8,11 @@ import bean.Pagination;
 //import Service.ProductsService;
 
 import bean.Products;
+import bean.User;
+import bean.WishlistItem;
 import dao.IProductDAO;
 import dao.ProductDAO;
+import dao.WishlistDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -59,6 +62,11 @@ public class ProductController extends HttpServlet {
         String action = request.getParameter("action");
         String idCate = request.getParameter("id_category");
         List<Products> list = new ArrayList<>();
+        User user = (User) session.getAttribute("user");
+        if(user != null){
+            List<WishlistItem> wishlistItemList = WishlistDAO.getInstance().getWishlistByUser(user.getId());
+            request.setAttribute("wishlistItemList", wishlistItemList);
+        }
         String url;
         if(action != null && !action.equals("")) {
             if (action.equalsIgnoreCase("By Name")) {

@@ -23,7 +23,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Random;
 
-@WebServlet("/loginByFacebook")
+@WebServlet("/loginWithFacebook")
 public class LoginFacebookHandler extends HttpServlet {
 
     @Override
@@ -84,7 +84,7 @@ public class LoginFacebookHandler extends HttpServlet {
         JsonObject json = JsonParser.parseString(response).getAsJsonObject();
         System.out.println(json.toString());
         User user = new User();
-            user.setUsername(json.has("last_name") ? json.get("last_name").getAsString() : null);
+            user.setUsername(json.has("name") ? json.get("name").getAsString() : null);
             user.setEmail(json.has("email") ? json.get("email").getAsString() : user.getUsername() + "@users.noreply.facebook.com");
             user.setLastname(json.has("last_name") ? json.get("last_name").getAsString() : null);
             user.setSurname(json.has("first_name") ? json.get("first_name").getAsString() : null);

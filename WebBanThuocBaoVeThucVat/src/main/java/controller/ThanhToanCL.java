@@ -30,6 +30,8 @@ public class ThanhToanCL extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession(true);
         String action = request.getParameter("action");
         User user = (User) session.getAttribute("user");
@@ -55,21 +57,28 @@ public class ThanhToanCL extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession(true);
         ShoppingCart c = (ShoppingCart) session.getAttribute("cart");
+        Float result = null;
+        Double doubleResult = (Double) session.getAttribute("result");
+        if (doubleResult != null) {
+            result = doubleResult.floatValue();
+        }
         String action = request.getParameter("action");
         if(action!=null && action.equals("order")) {
-            String firstName = request.getParameter("firstname");
             String username = request.getParameter("username");
-            String city = request.getParameter("city");
-            String district = request.getParameter("district");
+            String tinh = request.getParameter("tinh");
+            String quan = request.getParameter("quan");
+            String phuong = request.getParameter("phuong");
             String homeNumber = request.getParameter("homeNumber");
             String phone = request.getParameter("phone");
 
             User user = (User) session.getAttribute("user");
-            String address = homeNumber + ", " + district + ", " + city;
+            String address = homeNumber + ", " + phuong + ", " + quan + ", " + tinh;
             List<CartItem> products = c.getCartItemList();
-            Orders order = new Orders(user.getId(), (float) c.getTotalPrice(),
+            Orders order = new Orders(user.getId(), (float) result,
                     0, address, phone,"Chưa Thanh Toán");
             order.setLp(products);
             this.orderService.insertOrderDetail(order);

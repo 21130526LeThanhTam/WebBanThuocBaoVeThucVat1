@@ -33,8 +33,8 @@ public class ProductsService {
         return ProductsDao.productList(search);
     }
     public List<Products>getTenPro(int index,String search){return ProductsDao.getTenPro(index,search);}
-    public void insertProduct(String name, String image, int price, int category, int status,int inventory_quantity, String desc){
-        ProductsDao.insertProduct(name, image, price, category, status, inventory_quantity,desc);
+    public void insertProduct(String name, String image, int price, int category, int status,int inventory_quantity, String desc,String ip){
+        ProductsDao.insertProduct(name, image, price, category, status, inventory_quantity,desc,ip);
     }
     public void deleteProduct(int proID){
         ProductsDao.deleteProduct(proID);
@@ -76,6 +76,6 @@ public class ProductsService {
     }
     public static void main(String[] args) {
         System.out.println(ProductsService.getInstance().numOfPro());
-        ProductsService.getInstance().insertProduct("RỪ BỆNH ENDICO 5SC","dsfsd",3423,1,1,60,"dsfsd");
+//        ProductsService.getInstance().insertProduct("RỪ BỆNH ENDICO 5SC","dsfsd",3423,1,1,60,"dsfsd");
     }
 }
