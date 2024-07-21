@@ -10,18 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4b7277f-3123-43a3-8334-fad619072ac6" name="Changes" comment="Login with google">
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/mapper/RowMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/mapper/RowMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/gio-hang.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/gio-hang.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/HomePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/HomePageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/cuahang.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/cuahang.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/user-profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/user-profile.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/mapper/OrderDetailMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/mapper/OrderDetailMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/mapper/OrderDetailTableMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/mapper/OrderDetailTableMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/mapper/OrderMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/mapper/OrderMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/mapper/OrderTableMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/mapper/OrderTableMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/mapper/ProductMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/mapper/ProductMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/mapper/RowMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/mapper/RowMapper.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -634,7 +627,9 @@
       <workItem from="1721260305466" duration="2131000" />
       <workItem from="1721275247088" duration="17610000" />
       <workItem from="1721304597550" duration="13418000" />
-      <workItem from="1721369074715" duration="11106000" />
+      <workItem from="1721369074715" duration="15541000" />
+      <workItem from="1721457261204" duration="4658000" />
+      <workItem from="1721522847508" duration="11190000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -767,5 +762,16 @@
     <MESSAGE value="Thêm tính năng bắt buộc phải đăng nhập mới thêm sản phẩm vào giỏ hàng được" />
     <MESSAGE value="Login with google" />
     <option name="LAST_COMMIT_MESSAGE" value="Login with google" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/index.jsp</url>
+          <line>559</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
