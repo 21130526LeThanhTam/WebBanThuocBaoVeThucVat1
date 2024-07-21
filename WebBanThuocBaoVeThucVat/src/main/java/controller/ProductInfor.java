@@ -45,8 +45,8 @@ public class ProductInfor extends HttpServlet {
             try {
                 String ip = request.getHeader("X-FORWARDED-FOR");
                 if (ip == null) ip = request.getRemoteAddr();
-
                 Products prod = pro.findById(Integer.parseInt(id));
+                List<Products> relatedProducts = pro.getRelatedProducts(prod.getId_category(),prod.getId());
                 ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
                 User user = (User) session.getAttribute("auth");
                 int remain = prod.getInventory_quantity();
@@ -58,6 +58,7 @@ public class ProductInfor extends HttpServlet {
                         }
                     }
                 }
+                request.setAttribute("relatedProducts", relatedProducts);
                 request.setAttribute("proID", prod);
                 List<ProductReview> productReviews;
                 productReviews = ProductReviewDao.getListReview(Integer.parseInt(id));

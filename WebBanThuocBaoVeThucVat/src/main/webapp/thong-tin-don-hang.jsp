@@ -114,9 +114,16 @@
             margin-left: 10px;
             color: #6f6f6f;
         }
+        .qtybtn {
+            display: none !important;
+        }
+        .product__details__tab .nav-tabs:after {
+            width: 320px;
 
-        .qtybtn{
-            display:none!important;
+        }
+        .product__details__tab .nav-tabs:before {
+            width: 320px;
+
         }
 
     </style>
@@ -160,14 +167,8 @@
                              src="<%= proID.getImage() %>" alt="">
                     </div>
                     <div class="product__details__pic__slider owl-carousel">
-                        <img data-imgbigurl="assets/img/product/details/product-details-2.jpg"
-                             src="assets/img/product/details/thumb-1.jpg" alt="">
-                        <img data-imgbigurl="assets/img/product/details/product-details-3.jpg"
-                             src="assets/img/product/details/thumb-2.jpg" alt="">
-                        <img data-imgbigurl="assets/img/product/details/product-details-5.jpg"
-                             src="assets/img/product/details/thumb-3.jpg" alt="">
-                        <img data-imgbigurl="assets/img/product/details/product-details-4.jpg"
-                             src="assets/img/product/details/thumb-4.jpg" alt="">
+                        <img class="product__details__pic__item--large"
+                             src="<%= proID.getImage() %>" alt="">
                     </div>
                 </div>
             </div>
@@ -187,9 +188,9 @@
     border-radius: 999px;
     margin-top: 30px;
 ">
-                                    <button style="border: none;background-color: transparent" id="decrease" class="btn-decrease"><i class="fa-solid fa-minus"></i></button>
+
                                     <input style="border: none" type="number" id="quantity" class="input-number" value="1" min="1" max="<%=request.getAttribute("remain")%>" />
-                                    <button style="border: none;background-color: transparent" id="increase" class="btn-increase"><i class="fa-solid fa-plus"></i></button>
+
 
                                 </div>    <span style="color: red; margin: 10px" id="error"></span>
 
@@ -206,11 +207,11 @@
                         </a>
 
                     </div>
-                  <div class="mt-3">
+                  <div class="mt-3" style="font-size: 22px; display:flex; flex-direction: column;height:170px;justify-content: space-around;margin-top:30px !important;">
                       <b>Chính sách của sản phẩm:</b>
-                      <p class="mt-2 mb-0"> <i class="fa-solid fa-circle-check" style="color: green"></i> Bảo vệ người mua hàng</p>
-                      <p class="mb-0"> <i class="fa-solid fa-circle-check" style="color: green"></i> Hoàn 100% hoá đơn nếu khách hàng không nhận được hàng</p>
-                      <p class="mb-0"> <i class="fa-solid fa-circle-check" style="color: green"></i> Trả lại sản phẩm nếu như không giống với mô tả</p>
+                      <p class="mt-2 mb-0" style="font-size: 20px;"> <i class="fa-solid fa-circle-check" style="color: green;font-size: 20px"></i> Bảo vệ người mua hàng</p>
+                      <p class="mb-0" style="font-size: 20px;"> <i class="fa-solid fa-circle-check" style="color: green;font-size: 20px"></i> Hoàn 100% hoá đơn nếu khách hàng không nhận được hàng</p>
+                      <p class="mb-0" style="font-size: 20px;"> <i class="fa-solid fa-circle-check" style="color: green;font-size: 20px"></i> Trả lại sản phẩm nếu như không giống với mô tả</p>
                   </div>
                 </div>
             </div>
@@ -235,7 +236,7 @@
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
                             <div class="product__details__tab__desc">
                                 <h6>Mô tả sản phẩm</h6>
-                              <p>     <%= proID.getDes() %></p>
+                                <p><%= proID.formatDescription(proID.getDes()) %></p>
                             </div>
                         </div>
                         <div class="tab-pane" id="tabs-2" role="tabpanel">
@@ -309,69 +310,30 @@
             </div>
         </div>
         <div class="row">
+            <%
+                List<Products> relatedProducts = (List<Products>) request.getAttribute("relatedProducts");
+                if (relatedProducts != null) {
+                    for (Products product : relatedProducts) {
+            %>
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="assets/img/product/product-1.jpg">
+                    <div class="product__item__pic set-bg" data-setbg="<%= product.getImage() %>">
                         <ul class="product__item__pic__hover">
-
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li><a href="ProductInfor?id_product=<%= product.getId() %>"><i class="fa fa-retweet"></i></a></li>
+                            <li><a href="javascript:void(0)" onclick="toggleWishlist(this, '<%=product.getId()%>')"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
-                        <h6><a href="#">Giống cây bơ</a></h6>
-                        <h5>45.000₫</h5>
+                        <h6><a href="product-details.jsp?id=<%= product.getId() %>"><%= product.getProduct_name() %></a></h6>
+                        <h5><%= product.formatPrice() %>₫</h5>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="assets/img/product/product-2.jpg">
-                        <ul class="product__item__pic__hover">
-
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6><a href="#">Giống cây bưởi</a></h6>
-                        <h5>45.000₫</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="assets/img/product/product-3.jpg">
-                        <ul class="product__item__pic__hover">
-
-
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6><a href="#">Giống cây mít</a></h6>
-                        <h5>45.000₫</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="assets/img/product/product-7.jpg">
-                        <ul class="product__item__pic__hover">
-
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6><a href="#">Thuốc trừ sâu</a></h6>
-                        <h5>45.000₫</h5>
-                    </div>
-                </div>
-            </div>
+            <%
+                    }
+                }
+            %>
         </div>
-
     </div>
 </section>
 <!-- Related Product Section End -->
@@ -513,20 +475,55 @@
         });
     });
 </script>
-<%--<script>--%>
-<%--    document.getElementById('addToCartBtn').addEventListener('click', function() {--%>
-<%--        // Lấy giá trị đã nhập từ input--%>
-<%--        var quantity = document.getElementById('quantityInput').value;--%>
+<script>
+    function toggleWishlist(element, productId) {
+        var icon = element.querySelector('i');
+        console.log("icon", icon);
+        console.log("productId", productId);
+        addToWishlist(productId);
+    }
 
-<%--        // Tạo URL mới với giá trị đã nhập từ input--%>
-<%--        var url = "ShoppingCartCL?action=post&id=<%=proID.getId()%>&quantity=" + encodeURIComponent(quantity);--%>
-
-<%--        // Chuyển hướng đến URL mới--%>
-<%--        window.location.href = url;--%>
-<%--    });--%>
-<%--</script>--%>
-
-
+    function addToWishlist(productId) {
+        $.ajax({
+            url: '/wishlistController',
+            method: "POST",
+            data: {
+                id: productId,  // Đảm bảo tham số này khớp với servlet
+                action: "add"
+            },
+            success: function (response) {
+                if (response.status === "success") {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Thêm Sản Phẩm Vào Danh Sách Yêu Thích Thành Công!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+                else if (response.status === "insertFailed") {
+                    Swal.fire({
+                        position: "center",
+                        icon: "error",
+                        title: "Thêm Sản Phẩm Vào Danh Sách Yêu Thích Không Thành Công!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                } else if(response.status === "isExists"){
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Xóa Sản Phẩm Ra Khỏi Sẵn Danh Sách Yêu Thích !",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                } else {
+                    window.location.href = '/login';
+                }
+            }
+        });
+    }
+</script>
 </body>
 
 </html>

@@ -10,4 +10,5 @@ public interface IProductService {
     List<Product> findAll2();
     Products findById(int id);
 
+    List<Products> getRelatedProducts(int categoryID, int id);
 }

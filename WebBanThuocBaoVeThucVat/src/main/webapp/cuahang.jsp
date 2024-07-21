@@ -100,8 +100,18 @@
             margin: 0 5px;
             color: #999;
         }
-
-
+        .filter__sort select {
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+        }
+        .filter__sort select:focus {
+            border-color: #66afe9;
+            outline: none;
+            box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
+        }
     </style>
 </head>
 
@@ -225,7 +235,6 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-5">
                             <div class="filter__sort">
-                                <span>Sắp xếp : </span>
                                 <select id="selectOrder">
                                     <option value="0" data-href="<%= pattern %>order=0&" <%= "0".equals(order) ? "selected" : "" %>>Thứ tự mặc định</option>
                                     <option value="1" data-href="<%= pattern %>order=1&" <%= "1".equals(order) ? "selected" : "" %>>Thứ tự theo mức độ phổ biến</option>
@@ -236,13 +245,7 @@
                         </div>
                         <div class="col-lg-4 col-md-4">
                             <div class="filter__found">
-                                <h6><span><%=list.size() %></span> sản phẩm được tìm thấy</h6>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-3">
-                            <div class="filter__option">
-                                <span class="icon_grid-2x2"></span>
-                                <span class="icon_ul"></span>
+                                <h6 style="font-size:18px"><span><%=list.size() %></span> sản phẩm được tìm thấy</h6>
                             </div>
                         </div>
                     </div>

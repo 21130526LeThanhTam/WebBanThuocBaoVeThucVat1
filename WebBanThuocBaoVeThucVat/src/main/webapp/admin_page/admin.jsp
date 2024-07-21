@@ -120,9 +120,6 @@
                                 <a class="dropdown-item" href="admin_page/editUser.jsp">
                                     <i class="material-icons">person_outline</i> Profile
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="material-icons">settings</i> Settings
-                                </a>
                                 <%
                                     User auth = (User) session.getAttribute("admin");
                                     if (auth != null) {
