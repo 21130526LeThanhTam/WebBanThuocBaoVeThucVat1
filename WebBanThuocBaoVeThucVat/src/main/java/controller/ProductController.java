@@ -63,11 +63,7 @@ public class ProductController extends HttpServlet {
         if(action != null && !action.equals("")) {
             if (action.equalsIgnoreCase("By Name")) {
                 list = ProductsService.getInstance().searchByName(name);
-            } else if (action.equalsIgnoreCase("By Description")) {
-                list = ProductsService.getInstance().searchByDescription(name);
-            } else if (action.equalsIgnoreCase("By Price")) {
-                list = ProductsService.getInstance().searchByPrice(name);
-            }
+           }
             session.setAttribute("action", action);
             session.setAttribute("name", name);
             session.setAttribute("words", name);

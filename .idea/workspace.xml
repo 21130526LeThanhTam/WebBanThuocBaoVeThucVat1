@@ -10,18 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4b7277f-3123-43a3-8334-fad619072ac6" name="Changes" comment="Login with google">
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/mapper/RowMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/mapper/RowMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/gio-hang.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/gio-hang.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/user-profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/user-profile.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/mapper/OrderDetailMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/mapper/OrderDetailMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/mapper/OrderDetailTableMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/mapper/OrderDetailTableMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/mapper/OrderMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/mapper/OrderMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/mapper/OrderTableMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/mapper/OrderTableMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/mapper/ProductMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/mapper/ProductMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/mapper/RowMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/mapper/RowMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/ProductsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/dao/ProductsDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/db/DBContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/java/db/DBContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/resources/DB.properties" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/resources/DB.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/layout/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/layout/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/wishList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp/wishList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/DB.properties" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/DB.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/db/DBContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/target/classes/db/DBContext.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,10 +83,10 @@
     &quot;Tomcat Server.Tomcat 9.0.81.executor&quot;: &quot;Run&quot;,
     &quot;Tomcat Server.Tomcat 9.0.executor&quot;: &quot;Run&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;21130526-LeThanhTam&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;21130514__VuTranThaiSon&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/website/WebBanThuocBaoVeThucVat/WebBanThuocBaoVeThucVat/src/main/webapp&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Study/Third_year/ThucTapLTW(Long)/website-main/WebBanThuocBaoVeThucVat/WebBanThuocBaoVeThucVat/src/main/webapp&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -134,26 +131,13 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Smart Tomcat.Smart Tomcat">
+  <component name="RunManager" selected="Application.ProductsDao">
     <configuration name="AccountDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="dao.AccountDAO" />
       <module name="WebBanThuocBaoVeThucVat" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ImportDao" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="dao.admin.ImportDao" />
-      <module name="WebBanThuocBaoVeThucVat" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="dao.admin.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -176,6 +160,19 @@
     </configuration>
     <configuration name="OrdersDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="dao.OrdersDAO" />
+      <module name="WebBanThuocBaoVeThucVat" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductsDao" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dao.ProductsDao" />
       <module name="WebBanThuocBaoVeThucVat" />
       <extension name="coverage">
         <pattern>
@@ -374,22 +371,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Smart Tomcat" type="com.poratu.idea.plugins.tomcat">
+    <configuration name="smart tomcat" type="com.poratu.idea.plugins.tomcat">
       <predefined_log_file enabled="true" id="Tomcat Localhost Log" />
       <predefined_log_file enabled="true" id="Tomcat Access Log" />
       <predefined_log_file id="Tomcat Catalina Log" />
       <predefined_log_file id="Tomcat Manager Log" />
       <predefined_log_file id="Tomcat Host Manager Log" />
-      <option name="catalinaBase" value="C:\Users\Admin1\.SmartTomcat\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat" />
+      <option name="catalinaBase" value="C:\Users\uyent\.SmartTomcat\WebBanThuocBaoVeThucVat\WebBanThuocBaoVeThucVat" />
       <option name="contextPath" value="/" />
       <option name="docBase" value="$PROJECT_DIR$/WebBanThuocBaoVeThucVat/src/main/webapp" />
+      <option name="envOptions">
+        <map />
+      </option>
       <option name="extraClassPath" value="" />
       <option name="port" value="8081" />
       <option name="tomcatInfo">
         <TomcatInfo>
-          <option name="name" value="Apache Tomcat/8.5.96" />
-          <option name="path" value="$PROJECT_DIR$/../../JAVA_file/apache-tomcat-8.5.96/apache-tomcat-8.5.96" />
-          <option name="version" value="8.5.96.0" />
+          <option name="name" value="Apache Tomcat/9.0.81" />
+          <option name="path" value="$PROJECT_DIR$/../../../../apache-tomcat-9.0.81" />
+          <option name="version" value="9.0.81.0" />
         </TomcatInfo>
       </option>
       <option name="vmOptions" value="" />
@@ -400,21 +400,21 @@
     </configuration>
     <list>
       <item itemvalue="Application.Unnamed" />
+      <item itemvalue="Application.ProductsDao" />
       <item itemvalue="Application.WishlistDAO" />
       <item itemvalue="Application.AccountDAO" />
       <item itemvalue="Application.OrdersDAO" />
-      <item itemvalue="Application.ImportDao" />
       <item itemvalue="Application.LogDao" />
-      <item itemvalue="Smart Tomcat.Smart Tomcat" />
+      <item itemvalue="Smart Tomcat.smart tomcat" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.81" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ProductsDao" />
         <item itemvalue="Application.WishlistDAO" />
         <item itemvalue="Application.AccountDAO" />
         <item itemvalue="Application.OrdersDAO" />
         <item itemvalue="Application.LogDao" />
-        <item itemvalue="Application.ImportDao" />
       </list>
     </recent_temporary>
   </component>
@@ -635,6 +635,8 @@
       <workItem from="1721275247088" duration="17610000" />
       <workItem from="1721304597550" duration="13418000" />
       <workItem from="1721369074715" duration="11106000" />
+      <workItem from="1721529289584" duration="16000" />
+      <workItem from="1721547088182" duration="7143000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />

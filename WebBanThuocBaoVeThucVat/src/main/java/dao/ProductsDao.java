@@ -225,11 +225,12 @@ public class ProductsDao implements IProductsDao {
 
     public static void main(String[] args) {
 
-//        ProductsDao dao = new ProductsDao();
+       ProductsDao dao = new ProductsDao();
 //        System.out.println(dao.getProductsPerPage(1));
 //        System.out.println(ProductsDao.getAllProducts());
-        Products dao = new Products("RỪ BỆNH ENDICO 5SC","dsfsd",3423,1,1,60,"dsfsd");
-        ProductsDao.insertProduct("RỪ BỆNH ENDICO 5SC","dsfsd",3423,1,1,60,"dsfsd");
+//        Products dao = new Products("RỪ BỆNH ENDICO 5SC","dsfsd",3423,1,1,60,"dsfsd");
+//        ProductsDao.insertProduct("RỪ BỆNH ENDICO 5SC","dsfsd",3423,1,1,60,"dsfsd");
+        System.out.println(dao.searchByName("cỏ"));
 
     }
 }
