@@ -308,10 +308,10 @@
 </script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.pro-qty').forEach(function(proQty) {
-            const input = proQty.querySelector('.input-number');
-            const btnIncrease = proQty.querySelector('.btn-increase');
-            const btnDecrease = proQty.querySelector('.btn-decrease');
+        document.querySelectorAll('.pro-qty').forEach(function (proQty){
+            const input = document.querySelector('.input-number');
+            const btnIncrease = document.querySelector('.btn-increase');
+            const btnDecrease = document.querySelector('.btn-decrease');
 
             input.addEventListener('input', function() {
                 const min = parseInt(input.min, 10);
@@ -342,10 +342,11 @@
                     changeStatus(input.id.slice(1), value - 1, 'put');
                 }
             });
-        });
+        })
+
     });
-</script>
-<script>
+
+
     function changeStatus(pid, quantity, action) {
         // Lấy giá tiền từng sản phẩm và loại bỏ các ký tự không phải số (VND và dấu phẩy)
         const priceText = document.querySelector('#pr' + pid).textContent.replace(/[^0-9]/g, '');
@@ -388,7 +389,7 @@
                     please.innerHTML = "Vui lòng mua sắm";
                     container.style.display = "none";
                 } else {
-// Assuming response.result and response.rect are numbers
+
                     result.innerHTML = new Intl.NumberFormat('vi-VN', { style: 'decimal', maximumFractionDigits: 0 }).format(response.result) + ' VND';
                     retain.innerHTML = new Intl.NumberFormat('vi-VN', { style: 'decimal', maximumFractionDigits: 0 }).format(response.rect) + ' VND';
                     please.style.display = "none";
