@@ -290,6 +290,71 @@
         xhr.send(formBody);
     })
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('datButton').addEventListener('click', function(event) {
+            var tinh = document.getElementById('tinh').value;
+            var quan = document.getElementById('quan').value;
+            var phuong = document.getElementById('phuong').value;
+            var homeNumber = document.getElementById('homeNumber').value;
+            var phone = document.getElementById('phoneNumber').value;
+
+            // Kiểm tra xem các trường có giá trị hợp lệ hay không
+            if (tinh === "0" || quan === "0" || phuong === "0" || homeNumber === "" || phone === "") {
+                alert("Vui lòng điền đầy đủ thông tin!");
+                event.preventDefault(); // Ngăn chặn form submit nếu không hợp lệ
+                return;
+            }
+
+            // In dữ liệu ra console để kiểm tra
+            console.log('Tỉnh / Thành phố:', tinh);
+            console.log('Quận / Huyện:', quan);
+            console.log('Phường / Xã:', phuong);
+            console.log('Số nhà:', homeNumber);
+            console.log('Số điện thoại:', phone);
+
+            // Gửi form
+            document.querySelector('.payAfterReceive').submit();
+        });
+    });
+
+</script>
+
+<%--<script>--%>
+<%--    document.getElementById('datButton').addEventListener('click', function(event) {--%>
+<%--        event.preventDefault(); // Ngăn form gửi dữ liệu để kiểm tra--%>
+
+<%--        const tinh = document.getElementById('tinh').value;--%>
+<%--        const quan = document.getElementById('quan').value;--%>
+<%--        const phuong = document.getElementById('phuong').value;--%>
+<%--        const homeNumber = document.getElementById('homeNumber').value;--%>
+<%--        const phoneNumber = document.getElementById('phoneNumber').value;--%>
+
+<%--        console.log('Tỉnh / Thành phố:', tinh);--%>
+<%--        console.log('Quận / Huyện:', quan);--%>
+<%--        console.log('Phường / Xã:', phuong);--%>
+<%--        console.log('Số nhà:', homeNumber);--%>
+<%--        console.log('Số điện thoại:', phoneNumber);--%>
+
+<%--        // Tiếp tục gửi dữ liệu nếu cần--%>
+<%--        // document.getElementById('orderForm').submit();--%>
+<%--    });--%>
+<%--</script>--%>
+
+<%--<script>--%>
+<%--    document.getElementById("datButton").addEventListener("click",function () {--%>
+<%--        const username = document.getElementById("username").value;--%>
+<%--        const amount = Math.round(<%=session.getAttribute("result")%>);--%>
+<%--        const tinhText = document.getElementById('tinh').options[document.getElementById('tinh').selectedIndex].text;--%>
+<%--        const quanText= document.getElementById('quan').options[document.getElementById('quan').selectedIndex].text;--%>
+<%--        const phuongText = document.getElementById('phuong').options[document.getElementById('phuong').selectedIndex].text;--%>
+<%--        const homeNumber = document.getElementById("homeNumber").value;--%>
+<%--        const phoneNumber = document.getElementById("phoneNumber").value;--%>
+<%--        console.log(username+"/"+amount+"/"+tinhText+"/"+quanText+"/"+phuongText+"/"+homeNumber+"/"+phoneNumber);--%>
+
+<%--    })--%>
+<%--</script>--%>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://esgoo.net/scripts/jquery.js"></script>

@@ -62,17 +62,19 @@ public class ThanhToanCL extends HttpServlet {
         if (doubleResult != null) {
             result = doubleResult.floatValue();
         }
+
         String action = request.getParameter("action");
         if(action!=null && action.equals("order")) {
             String firstName = request.getParameter("firstname");
             String username = request.getParameter("username");
-            String city = request.getParameter("city");
-            String district = request.getParameter("district");
+            String city = request.getParameter("tinh");
+            String quan = request.getParameter("quan");
+            String district = request.getParameter("phuong");
             String homeNumber = request.getParameter("homeNumber");
             String phone = request.getParameter("phone");
 
             User user = (User) session.getAttribute("user");
-            String address = homeNumber + ", " + district + ", " + city;
+            String address = homeNumber + ", " + district + ", " +quan+","+ city;
             List<CartItem> products = c.getCartItemList();
             Orders order = new Orders(user.getId(), (float) result,
                     0, address, phone,"Chưa Thanh Toán");
