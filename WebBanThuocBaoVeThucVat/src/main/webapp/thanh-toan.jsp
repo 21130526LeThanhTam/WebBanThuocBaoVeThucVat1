@@ -239,7 +239,7 @@
 <script>
     document.getElementById("payButton").addEventListener("click",function () {
         const username = document.getElementById("username").value;
-        const amount = Math.round(<%= shoppingCart.getTotalPrice() %>);
+        const amount = Math.round(<%=session.getAttribute("result")%>);
         const tinhText = document.getElementById('tinh').options[document.getElementById('tinh').selectedIndex].text;
         const quanText= document.getElementById('quan').options[document.getElementById('quan').selectedIndex].text;
         const phuongText = document.getElementById('phuong').options[document.getElementById('phuong').selectedIndex].text;
@@ -260,14 +260,14 @@
             txt_billing_mobile: "0123456789",
             txt_billing_email: "example@example.com",
             txt_billing_fullname: "John Doe",
-            txt_inv_addr1: "123 Sample Street",
+            txt_inv_addr1: homeNumber,
             txt_bill_city: "Hanoi",
             txt_bill_country: "Vietnam",
             txt_bill_state: "HN",
             txt_inv_mobile: "0123456789",
             txt_inv_email: "example@example.com",
             txt_inv_customer: "John Doe",
-            txt_inv_addr1: "123 Sample Street",
+            txt_inv_addr1: homeNumber,
             txt_inv_company: "Sample Company",
             txt_inv_taxcode: "123456789",
             cbo_inv_type: "I",

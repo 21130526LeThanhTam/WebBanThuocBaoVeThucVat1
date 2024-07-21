@@ -57,6 +57,11 @@ public class ThanhToanCL extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession(true);
         ShoppingCart c = (ShoppingCart) session.getAttribute("cart");
+        Float result = null;
+        Double doubleResult = (Double) session.getAttribute("result");
+        if (doubleResult != null) {
+            result = doubleResult.floatValue();
+        }
         String action = request.getParameter("action");
         if(action!=null && action.equals("order")) {
             String firstName = request.getParameter("firstname");
@@ -69,7 +74,7 @@ public class ThanhToanCL extends HttpServlet {
             User user = (User) session.getAttribute("user");
             String address = homeNumber + ", " + district + ", " + city;
             List<CartItem> products = c.getCartItemList();
-            Orders order = new Orders(user.getId(), (float) c.getTotalPrice(),
+            Orders order = new Orders(user.getId(), (float) result,
                     0, address, phone,"Chưa Thanh Toán");
             order.setLp(products);
             this.orderService.insertOrderDetail(order);

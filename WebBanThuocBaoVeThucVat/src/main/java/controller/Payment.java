@@ -34,7 +34,12 @@ public class Payment extends HttpServlet {
         String txt_inv_customer = (String) session.getAttribute("txt_inv_customer");
         String txt_billing_mobile = (String) session.getAttribute("txt_billing_mobile");
         List<CartItem> products = shoppingCart.getCartItemList();
-        Orders order = new Orders(user.getId(), (float) shoppingCart.getTotalPrice(),
+        Float result = null;
+        Double doubleResult = (Double) session.getAttribute("result");
+        if (doubleResult != null) {
+            result = doubleResult.floatValue();
+        }
+        Orders order = new Orders(user.getId(), (float) result,
                 0, address, txt_billing_mobile,"Đã Thanh Toán");
         order.setLp(products);
         System.out.println(order);
