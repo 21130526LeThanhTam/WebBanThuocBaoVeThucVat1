@@ -32,6 +32,9 @@
         body.modal-open {
             padding-right: 0 !important;
         }
+        .modal-backdrop {
+            height:0 !important
+        }
 
     </style>
     <!-- Script - custom -->

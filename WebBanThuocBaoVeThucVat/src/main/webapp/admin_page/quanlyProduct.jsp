@@ -47,6 +47,9 @@
         .low-inventory {
             background-color: #ffcccc !important;
         }
+        .modal-backdrop {
+            height:0 !important
+        }
     </style>
 </head>
 <%List<Products> allProducts = (List<Products>) request.getAttribute("allProducts");%>
