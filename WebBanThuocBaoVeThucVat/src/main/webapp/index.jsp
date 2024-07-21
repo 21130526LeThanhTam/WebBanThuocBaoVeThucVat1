@@ -1,6 +1,9 @@
 <%@ page import="java.util.List" %>
 <%@ page import="bo.CategoryBO" %>
 <%@ page import="bean.*" %>
+<%@ page import="Service.ProductsService" %>
+<%@ page import="Service.IProductService" %>
+<%@ page import="Service.ProductService" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
@@ -52,7 +55,7 @@
     <%--    <script src="js/log_reg.js" defer></script>--%>
     <style>
         .red {
-            color: red;
+            background-color: red;
             /*background-color: aliceblue;*/
         }
     </style>
@@ -79,8 +82,9 @@
                 <!-- Các sản phẩm nổi bật  -->
                 <%
                     for(Products p : products) {
+                        IProductService productService = new ProductService();
                         int remain = p.getInventory_quantity();
-                        if (shoppingCart != null) {
+                        if (!shoppingCart.getCartItemList().isEmpty()) {
                             for (CartItem item : shoppingCart.getCartItemList()) {
                                 if (item.getProduct().getId()==p.getId()) {
                                     remain = p.getInventory_quantity() - item.getQuantity();
@@ -93,6 +97,7 @@
                         <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
                             <ul class="featured__item__pic__hover">
                                 <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
+                                <li><a class="d-flex align-items-center justify-content-center" href="javascript:void(0)" onclick="toggleWishlist(this, '<%=p.getId()%>')"><i class="fa fa-heart"></i></a></li>
 <%--                                <li><a class="d-flex align-items-center justify-content-center"  href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>--%>
                                 <li>
                                     <a class="d-flex add-to-cart align-items-center justify-content-center"
@@ -152,7 +157,7 @@
             <%
                 for(Products p : products) {
                     int remain = p.getInventory_quantity();
-                    if (shoppingCart != null) {
+                    if (!shoppingCart.getCartItemList().isEmpty()) {
                         for (CartItem item : shoppingCart.getCartItemList()) {
                             if (item.getProduct().getId()==p.getId()) {
                                 remain = p.getInventory_quantity() - item.getQuantity();
@@ -166,6 +171,7 @@
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
                         <ul class="featured__item__pic__hover">
                             <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
+                            <li><a class="d-flex align-items-center justify-content-center" href="javascript:void(0)" onclick="toggleWishlist(this, '<%=p.getId()%>')"><i class="fa fa-heart"></i></a></li>
                             <li>
                                 <a class="d-flex add-to-cart align-items-center justify-content-center"
                                    href="javascript:void(0)"
@@ -190,6 +196,7 @@
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
                         <ul class="featured__item__pic__hover">
                             <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
+                            <li><a class="d-flex align-items-center justify-content-center" href="javascript:void(0)" onclick="toggleWishlist(this, '<%=p.getId()%>')"><i class="fa fa-heart"></i></a></li>
 <%--                            <li><a class="d-flex align-items-center justify-content-center" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>--%>
                             <li>
                                 <a class="d-flex add-to-cart align-items-center justify-content-center"
@@ -215,6 +222,7 @@
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
                         <ul class="featured__item__pic__hover">
                             <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
+                            <li><a class="d-flex align-items-center justify-content-center" href="javascript:void(0)" onclick="toggleWishlist(this, '<%=p.getId()%>')"><i class="fa fa-heart"></i></a></li>
 <%--                            <li><a class="d-flex align-items-center justify-content-center" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>--%>
                             <li>
                                 <a class="d-flex add-to-cart align-items-center justify-content-center"
@@ -240,6 +248,7 @@
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
                         <ul class="featured__item__pic__hover">
                             <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
+                            <li><a class="d-flex align-items-center justify-content-center" href="javascript:void(0)" onclick="toggleWishlist(this, '<%=p.getId()%>')"><i class="fa fa-heart"></i></a></li>
 <%--                            <li><a class="d-flex align-items-center justify-content-center" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>--%>
                             <li>
                                 <a class="d-flex add-to-cart align-items-center justify-content-center"
@@ -258,7 +267,8 @@
                     </div>
                 </div>
             </div>
-            <% } }%>
+            <% }
+           }%>
         </div>
     </div>
 </section>
@@ -425,9 +435,57 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    var context = "${pageContext.request.contextPath}";
+    function toggleWishlist(element, productId) {
+        var icon = element.querySelector('i');
+        console.log("icon", icon);
+        console.log("productId", productId);
+        addToWishlist(productId);
+    }
+
+    function addToWishlist(productId) {
+        $.ajax({
+            url: '/wishlistController',
+            method: "POST",
+            data: {
+                id: productId,  // Đảm bảo tham số này khớp với servlet
+                action: "add"
+            },
+            success: function (response) {
+                if (response.status === "success") {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Thêm Sản Phẩm Vào Danh Sách Yêu Thích Thành Công!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+                else if (response.status === "insertFailed") {
+                    Swal.fire({
+                        position: "center",
+                        icon: "error",
+                        title: "Thêm Sản Phẩm Vào Danh Sách Yêu Thích Không Thành Công!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                } else if(response.status === "isExists"){
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Xóa Sản Phẩm Ra Khỏi Sẵn Danh Sách Yêu Thích !",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                } else {
+                    window.location.href = '/login';
+                }
+            }
+        });
+    }
+</script>
+<script>
     function addCart(btn, id, remain) {
-        console.log(remain)
+        console.log("Vo day ne" + remain)
         $.ajax({
             url: 'ShoppingCartCL',
             method: "POST",

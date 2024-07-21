@@ -68,10 +68,16 @@
                                         <div class="mt-2">
                                             <form action="upload" method="post" enctype="multipart/form-data">
                                                 <input type="file" name="profilePic" accept="image/*" style="display: none;" id="fileInput">
-                                                <button class="btn btn-primary" type="button" style="background-color: #7fad39; border: #7fad39;" onclick="document.getElementById('fileInput').click();">
-                                                    <i class="fa fa-fw fa-camera"></i>
-                                                    <span>Change Photo</span>
-                                                </button>
+                                                <div style="display: flex; align-items: center;">
+                                                    <button class="btn btn-primary" type="button" style="background-color: #7fad39; border: #7fad39; margin-right: 10px;" onclick="document.getElementById('fileInput').click();">
+                                                        <i class="fa fa-fw fa-camera"></i>
+                                                        <span>Change Photo</span>
+                                                    </button>
+                                                    <button class="btn btn-secondary" type="button" style="background-color: #3498db; border: #3498db; background-color: red" onclick="window.location.href='/wishlistController';">
+                                                        <i class="fa fa-fw fa-heart"></i>
+                                                        <span>Sản phẩm yêu thích</span>
+                                                    </button>
+                                                </div>
                                                 <input type="submit" value="Upload" style="display: none;" id="submitBtn">
                                             </form>
                                         </div>

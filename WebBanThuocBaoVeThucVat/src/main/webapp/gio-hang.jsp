@@ -149,7 +149,7 @@
                                         }
                                     }
                                 }
-                            %>>
+                            %>
                         </tr>
                         </tbody>
                     </table>
@@ -309,9 +309,9 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.pro-qty').forEach(function (proQty){
-            const input = document.querySelector('.input-number');
-            const btnIncrease = document.querySelector('.btn-increase');
-            const btnDecrease = document.querySelector('.btn-decrease');
+            const input = proQty.querySelector('.input-number');
+            const btnIncrease = proQty.querySelector('.btn-increase');
+            const btnDecrease = proQty.querySelector('.btn-decrease');
 
             input.addEventListener('input', function() {
                 const min = parseInt(input.min, 10);
@@ -361,6 +361,7 @@
         } else {
             document.querySelector('#p' + pid).textContent = quantity;
         }
+        console.log(pid, quantity, action)
         $.ajax({
             url: "ShoppingCartCL",
             type: 'POST',

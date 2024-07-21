@@ -1,4 +1,5 @@
 package bean;
+import log.AbsModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -6,7 +7,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Import {
+public class Import extends AbsModel {
     private int id;
     private int id_product;
     private int quantity;
@@ -22,4 +23,23 @@ public class Import {
         this.price = i2;
     }
 
+    public Import(int id, String status) {
+        this.id = id;
+        this.status = status;
+    }
+
+    @Override
+    public String getTable() {
+        return "Nhập hàng";
+    }
+
+    @Override
+    public String beforeData() {
+        return toString();
+    }
+
+    @Override
+    public String afterData() {
+        return toString();
+    }
 }

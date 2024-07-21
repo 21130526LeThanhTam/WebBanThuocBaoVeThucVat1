@@ -36,6 +36,13 @@ public class HomePageController extends HttpServlet {
 //                session.setAttribute("result", result);
 //            }
 //        }
+        Integer flag = (Integer) session.getAttribute("flag");
+        if(flag==null || flag==0) {
+            session.removeAttribute("cart");
+            if (flag==null) flag = 0;
+            flag++;
+            session.setAttribute("flag", flag);
+        }
         ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
         if(shoppingCart == null){
             shoppingCart = new ShoppingCart();
@@ -54,10 +61,9 @@ public class HomePageController extends HttpServlet {
         request.setAttribute("productsNew2", productsNew2);
         request.setAttribute("findDiscountPro1", findDiscountPro1);
         request.setAttribute("findDiscountPro2", findDiscountPro2);
-        String url = "index.jsp";
 
         //request deparcher nó có thể là forward hoặc inclue nó
-        request.getRequestDispatcher(url).forward(request, response); // dùng getRequestDipascher để chuyển hướng sang jsp
+        request.getRequestDispatcher("index.jsp").forward(request, response); // dùng getRequestDipascher để chuyển hướng sang jsp
 
     }
 

@@ -3,6 +3,9 @@ package controller.Admin;
 import Service.CategoryService;
 import Service.ProductsService;
 import Service.UserService;
+import bean.Category;
+import dao.CategoryDAO;
+import dao.LogDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,14 +19,17 @@ public class ToggleCategoryStatusServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String productID = request.getParameter("categoryID");
         String action = request.getRequestURI().substring(request.getContextPath().length());
+        String actionDescription = action.equals("/disableCategory") ? "vô hiệu hóa doanh mục" : "kích hoạt doanh mục";
         boolean disable = action.equals("/disableCategory");
         if (productID != null) {
             try {
                 int id = Integer.parseInt(productID);
                 // Thực hiện thao tác thay đổi trạng thái category trong cơ sở dữ liệu
                 boolean result =  CategoryService.getInstance().toggleCategoryStatus(id,disable);
+                Category aa= CategoryDAO.getCategoryById(id);
 
                 if (result) {
+                    LogDao.getInstance().printLog(actionDescription,aa,"",1,"");
                     response.setStatus(HttpServletResponse.SC_OK);
                     response.getWriter().write("Success");
                 } else {

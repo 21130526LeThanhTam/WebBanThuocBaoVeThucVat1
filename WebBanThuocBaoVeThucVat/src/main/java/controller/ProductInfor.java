@@ -50,7 +50,7 @@ public class ProductInfor extends HttpServlet {
                 ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
                 User user = (User) session.getAttribute("auth");
                 int remain = prod.getInventory_quantity();
-                if (cart != null && user != null) {
+                if (cart != null && !cart.getCartItemList().isEmpty() && user != null) {
                     for (CartItem item : cart.getCartItemList()) {
                         if (item.getProduct().getId() == prod.getId()) {
                             remain = prod.getInventory_quantity() - item.getQuantity();

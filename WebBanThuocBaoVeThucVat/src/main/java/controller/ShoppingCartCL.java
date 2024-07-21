@@ -129,7 +129,7 @@ public class ShoppingCartCL extends HttpServlet {
                 } else {
                     out.write("{ \"total\": \""+shoppingCart.getCartItemList().size()+"\", \"items\": \""+shoppingCart.getCartItemList()+"\" , \"result\": \""+retain+"\", \"rect\": \"" + re * discount.getSalePercent() +"\"}");
                 }
-                session.setAttribute("total", shoppingCart.getCartItemList().size());
+                session.setAttribute("totalItems", shoppingCart.getCartItemList().size());
                 session.setAttribute("result", retain);
                 session.setAttribute("retain", re * discount.getSalePercent());
                 out.flush();
@@ -146,15 +146,14 @@ public class ShoppingCartCL extends HttpServlet {
                     shoppingCart.remove(product.getId());
                 }
                 session.setAttribute("cart", shoppingCart);
+                System.out.println(shoppingCart.getCartItemList());
                 re = 0.0;
-                for(CartItem i: shoppingCart.getCartItemList()) {
-                    Products p = productService.findById(id);
-                    re += i.getQuantity()* p.getPrice();
+                for(CartItem i : shoppingCart.getCartItemList()) {
+                    Products p = productService.findById(i.getProduct().getId());
+                    re += p.getPrice() * i.getQuantity();
                 }
                 System.out.println(re);
-                retain = re - discount.getSalePercent() * re;
-                System.out.println(retain);
-                System.out.println(discount.getSalePercent());
+                retain = re - (discount.getSalePercent() * re);
                 if (re==0) {
                     out.write("{ \"state\": \"zero\", \"total\": \""+shoppingCart.getCartItemList().size()+"\", \"items\": \""+shoppingCart.getCartItemList()+"\" , \"result\": \""+retain+"\" }");
                 } else {
@@ -162,7 +161,7 @@ public class ShoppingCartCL extends HttpServlet {
                             "\", \"items\": \""+shoppingCart.getCartItemList()+"\" , \"result\": \""+retain+"\", " +
                             "\"rect\": \"" + re * discount.getSalePercent() +"\"}");
                 }
-                session.setAttribute("total", shoppingCart.getCartItemList().size());
+                session.setAttribute("totalItems", shoppingCart.getCartItemList().size());
                 session.setAttribute("result", retain);
                 session.setAttribute("retain", re * discount.getSalePercent());
                 out.flush();
@@ -223,7 +222,7 @@ public class ShoppingCartCL extends HttpServlet {
                 }
                 retain = re - discount.getSalePercent() * re;
                 out.write("{ \"total\": \""+shoppingCart.getCartItemList().size()+"\", \"items\": \""+shoppingCart.getCartItemList()+"\" , \"prefix\": \""+remain+"\", \"rect\": \""+ re * discount.getSalePercent()+ "\"}");
-                session.setAttribute("total", shoppingCart.getCartItemList().size());
+                session.setAttribute("totalItems", shoppingCart.getCartItemList().size());
                 session.setAttribute("result", retain);
                 session.setAttribute("retain", re * discount.getSalePercent());
                 out.flush();

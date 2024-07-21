@@ -18,7 +18,7 @@ public class ProductDAO implements IProductDAO {
     public List<Products> findAll1() {
         Jdbi jdbi = JDBIConnector.getJdbi();
         List<Products> products = jdbi.withHandle(handle -> {
-            String sql = "SELECT id, product_name, image, price, id_category, status, des, create_at FROM products";
+            String sql = "SELECT id, product_name, image, price, id_category, status, inventory_quantity, des, create_at FROM products";
             return handle.createQuery(sql).mapToBean(Products.class).stream().collect(Collectors.toList());
         });
         return products;
@@ -28,7 +28,7 @@ public class ProductDAO implements IProductDAO {
     public List<Product> findAll2() {
         Jdbi jdbi = JDBIConnector.getJdbi();
         List<Product> products2 = jdbi.withHandle(handle -> {
-            String sql = "SELECT id, product_name, image, price, id_category, status, des, create_at FROM products";
+            String sql = "SELECT id, product_name, image, price, id_category, status, inventory_quantity, des, create_at FROM products";
             return handle.createQuery(sql).mapToBean(Product.class).stream().collect(Collectors.toList());
         });
         return products2;
@@ -38,7 +38,7 @@ public class ProductDAO implements IProductDAO {
     public List<Products> findNewPro1() {
         Jdbi jdbi = JDBIConnector.getJdbi();
         List<Products> findNewPro1 = jdbi.withHandle(handle -> {
-            String sql = "SELECT id, product_name, image, price, id_category, status, des, create_at FROM products\n" +
+            String sql = "SELECT id, product_name, image, price, id_category, status, inventory_quantity, des, create_at FROM products\n" +
                     "order by create_at desc\n" +
                     "LIMIT 3;";
             return handle.createQuery(sql).mapToBean(Products.class).stream().collect(Collectors.toList());
@@ -50,7 +50,7 @@ public class ProductDAO implements IProductDAO {
     public List<Products> findNewPro2() {
         Jdbi jdbi = JDBIConnector.getJdbi();
         List<Products> findNewPro2 = jdbi.withHandle(handle -> {
-            String sql = "SELECT id, product_name, image, price, id_category, status, des, create_at FROM products\n" +
+            String sql = "SELECT id, product_name, image, price, id_category, status, inventory_quantity, des, create_at FROM products\n" +
                     "order by create_at desc\n" +
                     "LIMIT 3 OFFSET 3;";
             return handle.createQuery(sql).mapToBean(Products.class).stream().collect(Collectors.toList());
@@ -62,7 +62,7 @@ public class ProductDAO implements IProductDAO {
     public List<Products> findDiscountPro1() {
         Jdbi jdbi = JDBIConnector.getJdbi();
         List<Products> findNewPro1 = jdbi.withHandle(handle -> {
-            String sql = "SELECT id, id_category, product_name, image, price, des, create_at FROM products\n" +
+            String sql = "SELECT id, id_category, product_name, image, price, inventory_quantity, des, create_at FROM products\n" +
                     "where status = 1 and id_discount is not null\n"
                     + "LIMIT 3;";
             return handle.createQuery(sql).mapToBean(Products.class).stream().collect(Collectors.toList());
@@ -74,7 +74,7 @@ public class ProductDAO implements IProductDAO {
     public List<Products> findDiscountPro2() {
         Jdbi jdbi = JDBIConnector.getJdbi();
         List<Products> findNewPro1 = jdbi.withHandle(handle -> {
-            String sql = "SELECT id, id_category, product_name, image, price, des, create_at FROM products\n" +
+            String sql = "SELECT id, id_category, product_name, image, price, inventory_quantity, des, create_at FROM products\n" +
                     "where status = 1 and id_discount is not null\n"
                     + "LIMIT 3 OFFSET 3;";
             return handle.createQuery(sql).mapToBean(Products.class).stream().collect(Collectors.toList());
@@ -108,7 +108,7 @@ public class ProductDAO implements IProductDAO {
     public List<Products> findByPriceMin(String id) {
         Jdbi jdbi = JDBIConnector.getJdbi();
         return jdbi.withHandle(handle -> {
-            String sql = "SELECT id, product_name, image, price, id_category, status, des, create_at FROM products\n" +
+            String sql = "SELECT id, product_name, image, price, id_category, status, inventory_quantity, des, create_at FROM products\n" +
                     "where id_category like ? " + // Added space here
                     "order by price asc";
             return handle.createQuery(sql).bind(0, "%" + id + "%").mapToBean(Products.class).list();
@@ -136,14 +136,9 @@ public class ProductDAO implements IProductDAO {
         int offset = (currentPage - 1) * getProductsPerPageConstant();
         Jdbi jdbi = JDBIConnector.getJdbi();
         return jdbi.withHandle(handle -> {
-            String sql = "select id, product_name, image, price, id_category, status, des, create_at from products WHERE status=1 limit ?, ?";
+            String sql = "select id, product_name, image, price, id_category, status, inventory_quantity, des, create_at from products WHERE status=1 limit ?, ?";
             return handle.createQuery(sql).bind(0, offset).bind(1, getProductsPerPageConstant())
                     .mapToBean(Products.class).stream().collect(Collectors.toList());
         });
-    }
-
-    public static void main(String[] args) {
-        ProductDAO dao = new ProductDAO();
-        System.out.println(dao.getProductsPerPage(1));
     }
 }

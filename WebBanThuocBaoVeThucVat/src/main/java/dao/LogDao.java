@@ -1,6 +1,7 @@
 package dao;
 
 
+import bean.Log;
 import bean.Products;
 import bean.User;
 import db.JDBIConnector;
@@ -11,6 +12,8 @@ import log.IModel;
 import java.io.File;
 import java.sql.SQLOutput;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class LogDao implements IDao{
@@ -22,21 +25,7 @@ public class LogDao implements IDao{
     }
 
     public <T extends IModel> void selectModel() {}
-//
-//    public <T extends IModel> void insertModel(T model,String ip, int level, String address) {
-//
-//    }
-//
-//    public <T extends IModel> void deleteModel(T model,String ip, int level, String address) {
-//
-//    }
-//
-//    public <T extends IModel> void updateModel(T model,String ip, int level, String address) {
-//        String action ="Update"+model.getTable();
-//    }
-//    public <T extends IModel> void login(T model, String action, String ip, int level, String address) {
-//
-//    }
+
     public boolean printLog(String action, AbsModel model, String ip, int level, String address) {
         Integer i = JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createUpdate("INSERT INTO log(ip,action,level,address,previousValue,currentValue,create_at,update_at) VALUES (?,?,?,?,?,?,?,?)")
@@ -60,13 +49,13 @@ public class LogDao implements IDao{
 
     @Override
     public boolean insertModel(AbsModel model, String ip, int level, String address) {
-        String action ="Insert "+model.getTable();
+        String action ="Thêm "+model.getTable();
         return printLog(action,model,ip,level,address);
     }
 
     @Override
     public boolean deleteModel(AbsModel model, String ip, int level, String address) {
-        String action ="Delete "+model.getTable();
+        String action ="Xóa "+model.getTable();
         return printLog(action,model,ip,level,address);
     }
 
@@ -108,6 +97,28 @@ public class LogDao implements IDao{
         );
         return i == 1;
     }
+    public List<Log>getList(){
+        List<Log> logList = JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery("select id,ip,action,level,address,previousValue,currentValue,create_at,update_at from log")
+                        .mapToBean(Log.class)
+                        .collect(Collectors.toList()));
+        return logList;
+    }
+    public boolean toggleStatus(String action, String oldValue,String newValue, String ip, int level, String address) {
+        Integer i = JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createUpdate("INSERT INTO log(ip,action,level,address,previousValue,currentValue,create_at,update_at) VALUES (?,?,?,?,?,?,?,?)")
+                        .bind(0, ip)
+                        .bind(1, action)
+                        .bind(2, level)
+                        .bind(3, address)
+                        .bind(4, oldValue)
+                        .bind(5, newValue)
+                        .bind(6, date)
+                        .bind(7, date)
+                        .execute()
+        );
+        return i == 1;
+    }
 
 
 
@@ -118,11 +129,11 @@ public class LogDao implements IDao{
         a.setEmail(email);
         a.setPassword(pass);
         User b =new User(1,1,"Son","4297f44b13955235245b2497399d7a93","0123456789","Son@gmail.com","Son","dsf");
-//        LogDao.getInstance().insertModel(a,"",1,"");
+        List<Log> aa= LogDao.getInstance().getList();
+        for(Log ab:aa){
+            System.out.println(ab);
+        }
 
-        //String name, String image, int price, int category, int status, int inventory_quantity,String desc
-//        Products aa = new Products("RỪ BỆNH ENDICO 5SC","dsfsd",3423,1,1,60,"dsfsd");
-//        LogDao.getInstance().insertModel(aa,"",1,"");
 
     }
 

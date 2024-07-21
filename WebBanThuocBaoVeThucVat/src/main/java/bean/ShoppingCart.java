@@ -10,6 +10,10 @@ public class ShoppingCart {
         this.cartItemList = new ArrayList<>();
     }
 
+    public ShoppingCart(List<CartItem> cartItemList) {
+        this.cartItemList = cartItemList;
+    }
+
     public void add(CartItem cartItem) {
         for(CartItem i: cartItemList){
             if (cartItem.getProduct().getId() == i.getProduct().getId()) {

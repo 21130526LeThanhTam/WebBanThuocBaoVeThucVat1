@@ -74,7 +74,12 @@ public class ThanhToanCL extends HttpServlet {
             order.setLp(products);
             this.orderService.insertOrderDetail(order);
             double total = c.getTotalPrice();
-            session.setAttribute("total", total);
+            double re = 0.0;
+            Discount discount = (Discount) session.getAttribute("discount");
+            if(discount != null) re += total - (discount.getSalePercent()*total);
+            else re += total;
+            System.out.println(re);
+            session.setAttribute("total", re);
             session.removeAttribute("cart");
             response.sendRedirect("HomePageController");
 

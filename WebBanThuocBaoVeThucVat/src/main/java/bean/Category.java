@@ -1,9 +1,10 @@
 package bean;
 
+import log.AbsModel;
 import lombok.Data;
 
 @Data
-public class Category {
+public class Category extends AbsModel {
     private int id;
     private String nameCategory;
     private int status;
@@ -46,4 +47,18 @@ public class Category {
                 '}';
     }
 
+    @Override
+    public String getTable() {
+        return "Doanh mục";
+    }
+
+    @Override
+    public String beforeData() {
+        return this.toString();
+    }
+
+    @Override
+    public String afterData() {
+        return this.toString();
+    }
 }
