@@ -37,6 +37,10 @@ public class InsertProduct extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
+        String ipAddress = req.getHeader("X-FORWARDED-FOR");
+        if (ipAddress == null) {
+            ipAddress = req.getRemoteAddr();
+        }
 
         String productName = req.getParameter("productName");
         String categoryId = req.getParameter("productCate");
@@ -86,7 +90,7 @@ public class InsertProduct extends HttpServlet {
             // Xử lý ngoại lệ nếu cần thiết
         }
         String proDesc = HtmlUtils.removeHtmlTags(req.getParameter("proDesc"));
-        ProductsService.getInstance().insertProduct(productName, imagePath, priceInt, intCategoryId, status, num, proDesc);
+        ProductsService.getInstance().insertProduct(productName, imagePath, priceInt, intCategoryId, status, num, proDesc,ipAddress);
         resp.sendRedirect("./admin_dashboard?page=./maProduct");
     }
 }

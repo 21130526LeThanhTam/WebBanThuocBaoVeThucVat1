@@ -35,6 +35,10 @@ public class ImportController extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json; charset=UTF-8");
         String action = req.getParameter("action");
+        String ipAddress = req.getHeader("X-FORWARDED-FOR");
+        if (ipAddress == null) {
+            ipAddress = req.getRemoteAddr();
+        }
 
         Map<String, String> result = new HashMap<>();
         if (action != null) {
@@ -45,7 +49,7 @@ public class ImportController extends HttpServlet {
                     newOrder.setQuantity(Integer.parseInt(req.getParameter("quantity")));
                     newOrder.setPrice(Double.parseDouble(req.getParameter("price")));
                     boolean insertSuccess = ImportDao.insertImport(newOrder);
-                    LogDao.getInstance().insertModel(newOrder,"",1,"");
+                    LogDao.getInstance().insertModel(newOrder,ipAddress,1,"");
                     result.put("status", insertSuccess ? "success" : "error");
                     break;
                 case "delete":
@@ -59,7 +63,7 @@ public class ImportController extends HttpServlet {
                     String status = req.getParameter("status");
                     boolean updateSuccess = ImportDao.updateImport(orderIdToUpdate, status);
                     Import newIpo = ImportDao.getImportById(orderIdToUpdate);
-                    LogDao.getInstance().updateModel(oldIpo,newIpo,"",1,"");
+                    LogDao.getInstance().updateModel(oldIpo,newIpo,ipAddress,1,"");
                     result.put("status", updateSuccess ? "success" : "error");
                     break;
             }}

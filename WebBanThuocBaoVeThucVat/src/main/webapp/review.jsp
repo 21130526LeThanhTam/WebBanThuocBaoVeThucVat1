@@ -118,7 +118,7 @@
         <input type="hidden" name="orderDetailID" value="<%= detail.getId() %>">
         <div class="star-rating rating-<%= detail.getId_product() %>-<%= detail.getCreate_at().getTime() %>">
           <input type="radio" id="star5-<%= detail.getId_product() %>-<%= detail.getCreate_at().getTime() %>" name="rating" value="5"><label for="star5-<%= detail.getId_product() %>-<%= detail.getCreate_at().getTime() %>">★</label>
-          <input type="radio" id="star4-<%= detail.getId_product() %>-<%= detail.getCreate_at().getTime() %>" name="rating>" value="4"><label for="star4-<%= detail.getId_product() %>-<%= detail.getCreate_at().getTime() %>">★</label>
+          <input type="radio" id="star4-<%= detail.getId_product() %>-<%= detail.getCreate_at().getTime() %>" name="rating" value="4"><label for="star4-<%= detail.getId_product() %>-<%= detail.getCreate_at().getTime() %>">★</label>
           <input type="radio" id="star3-<%= detail.getId_product() %>-<%= detail.getCreate_at().getTime() %>" name="rating" value="3"><label for="star3-<%= detail.getId_product() %>-<%= detail.getCreate_at().getTime() %>">★</label>
           <input type="radio" id="star2-<%= detail.getId_product() %>-<%= detail.getCreate_at().getTime() %>" name="rating" value="2"><label for="star2-<%= detail.getId_product() %>-<%= detail.getCreate_at().getTime() %>">★</label>
           <input type="radio" id="star1-<%= detail.getId_product() %>-<%= detail.getCreate_at().getTime() %>" name="rating" value="1"><label for="star1-<%= detail.getId_product() %>-<%= detail.getCreate_at().getTime() %>">★</label>

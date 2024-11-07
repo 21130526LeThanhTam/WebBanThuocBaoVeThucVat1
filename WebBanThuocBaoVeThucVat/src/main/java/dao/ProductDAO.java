@@ -141,4 +141,21 @@ public class ProductDAO implements IProductDAO {
                     .mapToBean(Products.class).stream().collect(Collectors.toList());
         });
     }
+
+    @Override
+    public List<Products> getRelatedProducts(int idCategory, int idProduct) {
+        Jdbi jdbi = JDBIConnector.getJdbi();
+        List<Products> products = jdbi.withHandle(handle -> {
+            String sql = "SELECT id, product_name, image, price, id_category, status, des, create_at, inventory_quantity " +
+                    "FROM products " +
+                    "WHERE id_category = ? AND id != ? " +
+                    "LIMIT 4";
+            return handle.createQuery(sql)
+                    .bind(0, idCategory)
+                    .bind(1, idProduct)
+                    .mapToBean(Products.class)
+                    .list();
+        });
+        return products;
+    }
 }

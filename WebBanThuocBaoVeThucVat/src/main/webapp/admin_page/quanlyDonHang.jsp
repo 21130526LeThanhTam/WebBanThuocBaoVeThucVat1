@@ -260,7 +260,7 @@
         });
 
         // Hiển thị chi tiết đơn hàng trong modal
-        $('.view').on('click', function() {
+        $(document).on('click', '.view', function() {
             var orderId = $(this).data('id');
             $.ajax({
                 type: 'GET',

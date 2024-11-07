@@ -43,6 +43,7 @@
         List<Products> findDiscountPro1 = (List<Products>) request.getAttribute("findDiscountPro1");
         List<Products> findDiscountPro2 = (List<Products>) request.getAttribute("findDiscountPro2");
 
+
         ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
         CategoryBO cb = new CategoryBO();
 
@@ -56,8 +57,24 @@
     <style>
         .red {
             background-color: red;
-            /*background-color: aliceblue;*/
         }
+        .featured__item__pic {
+            position: relative;
+        }
+
+        .wishlist-badge {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            background-color: #ff6347;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 10;
+        }
+
     </style>
 </head>
 <body>
@@ -92,12 +109,34 @@
                             }
                         }
                 %>
+
                 <div class="col-lg-3 col-md-4 col-sm-6 mix a">
                     <div class="featured__item">
                         <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
+                            <div class="favourite_pro<%=p.getId()%>">
+                                <%
+                                    if(auth != null){
+                                        List<WishlistItem> wishlistItemList = (List<WishlistItem>) request.getAttribute("wishlistItemList");
+                                        boolean isLiked = false;
+                                        for(WishlistItem a : wishlistItemList){
+                                            if(a.getProducts().getId() == p.getId()){
+                                                isLiked = true;
+                                                break;
+                                            }
+                                        }
+                                        if(isLiked) {
+                                %>
+                                <div class="wishlist-badge">
+                                    <span>ĐÃ THÍCH</span>
+                                </div>
+                                <%
+                                        }
+                                    }
+                                %>
+                            </div>
                             <ul class="featured__item__pic__hover">
                                 <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                                <li><a class="d-flex align-items-center justify-content-center" href="javascript:void(0)" onclick="toggleWishlist(this, '<%=p.getId()%>')"><i class="fa fa-heart"></i></a></li>
+                                <li><a class="d-flex align-items-center justify-content-center" href="javascript:void(0)" onclick="toggleWishlist(this, '<%=p.getId()%>')"><i class="fa fa-heart "></i></a></li>
 <%--                                <li><a class="d-flex align-items-center justify-content-center"  href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>--%>
                                 <li>
                                     <a class="d-flex add-to-cart align-items-center justify-content-center"
@@ -169,9 +208,31 @@
             <div class="col-lg-3 col-md-4 col-sm-6 mix a">
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
+                        <div class="favourite_pro<%=p.getId()%>">
+                            <%
+                                if(auth != null){
+                                    List<WishlistItem> wishlistItemList = (List<WishlistItem>) request.getAttribute("wishlistItemList");
+                                    boolean isLiked = false;
+                                    for(WishlistItem a : wishlistItemList){
+                                        if(a.getProducts().getId() == p.getId()){
+                                            isLiked = true;
+                                            break;
+                                        }
+                                    }
+                                    if(isLiked) {
+                            %>
+                            <div class="wishlist-badge">
+                                <span>ĐÃ THÍCH</span>
+                            </div>
+                            <%
+                                    }
+                                }
+                            %>
+                        </div>
                         <ul class="featured__item__pic__hover">
                             <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                            <li><a class="d-flex align-items-center justify-content-center" href="javascript:void(0)" onclick="toggleWishlist(this, '<%=p.getId()%>')"><i class="fa fa-heart"></i></a></li>
+                            <li><a class="d-flex align-items-center justify-content-center" href="javascript:void(0)" onclick="toggleWishlist(this, '<%=p.getId()%>')"><i class="fa fa-heart "></i></a></li>
+                            <%--                                <li><a class="d-flex align-items-center justify-content-center"  href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>--%>
                             <li>
                                 <a class="d-flex add-to-cart align-items-center justify-content-center"
                                    href="javascript:void(0)"
@@ -180,7 +241,6 @@
                                     <i class="fa fa-shopping-cart"></i>
                                 </a>
                             </li>
-
                         </ul>
                     </div>
                     <div class="featured__item__text">
@@ -194,10 +254,31 @@
             <div class="col-lg-3 col-md-4 col-sm-6 mix b">
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
+                        <div class="favourite_pro<%=p.getId()%>">
+                            <%
+                                if(auth != null){
+                                    List<WishlistItem> wishlistItemList = (List<WishlistItem>) request.getAttribute("wishlistItemList");
+                                    boolean isLiked = false;
+                                    for(WishlistItem a : wishlistItemList){
+                                        if(a.getProducts().getId() == p.getId()){
+                                            isLiked = true;
+                                            break;
+                                        }
+                                    }
+                                    if(isLiked) {
+                            %>
+                            <div class="wishlist-badge">
+                                <span>ĐÃ THÍCH</span>
+                            </div>
+                            <%
+                                    }
+                                }
+                            %>
+                        </div>
                         <ul class="featured__item__pic__hover">
                             <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                            <li><a class="d-flex align-items-center justify-content-center" href="javascript:void(0)" onclick="toggleWishlist(this, '<%=p.getId()%>')"><i class="fa fa-heart"></i></a></li>
-<%--                            <li><a class="d-flex align-items-center justify-content-center" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>--%>
+                            <li><a class="d-flex align-items-center justify-content-center" href="javascript:void(0)" onclick="toggleWishlist(this, '<%=p.getId()%>')"><i class="fa fa-heart "></i></a></li>
+                            <%--                                <li><a class="d-flex align-items-center justify-content-center"  href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>--%>
                             <li>
                                 <a class="d-flex add-to-cart align-items-center justify-content-center"
                                    href="javascript:void(0)"
@@ -220,10 +301,31 @@
             <div class="col-lg-3 col-md-4 col-sm-6 mix c">
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
+                        <div class="favourite_pro<%=p.getId()%>">
+                            <%
+                                if(auth != null){
+                                    List<WishlistItem> wishlistItemList = (List<WishlistItem>) request.getAttribute("wishlistItemList");
+                                    boolean isLiked = false;
+                                    for(WishlistItem a : wishlistItemList){
+                                        if(a.getProducts().getId() == p.getId()){
+                                            isLiked = true;
+                                            break;
+                                        }
+                                    }
+                                    if(isLiked) {
+                            %>
+                            <div class="wishlist-badge">
+                                <span>ĐÃ THÍCH</span>
+                            </div>
+                            <%
+                                    }
+                                }
+                            %>
+                        </div>
                         <ul class="featured__item__pic__hover">
                             <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                            <li><a class="d-flex align-items-center justify-content-center" href="javascript:void(0)" onclick="toggleWishlist(this, '<%=p.getId()%>')"><i class="fa fa-heart"></i></a></li>
-<%--                            <li><a class="d-flex align-items-center justify-content-center" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>--%>
+                            <li><a class="d-flex align-items-center justify-content-center" href="javascript:void(0)" onclick="toggleWishlist(this, '<%=p.getId()%>')"><i class="fa fa-heart "></i></a></li>
+                            <%--                                <li><a class="d-flex align-items-center justify-content-center"  href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>--%>
                             <li>
                                 <a class="d-flex add-to-cart align-items-center justify-content-center"
                                    href="javascript:void(0)"
@@ -246,10 +348,31 @@
             <div class="col-lg-3 col-md-4 col-sm-6 mix d">
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="<%=p.getImage()%>">
+                        <div class="favourite_pro<%=p.getId()%>">
+                            <%
+                                if(auth != null){
+                                    List<WishlistItem> wishlistItemList = (List<WishlistItem>) request.getAttribute("wishlistItemList");
+                                    boolean isLiked = false;
+                                    for(WishlistItem a : wishlistItemList){
+                                        if(a.getProducts().getId() == p.getId()){
+                                            isLiked = true;
+                                            break;
+                                        }
+                                    }
+                                    if(isLiked) {
+                            %>
+                                <div class="wishlist-badge">
+                                    <span>ĐÃ THÍCH</span>
+                                </div>
+                            <%
+                                    }
+                                }
+                            %>
+                        </div>
                         <ul class="featured__item__pic__hover">
                             <li><a class="d-flex align-items-center justify-content-center" href="ProductInfor?id_product=<%= p.getId() %>"><i class="fa fa-retweet"></i></a></li>
-                            <li><a class="d-flex align-items-center justify-content-center" href="javascript:void(0)" onclick="toggleWishlist(this, '<%=p.getId()%>')"><i class="fa fa-heart"></i></a></li>
-<%--                            <li><a class="d-flex align-items-center justify-content-center" href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>--%>
+                            <li><a class="d-flex align-items-center justify-content-center" href="javascript:void(0)" onclick="toggleWishlist(this, '<%=p.getId()%>')"><i class="fa fa-heart "></i></a></li>
+                            <%--                                <li><a class="d-flex align-items-center justify-content-center"  href="ShoppingCartCL?action=post&id=<%=p.getId()%>&type=0"><i class="fa fa-shopping-cart"></i></a></li>--%>
                             <li>
                                 <a class="d-flex add-to-cart align-items-center justify-content-center"
                                    href="javascript:void(0)"
@@ -436,18 +559,21 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     function toggleWishlist(element, productId) {
-        var icon = element.querySelector('i');
-        console.log("icon", icon);
+        const selector = '.favourite_pro' + productId;
+        const favourite_pro = document.querySelector(selector);
+        console.log("favourite_pro", favourite_pro);
         console.log("productId", productId);
-        addToWishlist(productId);
+        addToWishlist(productId, favourite_pro);
     }
 
     function addToWishlist(productId) {
+        const selector = '.favourite_pro' + productId;
+        const favourite_pro = document.querySelector(selector);
         $.ajax({
             url: '/wishlistController',
             method: "POST",
             data: {
-                id: productId,  // Đảm bảo tham số này khớp với servlet
+                id: productId,
                 action: "add"
             },
             success: function (response) {
@@ -459,8 +585,12 @@
                         showConfirmButton: false,
                         timer: 1500
                     });
-                }
-                else if (response.status === "insertFailed") {
+                    const newBadge = document.createElement("div");
+                    newBadge.className="wishlist-badge";
+                    newBadge.innerHTML="<span>ĐÃ THÍCH</span>";
+                    favourite_pro.appendChild(newBadge);
+
+                } else if (response.status === "insertFailed") {
                     Swal.fire({
                         position: "center",
                         icon: "error",
@@ -468,14 +598,19 @@
                         showConfirmButton: false,
                         timer: 1500
                     });
-                } else if(response.status === "isExists"){
+                } else if (response.status === "isExists") {
                     Swal.fire({
                         position: "center",
                         icon: "success",
-                        title: "Xóa Sản Phẩm Ra Khỏi Sẵn Danh Sách Yêu Thích !",
+                        title: "Xóa Sản Phẩm Ra Khỏi Sẵn Danh Sách Yêu Thích!",
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    const newBadge=favourite_pro.querySelector(".wishlist-badge");
+                    if(newBadge){
+                        newBadge.remove();
+                    }
+
                 } else {
                     window.location.href = '/login';
                 }

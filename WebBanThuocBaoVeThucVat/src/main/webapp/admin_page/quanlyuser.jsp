@@ -45,6 +45,9 @@
         #togglePassword{
          cursor:pointer;
         }
+        .modal-backdrop {
+            height:0 !important
+        }
     </style>
 </head>
 <body>

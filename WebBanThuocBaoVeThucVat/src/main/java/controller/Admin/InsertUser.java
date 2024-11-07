@@ -34,6 +34,10 @@ public class InsertUser extends HttpServlet {
         User b = new User(1,1,username,newPass,phone,email,surname,lastname,"");
         User a = UserDAO.getUserByEmail(email);
         System.out.println(a);
+        String ipAddress = req.getHeader("X-FORWARDED-FOR");
+        if (ipAddress == null) {
+            ipAddress = req.getRemoteAddr();
+        }
         if(a != null){
             resp.setContentType("text/html;charset=UTF-8");
             PrintWriter out = resp.getWriter();
@@ -42,7 +46,7 @@ public class InsertUser extends HttpServlet {
             out.println("window.location.href='./maUser';");  // Điều hướng về trang form
             out.println("</script>");
         } else {
-            UserDAO.getInstance().insertModel(b,"0:0:0:0:0:0:0:1",0,"0:0:0:0:0:0:0:1");
+            UserDAO.getInstance().insertModel(b,ipAddress,0,"");
             resp.sendRedirect("./maUser?roleID=1&uid=1");
         }
     }

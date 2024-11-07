@@ -44,6 +44,11 @@ public class EditProduct extends HttpServlet {
         String productName = req.getParameter("productName");// tên sp
         String idCategory = req.getParameter("productCate");// idCategory
         String inventory_quantity = req.getParameter("inventory"); //   inventory quantity
+        String ipAddress = req.getHeader("X-FORWARDED-FOR");
+        if (ipAddress == null) {
+            ipAddress = req.getRemoteAddr();
+        }
+
         int inventoryInt = 0;
         if (inventory_quantity != null && !inventory_quantity.isEmpty()) {
              inventoryInt = Integer.parseInt(inventory_quantity);
@@ -120,7 +125,7 @@ public class EditProduct extends HttpServlet {
         newProducts.setStatus(activeInt);
         newProducts.setDes(proDesc);
         newProducts.setInventory_quantity(inventoryInt);
-        LogDao.getInstance().updateModel(oldPro,newProducts,"",1,"");
+        LogDao.getInstance().updateModel(oldPro,newProducts,ipAddress,1,"");
         resp.sendRedirect("./admin_dashboard?page=./maProduct");
     }
 }

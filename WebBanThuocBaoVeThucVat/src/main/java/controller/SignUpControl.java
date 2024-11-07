@@ -70,7 +70,7 @@ public class SignUpControl extends HttpServlet {
                 out.println("{\"error\":\"Mật khẩu không trùng khớp\"}");
             } else {
 
-                String str = acc.signUp(email, hashpass, username, surname, lastname, phone, myHash,ipAddress,1,ipAddress);
+                String str = acc.signUp(email, hashpass, username, surname, lastname, phone, myHash,ipAddress,1,"");
                 if(str.equals("success")){
                     SendingEmail se = new SendingEmail(email, myHash);
                     se.sendMail();

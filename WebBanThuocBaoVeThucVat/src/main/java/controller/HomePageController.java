@@ -6,6 +6,7 @@ import bean.*;
 import dao.CategoryDAO;
 import dao.IProductDAO;
 import dao.ProductDAO;
+import dao.WishlistDAO;
 
 import javax.mail.Session;
 import javax.servlet.*;
@@ -61,6 +62,13 @@ public class HomePageController extends HttpServlet {
         request.setAttribute("productsNew2", productsNew2);
         request.setAttribute("findDiscountPro1", findDiscountPro1);
         request.setAttribute("findDiscountPro2", findDiscountPro2);
+
+        User user = (User) session.getAttribute("user");
+        if(user != null){
+            List<WishlistItem> wishlistItemList = WishlistDAO.getInstance().getWishlistByUser(user.getId());
+            request.setAttribute("wishlistItemList", wishlistItemList);
+        }
+
 
         //request deparcher nó có thể là forward hoặc inclue nó
         request.getRequestDispatcher("index.jsp").forward(request, response); // dùng getRequestDipascher để chuyển hướng sang jsp

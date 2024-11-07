@@ -64,7 +64,7 @@ public class LogDao implements IDao{
         Integer i = JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createUpdate("INSERT INTO log(ip,action,level,address,previousValue,currentValue,create_at,update_at) VALUES (?,?,?,?,?,?,?,?)")
                         .bind(0, ip)
-                        .bind(1, "Update"+modelBf.getTable())
+                        .bind(1, "Chỉnh sửa "+modelBf.getTable())
                         .bind(2, level)
                         .bind(3, address)
                         .bind(4, modelBf.beforeData())

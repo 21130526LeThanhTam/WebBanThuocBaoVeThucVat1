@@ -32,6 +32,9 @@
         body.modal-open {
             padding-right: 0 !important;
         }
+        .modal-backdrop {
+            height:0 !important
+        }
 
     </style>
     <!-- Script - custom -->
@@ -95,11 +98,6 @@
                     <i class="fas fa-truck-loading"></i> Quản lý Nhập Hàng
                 </a>
             </li>
-            <li>
-                <a href="#" data-url="./maDiscount" class="load-content">
-                    <i class="fas fa-tags"></i> Quản lý Mã Giảm Giá
-                </a>
-            </li>
         </ul>
     </nav>
     <!-- Page Content -->
@@ -119,9 +117,6 @@
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" href="admin_page/editUser.jsp">
                                     <i class="material-icons">person_outline</i> Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="material-icons">settings</i> Settings
                                 </a>
                                 <%
                                     User auth = (User) session.getAttribute("admin");

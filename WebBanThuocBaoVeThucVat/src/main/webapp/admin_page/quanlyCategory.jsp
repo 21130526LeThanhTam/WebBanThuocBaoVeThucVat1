@@ -43,6 +43,9 @@
         .btn {
             margin-right: 5px;
         }
+        . modal-backdrop {
+            height:0 !important
+        }
     </style>
 </head>
 <% List<Category> listCategory = (List<Category>) request.getAttribute("listCategory");

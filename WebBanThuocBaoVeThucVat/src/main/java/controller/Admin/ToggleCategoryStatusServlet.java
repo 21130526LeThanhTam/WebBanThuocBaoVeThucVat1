@@ -21,6 +21,10 @@ public class ToggleCategoryStatusServlet extends HttpServlet {
         String action = request.getRequestURI().substring(request.getContextPath().length());
         String actionDescription = action.equals("/disableCategory") ? "vô hiệu hóa doanh mục" : "kích hoạt doanh mục";
         boolean disable = action.equals("/disableCategory");
+        String ipAddress = request.getHeader("X-FORWARDED-FOR");
+        if (ipAddress == null) {
+            ipAddress = request.getRemoteAddr();
+        }
         if (productID != null) {
             try {
                 int id = Integer.parseInt(productID);
@@ -29,7 +33,7 @@ public class ToggleCategoryStatusServlet extends HttpServlet {
                 Category aa= CategoryDAO.getCategoryById(id);
 
                 if (result) {
-                    LogDao.getInstance().printLog(actionDescription,aa,"",1,"");
+                    LogDao.getInstance().printLog(actionDescription,aa,ipAddress,1,"");
                     response.setStatus(HttpServletResponse.SC_OK);
                     response.getWriter().write("Success");
                 } else {

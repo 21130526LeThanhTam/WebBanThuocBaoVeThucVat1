@@ -31,4 +31,6 @@ public interface IProductDAO {
     int getTotalPages();
 
     List<Products> getProductsPerPage(int currentPage);
+
+    List<Products> getRelatedProducts(int i, int id);
 }

@@ -81,8 +81,10 @@
         <tr>
             <th style="width: 50px">Mã</th>
             <th style="width:100px">Hành Động</th>
+            <th>Địa chỉ IP</th>
             <th>Mức độ</th>
-            <th>Địa chỉ</th>
+            <th>Dữ liệu ban đầu</th>
+            <th>Dữ liệu hiện tại</th>
             <th style="width:100px">Thời gian </th>
         </tr>
         </thead>
@@ -91,8 +93,10 @@
         <tr class="warningLevel<%=a.getLevel()%>">
             <th style="text-align: center; width: 20px"><%= a.getId() %></th>
             <th style="width:150px;"><%= a.getAction() %></th>
+            <th><%=a.getIp()%></th>
             <th><%= a.getLevel()%></th>
-            <th><%=a.getAddress()%></th>
+            <th><%=a.getPreviousValue()%></th>
+            <th><%=a.getCurrentValue()%></th>
             <th><%=a.getCreate_at()%></th>
         </tr>
         <%--     vô hiệu hóa    danh mục--%>

@@ -34,6 +34,10 @@ public class InsertCategory extends HttpServlet {
         resp.setContentType("application/json");
         List<Category> listCategories = CategoryService.getInstance().getList();
         int index = listCategories.size()+1;
+        String ipAddress = req.getHeader("X-FORWARDED-FOR");
+        if (ipAddress == null) {
+            ipAddress = req.getRemoteAddr();
+        }
 
         String nameCate = req.getParameter("nameCate");
         Category a = new Category(index,nameCate);
@@ -41,7 +45,7 @@ public class InsertCategory extends HttpServlet {
 
         Map<String, String> result = new HashMap<>();
         if (success) {
-            LogDao.getInstance().insertModel(a,"",1,"");
+            LogDao.getInstance().insertModel(a,ipAddress,1,"");
             result.put("status", "success");
             result.put("message", "Danh mục mới đã được thêm thành công!");
         } else {
