@@ -4,13 +4,13 @@
 [![Maven](https://img.shields.io/badge/Maven-3.8.1-blue?style=flat-square)](https://maven.apache.org/)
 [![Tomcat](https://img.shields.io/badge/Tomcat-9.0-orange?style=flat-square)](https://tomcat.apache.org/)
 
-Website bán thuốc bảo vệ thực vật chuyên nghiệp — hỗ trợ mua hàng trực tuyến, thanh toán VNPay và quản trị toàn diện dành cho đồ án môn học.
+Website bán thuốc bảo vệ thực vật — hỗ trợ mua hàng trực tuyến, thanh toán VNPay và quản trị viên dành của đồ án môn học.
 
 ---
 
 ## 📝 Tổng Quan Dự Án
 
-* **Mục tiêu:** Phát triển hệ thống bán hàng trực tuyến tối ưu cho sản phẩm nông nghiệp, quản lý kho hàng và tích hợp các phương thức thanh toán hiện đại.
+* **Mục tiêu:** Phát triển hệ thống bán hàng trực tuyến cho sản phẩm phân bón, quản lý kho hàng và tích hợp các API hiện đại.
 * **Công nghệ cốt lõi:**
   * **Core:** Java 11, JSP, Servlet, JDBI (tối ưu truy vấn database).
   * **Database:** MySQL.
